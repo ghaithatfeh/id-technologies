@@ -81,19 +81,6 @@ const Login = () => {
                                     </Link>
                                 </span>
                             </p>
-                            <p className="text-lg dark:text-white">
-                                New User ?{" "}
-                                <span>
-                                    <Link
-                                        href={route(
-                                            "v1.web.public.register.page",
-                                        )}
-                                        className="text-blue-700 hover:text-primary"
-                                    >
-                                        Create New Account Now
-                                    </Link>
-                                </span>
-                            </p>
                         </Form>
                     </PageCard>
                 </div>

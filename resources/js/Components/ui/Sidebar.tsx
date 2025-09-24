@@ -37,7 +37,7 @@ export const Sidebar = ({
                             href="#"
                             className={`px-2 w-full text-xl text-brand dark:text-white hover:underline`}
                         >
-                            Cubeta Starter
+                            ID Technologies
                         </a>
                     )}
                 </div>
