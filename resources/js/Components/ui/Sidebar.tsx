@@ -21,10 +21,10 @@ export const Sidebar = ({
 }) => {
     return (
         <div
-            className={`sticky flex flex-col bg-white-secondary dark:bg-dark-secondary max-h-screen overflow-y-scroll`}
+            className={`sticky shadow-xl h-full flex flex-col bg-white-secondary dark:bg-dark-secondary max-h-screen overflow-y-scroll`}
         >
             <div
-                className={`flex  ${isOpen ? " justify-between " : " justify-center "} items-center sticky top-0 bg-white-secondary dark:bg-dark-secondary p-[17px] max-h-20 ${isOpen ? "shadow-sm" : " "}`}
+                className={`flex  ${isOpen ? " justify-around " : " justify-center "} items-center sticky top-0 bg-white-secondary dark:bg-dark-secondary px-0 h-[7.7%] max-h-20 ${isOpen ? "shadow-sm" : " "}`}
             >
                 <div className={`flex items-center justify-center gap-1`}>
                     <img
@@ -86,7 +86,7 @@ export const SidebarItem = ({
 
     return (
         <Link
-            className={`flex text-lg gap-5 w-full items-center px-4 py-2 hover:bg-white text-brand hover:text-gray-700 rounded-lg ${
+            className={`flex text-lg gap-5 w-full items-center px-0 py-2 hover:bg-white text-brand hover:text-gray-700 rounded-lg ${
                 selected
                     ? "bg-sky-100 dark:bg-white-secondary dark:text-black"
                     : " dark:text-white"
