@@ -29,12 +29,12 @@ export const Sidebar = ({
                 <div className={`flex items-center justify-center gap-1`}>
                     <img
                         src={asset("/images/02 - Logo.svg")}
-                        width={`${isOpen ? "40px" : "25px"}`}
+                        width={`${isOpen ? "40px" : "40px"}`}
                         alt="Company Logo"
                     />
                     {isOpen && (
                         <a
-                            href="#"
+                            href={route("v1.web.protected.index")}
                             className={`px-2 w-full text-xl text-brand dark:text-white hover:underline`}
                         >
                             ID Technologies
