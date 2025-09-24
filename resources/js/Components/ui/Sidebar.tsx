@@ -28,9 +28,9 @@ export const Sidebar = ({
             >
                 <div className={`flex items-center justify-center gap-1`}>
                     <img
-                        src={asset("/images/cubeta-logo.png")}
-                        width={`${isOpen ? "17px" : "25px"}`}
-                        alt=""
+                        src={asset("/images/02 - Logo.svg")}
+                        width={`${isOpen ? "40px" : "25px"}`}
+                        alt="Company Logo"
                     />
                     {isOpen && (
                         <a

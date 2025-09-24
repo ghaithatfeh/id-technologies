@@ -17,79 +17,64 @@ const ResetPassword = () => {
         post(route("v1.web.public.reset.password"));
     };
     return (
-        <div className="grid grid-cols-3 my-20">
-            <div className="col-start-2 col-end-3">
-                <div className="flex flex-col items-center">
-                    <div className="flex items-center my-2 gap-1">
-                        <img
-                            src={asset("images/cubeta-logo.png")}
-                            width={"35px"}
-                        />
-                        <h1 className="text-brand text-4xl font-bold">
-                            Cubeta Starter
-                        </h1>
-                    </div>
-                    <PageCard>
-                        <div className="flex flex-col my-5">
-                            <div className="flex justify-center items-center">
-                                <h1 className="font-semibold text-3xl text-brand">
-                                    You Have 1 Step Left
-                                </h1>
-                            </div>
-                            <div className="flex justify-center items-center dark:text-white">
-                                <p>
-                                    Please enter your new password and your
-                                    reset code
-                                </p>
-                            </div>
-                        </div>
-                        <Form
-                            onSubmit={onSubmit}
-                            processing={processing}
-                            backButton={false}
-                        >
-                            <div className="flex flex-col gap-5">
-                                <Input
-                                    label="Password Reset Code"
-                                    name="reset_password_code"
-                                    type="text"
-                                    onChange={(e) => {
-                                        setData(
-                                            "reset_password_code",
-                                            e.target.value,
-                                        );
-                                    }}
-                                    required={true}
-                                />
-
-                                <Input
-                                    label="New Password"
-                                    name="password"
-                                    type="password"
-                                    onChange={(e) => {
-                                        setData("password", e.target.value);
-                                    }}
-                                    required={true}
-                                />
-
-                                <Input
-                                    label="Confirm Password"
-                                    name="password_confirmation"
-                                    type="password"
-                                    onChange={(e) => {
-                                        setData(
-                                            "password_confirmation",
-                                            e.target.value,
-                                        );
-                                    }}
-                                    required={true}
-                                />
-                            </div>
-                        </Form>
-                    </PageCard>
+        <PageCard>
+            <div className="flex flex-col my-5">
+                <div className="flex justify-center items-center">
+                    <h1 className="font-semibold text-3xl text-brand">
+                        You Have 1 Step Left
+                    </h1>
+                </div>
+                <div className="flex justify-center items-center dark:text-white">
+                    <p>
+                        Please enter your new password and your
+                        reset code
+                    </p>
                 </div>
             </div>
-        </div>
+            <Form
+                onSubmit={onSubmit}
+                processing={processing}
+                backButton={false}
+            >
+                <div className="flex flex-col gap-5">
+                    <Input
+                        label="Password Reset Code"
+                        name="reset_password_code"
+                        type="text"
+                        onChange={(e) => {
+                            setData(
+                                "reset_password_code",
+                                e.target.value,
+                            );
+                        }}
+                        required={true}
+                    />
+
+                    <Input
+                        label="New Password"
+                        name="password"
+                        type="password"
+                        onChange={(e) => {
+                            setData("password", e.target.value);
+                        }}
+                        required={true}
+                    />
+
+                    <Input
+                        label="Confirm Password"
+                        name="password_confirmation"
+                        type="password"
+                        onChange={(e) => {
+                            setData(
+                                "password_confirmation",
+                                e.target.value,
+                            );
+                        }}
+                        required={true}
+                    />
+                </div>
+            </Form>
+        </PageCard>
     );
 };
 

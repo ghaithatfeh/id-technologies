@@ -4,7 +4,6 @@ namespace App\Http\Controllers\WEB\v1;
 
 use App\Http\Controllers\WebController;
 use App\Http\Requests\v1\AuthRequests\AuthLoginRequest;
-use App\Http\Requests\v1\AuthRequests\AuthRegisterRequest;
 use App\Http\Requests\v1\AuthRequests\CheckPasswordResetRequest;
 use App\Http\Requests\v1\AuthRequests\RequestResetPasswordRequest;
 use App\Http\Requests\v1\AuthRequests\ResetPasswordRequest;
@@ -101,18 +100,6 @@ class BaseAuthController extends WebController
 
         if ($result) {
             return redirect()->route('v1.web.public.login.page');
-        } else {
-            session()->flash('error', trans('site.something_went_wrong'));
-
-            return redirect()->back();
-        }
-    }
-
-    public function register(AuthRegisterRequest $request)
-    {
-        $user = $this->userService->register($request->validated(), $this->role);
-        if ($user) {
-            return redirect()->route('v1.web.protected.me');
         } else {
             session()->flash('error', trans('site.something_went_wrong'));
 

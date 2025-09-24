@@ -15,52 +15,37 @@ const ForgetPassword = () => {
         post(route("v1.web.public.request.reset.password"));
     };
     return (
-        <div className="grid grid-cols-3 my-20">
-            <div className="col-start-2 col-end-3">
-                <div className="flex flex-col items-center">
-                    <div className="flex items-center my-2 gap-1">
-                        <img
-                            src={asset("images/cubeta-logo.png")}
-                            width={"35px"}
-                        />
-                        <h1 className="text-brand text-4xl font-bold">
-                            Cubeta Starter
-                        </h1>
-                    </div>
-                    <PageCard>
-                        <div className="flex flex-col my-5">
-                            <div className="flex justify-center items-center">
-                                <h1 className="font-semibold text-3xl text-brand">
-                                    Forget Your Password ?
-                                </h1>
-                            </div>
-                            <div className="flex justify-center items-center">
-                                <p className="text-center mt-1 dark:text-white">
-                                    Enter Your Email So We Can Send You A Reset
-                                    Password Code
-                                </p>
-                            </div>
-                        </div>
-                        <Form
-                            onSubmit={onSubmit}
-                            processing={processing}
-                            backButton={false}
-                            buttonText="Send Code"
-                        >
-                            <Input
-                                name={"email"}
-                                onChange={(e) =>
-                                    setData("email", e.target.value)
-                                }
-                                label="Email"
-                                required={true}
-                                type="email"
-                            />
-                        </Form>
-                    </PageCard>
+        <PageCard>
+            <div className="flex flex-col my-5">
+                <div className="flex justify-center items-center">
+                    <h1 className="font-semibold text-3xl text-brand">
+                        Forget Your Password ?
+                    </h1>
+                </div>
+                <div className="flex justify-center items-center">
+                    <p className="text-center mt-1 dark:text-white">
+                        Enter Your Email So We Can Send You A Reset
+                        Password Code
+                    </p>
                 </div>
             </div>
-        </div>
+            <Form
+                onSubmit={onSubmit}
+                processing={processing}
+                backButton={false}
+                buttonText="Send Code"
+            >
+                <Input
+                    name={"email"}
+                    onChange={(e) =>
+                        setData("email", e.target.value)
+                    }
+                    label="Email"
+                    required={true}
+                    type="email"
+                />
+            </Form>
+        </PageCard>
     );
 };
 
