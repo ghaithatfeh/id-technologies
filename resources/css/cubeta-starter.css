@@ -42,7 +42,7 @@
         --color-black: #000000;
         --color-dark: #030B12;
         --color-dark-secondary: #061523;
-        --toastify-color-dark: #061523
+        --toastify-color-dark: #061523;
     }
 }
 
@@ -59,6 +59,8 @@
     --color-black: var(--color-black);
     --color-dark: var(--color-dark);
     --color-dark-secondary: var(--color-dark-secondary);
+    --color-landing-primary: #F6B817;
+    --color-landing-secondary: #23190F;
 
     --font-sans: "Poppins", sans-serif;
 }

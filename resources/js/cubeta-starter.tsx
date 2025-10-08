@@ -1,5 +1,5 @@
 import AuthLayout from "@/Components/layouts/AuthLayout";
-import Layout from "@/Components/layouts/Layout";
+import DashboardLayout from "@/Components/layouts/Layout";
 import ErrorBoundary from "@/Handlers/ErrorBoundry";
 import FatalErrorPage from "@/Handlers/FatalError";
 import { createInertiaApp } from "@inertiajs/react";
@@ -11,10 +11,10 @@ import "./bootstrap";
 const appName = import.meta.env.APP_NAME || "Laravel";
 
 const authPages = [
-    "login",
-    "forget-password",
-    "reset-password-code-form",
-    "reset-password",
+    "dashboard/login",
+    "dashboard/forget-password",
+    "dashboard/reset-password-code-form",
+    "dashboard/reset-password",
 ];
 
 type PageWithLayout = React.ComponentType & {
@@ -33,9 +33,12 @@ createInertiaApp({
             throw new Error(`Page "${name}" not found`);
         }
 
-        page.default.layout = !authPages.includes(name)
-            ? (page) => <Layout>{page}</Layout>
-            : (page) => <AuthLayout>{page}</AuthLayout>;
+        page.default.layout =
+            !authPages.includes(name) && name.includes("dashboard")
+                ? (page) => <DashboardLayout>{page}</DashboardLayout>
+                : authPages.includes(name)
+                  ? (page) => <AuthLayout>{page}</AuthLayout>
+                  : (page) => page;
 
         return page;
     },
