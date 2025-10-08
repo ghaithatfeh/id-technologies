@@ -1,8 +1,10 @@
 import { asset } from "@/helper";
 import { Link } from "@inertiajs/react";
 import { FacebookIcon, Globe2, Mail, PhoneIcon, Settings } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const Index = () => {
+    const { t } = useTranslation();
     return (
         <>
             <div
@@ -48,7 +50,7 @@ const Index = () => {
                             "ms-18 text-2xl font-bold text-landing-primary mb-3"
                         }
                     >
-                        Partners in Development
+                        {t("partners_in_development")}
                     </h2>
                     <div className={"flex items-center gap-5"}>
                         <div
@@ -71,10 +73,7 @@ const Index = () => {
                                     }
                                 />
                                 <p className={"text-white text-xl"}>
-                                    Sabbagh Brothers - Auto Identification
-                                    Technology established in 2004. The company
-                                    specializes in providing comprehensive
-                                    technology solutions.
+                                    {t("hero_first_title")}
                                 </p>
                             </div>
                             <div className={"flex items-center gap-2"}>
@@ -84,10 +83,7 @@ const Index = () => {
                                     }
                                 />
                                 <p className={"text-white text-xl"}>
-                                    Believing that technology is the key to
-                                    success, we dedicate our expertise to
-                                    deliver the best services to our clients in
-                                    the field of smart technologies.
+                                    {t("hero_second_title")}
                                 </p>
                             </div>
                             <div className={"flex items-center gap-2"}>
@@ -97,11 +93,7 @@ const Index = () => {
                                     }
                                 />
                                 <p className={"text-white text-xl"}>
-                                    Today, we are proud to have a wide network
-                                    of clients and distributors, which
-                                    strengthens our position as a trusted
-                                    partner in the journey of development and
-                                    growth.
+                                    {t("hero_third_title")}
                                 </p>
                             </div>
                         </div>
@@ -123,7 +115,7 @@ const Index = () => {
                                 "text-xl flex items-center justify-center text-center"
                             }
                         >
-                            Security and Protection Systems “HIKVISION Co”
+                            {t("security_and_protection")}
                         </p>
                     </div>
                     <div
@@ -136,8 +128,7 @@ const Index = () => {
                                 "text-xl flex items-center justify-center text-center"
                             }
                         >
-                            Plastic Card Printers and its accessories “evolis
-                            co”
+                            {t("plastic_cards_and_printers")}
                         </p>
                     </div>
                     <div
@@ -150,8 +141,7 @@ const Index = () => {
                                 "text-lg flex items-center justify-center text-center"
                             }
                         >
-                            Technologies/Prepaid Entertainment Systems
-                            “intercards co”
+                            {t("technologies_and_prepaid")}
                         </p>
                     </div>
                     <div
@@ -164,7 +154,7 @@ const Index = () => {
                                 "text-xl flex items-center justify-center text-center"
                             }
                         >
-                            Barcode Systems “Unitech co”
+                            {t("barcodes_systems")}
                         </p>
                     </div>
                 </div>
@@ -187,17 +177,11 @@ const Index = () => {
                             "px-10 py-5 bg-landing-primary font-bold text-xl rounded-tr-2xl"
                         }
                     >
-                        About Us:
+                        {t("about_us")}:
                     </h2>
                     <div className="w-80 h-[2px] bg-gradient-to-r from-black to-transparent rounded-full" />
                     <p className={"pe-24 mt-5 text-lg"}>
-                        We are company specialized in providing comprehensive
-                        technology solutions, aimed at simplifying and enhancing
-                        the operations across various sectors. We believe that
-                        technology is the key of security, our goal to be your
-                        trusted partner on the digital transformation journey,
-                        in order to offer advanced systems and solutions satisfy
-                        your needs.
+                        {t("about_us_description")}
                     </p>
                 </div>
 
@@ -207,16 +191,11 @@ const Index = () => {
                             "px-10 py-5 bg-landing-primary font-bold text-xl rounded-tr-2xl"
                         }
                     >
-                        Our Mission:
+                        {t("our_mission")}:
                     </h2>
                     <div className="w-80 h-[2px] bg-gradient-to-r from-black to-transparent rounded-full" />
                     <p className={"pe-24 mt-5 text-lg"}>
-                        Providing comprehensive technology solutions that help
-                        companies simplify their operations, increase efficiency
-                        and enhance security. We work to understand the
-                        challenges you face in order to offer the most effective
-                        solutions, from advanced systems to ongoing technical
-                        support.
+                        {t("our_mission_description")}
                     </p>
                 </div>
 
@@ -226,15 +205,11 @@ const Index = () => {
                             "px-10 py-5 bg-landing-primary font-bold text-xl rounded-tr-2xl"
                         }
                     >
-                        Our Vision:
+                        {t("our_vision")}:
                     </h2>
                     <div className="w-80 h-[2px] bg-gradient-to-r from-black to-transparent rounded-full" />
                     <p className={"pe-24 mt-5 text-lg"}>
-                        To be the leading and trusted technology partner for
-                        companies seeking digital transformation and the
-                        implementation of the latest smart technologies, by
-                        delivering optimal products and innovative solutions
-                        that exceed their expectations.
+                        {t("our_vision_description")}
                     </p>
                 </div>
             </div>
@@ -245,7 +220,7 @@ const Index = () => {
                         "mx-24 px-10 py-5 bg-landing-primary font-bold text-xl rounded-tr-2xl"
                     }
                 >
-                    Our Services:
+                    {t("our_services")}:
                 </h2>
                 <div
                     className={"bg-landing-secondary px-24 py-10 w-full"}
@@ -262,37 +237,17 @@ const Index = () => {
                                 "font-bold text-2xl text-landing-primary"
                             }
                         >
-                            We offer a wide range of integrated technology
-                            solutions that meet the needs of various sectors:
+                            {t("offer")}:
                         </h2>
                         <div
                             className={
                                 "flex flex-col items-start text-white mt-10 text-xl gap-2"
                             }
                         >
-                            <p>
-                                <strong>Security Systems</strong>: Advanced
-                                solutions for access control, surveillance
-                                systems, and entry cards to ensure the highest
-                                levels of security.
-                            </p>
-                            <p>
-                                <strong>Plastic Card Printers</strong>
-                                :We provide the latest professional plastic card
-                                printers, along with maintenance services and
-                                supply of consumables.
-                            </p>
-                            <p>
-                                <strong>Barcode Systems</strong>: Automated
-                                solutions for inventory management, point of
-                                sale, and business operations to increase
-                                efficiency and speed.
-                            </p>
-                            <p>
-                                <strong>Gaming and Prepaid Systems</strong>:
-                                Comprehensive solutions for managing games and
-                                services based on prepaid card systems.
-                            </p>
+                            <p>{t("service_security_services")}</p>
+                            <p>{t("service_plastic_cards")}</p>
+                            <p>{t("service_barcodes_systems")}</p>
+                            <p>{t("service_gaming")}</p>
                         </div>
                     </div>
                 </div>
@@ -330,8 +285,7 @@ const Index = () => {
                         "text-2xl text-landing-primary text-wrap font-bold text-center px-72 py-5"
                     }
                 >
-                    Let us help you turn your ideas into reality and achieve
-                    sustainable profits and success in the world of technology.
+                    {t("home_footer_quote")}
                 </h2>
 
                 <div
@@ -412,7 +366,10 @@ const Index = () => {
                             <PhoneIcon
                                 className={"text-landing-primary me-2"}
                             />
-                            <a target={"_blank"} href={"https://www.facebook.com/IDTechco/"}>
+                            <a
+                                target={"_blank"}
+                                href={"https://www.facebook.com/IDTechco/"}
+                            >
                                 ID Technologies Co
                             </a>
                         </div>
