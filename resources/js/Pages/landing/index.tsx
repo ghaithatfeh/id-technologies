@@ -252,7 +252,15 @@ const Index = () => {
                     </div>
                 </div>
             </div>
-            <div className={"w-full"}>
+            <div
+                className={"w-full"}
+                style={{
+                    backgroundImage: `url("${asset("images/08-BG.svg")}")`,
+                    backgroundSize: "cover",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "center",
+                }}
+            >
                 <div
                     className={
                         "grid grid-cols-4 items-center px-52 justify-between w-full max-w-full gap-10 py-10"
