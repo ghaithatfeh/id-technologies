@@ -66,30 +66,30 @@ const Index = () => {
                         </div>
 
                         <div className={"flex flex-col gap-2"}>
-                            <div className={"flex items-center gap-2"}>
+                            <div className={"flex items-start gap-2"}>
                                 <span
                                     className={
-                                        "border border-landing-primary w-10 h-4 rounded-md"
+                                        "border border-landing-primary w-10 h-4 rounded-md my-1"
                                     }
                                 />
                                 <p className={"text-white text-xl"}>
                                     {t("hero_first_title")}
                                 </p>
                             </div>
-                            <div className={"flex items-center gap-2"}>
+                            <div className={"flex items-start gap-2"}>
                                 <span
                                     className={
-                                        "border border-landing-primary w-10 h-4 rounded-md"
+                                        "border border-landing-primary w-10 h-4 rounded-md my-1"
                                     }
                                 />
                                 <p className={"text-white text-xl"}>
                                     {t("hero_second_title")}
                                 </p>
                             </div>
-                            <div className={"flex items-center gap-2"}>
+                            <div className={"flex items-start gap-2"}>
                                 <span
                                     className={
-                                        "border border-landing-primary w-10 h-4 rounded-md"
+                                        "border border-landing-primary w-10 h-4 rounded-md my-1"
                                     }
                                 />
                                 <p className={"text-white text-xl"}>
@@ -107,7 +107,7 @@ const Index = () => {
                 >
                     <div
                         className={
-                            "bg-white rounded-t-2xl shadow-lg p-5 border-b-8 border-b-landing-primary !w-[25%] h-36"
+                            "relative bg-white rounded-t-2xl shadow-lg p-5 border-b-8 border-b-landing-primary !w-[25%] h-40"
                         }
                     >
                         <p
@@ -117,10 +117,18 @@ const Index = () => {
                         >
                             {t("security_and_protection")}
                         </p>
+                        <div className={"flex items-center justify-center"}>
+                            <img
+                                src={asset("/images/Icon01.svg")}
+                                className={
+                                    "absolute p-2 rounded-lg bg-landing-secondary -bottom-8 h-14 w-14"
+                                }
+                            />
+                        </div>
                     </div>
                     <div
                         className={
-                            "bg-landing-primary/80 rounded-t-2xl shadow-lg p-5 !w-[25%] h-36"
+                            "bg-landing-primary/80 rounded-t-2xl shadow-lg p-5 !w-[25%] h-40"
                         }
                     >
                         <p
@@ -130,10 +138,18 @@ const Index = () => {
                         >
                             {t("plastic_cards_and_printers")}
                         </p>
+                        <div className={"flex items-center justify-center"}>
+                            <img
+                                src={asset("/images/Icon02.svg")}
+                                className={
+                                    "absolute p-2 rounded-lg bg-landing-secondary -bottom-6 h-14 w-14"
+                                }
+                            />
+                        </div>
                     </div>
                     <div
                         className={
-                            "bg-white rounded-t-2xl shadow-lg p-5 border-b-8 border-b-landing-primary !w-[25%] h-36"
+                            "bg-white rounded-t-2xl shadow-lg p-5 border-b-8 border-b-landing-primary !w-[25%] h-40"
                         }
                     >
                         <p
@@ -143,10 +159,18 @@ const Index = () => {
                         >
                             {t("technologies_and_prepaid")}
                         </p>
+                        <div className={"flex items-center justify-center"}>
+                            <img
+                                src={asset("/images/Icon03.svg")}
+                                className={
+                                    "absolute p-2 rounded-lg bg-landing-secondary -bottom-6 h-14 w-14"
+                                }
+                            />
+                        </div>
                     </div>
                     <div
                         className={
-                            "bg-white rounded-t-2xl shadow-lg p-5 border-b-8 border-b-landing-primary !w-[25%] h-36"
+                            "bg-white rounded-t-2xl shadow-lg p-5 border-b-8 border-b-landing-primary !w-[25%] h-40"
                         }
                     >
                         <p
@@ -156,6 +180,14 @@ const Index = () => {
                         >
                             {t("barcodes_systems")}
                         </p>
+                        <div className={"flex items-center justify-center"}>
+                            <img
+                                src={asset("/images/Icon02.svg")}
+                                className={
+                                    "absolute p-2 rounded-lg bg-landing-secondary -bottom-6 h-14 w-14"
+                                }
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -237,17 +269,42 @@ const Index = () => {
                                 "font-bold text-2xl text-landing-primary"
                             }
                         >
-                            {t("offer")}:
+                            {t("our_services_description")}:
                         </h2>
                         <div
                             className={
                                 "flex flex-col items-start text-white mt-10 text-xl gap-2"
                             }
                         >
-                            <p>{t("service_security_services")}</p>
-                            <p>{t("service_plastic_cards")}</p>
-                            <p>{t("service_barcodes_systems")}</p>
-                            <p>{t("service_gaming")}</p>
+                            <div className={"flex items-start gap-4"}>
+                                <img
+                                    src={asset("/images/Icon01.svg")}
+                                    className={" p-2 rounded-lg  h-12 w-12"}
+                                />
+                                <p>{t("service_security_services")}</p>
+                            </div>
+                            <div className={"flex items-start gap-4"}>
+                                <img
+                                    src={asset("/images/Icon02.svg")}
+                                    className={" p-2 rounded-lg  h-12 w-12"}
+                                />
+                                <p>{t("service_plastic_cards")}</p>
+                            </div>
+                            <div className={"flex items-start gap-4"}>
+                                <img
+                                    src={asset("/images/Icon04.svg")}
+                                    className={" p-2 rounded-lg  h-12 w-12"}
+                                />
+                                <p>{t("service_barcodes_systems")}</p>
+                            </div>
+
+                            <div className={"flex items-start gap-4"}>
+                                <img
+                                    src={asset("/images/Icon03.svg")}
+                                    className={" p-2 rounded-lg  h-12 w-12"}
+                                />
+                                <p>{t("service_gaming")}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
