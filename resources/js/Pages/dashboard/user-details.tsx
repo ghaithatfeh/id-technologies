@@ -14,9 +14,9 @@ const UserDetails = ({ user }: { user: User }) => {
                     onClick={() => {
                         setSelectedTab("overview");
                     }}
-                    className={`hover:text-primary  hover:border-b hover:border-b-primary py-2 px-8 cursor-pointer ${
+                    className={`hover:text-primary hover:border-b-primary cursor-pointer px-8 py-2 hover:border-b ${
                         selectedTab == "overview"
-                            ? "text-primary border-b border-b-primary"
+                            ? "text-primary border-b-primary border-b"
                             : "dark:text-white"
                     }`}
                 >
@@ -26,9 +26,9 @@ const UserDetails = ({ user }: { user: User }) => {
                     onClick={() => {
                         setSelectedTab("edit_profile");
                     }}
-                    className={`hover:text-primary  hover:border-b hover:border-b-primary py-2 px-8 cursor-pointer ${
+                    className={`hover:text-primary hover:border-b-primary cursor-pointer px-8 py-2 hover:border-b ${
                         selectedTab == "edit_profile"
-                            ? "text-primary border-b border-b-primary"
+                            ? "text-primary border-b-primary border-b"
                             : "dark:text-white"
                     }`}
                 >
@@ -50,15 +50,15 @@ const UserOverview = ({ user }: { user: User }) => {
             <h2 className="text-xl font-semibold dark:text-white">
                 Profile Details :
             </h2>
-            <div className="my-5 grid grid-cols-1 md:grid-cols-2 gap-3">
-                <label className="flex justify-between items-center dark:text-white">
+            <div className="my-5 grid grid-cols-1 gap-3 md:grid-cols-2">
+                <label className="flex items-center justify-between dark:text-white">
                     <strong>User Name :</strong>
                     <p>
                         {user.first_name} {user.last_name}
                     </p>
                 </label>
 
-                <label className="flex justify-between items-center dark:text-white">
+                <label className="flex items-center justify-between dark:text-white">
                     <strong>Email :</strong>
                     <p>{user.email}</p>
                 </label>
@@ -92,7 +92,7 @@ const EditProfile = ({ user }: { user: User }) => {
                 processing={processing}
                 backButton={false}
             >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 my-5">
+                <div className="my-5 grid grid-cols-1 gap-3 md:grid-cols-2">
                     <Input
                         name="first_name"
                         type="text"

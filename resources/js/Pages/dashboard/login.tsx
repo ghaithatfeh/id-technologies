@@ -18,13 +18,13 @@ const Login = () => {
 
     return (
         <PageCard>
-            <div className="flex flex-col my-5">
-                <div className="flex justify-center items-center">
-                    <h1 className="font-semibold text-3xl text-brand">
+            <div className="my-5 flex flex-col">
+                <div className="flex items-center justify-center">
+                    <h1 className="text-brand text-3xl font-semibold">
                         Welcome Back
                     </h1>
                 </div>
-                <div className="flex justify-center items-center dark:text-white">
+                <div className="flex items-center justify-center dark:text-white">
                     <p>Please Login To Your Account</p>
                 </div>
             </div>
@@ -34,7 +34,7 @@ const Login = () => {
                 buttonText="Login"
                 backButton={false}
             >
-                <div className="flex flex-col gap-5 my-5 w-full">
+                <div className="my-5 flex w-full flex-col gap-5">
                     <Input
                         name="email"
                         onChange={(e) => setData("email", e.target.value)}
@@ -58,7 +58,7 @@ const Login = () => {
                             href={route(
                                 "v1.web.public.request.reset.password.page",
                             )}
-                            className="text-blue-700 hover:text-primary"
+                            className="hover:text-primary text-blue-700"
                         >
                             Reset Your Password
                         </Link>

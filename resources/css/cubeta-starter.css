@@ -14,8 +14,8 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @font-face {
-    font-family: 'BahijTheSansArabic';
-    src: url('/fonts/Bahij_TheSansArabic-Plain.ttf') format('truetype');
+    font-family: "BahijTheSansArabic";
+    src: url("/fonts/Bahij_TheSansArabic-Plain.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
@@ -23,7 +23,7 @@
 @layer base {
     :root {
         --color-brand: #012970;
-        --color-primary: #0D6EFD;
+        --color-primary: #0d6efd;
         --color-secondary: #6c757d;
         --color-success: #198754;
         --color-info: #0dcaf0;
@@ -32,22 +32,22 @@
         --color-white: #ffffff;
         --color-black: #000000;
         --color-white-secondary: #fafafa;
-        --color-dark: #030B12;
+        --color-dark: #030b12;
         --color-dark-secondary: #061523;
     }
 
     :root[class~="dark"] {
-        --color-brand: #89A9E0;
+        --color-brand: #89a9e0;
         --color-primary: #176097;
         --color-secondary: #495057;
-        --color-success: #1EC289;
-        --color-info: #21C5D4;
-        --color-warning: #E2D73C;
-        --color-danger: #E34F4F;
+        --color-success: #1ec289;
+        --color-info: #21c5d4;
+        --color-warning: #e2d73c;
+        --color-danger: #e34f4f;
         --color-white: #ffffff;
         --color-white-secondary: #fafafa;
         --color-black: #000000;
-        --color-dark: #030B12;
+        --color-dark: #030b12;
         --color-dark-secondary: #061523;
         --toastify-color-dark: #061523;
     }
@@ -66,8 +66,8 @@
     --color-black: var(--color-black);
     --color-dark: var(--color-dark);
     --color-dark-secondary: var(--color-dark-secondary);
-    --color-landing-primary: #F6B817;
-    --color-landing-secondary: #23190F;
+    --color-landing-primary: #f6b817;
+    --color-landing-secondary: #23190f;
 
     --font-sans: "Poppins", sans-serif;
 
@@ -78,69 +78,71 @@ body {
     font-family: "Poppins", sans-serif !important;
 }
 
-body{
-    @apply font-bahij
+body {
+    @apply font-bahij;
 }
 
 ::-webkit-scrollbar {
-    @apply w-[2px]
+    @apply w-[2px];
 }
 
 ::-webkit-scrollbar-track {
-    @apply shadow-md
+    @apply shadow-md;
 }
 
 ::-webkit-scrollbar-thumb {
-    @apply bg-gray-300 rounded-md
+    @apply rounded-md bg-gray-300;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    @apply bg-primary
+    @apply bg-primary;
 }
 
 .slide-sidebar-left {
-    -webkit-animation: slide-sidebar-left 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation: slide-sidebar-left 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    -webkit-animation: slide-sidebar-left 0.3s
+        cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: slide-sidebar-left 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 @-webkit-keyframes slide-sidebar-left {
     0% {
-        width: 25%
+        width: 25%;
     }
     100% {
-        width: 6%
+        width: 6%;
     }
 }
 
 @keyframes slide-sidebar-left {
     0% {
-        width: 25%
+        width: 25%;
     }
     100% {
-        width: 6%
+        width: 6%;
     }
 }
 
 .slide-sidebar-right {
-    -webkit-animation: slide-sidebar-right 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-    animation: slide-sidebar-right 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    -webkit-animation: slide-sidebar-right 0.4s
+        cubic-bezier(0.39, 0.575, 0.565, 1) both;
+    animation: slide-sidebar-right 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
 @-webkit-keyframes slide-sidebar-right {
     0% {
-        width: 6%
+        width: 6%;
     }
     100% {
-        width: 25%
+        width: 25%;
     }
 }
 
 @keyframes slide-sidebar-right {
     0% {
-        width: 6%
+        width: 6%;
     }
     100% {
-        width: 25%
+        width: 25%;
     }
 }
 
@@ -157,5 +159,5 @@ select:-webkit-autofill:focus {
 }
 
 .swal2-popup {
-    @apply dark:bg-dark-secondary dark:text-white
+    @apply dark:bg-dark-secondary dark:text-white;
 }

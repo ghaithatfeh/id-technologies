@@ -1,7 +1,6 @@
 import Form from "@/Components/form/Form";
 import Input from "@/Components/form/fields/Input";
 import PageCard from "@/Components/ui/PageCard";
-import { asset } from "@/helper";
 import { useForm } from "@inertiajs/react";
 import { FormEvent } from "react";
 
@@ -18,17 +17,14 @@ const ResetPassword = () => {
     };
     return (
         <PageCard>
-            <div className="flex flex-col my-5">
-                <div className="flex justify-center items-center">
-                    <h1 className="font-semibold text-3xl text-brand">
+            <div className="my-5 flex flex-col">
+                <div className="flex items-center justify-center">
+                    <h1 className="text-brand text-3xl font-semibold">
                         You Have 1 Step Left
                     </h1>
                 </div>
-                <div className="flex justify-center items-center dark:text-white">
-                    <p>
-                        Please enter your new password and your
-                        reset code
-                    </p>
+                <div className="flex items-center justify-center dark:text-white">
+                    <p>Please enter your new password and your reset code</p>
                 </div>
             </div>
             <Form
@@ -42,10 +38,7 @@ const ResetPassword = () => {
                         name="reset_password_code"
                         type="text"
                         onChange={(e) => {
-                            setData(
-                                "reset_password_code",
-                                e.target.value,
-                            );
+                            setData("reset_password_code", e.target.value);
                         }}
                         required={true}
                     />
@@ -65,10 +58,7 @@ const ResetPassword = () => {
                         name="password_confirmation"
                         type="password"
                         onChange={(e) => {
-                            setData(
-                                "password_confirmation",
-                                e.target.value,
-                            );
+                            setData("password_confirmation", e.target.value);
                         }}
                         required={true}
                     />

@@ -1,7 +1,6 @@
 import Form from "@/Components/form/Form";
 import Input from "@/Components/form/fields/Input";
 import PageCard from "@/Components/ui/PageCard";
-import { asset } from "@/helper";
 import { useForm } from "@inertiajs/react";
 import { FormEvent } from "react";
 
@@ -16,16 +15,16 @@ const ForgetPassword = () => {
     };
     return (
         <PageCard>
-            <div className="flex flex-col my-5">
-                <div className="flex justify-center items-center">
-                    <h1 className="font-semibold text-3xl text-brand">
+            <div className="my-5 flex flex-col">
+                <div className="flex items-center justify-center">
+                    <h1 className="text-brand text-3xl font-semibold">
                         Forget Your Password ?
                     </h1>
                 </div>
-                <div className="flex justify-center items-center">
-                    <p className="text-center mt-1 dark:text-white">
-                        Enter Your Email So We Can Send You A Reset
-                        Password Code
+                <div className="flex items-center justify-center">
+                    <p className="mt-1 text-center dark:text-white">
+                        Enter Your Email So We Can Send You A Reset Password
+                        Code
                     </p>
                 </div>
             </div>
@@ -37,9 +36,7 @@ const ForgetPassword = () => {
             >
                 <Input
                     name={"email"}
-                    onChange={(e) =>
-                        setData("email", e.target.value)
-                    }
+                    onChange={(e) => setData("email", e.target.value)}
                     label="Email"
                     required={true}
                     type="email"

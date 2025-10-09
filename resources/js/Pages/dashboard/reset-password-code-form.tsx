@@ -1,7 +1,6 @@
 import Form from "@/Components/form/Form";
 import Input from "@/Components/form/fields/Input";
 import PageCard from "@/Components/ui/PageCard";
-import { asset } from "@/helper";
 import { useForm } from "@inertiajs/react";
 import { FormEvent } from "react";
 
@@ -16,17 +15,15 @@ const ResetPasswordCodeForm = () => {
     };
     return (
         <PageCard>
-            <div className="flex flex-col my-5">
-                <div className="flex justify-center items-center">
-                    <h1 className="font-semibold text-2xl text-brand text-center">
-                        Please Check Your Email For An Email From Us
-                        !
+            <div className="my-5 flex flex-col">
+                <div className="flex items-center justify-center">
+                    <h1 className="text-brand text-center text-2xl font-semibold">
+                        Please Check Your Email For An Email From Us !
                     </h1>
                 </div>
-                <div className="flex justify-center items-center">
+                <div className="flex items-center justify-center">
                     <p className={"dark:text-white"}>
-                        Enter the reset code sent within the email
-                        below
+                        Enter the reset code sent within the email below
                     </p>
                 </div>
             </div>
@@ -41,10 +38,7 @@ const ResetPasswordCodeForm = () => {
                     name={"reset_password_code"}
                     required={true}
                     onChange={(e) => {
-                        setData(
-                            "reset_password_code",
-                            e.target.value,
-                        );
+                        setData("reset_password_code", e.target.value);
                     }}
                     type="text"
                 />

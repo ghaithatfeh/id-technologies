@@ -32,8 +32,8 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 
         if (hasError) {
             return (
-                <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 text-gray-800 p-4">
-                    <h1 className="text-2xl font-bold mb-4">
+                <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100 p-4 text-gray-800">
+                    <h1 className="mb-4 text-2xl font-bold">
                         Something went wrong!
                     </h1>
                     <p className="mb-2">
@@ -42,12 +42,12 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
                             : "An unknown error occurred."}
                     </p>
                     {errorInfo?.componentStack && (
-                        <pre className="bg-gray-200 p-4 rounded text-sm overflow-x-auto">
+                        <pre className="overflow-x-auto rounded bg-gray-200 p-4 text-sm">
                             {errorInfo.componentStack}
                         </pre>
                     )}
                     <button
-                        className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                        className="mt-4 rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
                         onClick={() => window.location.reload()}
                     >
                         Reload Application

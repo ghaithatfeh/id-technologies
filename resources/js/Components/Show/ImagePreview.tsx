@@ -1,5 +1,5 @@
-import React, { HTMLProps, useState } from "react";
 import XMark from "@/Components/icons/XMark";
+import React, { HTMLProps, useState } from "react";
 
 interface ImgProps
     extends Omit<HTMLProps<HTMLImageElement>, "className" | "alt"> {
@@ -12,12 +12,12 @@ const ImagePreview: React.FC<ImgProps> = ({ caption, src, ...props }) => {
 
     return (
         <div
-            className={`flex justify-center items-center  ${isExpanded ? "fixed top-0 left-0 z-50 w-full h-full bg-black opacity-95" : "h-full w-full"}`}
+            className={`flex items-center justify-center ${isExpanded ? "fixed top-0 left-0 z-50 h-full w-full bg-black opacity-95" : "h-full w-full"}`}
             onClick={() => setIsExpanded(false)}
         >
             {isExpanded && (
                 <div
-                    className={"fixed z-50 top-0 right-0 cursor-pointer"}
+                    className={"fixed top-0 right-0 z-50 cursor-pointer"}
                     onClick={(e) => {
                         e.stopPropagation();
                         setIsExpanded(false);
@@ -25,13 +25,13 @@ const ImagePreview: React.FC<ImgProps> = ({ caption, src, ...props }) => {
                 >
                     <XMark
                         className={
-                            "w-12 h-12 bg-gray-300 rounded-md text-black hover:text-white"
+                            "h-12 w-12 rounded-md bg-gray-300 text-black hover:text-white"
                         }
                     />
                 </div>
             )}
             <div
-                className={` rounded-md cursor-pointer transition duration-300 transform ${isExpanded ? "scale-110" : "h-full w-full object-contain overflow-hidden"}`}
+                className={`transform cursor-pointer rounded-md transition duration-300 ${isExpanded ? "scale-110" : "h-full w-full overflow-hidden object-contain"}`}
                 onClick={(e) => {
                     e.stopPropagation();
                     setIsExpanded(true);
@@ -39,14 +39,14 @@ const ImagePreview: React.FC<ImgProps> = ({ caption, src, ...props }) => {
             >
                 <img
                     src={src}
-                    className={`${isExpanded ? "max-w-fit max-h-fit" : "h-full w-full max-w-40 object-cover rounded-full "}`}
+                    className={`${isExpanded ? "max-h-fit max-w-fit" : "h-full w-full max-w-40 rounded-full object-cover"}`}
                     {...props}
                     alt={caption}
                 />
                 {isExpanded && (
                     <p
                         className={
-                            "text-white text-xl bg-black text-center opacity-90"
+                            "bg-black text-center text-xl text-white opacity-90"
                         }
                     >
                         {caption}

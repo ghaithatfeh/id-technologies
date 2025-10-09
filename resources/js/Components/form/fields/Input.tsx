@@ -54,7 +54,7 @@ const Input: React.FC<InputProps> = ({
                         className ??
                         (type == "file"
                             ? "block h-full w-full cursor-pointer rounded-sm border border-gray-300 bg-transparent px-1 py-2 text-sm text-gray-900 shadow-sm focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:placeholder-gray-400"
-                            : "peer w-full border-none bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 dark:text-white")
+                            : "peer w-full border-none bg-transparent placeholder-transparent focus:border-transparent focus:ring-0 focus:outline-none dark:text-white")
                     }
                     placeholder={placeholder}
                     name={name}
@@ -64,27 +64,27 @@ const Input: React.FC<InputProps> = ({
                 />
 
                 {type === "email" && (
-                    <span className={"absolute right-2 top-2"}>
-                        <Email className={"dark:text-white h-6 w-6"} />
+                    <span className={"absolute top-2 right-2"}>
+                        <Email className={"h-6 w-6 dark:text-white"} />
                     </span>
                 )}
 
                 {type === "password" ? (
                     show ? (
                         <button
-                            className={"absolute right-2 top-2"}
+                            className={"absolute top-2 right-2"}
                             type={"button"}
                             onClick={() => setShow((prevState) => !prevState)}
                         >
-                            <Eye className={"dark:text-white h-6 w-6"} />
+                            <Eye className={"h-6 w-6 dark:text-white"} />
                         </button>
                     ) : (
                         <button
-                            className={"absolute right-2 top-2"}
+                            className={"absolute top-2 right-2"}
                             onClick={() => setShow((prevState) => !prevState)}
                             type={"button"}
                         >
-                            <ClosedEye className={"dark:text-white h-6 w-6"} />
+                            <ClosedEye className={"h-6 w-6 dark:text-white"} />
                         </button>
                     )
                 ) : (

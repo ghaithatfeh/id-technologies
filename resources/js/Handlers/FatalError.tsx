@@ -1,10 +1,10 @@
 function FatalErrorPage({ error }: { error: Error }) {
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-6">
+        <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100 p-6">
             {/* Laravel logo style header */}
             <div className="mb-8 text-center">
                 <svg
-                    className="w-20 h-20 mx-auto text-red-600"
+                    className="mx-auto h-20 w-20 text-red-600"
                     fill="currentColor"
                     viewBox="0 0 512 512"
                 >
@@ -19,12 +19,12 @@ function FatalErrorPage({ error }: { error: Error }) {
             </div>
 
             {/* Error card */}
-            <div className="bg-white rounded-xl shadow-lg p-6 max-w-2xl w-full">
-                <h2 className="text-lg font-semibold text-red-600 mb-2">
+            <div className="w-full max-w-2xl rounded-xl bg-white p-6 shadow-lg">
+                <h2 className="mb-2 text-lg font-semibold text-red-600">
                     {error.name || "Application Error"}
                 </h2>
-                <p className="text-gray-800 mb-4">{error.message}</p>
-                <details className="bg-gray-50 rounded p-4 text-sm text-gray-700">
+                <p className="mb-4 text-gray-800">{error.message}</p>
+                <details className="rounded bg-gray-50 p-4 text-sm text-gray-700">
                     <summary className="cursor-pointer font-medium">
                         Trace
                     </summary>
@@ -37,7 +37,7 @@ function FatalErrorPage({ error }: { error: Error }) {
             {/* Reload button */}
             <button
                 onClick={() => window.location.reload()}
-                className="mt-8 bg-red-600 hover:bg-red-700 text-white font-medium px-5 py-2 rounded-lg shadow"
+                className="mt-8 rounded-lg bg-red-600 px-5 py-2 font-medium text-white shadow hover:bg-red-700"
             >
                 Reload Application
             </button>

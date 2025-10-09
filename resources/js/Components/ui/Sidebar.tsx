@@ -21,10 +21,10 @@ export const Sidebar = ({
 }) => {
     return (
         <div
-            className={`sticky shadow-xl h-full flex flex-col bg-white-secondary dark:bg-dark-secondary max-h-screen overflow-y-scroll`}
+            className={`bg-white-secondary dark:bg-dark-secondary sticky flex h-full max-h-screen flex-col overflow-y-scroll shadow-xl`}
         >
             <div
-                className={`flex  ${isOpen ? " justify-around " : " justify-center "} items-center sticky top-0 bg-white-secondary dark:bg-dark-secondary px-0 h-[7.7%] max-h-20 ${isOpen ? "shadow-sm" : " "}`}
+                className={`flex ${isOpen ? "justify-around" : "justify-center"} bg-white-secondary dark:bg-dark-secondary sticky top-0 h-[7.7%] max-h-20 items-center px-0 ${isOpen ? "shadow-sm" : " "}`}
             >
                 <div className={`flex items-center justify-center gap-1`}>
                     <img
@@ -35,7 +35,7 @@ export const Sidebar = ({
                     {isOpen && (
                         <a
                             href={route("v1.web.protected.index")}
-                            className={`px-2 w-full text-xl text-brand dark:text-white hover:underline`}
+                            className={`text-brand w-full px-2 text-xl hover:underline dark:text-white`}
                         >
                             ID Technologies
                         </a>
@@ -48,14 +48,14 @@ export const Sidebar = ({
                         type={"button"}
                         onClick={() => toggleSidebar()}
                     >
-                        <XMark className="w-8 h-8 text-brand dark:text-white" />
+                        <XMark className="text-brand h-8 w-8 dark:text-white" />
                     </button>
                 )}
             </div>
 
             <div
                 id="sidebar-list"
-                className={`bg-white-secondary dark:bg-dark-secondary w-full mt-6 gap-1 px-4 flex flex-col ${isOpen ? "items-start" : "items-center"}`}
+                className={`bg-white-secondary dark:bg-dark-secondary mt-6 flex w-full flex-col gap-1 px-4 ${isOpen ? "items-start" : "items-center"}`}
             >
                 {sidebarItems.map((item, index) => (
                     <SidebarItem
@@ -86,10 +86,10 @@ export const SidebarItem = ({
 
     return (
         <Link
-            className={`flex text-lg gap-5 w-full items-center px-0 py-2 hover:bg-white text-brand hover:text-gray-700 rounded-lg ${
+            className={`text-brand flex w-full items-center gap-5 rounded-lg px-0 py-2 text-lg hover:bg-white hover:text-gray-700 ${
                 selected
-                    ? "bg-sky-100 dark:bg-white-secondary dark:text-black"
-                    : " dark:text-white"
+                    ? "dark:bg-white-secondary bg-sky-100 dark:text-black"
+                    : "dark:text-white"
             } ${!isOpen && "justify-center"}`}
             href={href}
         >
@@ -114,22 +114,22 @@ export const CompactSidebarItem = ({
     }
     return (
         <details
-            className={`[&_summary::-webkit-details-marker]:hidden group`}
+            className={`group [&_summary::-webkit-details-marker]:hidden`}
             open={selected}
         >
             <summary
-                className={`flex text-lg justify-between items-center hover:bg-gray-100 px-4 py-2 rounded-lg text-brand hover:text-gray-700 cursor-pointer ${
+                className={`text-brand flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-lg hover:bg-gray-100 hover:text-gray-700 ${
                     selected
-                        ? "bg-sky-100 dark:bg-white-secondary dark:text-black"
-                        : " dark:text-white"
+                        ? "dark:bg-white-secondary bg-sky-100 dark:text-black"
+                        : "dark:text-white"
                 }`}
             >
                 <span> {title} </span>
 
-                <span className="group-open:-rotate-180 transition duration-300 shrink-0">
+                <span className="shrink-0 transition duration-300 group-open:-rotate-180">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="w-5 h-5"
+                        className="h-5 w-5"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                     >
@@ -141,7 +141,7 @@ export const CompactSidebarItem = ({
                     </svg>
                 </span>
             </summary>
-            <ul className="space-y-1 mt-2 px-4">{children}</ul>
+            <ul className="mt-2 space-y-1 px-4">{children}</ul>
         </details>
     );
 };

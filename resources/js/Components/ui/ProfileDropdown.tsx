@@ -28,7 +28,7 @@ const ProfileDropdown = () => {
     return (
         <div ref={dropdownRef} className="relative w-auto">
             <button
-                className="inline-flex hover:cursor-pointer items-center justify-center rounded-lg bg-transparent px-0 py-2 text-center text-sm focus:outline-none dark:text-white"
+                className="inline-flex items-center justify-center rounded-lg bg-transparent px-0 py-2 text-center text-sm hover:cursor-pointer focus:outline-none dark:text-white"
                 type="button"
                 onClick={() => setOpen((prevState) => !prevState)}
             >
