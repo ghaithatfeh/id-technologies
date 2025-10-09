@@ -25,17 +25,17 @@ const Index = () => {
                             "flex items-center gap-14 w-3/4 text-landing-primary text-lg font-bold"
                         }
                     >
-                        <Link href={""} className={"text-landing-primary"}>
-                            Home
+                        <Link href={route("landing.index")} className={"text-landing-primary"}>
+                            {t("home")}
                         </Link>
 
-                        <Link href={""}>Customer</Link>
+                        <Link href={""}>{t("customer")}</Link>
 
-                        <Link href={""}>About Us</Link>
+                        <Link href={""}>{t("about_us")}</Link>
 
-                        <Link href={""}>Our Projects</Link>
+                        <Link href={""}>{t("our_projects")}</Link>
 
-                        <Link href={""}>AR</Link>
+                        <Link href={""}>{t("ar")}</Link>
                     </nav>
 
                     <img

@@ -22,6 +22,7 @@ return Application::configure(basePath: dirname(__DIR__))
                 ->group(base_path('routes/v1/web/protected.php'));
 
             Route::middleware(['web', 'locale'])
+                ->name('landing.')
                 ->group(base_path('routes/v1/web/landing.php'));
         }
     )

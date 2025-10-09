@@ -1,4 +1,5 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 
-\Illuminate\Support\Facades\Route::inertia('/', 'landing/index');
+Route::inertia('/', 'landing/index')->name('index');
