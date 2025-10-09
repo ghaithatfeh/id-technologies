@@ -8,10 +8,8 @@ const Index = () => {
     return (
         <>
             <div
-                className={"relative w-full md:h-screen"}
+                className={`relative w-full bg-[url('/images/01-BG.jpg')] bg-cover md:h-screen rtl:bg-[url('/images/01-BGRTL.jpg')] rtl:bg-right`}
                 style={{
-                    backgroundImage: `url("${asset("images/01-BG.jpg")}")`,
-                    backgroundSize: "cover",
                     backgroundRepeat: "no-repeat",
                 }}
             >
@@ -41,7 +39,7 @@ const Index = () => {
                             <div className={"flex items-start gap-2"}>
                                 <span
                                     className={
-                                        "border-landing-primary my-1 h-4 w-17 rounded-md border md:w-10"
+                                        "border-landing-primary my-1 h-4 w-17 rounded-md border md:w-10 rtl:h-6 rtl:w-10"
                                     }
                                 />
                                 <p className={"text-xl text-white"}>
@@ -51,7 +49,7 @@ const Index = () => {
                             <div className={"flex items-start gap-2"}>
                                 <span
                                     className={
-                                        "border-landing-primary my-1 h-4 w-17 rounded-md border md:w-10"
+                                        "border-landing-primary my-1 h-4 w-17 rounded-md border md:w-10 rtl:h-6 rtl:w-10"
                                     }
                                 />
                                 <p className={"text-xl text-white"}>
@@ -61,7 +59,7 @@ const Index = () => {
                             <div className={"flex items-start gap-2"}>
                                 <span
                                     className={
-                                        "border-landing-primary my-1 h-4 w-17 rounded-md border md:w-10"
+                                        "border-landing-primary my-1 h-4 w-17 rounded-md border md:w-10 rtl:h-6 rtl:w-10"
                                     }
                                 />
                                 <p className={"text-xl text-white"}>
@@ -178,7 +176,7 @@ const Index = () => {
                 <div className={"flex w-full flex-col items-start"}>
                     <h2
                         className={
-                            "bg-landing-primary rounded-tr-2xl px-10 py-5 text-xl font-bold"
+                            "bg-landing-primary px-10 py-5 text-xl font-bold ltr:rounded-tr-2xl rtl:rounded-tl-2xl"
                         }
                     >
                         {t("about_us")}:
@@ -192,7 +190,7 @@ const Index = () => {
                 <div className={"flex w-full flex-col items-start"}>
                     <h2
                         className={
-                            "bg-landing-primary rounded-tr-2xl px-10 py-5 text-xl font-bold"
+                            "bg-landing-primary px-10 py-5 text-xl font-bold ltr:rounded-tr-2xl rtl:rounded-tl-2xl"
                         }
                     >
                         {t("our_mission")}:
@@ -206,7 +204,7 @@ const Index = () => {
                 <div className={"flex w-full flex-col items-start"}>
                     <h2
                         className={
-                            "bg-landing-primary rounded-tr-2xl px-10 py-5 text-xl font-bold"
+                            "bg-landing-primary px-10 py-5 text-xl font-bold ltr:rounded-tr-2xl rtl:rounded-tl-2xl"
                         }
                     >
                         {t("our_vision")}:
@@ -331,7 +329,7 @@ const Index = () => {
 
                 <div
                     className={
-                        "grid w-full items-center gap-10 md:gap-24 px-10 py-5 text-xl md:grid-cols-3 md:px-72"
+                        "grid w-full items-center gap-10 px-10 py-5 text-xl md:grid-cols-3 md:gap-24 md:px-72"
                     }
                 >
                     <div className={"flex flex-col items-start"}>

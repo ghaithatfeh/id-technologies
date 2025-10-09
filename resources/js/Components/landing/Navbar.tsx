@@ -4,7 +4,6 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { LOCALE_STORAGE_KEY } from "@/providers/locale-provider";
-import i18n from "@/utils/i18n";
 
 const Navbar = () => {
     const {
