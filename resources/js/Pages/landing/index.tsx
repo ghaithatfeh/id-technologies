@@ -1,5 +1,5 @@
+import LandingNavbar from "@/Components/landing/Navbar";
 import { asset } from "@/helper";
-import { Link } from "@inertiajs/react";
 import { FacebookIcon, Globe2, Mail, PhoneIcon, Settings } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
@@ -15,35 +15,7 @@ const Index = () => {
                     backgroundRepeat: "no-repeat",
                 }}
             >
-                <div
-                    className={
-                        "flex items-center justify-between max-h-[13%] ps-28 pe-10 py-16"
-                    }
-                >
-                    <nav
-                        className={
-                            "flex items-center gap-14 w-3/4 text-landing-primary text-lg font-bold"
-                        }
-                    >
-                        <Link href={route("landing.index")} className={"text-landing-primary"}>
-                            {t("home")}
-                        </Link>
-
-                        <Link href={""}>{t("customer")}</Link>
-
-                        <Link href={""}>{t("about_us")}</Link>
-
-                        <Link href={""}>{t("our_projects")}</Link>
-
-                        <Link href={""}>{t("ar")}</Link>
-                    </nav>
-
-                    <img
-                        src={asset("/images/02-Logo.svg")}
-                        className={"w-28 h-full"}
-                        alt={"id-technologies logo"}
-                    />
-                </div>
+                <LandingNavbar />
                 <div className={"w-[55%] pt-10 pb-5 px-24 "}>
                     <h2
                         className={
