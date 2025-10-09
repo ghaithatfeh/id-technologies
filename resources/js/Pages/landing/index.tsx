@@ -16,10 +16,10 @@ const Index = () => {
                 }}
             >
                 <LandingNavbar />
-                <div className={"w-[55%] pt-10 pb-5 px-24 "}>
+                <div className={"md:w-[55%] w-full pt-10 pb-5 px-10 md:px-24 "}>
                     <h2
                         className={
-                            "ms-18 text-2xl font-bold text-landing-primary mb-3"
+                            "md:ps-18 text-2xl font-bold text-landing-primary mb-3"
                         }
                     >
                         {t("partners_in_development")}
@@ -27,7 +27,7 @@ const Index = () => {
                     <div className={"flex items-center gap-5"}>
                         <div
                             className={
-                                "flex flex-col gap-3 py-6 px-3 rounded-2xl bg-white"
+                                "hidden md:flex flex-col gap-3 py-6 px-3 rounded-2xl bg-white"
                             }
                         >
                             <PhoneIcon className={"w-8 h-8"} strokeWidth={1} />
@@ -41,7 +41,7 @@ const Index = () => {
                             <div className={"flex items-start gap-2"}>
                                 <span
                                     className={
-                                        "border border-landing-primary w-10 h-4 rounded-md my-1"
+                                        "border border-landing-primary w-17 md:w-10 h-4 rounded-md my-1"
                                     }
                                 />
                                 <p className={"text-white text-xl"}>
@@ -51,7 +51,7 @@ const Index = () => {
                             <div className={"flex items-start gap-2"}>
                                 <span
                                     className={
-                                        "border border-landing-primary w-10 h-4 rounded-md my-1"
+                                        "border border-landing-primary w-17 md:w-10 h-4 rounded-md my-1"
                                     }
                                 />
                                 <p className={"text-white text-xl"}>
@@ -61,7 +61,7 @@ const Index = () => {
                             <div className={"flex items-start gap-2"}>
                                 <span
                                     className={
-                                        "border border-landing-primary w-10 h-4 rounded-md my-1"
+                                        "border border-landing-primary w-17 md:w-10 h-4 rounded-md my-1"
                                     }
                                 />
                                 <p className={"text-white text-xl"}>
@@ -74,7 +74,7 @@ const Index = () => {
 
                 <div
                     className={
-                        "absolute -bottom-16 flex items-center justify-between px-44 gap-12 w-full"
+                        "absolute -bottom-16 flex flex-col md:flex-row items-center justify-between px-44 gap-12 w-full"
                     }
                 >
                     <div
@@ -281,138 +281,138 @@ const Index = () => {
                     </div>
                 </div>
             </div>
-            <div
-                className={"w-full"}
-                style={{
-                    backgroundImage: `url("${asset("images/08-BG.svg")}")`,
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "center",
-                }}
-            >
-                <div
-                    className={
-                        "grid grid-cols-4 items-center px-52 justify-between w-full max-w-full gap-10 py-10"
-                    }
-                >
-                    <img
-                        alt={"brand-logo"}
-                        src={asset("/images/09-Brand.png")}
-                    />
-                    <img
-                        alt={"brand-logo"}
-                        src={asset("/images/10-Brand.png")}
-                    />
-                    <img
-                        alt={"brand-logo"}
-                        src={asset("/images/11-Brand.png")}
-                    />
-                    <img
-                        alt={"brand-logo"}
-                        src={asset("/images/12-Brand.png")}
-                    />
-                </div>
+            {/*<div*/}
+            {/*    className={"w-full"}*/}
+            {/*    style={{*/}
+            {/*        backgroundImage: `url("${asset("images/08-BG.svg")}")`,*/}
+            {/*        backgroundSize: "cover",*/}
+            {/*        backgroundRepeat: "no-repeat",*/}
+            {/*        backgroundPosition: "center",*/}
+            {/*    }}*/}
+            {/*>*/}
+            {/*    <div*/}
+            {/*        className={*/}
+            {/*            "grid grid-cols-4 items-center px-52 justify-between w-full max-w-full gap-10 py-10"*/}
+            {/*        }*/}
+            {/*    >*/}
+            {/*        <img*/}
+            {/*            alt={"brand-logo"}*/}
+            {/*            src={asset("/images/09-Brand.png")}*/}
+            {/*        />*/}
+            {/*        <img*/}
+            {/*            alt={"brand-logo"}*/}
+            {/*            src={asset("/images/10-Brand.png")}*/}
+            {/*        />*/}
+            {/*        <img*/}
+            {/*            alt={"brand-logo"}*/}
+            {/*            src={asset("/images/11-Brand.png")}*/}
+            {/*        />*/}
+            {/*        <img*/}
+            {/*            alt={"brand-logo"}*/}
+            {/*            src={asset("/images/12-Brand.png")}*/}
+            {/*        />*/}
+            {/*    </div>*/}
 
-                <div className={" flex items-center justify-center py-5"}>
-                    <div className={"w-[75vw] h-0.5 bg-black"}></div>
-                </div>
+            {/*    <div className={" flex items-center justify-center py-5"}>*/}
+            {/*        <div className={"w-[75vw] h-0.5 bg-black"}></div>*/}
+            {/*    </div>*/}
 
-                <h2
-                    className={
-                        "text-2xl text-landing-primary text-wrap font-bold text-center px-72 py-5"
-                    }
-                >
-                    {t("home_footer_quote")}
-                </h2>
+            {/*    <h2*/}
+            {/*        className={*/}
+            {/*            "text-2xl text-landing-primary text-wrap font-bold text-center px-72 py-5"*/}
+            {/*        }*/}
+            {/*    >*/}
+            {/*        {t("home_footer_quote")}*/}
+            {/*    </h2>*/}
 
-                <div
-                    className={
-                        "py-5 w-full px-72 grid grid-cols-3 items-center text-xl gap-24"
-                    }
-                >
-                    <div className={"flex flex-col items-start"}>
-                        <div className={"flex items-center"}>
-                            <Mail className={"text-landing-primary me-2"} />
-                            <a href={"mailto:sales1@idtechco.com"}>
-                                sales1@idtechco.com
-                            </a>
-                        </div>
+            {/*    <div*/}
+            {/*        className={*/}
+            {/*            "py-5 w-full px-72 grid grid-cols-3 items-center text-xl gap-24"*/}
+            {/*        }*/}
+            {/*    >*/}
+            {/*        <div className={"flex flex-col items-start"}>*/}
+            {/*            <div className={"flex items-center"}>*/}
+            {/*                <Mail className={"text-landing-primary me-2"} />*/}
+            {/*                <a href={"mailto:sales1@idtechco.com"}>*/}
+            {/*                    sales1@idtechco.com*/}
+            {/*                </a>*/}
+            {/*            </div>*/}
 
-                        <div className={"flex items-center"}>
-                            <Mail className={"text-landing-primary me-2"} />
-                            <a href={"mailto:sales2@idtechco.com"}>
-                                sales2@idtechco.com
-                            </a>
-                        </div>
+            {/*            <div className={"flex items-center"}>*/}
+            {/*                <Mail className={"text-landing-primary me-2"} />*/}
+            {/*                <a href={"mailto:sales2@idtechco.com"}>*/}
+            {/*                    sales2@idtechco.com*/}
+            {/*                </a>*/}
+            {/*            </div>*/}
 
-                        <div className={"flex items-center"}>
-                            <Mail className={"text-landing-primary me-2"} />
-                            <a href={"mailto:sales3@idtechco.com"}>
-                                sales3@idtechco.com
-                            </a>
-                        </div>
-                    </div>
+            {/*            <div className={"flex items-center"}>*/}
+            {/*                <Mail className={"text-landing-primary me-2"} />*/}
+            {/*                <a href={"mailto:sales3@idtechco.com"}>*/}
+            {/*                    sales3@idtechco.com*/}
+            {/*                </a>*/}
+            {/*            </div>*/}
+            {/*        </div>*/}
 
-                    <div className={"flex flex-col items-start"}>
-                        <div className={"flex items-center"}>
-                            <PhoneIcon
-                                className={"text-landing-primary me-2"}
-                            />
-                            <a href={"tel:+963933303939"}>+963 933 303 939</a>
-                        </div>
+            {/*        <div className={"flex flex-col items-start"}>*/}
+            {/*            <div className={"flex items-center"}>*/}
+            {/*                <PhoneIcon*/}
+            {/*                    className={"text-landing-primary me-2"}*/}
+            {/*                />*/}
+            {/*                <a href={"tel:+963933303939"}>+963 933 303 939</a>*/}
+            {/*            </div>*/}
 
-                        <div className={"flex items-center"}>
-                            <PhoneIcon
-                                className={"text-landing-primary me-2"}
-                            />
-                            <a href={"tel:+963935288888"}>+963 935 288 888</a>
-                        </div>
+            {/*            <div className={"flex items-center"}>*/}
+            {/*                <PhoneIcon*/}
+            {/*                    className={"text-landing-primary me-2"}*/}
+            {/*                />*/}
+            {/*                <a href={"tel:+963935288888"}>+963 935 288 888</a>*/}
+            {/*            </div>*/}
 
-                        <div className={"flex items-center"}>
-                            <PhoneIcon
-                                className={"text-landing-primary me-2"}
-                            />
-                            <a href={"tel:+963932865566"}>+963 932 865 566</a>
-                        </div>
-                    </div>
+            {/*            <div className={"flex items-center"}>*/}
+            {/*                <PhoneIcon*/}
+            {/*                    className={"text-landing-primary me-2"}*/}
+            {/*                />*/}
+            {/*                <a href={"tel:+963932865566"}>+963 932 865 566</a>*/}
+            {/*            </div>*/}
+            {/*        </div>*/}
 
-                    <div className={"flex flex-col items-start"}>
-                        <div className={"flex items-center"}>
-                            <Globe2 className={"text-landing-primary me-2"} />
-                            <a
-                                target={"_blank"}
-                                href={"https://www.idtechcho.com"}
-                            >
-                                www.idtechcho.com
-                            </a>
-                        </div>
+            {/*        <div className={"flex flex-col items-start"}>*/}
+            {/*            <div className={"flex items-center"}>*/}
+            {/*                <Globe2 className={"text-landing-primary me-2"} />*/}
+            {/*                <a*/}
+            {/*                    target={"_blank"}*/}
+            {/*                    href={"https://www.idtechcho.com"}*/}
+            {/*                >*/}
+            {/*                    www.idtechcho.com*/}
+            {/*                </a>*/}
+            {/*            </div>*/}
 
-                        <div className={"flex items-center"}>
-                            <FacebookIcon
-                                className={"text-landing-primary me-2"}
-                            />
-                            <a
-                                target={"_blank"}
-                                href={"https://www.facebook.com/IDTechco/"}
-                            >
-                                ID Technologies Co
-                            </a>
-                        </div>
+            {/*            <div className={"flex items-center"}>*/}
+            {/*                <FacebookIcon*/}
+            {/*                    className={"text-landing-primary me-2"}*/}
+            {/*                />*/}
+            {/*                <a*/}
+            {/*                    target={"_blank"}*/}
+            {/*                    href={"https://www.facebook.com/IDTechco/"}*/}
+            {/*                >*/}
+            {/*                    ID Technologies Co*/}
+            {/*                </a>*/}
+            {/*            </div>*/}
 
-                        <div className={"flex items-center"}>
-                            <PhoneIcon
-                                className={"text-landing-primary me-2"}
-                            />
-                            <a
-                                target={"_blank"}
-                                href={"https://www.facebook.com/IDTechco/"}
-                            >
-                                ID Technologies Co
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {/*            <div className={"flex items-center"}>*/}
+            {/*                <PhoneIcon*/}
+            {/*                    className={"text-landing-primary me-2"}*/}
+            {/*                />*/}
+            {/*                <a*/}
+            {/*                    target={"_blank"}*/}
+            {/*                    href={"https://www.facebook.com/IDTechco/"}*/}
+            {/*                >*/}
+            {/*                    ID Technologies Co*/}
+            {/*                </a>*/}
+            {/*            </div>*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
         </>
     );
 };
