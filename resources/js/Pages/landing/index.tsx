@@ -8,8 +8,9 @@ const Index = () => {
     return (
         <>
             <div
-                className={`relative w-full bg-[url('/images/01-BG.jpg')] bg-cover md:h-screen rtl:bg-[url('/images/01-BGRTL.jpg')] rtl:bg-right`}
+                className={`relative w-full bg-[url('/images/01-BG.jpg')] md:h-screen rtl:bg-[url('/images/01-BGRTL.jpg')]`}
                 style={{
+                    backgroundSize: "cover",
                     backgroundRepeat: "no-repeat",
                 }}
             >
@@ -164,7 +165,7 @@ const Index = () => {
 
             <div
                 className={
-                    "flex w-full flex-col items-start justify-between gap-10 px-10 py-24 md:p-24"
+                    "flex w-full flex-col items-start justify-between gap-10 px-10 py-24 md:px-24 md:py-32"
                 }
                 style={{
                     backgroundImage: `url("${asset("images/08-BG.svg")}")`,
@@ -292,7 +293,7 @@ const Index = () => {
             >
                 <div
                     className={
-                        "grid w-full max-w-full grid-cols-4 items-center justify-between gap-10 px-52 py-10"
+                        "flex w-full max-w-full grid-cols-4 flex-col items-center justify-between gap-10 px-10 py-10 md:grid md:px-52"
                     }
                 >
                     <img
