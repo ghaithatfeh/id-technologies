@@ -330,7 +330,7 @@ const Index = () => {
 
                 <div
                     className={
-                        "grid w-full items-center gap-10 px-10 py-5 text-xl md:grid-cols-3 md:gap-24 md:px-72"
+                        "grid w-full items-center gap-10 px-10 py-5 text-xl md:grid-cols-3 md:gap-24 md:px-50"
                     }
                 >
                     <div className={"flex flex-col items-start"}>
