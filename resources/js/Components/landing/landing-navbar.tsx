@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { LOCALE_STORAGE_KEY } from "@/providers/locale-provider";
 
-const Navbar = () => {
+const LandingNavbar = () => {
     const {
         t,
         i18n: { language, changeLanguage },
@@ -56,7 +56,10 @@ const Navbar = () => {
                         {t("home")}
                     </Link>
 
-                    <Link className={"hover:underline"} href={""}>
+                    <Link
+                        className={"hover:underline"}
+                        href={route("landing.customer.service")}
+                    >
                         {t("customer_service")}
                     </Link>
 
@@ -108,7 +111,7 @@ const Navbar = () => {
                     </Link>
 
                     <Link
-                        href={""}
+                        href={route("landing.customer.service")}
                         className="text-landing-primary text-xl font-bold transition-opacity hover:opacity-70"
                         onClick={toggleMenu}
                     >
@@ -155,4 +158,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
+export default LandingNavbar;

@@ -1,4 +1,4 @@
-import LandingNavbar from "@/Components/landing/Navbar";
+import LandingNavbar from "@/Components/landing/landing-navbar";
 import { asset } from "@/helper";
 import { FacebookIcon, Globe2, Mail, PhoneIcon, Settings } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -217,10 +217,10 @@ const Index = () => {
                 </div>
             </div>
 
-            <div className={"flex w-full flex-col items-start"}>
+            <div className={"relative flex w-full flex-col items-start"}>
                 <h2
                     className={
-                        "bg-landing-primary mx-10 rounded-tr-2xl px-10 py-5 text-xl font-bold md:mx-24"
+                        "bg-landing-primary mx-10 ltr:rounded-tr-2xl rtl:rounded-tl-2xl  px-10 py-5 text-xl font-bold md:mx-24"
                     }
                 >
                     {t("our_services")}:
