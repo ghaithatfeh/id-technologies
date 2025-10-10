@@ -42,7 +42,7 @@ const CustomerService = () => {
             </div>
 
             <div
-                className={"h-full w-full bg-[url('/images/08-BG.svg')] py-16"}
+                className={"h-full w-full bg-cover bg-[url('/images/08-BG.svg')] py-16"}
             >
                 <div
                     className={
