@@ -46,7 +46,7 @@ const Navbar = () => {
                 {/* Desktop Navigation */}
                 <nav
                     className={
-                        "text-landing-primary hidden w-3/4 items-center gap-24 ps-13 text-xl font-bold md:flex"
+                        "text-landing-primary hidden w-3/4 items-center gap-20 ps-13 text-xl font-bold md:flex"
                     }
                 >
                     <Link
@@ -57,7 +57,7 @@ const Navbar = () => {
                     </Link>
 
                     <Link className={"hover:underline"} href={""}>
-                        {t("customer")}
+                        {t("customer_service")}
                     </Link>
 
                     <Link className={"hover:underline"} href={""}>
@@ -112,7 +112,7 @@ const Navbar = () => {
                         className="text-landing-primary text-xl font-bold transition-opacity hover:opacity-70"
                         onClick={toggleMenu}
                     >
-                        {t("customer")}
+                        {t("customer_service")}
                     </Link>
 
                     <Link

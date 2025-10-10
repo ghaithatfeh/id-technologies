@@ -83,7 +83,7 @@ const Index = () => {
                     >
                         <p
                             className={
-                                "flex items-center justify-center text-center text-xl"
+                                "text-md flex items-center justify-center text-center md:text-xl"
                             }
                         >
                             {t("security_and_protection")}
@@ -104,7 +104,7 @@ const Index = () => {
                     >
                         <p
                             className={
-                                "flex items-center justify-center text-center text-xl"
+                                "text-md flex items-center justify-center text-center md:text-xl"
                             }
                         >
                             {t("plastic_cards_and_printers")}
@@ -125,7 +125,7 @@ const Index = () => {
                     >
                         <p
                             className={
-                                "flex items-center justify-center text-center text-lg"
+                                "text-md flex items-center justify-center text-center md:text-lg"
                             }
                         >
                             {t("technologies_and_prepaid")}
@@ -134,7 +134,7 @@ const Index = () => {
                             <img
                                 src={asset("/images/Icon03.svg")}
                                 className={
-                                    "bg-landing-secondary absolute -bottom-8 h-14 w-14 rounded-lg p-2 md:-bottom-6"
+                                    "bg-landing-secondary absolute -bottom-8 h-14 w-14 rounded-lg p-2 md:-bottom-8"
                                 }
                             />
                         </div>
@@ -146,7 +146,7 @@ const Index = () => {
                     >
                         <p
                             className={
-                                "flex items-center justify-center text-center text-xl"
+                                "text-md flex items-center justify-center text-center md:text-xl"
                             }
                         >
                             {t("barcodes_systems")}
