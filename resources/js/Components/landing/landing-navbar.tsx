@@ -46,7 +46,7 @@ const LandingNavbar = () => {
                 {/* Desktop Navigation */}
                 <nav
                     className={
-                        "text-landing-primary hidden w-3/4 items-center gap-20 ps-13 text-xl font-bold md:flex"
+                        "text-landing-primary hidden w-3/4 items-center gap-20 ps-13 text-lg font-bold md:flex"
                     }
                 >
                     <Link
@@ -60,7 +60,7 @@ const LandingNavbar = () => {
                         className={"hover:underline"}
                         href={route("landing.customer.service")}
                     >
-                        {t("customer_service")}
+                        {t("customer")}
                     </Link>
 
                     <Link className={"hover:underline"} href={""}>
@@ -115,7 +115,7 @@ const LandingNavbar = () => {
                         className="text-landing-primary text-xl font-bold transition-opacity hover:opacity-70"
                         onClick={toggleMenu}
                     >
-                        {t("customer_service")}
+                        {t("customer")}
                     </Link>
 
                     <Link
