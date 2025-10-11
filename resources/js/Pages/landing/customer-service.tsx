@@ -20,7 +20,7 @@ const CustomerService = () => {
                     }
                 >
                     <h1 className={"text-landing-primary text-3xl md:text-6xl text-center"}>
-                        {t("customer_service")}
+                        {t("customer")}
                     </h1>
                     <div className={"w-1/3 md:w-1/8"}>
                         <img
