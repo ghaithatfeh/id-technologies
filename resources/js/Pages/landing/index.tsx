@@ -70,92 +70,130 @@ const Index = () => {
                         </div>
                     </div>
                 </div>
-
                 <div
                     className={
-                        "-bottom-18 flex w-full flex-col items-center justify-between gap-12 px-14 md:absolute md:flex-row md:px-44"
+                        "-bottom-[12%] grid w-full grid-cols-4 items-center justify-between gap-10 px-14 md:absolute md:px-44"
                     }
                 >
                     <div
                         className={
-                            "border-b-landing-primary relative h-40 rounded-t-2xl border-b-8 bg-white p-5 shadow-lg md:!w-[25%]"
+                            "border-b-landing-primary relative h-full w-full rounded-t-lg border-b-8 bg-white bg-no-repeat p-6 shadow-md hover:bg-[url('/images/Security.png')]"
                         }
+                        style={{
+                            backgroundSize: "125% 125%",
+                            backgroundRepeat: "no-repeat",
+                            backgroundPosition: "center",
+                        }}
                     >
                         <p
                             className={
-                                "text-md flex items-center justify-center text-center md:text-xl"
+                                "text-center text-lg font-bold text-wrap"
                             }
                         >
                             {t("security_and_protection")}
                         </p>
-                        <div className={"flex items-center justify-center"}>
+                        <div
+                            className={
+                                "absolute -bottom-7 left-0 z-10 flex w-full items-center justify-center"
+                            }
+                        >
                             <img
                                 src={asset("/images/Icon01.svg")}
                                 className={
-                                    "bg-landing-secondary absolute -bottom-8 h-14 w-14 rounded-lg p-2"
+                                    "bg-landing-secondary h-12 w-12 rounded-lg p-2"
                                 }
                             />
                         </div>
                     </div>
+
                     <div
                         className={
-                            "bg-landing-primary/80 relative h-40 rounded-t-2xl p-5 shadow-lg md:block md:!w-[25%]"
+                            "border-b-landing-primary relative h-full w-full rounded-t-lg border-b-8 bg-white bg-no-repeat p-6 shadow-md hover:bg-[url('/images/Background01.png')]"
                         }
+                        style={{
+                            backgroundSize: "125% 125%",
+                            backgroundRepeat: "no-repeat",
+                            backgroundPosition: "center",
+                        }}
                     >
                         <p
                             className={
-                                "text-md flex items-center justify-center text-center md:text-xl"
+                                "text-center text-lg font-bold text-wrap"
                             }
                         >
                             {t("plastic_cards_and_printers")}
                         </p>
-                        <div className={"flex items-center justify-center"}>
+                        <div
+                            className={
+                                "absolute -bottom-7 left-0 z-10 flex w-full items-center justify-center"
+                            }
+                        >
                             <img
                                 src={asset("/images/Icon02.svg")}
                                 className={
-                                    "bg-landing-secondary absolute -bottom-6 h-14 w-14 rounded-lg p-2"
+                                    "bg-landing-secondary h-12 w-12 rounded-lg p-2"
                                 }
                             />
                         </div>
                     </div>
+
                     <div
                         className={
-                            "border-b-landing-primary relative h-40 rounded-t-2xl border-b-8 bg-white p-5 shadow-lg md:block md:!w-[25%]"
+                            "border-b-landing-primary relative h-full w-full rounded-t-lg border-b-8 bg-white bg-no-repeat p-6 shadow-md hover:bg-[url('/images/Technologies.png')]"
                         }
+                        style={{
+                            backgroundSize: "125% 125%",
+                            backgroundRepeat: "no-repeat",
+                            backgroundPosition: "center",
+                        }}
                     >
                         <p
                             className={
-                                "text-md flex items-center justify-center text-center md:text-lg"
+                                "text-center text-lg font-bold text-wrap"
                             }
                         >
                             {t("technologies_and_prepaid")}
                         </p>
-                        <div className={"flex items-center justify-center"}>
+                        <div
+                            className={
+                                "absolute -bottom-7 left-0 z-10 flex w-full items-center justify-center"
+                            }
+                        >
                             <img
                                 src={asset("/images/Icon03.svg")}
                                 className={
-                                    "bg-landing-secondary absolute -bottom-8 h-14 w-14 rounded-lg p-2 md:-bottom-8"
+                                    "bg-landing-secondary h-12 w-12 rounded-lg p-2"
                                 }
                             />
                         </div>
                     </div>
+
                     <div
                         className={
-                            "border-b-landing-primary h-40 rounded-t-2xl border-b-8 bg-white p-5 shadow-lg md:!w-[25%]"
+                            "border-b-landing-primary relative h-full w-full rounded-t-lg border-b-8 bg-white bg-no-repeat p-6 shadow-md hover:bg-[url('/images/BarcodeSystems.png')]"
                         }
+                        style={{
+                            backgroundSize: "125% 125%",
+                            backgroundRepeat: "no-repeat",
+                            backgroundPosition: "center",
+                        }}
                     >
                         <p
                             className={
-                                "text-md flex items-center justify-center text-center md:text-xl"
+                                "text-center text-lg font-bold text-wrap"
                             }
                         >
                             {t("barcodes_systems")}
                         </p>
-                        <div className={"flex items-center justify-center"}>
+                        <div
+                            className={
+                                "absolute -bottom-7 left-0 z-10 flex w-full items-center justify-center"
+                            }
+                        >
                             <img
-                                src={asset("/images/Icon02.svg")}
+                                src={asset("/images/Icon04.svg")}
                                 className={
-                                    "bg-landing-secondary absolute -bottom-6 h-14 w-14 rounded-lg p-2"
+                                    "bg-landing-secondary h-12 w-12 rounded-lg p-2"
                                 }
                             />
                         </div>
@@ -220,7 +258,7 @@ const Index = () => {
             <div className={"relative flex w-full flex-col items-start"}>
                 <h2
                     className={
-                        "bg-landing-primary mx-10 ltr:rounded-tr-2xl rtl:rounded-tl-2xl  px-10 py-5 text-xl font-bold md:mx-24"
+                        "bg-landing-primary mx-10 px-10 py-5 text-xl font-bold md:mx-24 ltr:rounded-tr-2xl rtl:rounded-tl-2xl"
                     }
                 >
                     {t("our_services")}:
