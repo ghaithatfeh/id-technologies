@@ -72,6 +72,8 @@
     --font-sans: "Poppins", sans-serif;
 
     --font-bahij: "BahijTheSansArabic", sans-serif;
+
+    --breakpoint-md: 1024px;
 }
 
 body {
