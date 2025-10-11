@@ -71,7 +71,7 @@ const Index = () => {
                         </div>
                     </div>
                 </div>
-                <div className="-bottom-[12%] grid w-full grid-cols-4 items-center justify-between gap-10 px-14 md:absolute md:px-44">
+                <div className="-bottom-[12%] grid w-full grid-cols-1 md:grid-cols-4 items-center justify-between gap-10 px-14 md:absolute md:px-44">
                     {/* Card 1 */}
                     <HomeHeroCard
                         content={t("security_and_protection")}
