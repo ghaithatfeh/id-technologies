@@ -2,5 +2,46 @@
     "installed_web": true,
     "frontend_type": "React & Typescript",
     "installed_web_packages": true,
-    "installed_web_auth": true
+    "installed_web_auth": true,
+    "tables": [
+        {
+            "model_name": "Brand",
+            "table_name": "brands",
+            "attributes": [
+                {
+                    "name": "brand_title",
+                    "type": "translatable",
+                    "nullable": false,
+                    "unique": false
+                },
+                {
+                    "name": "background_image",
+                    "type": "file",
+                    "nullable": false,
+                    "unique": false
+                },
+                {
+                    "name": "icon",
+                    "type": "file",
+                    "nullable": false,
+                    "unique": false
+                },
+                {
+                    "name": "logo",
+                    "type": "file",
+                    "nullable": false,
+                    "unique": false
+                }
+            ],
+            "relations": {
+                "hasMany": [
+                    {
+                        "type": "hasMany",
+                        "model_name": "Product"
+                    }
+                ]
+            },
+            "version": "v1"
+        }
+    ]
 }

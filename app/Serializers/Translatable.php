@@ -76,7 +76,7 @@ class Translatable implements JsonSerializable, Arrayable, Stringable
 
     public function jsonSerialize(): mixed
     {
-        return $this->toJson();
+        return $this->translate();
     }
 
 

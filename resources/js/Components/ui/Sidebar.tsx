@@ -1,3 +1,4 @@
+import TableCells from "@/Components/icons/TableCells";
 import PresentationChart from "@/Components/icons/PresentationChart";
 import XMark from "@/Components/icons/XMark";
 import { asset } from "@/helper";
@@ -9,6 +10,11 @@ const sidebarItems = [
         href: route("v1.web.protected.index"),
         title: "Dashboard",
         icon: () => <PresentationChart />,
+    },
+    {
+        title: "Brands",
+        href: route("v1.web.protected.brands.index"),
+        icon: () => <TableCells />,
     },
 ];
 
@@ -28,7 +34,7 @@ export const Sidebar = ({
             >
                 <div className={`flex items-center justify-center gap-1`}>
                     <img
-                        src={asset("/images/02 - Logo.svg")}
+                        src={asset("/images/02-Logo.svg")}
                         width={`${isOpen ? "40px" : "40px"}`}
                         alt="Company Logo"
                     />

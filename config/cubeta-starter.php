@@ -118,6 +118,7 @@ return [
      */
     'available_locales' => [
         'en',
+        'ar'
         // add your project languages
     ],
 

@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { LOCALE_STORAGE_KEY } from "@/providers/locale-provider";
+import HTTP from "@/Modules/Http/Http";
 
 const LandingNavbar = () => {
     const {
@@ -17,8 +18,11 @@ const LandingNavbar = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
-    const handleLanguageChange = (locale: string) => {
-        changeLanguage(locale);
+    const handleLanguageChange = async (locale: string) => {
+        await HTTP.make().post(route("set-locale"), {
+            lang: locale,
+        });
+        await changeLanguage(locale);
         window.localStorage.setItem(LOCALE_STORAGE_KEY, locale);
         toggleMenu();
     };

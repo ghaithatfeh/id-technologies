@@ -3,8 +3,9 @@ import { asset } from "@/helper";
 import { FacebookIcon, Globe2, Mail, PhoneIcon, Settings } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import HomeHeroCard from "@/Components/landing/home-hero-card";
+import Brand from "@/Models/Brand";
 
-const Index = () => {
+const Index = ({ brands }: { brands: Brand[] }) => {
     const { t } = useTranslation();
     return (
         <>
@@ -71,32 +72,14 @@ const Index = () => {
                         </div>
                     </div>
                 </div>
-                <div className="-bottom-[12%] grid w-full grid-cols-1 md:grid-cols-4 items-center justify-between gap-10 px-14 md:absolute md:px-44">
-                    {/* Card 1 */}
-                    <HomeHeroCard
-                        content={t("security_and_protection")}
-                        icon={asset("/images/Icon01.svg")}
-                        background={"/images/Security.png"}
-                    />
-
-                    <HomeHeroCard
-                        content={t("plastic_cards_and_printers")}
-                        icon={asset("/images/Icon02.svg")}
-                        background={"/images/Background01.png"}
-                    />
-
-                    <HomeHeroCard
-                        content={t("technologies_and_prepaid")}
-                        icon={asset("/images/Icon03.svg")}
-                        background={"/images/Technologies.png"}
-                    />
-
-                    <HomeHeroCard
-                        content={t("barcodes_systems")}
-                        icon={"/images/Icon04.svg"}
-                        background={"/images/BarcodeSystems.png"}
-                    />
-
+                <div className="-bottom-[12%] grid w-full grid-cols-1 items-center justify-between gap-10 px-14 md:absolute md:grid-cols-4 md:px-44">
+                    {brands.map((brand) => (
+                        <HomeHeroCard
+                            content={brand.brand_title}
+                            icon={brand.icon.url}
+                            background={brand.background_image.url}
+                        />
+                    ))}
                 </div>
             </div>
 

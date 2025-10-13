@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -19,6 +20,10 @@ class DatabaseSeeder extends Seeder
             'first_name' => 'Admin',
             'last_name' => 'ID Technologies',
             'email' => 'admin@id-technologies.com',
+        ]);
+
+        $this->call([
+            BrandSeeder::class,
         ]);
     }
 }
