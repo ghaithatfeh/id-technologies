@@ -10,7 +10,7 @@ const CustomerService = () => {
         <>
             <div
                 className={
-                    "relative w-[50vh] md:h-[75vh] w-full bg-[url('/images/01-Cover.png')] bg-cover"
+                    "relative w-full bg-[url('/images/01-Cover.png')] bg-cover md:h-[75vh]"
                 }
             >
                 <LandingNavbar />
@@ -19,7 +19,11 @@ const CustomerService = () => {
                         "flex h-full w-full flex-col items-center gap-10 py-18"
                     }
                 >
-                    <h1 className={"text-landing-primary text-3xl md:text-6xl text-center"}>
+                    <h1
+                        className={
+                            "text-landing-primary text-center text-3xl md:text-6xl"
+                        }
+                    >
                         {t("customer")}
                     </h1>
                     <div className={"w-1/3 md:w-1/8"}>
@@ -31,7 +35,7 @@ const CustomerService = () => {
                 </div>
                 <div
                     className={
-                        "md:absolute -bottom-17 flex flex-col md:grid grid-cols-4 items-center justify-between px-10 md:px-38"
+                        "-bottom-17 flex grid-cols-4 flex-col items-center justify-between px-10 md:absolute md:grid md:px-38"
                     }
                 >
                     <img src={asset("/images/03-Brand01.png")} />
@@ -42,11 +46,13 @@ const CustomerService = () => {
             </div>
 
             <div
-                className={"h-full w-full bg-cover bg-[url('/images/08-BG.svg')] py-16"}
+                className={
+                    "h-full w-full bg-[url('/images/08-BG.svg')] bg-cover py-16"
+                }
             >
                 <div
                     className={
-                        "grid grid-cols-2 md:grid-cols-3 items-center justify-between px-10 md:px-38"
+                        "grid grid-cols-2 items-center justify-between px-10 md:grid-cols-3 md:px-38"
                     }
                 >
                     <img src={asset("/images/07-Product01.png")} />
@@ -62,16 +68,17 @@ const CustomerService = () => {
             </div>
 
             <div
-                className={"bg-auto md:bg-cover w-full md:py-32"}
+                className={
+                    "w-full bg-[url('/images/BackgroundFooter.png')] bg-auto md:bg-cover md:py-32"
+                }
                 style={{
-                    backgroundImage: `url("${asset("images/08-BG.svg")}")`,
                     backgroundRepeat: "no-repeat",
                     backgroundPosition: "center",
                 }}
             >
                 <h2
                     className={
-                        "text-landing-primary px-10 py-5 text-center text-xl md:text-2xl font-bold text-wrap md:px-72"
+                        "text-landing-primary px-10 py-5 text-center text-xl font-bold text-wrap md:px-72 md:text-2xl"
                     }
                 >
                     {t("home_footer_quote")}
@@ -79,7 +86,7 @@ const CustomerService = () => {
 
                 <div
                     className={
-                        "grid w-full items-center gap-10 px-10 py-5 text-xl md:grid-cols-3 md:gap-24 md:px-50"
+                        "grid w-full items-center gap-10 px-10 py-5 text-xl md:grid-cols-3 md:gap-24 md:px-50 text-white"
                     }
                 >
                     <div className={"flex flex-col items-start"}>
