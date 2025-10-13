@@ -2,27 +2,25 @@
 
 namespace Database\Factories;
 
-use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use App\Serializers\Translatable;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Http\UploadedFile;
 
 /**
- * @extends Factory<Category>
+ * @extends Factory<Product>
  */
-class CategoryFactory extends Factory
+class ProductFactory extends Factory
 {
     public function definition(): array
     {
         return [
             'name' => Translatable::fake('firstName')->toJson(),
-            'brand_id' => Brand::inRandomOrder()->first()->id,
+            'is_active' => fake()->boolean(),
+            'category_id' => Category::factory(),
+            'image' => UploadedFile::fake()->image('image.png'),
+            'pdf' => UploadedFile::fake()->image('image.png'),
         ];
-    }
-
-    public function withProducts(int $count = 1): static
-    {
-        return $this->has(Product::factory($count));
     }
 }

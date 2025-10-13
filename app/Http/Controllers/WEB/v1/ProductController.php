@@ -3,28 +3,27 @@
 namespace App\Http\Controllers\WEB\v1;
 
 use App\Http\Controllers\WebController;
-use App\Http\Requests\v1\Category\StoreUpdateCategoryRequest;
-use App\Http\Resources\v1\CategoryResource;
-use App\Models\Category;
-use App\Services\v1\Category\CategoryService;
+use App\Http\Requests\v1\Product\StoreUpdateProductRequest;
+use App\Http\Resources\v1\ProductResource;
+use App\Models\Product;
+use App\Services\v1\Product\ProductService;
 use Exception;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class CategoryController extends WebController
+class ProductController extends WebController
 {
-    private CategoryService $categoryService;
+    private ProductService $productService;
 
     public function __construct()
     {
-        $this->categoryService = CategoryService::make();
-        // place the relations you want to return them within the response
-        $this->relations = ['brand'];
+        $this->productService = ProductService::make();
+        $this->relations = ['category'];
     }
 
     public function data()
     {
-        $items = $this->categoryService->indexWithPagination($this->relations);
+        $items = $this->productService->indexWithPagination($this->relations);
 
         return rest()
             ->ok()
@@ -35,33 +34,29 @@ class CategoryController extends WebController
 
     public function index()
     {
-        $exportables = Category::getModel()->exportable();
-
-        return Inertia::render('dashboard/categories/index', [
-            'exportables' => $exportables,
-        ]);
+        return Inertia::render('dashboard/products/index');
     }
 
-    public function show($categoryId)
+    public function show($productId)
     {
-        $category = $this->categoryService->view($categoryId, $this->relations);
+        $product = $this->productService->view($productId, $this->relations);
 
-        return Inertia::render('dashboard/categories/show', [
-            'category' => CategoryResource::make($category),
+        return Inertia::render('dashboard/products/show', [
+            'product' => ProductResource::make($product),
         ]);
     }
 
     public function create()
     {
-        return Inertia::render('dashboard/categories/create');
+        return Inertia::render('dashboard/products/create');
     }
 
-    public function store(StoreUpdateCategoryRequest $request)
+    public function store(StoreUpdateProductRequest $request)
     {
-        $category = $this->categoryService->store($request->validated(), $this->relations);
-        if ($category) {
+        $product = $this->productService->store($request->validated(), $this->relations);
+        if ($product) {
             return redirect()
-                ->route('v1.web.protected.categories.index')
+                ->route('v1.web.protected.products.index')
                 ->with('success', trans('site.stored_successfully'));
         }
 
@@ -70,25 +65,25 @@ class CategoryController extends WebController
             ->with('error', trans('site.something_went_wrong'));
     }
 
-    public function edit($categoryId)
+    public function edit($productId)
     {
-        $category = $this->categoryService->view($categoryId, $this->relations);
+        $product = $this->productService->view($productId, $this->relations);
 
-        if (!$category) {
+        if (!$product) {
             abort(404);
         }
 
-        return Inertia::render('dashboard/categories/edit', [
-            'category' => CategoryResource::make($category),
+        return Inertia::render('dashboard/products/edit', [
+            'product' => ProductResource::make($product),
         ]);
     }
 
-    public function update(StoreUpdateCategoryRequest $request, $categoryId)
+    public function update(StoreUpdateProductRequest $request, $productId)
     {
-        $category = $this->categoryService->update($request->validated(), $categoryId, $this->relations);
-        if ($category) {
+        $product = $this->productService->update($request->validated(), $productId, $this->relations);
+        if ($product) {
             return redirect()
-                ->route('v1.web.protected.categories.index')
+                ->route('v1.web.protected.products.index')
                 ->with('success', trans('site.update_successfully'));
         }
 
@@ -97,9 +92,9 @@ class CategoryController extends WebController
             ->with('error', trans('site.there_is_no_data'));
     }
 
-    public function destroy($categoryId)
+    public function destroy($productId)
     {
-        $result = $this->categoryService->delete($categoryId);
+        $result = $this->productService->delete($productId);
 
         return rest()
             ->when(
@@ -114,7 +109,7 @@ class CategoryController extends WebController
         $ids = $request->ids ?? [];
 
         try {
-            $result = $this->categoryService->export($ids);
+            $result = $this->productService->export($ids);
             session()->flash('success', trans('site.success'));
 
             return $result;
@@ -128,7 +123,7 @@ class CategoryController extends WebController
     public function getImportExample()
     {
         try {
-            $result = $this->categoryService->getImportExample();
+            $result = $this->productService->getImportExample();
             session()->flash('success', trans('site.success'));
 
             return $result;
@@ -143,7 +138,7 @@ class CategoryController extends WebController
     {
         try {
             $request->validate(['excel_file' => 'required|mimes:xls,xlsx']);
-            $this->categoryService->import();
+            $this->productService->import();
 
             return redirect()
                 ->back()

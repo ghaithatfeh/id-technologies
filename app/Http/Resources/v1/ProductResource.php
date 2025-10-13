@@ -3,11 +3,11 @@
 namespace App\Http\Resources\v1;
 
 use App\Http\Resources\BaseResource\BaseResource;
-use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
-/** @mixin Category */
-class CategoryResource extends BaseResource
+/** @mixin Product */
+class ProductResource extends BaseResource
 {
     /**
      * Transform the resource into an array.
@@ -17,10 +17,12 @@ class CategoryResource extends BaseResource
     {
         return [
             'id' => $this->id,
-            'brand' => BrandResource::make($this->whenLoaded('brand')),
+            'category' => CategoryResource::make($this->whenLoaded('category')),
             'name' => $this->name,
-            'brand_id' => $this->brand_id,
-            'products' => ProductResource::collection($this->whenLoaded('products')),
+            'is_active' => $this->is_active,
+            'category_id' => $this->category_id,
+            'image' => $this->image,
+            'pdf' => $this->pdf,
         ];
     }
 }

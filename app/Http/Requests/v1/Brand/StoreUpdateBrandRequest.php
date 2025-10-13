@@ -26,28 +26,28 @@ class StoreUpdateBrandRequest extends FormRequest
             'brand_title' => ['json', new ValidTranslatableJson, 'required'],
             'background_image' => [
                 'nullable',
-                Rule::when(is_array($this->input('image')), [
+                Rule::when(is_array($this->input('background_image')), [
                     SerializedMedia::validator()
                 ]),
-                Rule::when($this->hasFile('image'), [
+                Rule::when($this->hasFile('background_image'), [
                     'image', 'max:10000', 'mimes:jpeg,png,jpg,gif,svg,webp'
                 ])
             ],
             'icon' => [
                 'nullable',
-                Rule::when(is_array($this->input('image')), [
+                Rule::when(is_array($this->input('icon')), [
                     SerializedMedia::validator()
                 ]),
-                Rule::when($this->hasFile('image'), [
+                Rule::when($this->hasFile('icon'), [
                     'image', 'max:10000', 'mimes:jpeg,png,jpg,gif,svg,webp'
                 ])
             ],
             'logo' => [
                 'nullable',
-                Rule::when(is_array($this->input('image')), [
+                Rule::when(is_array($this->input('logo')), [
                     SerializedMedia::validator()
                 ]),
-                Rule::when($this->hasFile('image'), [
+                Rule::when($this->hasFile('logo'), [
                     'image', 'max:10000', 'mimes:jpeg,png,jpg,gif,svg,webp'
                 ])
             ],

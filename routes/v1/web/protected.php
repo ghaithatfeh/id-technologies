@@ -24,3 +24,8 @@ Route::post('/v1/categories/import', [v1\CategoryController::class, 'import'])->
 Route::get('/v1/categories/get-import-example', [v1\CategoryController::class, 'getImportExample'])->name('v1.web.protected.categories.import.example');
 Route::get('/v1/categories/data', [v1\CategoryController::class, 'data'])->name('v1.web.protected.categories.data');
 Route::resource('/v1/categories', v1\CategoryController::class)->names('v1.web.protected.categories');
+Route::post('/v1/products/export', [v1\ProductController::class, 'export'])->name('v1.web.protected.products.export');
+Route::post('/v1/products/import', [v1\ProductController::class, 'import'])->name('v1.web.protected.products.import');
+Route::get('/v1/products/get-import-example', [v1\ProductController::class, 'getImportExample'])->name('v1.web.protected.products.import.example');
+Route::get('/v1/products/data', [v1\ProductController::class, 'data'])->name('v1.web.protected.products.data');
+Route::resource('/v1/products', v1\ProductController::class)->names('v1.web.protected.products');
