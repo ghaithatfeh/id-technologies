@@ -15,6 +15,9 @@ class BrandController extends Controller
     public function show($brandId, $categoryId = null)
     {
         $brand = Brand::where('id', $brandId)
+            ->with([
+                'categories'
+            ])
             ->first();
 
         if (!$brand) {
@@ -24,7 +27,7 @@ class BrandController extends Controller
         $category = Category::with([
             'products'
         ])->when(isset($categoryId), function (Category|Builder $query) use ($categoryId) {
-            $query->where('category_id', $categoryId);
+            $query->where('id', $categoryId);
         })->where('brand_id', $brandId)->first();
 
         if (!$category) {

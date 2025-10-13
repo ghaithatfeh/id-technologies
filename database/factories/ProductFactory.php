@@ -15,12 +15,13 @@ class ProductFactory extends Factory
 {
     public function definition(): array
     {
+        $imageNum = fake()->numberBetween(1, 9);
         return [
             'name' => Translatable::fake('firstName')->toJson(),
             'is_active' => fake()->boolean(),
             'category_id' => Category::factory(),
-            'image' => UploadedFile::fake()->image('image.png'),
-            'pdf' => UploadedFile::fake()->image('image.png'),
+            'image' => new UploadedFile(storage_path("app/private/required/products/Product0$imageNum.png"), "$imageNum.png"),
+            'pdf' => new UploadedFile(storage_path("app/private/required/products/sample.pdf"), "sample.pdf"),
         ];
     }
 }

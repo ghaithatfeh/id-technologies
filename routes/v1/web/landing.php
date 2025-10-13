@@ -7,4 +7,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [SiteController::class, 'index'])->name('index');
 Route::inertia('/customer-service', 'landing/customer-service')->name('customer.service');
 
-Route::get('/brands/{brandId}', [BrandController::class, 'show'])->name('brands.show');
+Route::get('/brands/{brandId}/categories/{categoryId?}', [BrandController::class, 'show'])->name('brands.show');
