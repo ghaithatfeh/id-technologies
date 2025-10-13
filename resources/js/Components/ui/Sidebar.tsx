@@ -16,6 +16,11 @@ const sidebarItems = [
         href: route("v1.web.protected.brands.index"),
         icon: () => <TableCells />,
     },
+    {
+        title: "Category",
+        href: route("v1.web.protected.categories.index"),
+        icon: () => <TableCells />,
+    },
 ];
 
 export const Sidebar = ({

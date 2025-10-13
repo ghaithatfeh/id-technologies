@@ -1,3 +1,4 @@
+import Category from "@/Models/Category";
 import Media from "@/Models/Media";
 interface Brand {
     id: number;
@@ -5,6 +6,8 @@ interface Brand {
     background_image: Media;
     icon: Media;
     logo: Media;
+
+    categories?: Category[];
 }
 
 export default Brand;

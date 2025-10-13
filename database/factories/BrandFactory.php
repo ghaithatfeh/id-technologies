@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Brand;
+use App\Models\Category;
 use App\Serializers\Translatable;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Http\UploadedFile;
@@ -20,5 +21,10 @@ class BrandFactory extends Factory
             'icon' => UploadedFile::fake()->image('image.png'),
             'logo' => UploadedFile::fake()->image('image.png'),
         ];
+    }
+
+    public function withCategories(int $count = 1): static
+    {
+        return $this->has(Category::factory($count));
     }
 }

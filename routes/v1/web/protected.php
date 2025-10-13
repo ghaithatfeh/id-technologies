@@ -9,7 +9,6 @@ Route::get('/v1/dashboard/me', [v1\BaseAuthController::class, 'userDetails'])->n
 Route::put('/v1/dashboard/me', [v1\BaseAuthController::class, 'updateUserDetails'])->name('v1.web.protected.me.update');
 Route::get('/v1/dashboard/logout', [v1\BaseAuthController::class, 'logout'])->name('v1.web.protected.logout');
 
-
 Route::post('/v1/brands/export', [v1\BrandController::class, 'export'])->name('v1.web.protected.brands.export');
 Route::post('/v1/brands/import', [v1\BrandController::class, 'import'])->name('v1.web.protected.brands.import');
 Route::get('/v1/brands/get-import-example', [v1\BrandController::class, 'getImportExample'])->name('v1.web.protected.brands.import.example');
@@ -18,5 +17,10 @@ Route::resource('/v1/brands', v1\BrandController::class)
     ->except([
         'create',
         'store',
-        'destroy'
+        'destroy',
     ])->names('v1.web.protected.brands');
+Route::post('/v1/categories/export', [v1\CategoryController::class, 'export'])->name('v1.web.protected.categories.export');
+Route::post('/v1/categories/import', [v1\CategoryController::class, 'import'])->name('v1.web.protected.categories.import');
+Route::get('/v1/categories/get-import-example', [v1\CategoryController::class, 'getImportExample'])->name('v1.web.protected.categories.import.example');
+Route::get('/v1/categories/data', [v1\CategoryController::class, 'data'])->name('v1.web.protected.categories.data');
+Route::resource('/v1/categories', v1\CategoryController::class)->names('v1.web.protected.categories');

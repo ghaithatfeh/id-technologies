@@ -4,25 +4,30 @@ namespace App\Models;
 
 use App\Casts\MediaCast;
 use App\Casts\Translatable;
+use App\Models\Category;
 use App\Serializers\Translatable as TranslatableSerializer;
 use App\Traits\HasMedia;
 use Carbon\Carbon;
 use Database\Factories\BrandFactory;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-/**
- * @property int                                                             $id
- * @property TranslatableSerializer                                          $brand_title
+/*** @property int $id
+ * @property TranslatableSerializer $brand_title
  * @property array{url:string,size:string,extension:string,mime_type:string} $background_image
  * @property array{url:string,size:string,extension:string,mime_type:string} $icon
  * @property array{url:string,size:string,extension:string,mime_type:string} $logo
- * @property Carbon                                                          $created_at
- * @property Carbon                                                          $updated_at
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
+ *
  * @mixin Builder<Brand>
+ *
  * @use  HasFactory<BrandFactory>
- */
+ * @property EloquentCollection<Category>|null $categories
+*/
 class Brand extends Model
 {
     use HasFactory;
@@ -69,7 +74,17 @@ class Brand extends Model
     public static function relationsSearchableArray(): array
     {
         return [
-
+            'categories' => [
+                'name',
+            ],
         ];
+    }
+
+    /**
+    @return  HasMany<Category, static>
+     */
+    public function categories(): HasMany
+    {
+        return $this->hasMany(Category::class);
     }
 }

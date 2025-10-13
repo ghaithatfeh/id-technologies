@@ -3,28 +3,28 @@
 namespace App\Http\Controllers\WEB\v1;
 
 use App\Http\Controllers\WebController;
-use App\Http\Requests\v1\Brand\StoreUpdateBrandRequest;
-use App\Http\Resources\v1\BrandResource;
-use App\Models\Brand;
-use App\Services\v1\Brand\BrandService;
+use App\Http\Requests\v1\Category\StoreUpdateCategoryRequest;
+use App\Http\Resources\v1\CategoryResource;
+use App\Models\Category;
+use App\Services\v1\Category\CategoryService;
 use Exception;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class BrandController extends WebController
+class CategoryController extends WebController
 {
-    private BrandService $brandService;
+    private CategoryService $categoryService;
 
     public function __construct()
     {
-        $this->brandService = BrandService::make();
+        $this->categoryService = CategoryService::make();
         // place the relations you want to return them within the response
-        $this->relations = ['categories'];
+        $this->relations = ['brand'];
     }
 
     public function data()
     {
-        $items = $this->brandService->indexWithPagination($this->relations);
+        $items = $this->categoryService->indexWithPagination($this->relations);
 
         return rest()
             ->ok()
@@ -35,33 +35,33 @@ class BrandController extends WebController
 
     public function index()
     {
-        $exportables = Brand::getModel()->exportable();
+        $exportables = Category::getModel()->exportable();
 
-        return Inertia::render('dashboard/brands/index', [
+        return Inertia::render('dashboard/categories/index', [
             'exportables' => $exportables,
         ]);
     }
 
-    public function show($brandId)
+    public function show($categoryId)
     {
-        $brand = $this->brandService->view($brandId, $this->relations);
+        $category = $this->categoryService->view($categoryId, $this->relations);
 
-        return Inertia::render('dashboard/brands/show', [
-            'brand' => BrandResource::make($brand),
+        return Inertia::render('dashboard/categories/show', [
+            'category' => CategoryResource::make($category),
         ]);
     }
 
     public function create()
     {
-        return Inertia::render('dashboard/brands/create');
+        return Inertia::render('dashboard/categories/create');
     }
 
-    public function store(StoreUpdateBrandRequest $request)
+    public function store(StoreUpdateCategoryRequest $request)
     {
-        $brand = $this->brandService->store($request->validated(), $this->relations);
-        if ($brand) {
+        $category = $this->categoryService->store($request->validated(), $this->relations);
+        if ($category) {
             return redirect()
-                ->route('v1.web.protected.brands.index')
+                ->route('v1.web.protected.categories.index')
                 ->with('success', trans('site.stored_successfully'));
         }
 
@@ -70,25 +70,25 @@ class BrandController extends WebController
             ->with('error', trans('site.something_went_wrong'));
     }
 
-    public function edit($brandId)
+    public function edit($categoryId)
     {
-        $brand = $this->brandService->view($brandId, $this->relations);
+        $category = $this->categoryService->view($categoryId, $this->relations);
 
-        if (! $brand) {
+        if (! $category) {
             abort(404);
         }
 
-        return Inertia::render('dashboard/brands/edit', [
-            'brand' => BrandResource::make($brand),
+        return Inertia::render('dashboard/categories/edit', [
+            'category' => CategoryResource::make($category),
         ]);
     }
 
-    public function update(StoreUpdateBrandRequest $request, $brandId)
+    public function update(StoreUpdateCategoryRequest $request, $categoryId)
     {
-        $brand = $this->brandService->update($request->validated(), $brandId, $this->relations);
-        if ($brand) {
+        $category = $this->categoryService->update($request->validated(), $categoryId, $this->relations);
+        if ($category) {
             return redirect()
-                ->route('v1.web.protected.brands.index')
+                ->route('v1.web.protected.categories.index')
                 ->with('success', trans('site.update_successfully'));
         }
 
@@ -97,9 +97,9 @@ class BrandController extends WebController
             ->with('error', trans('site.there_is_no_data'));
     }
 
-    public function destroy($brandId)
+    public function destroy($categoryId)
     {
-        $result = $this->brandService->delete($brandId);
+        $result = $this->categoryService->delete($categoryId);
 
         return rest()
             ->when(
@@ -114,7 +114,7 @@ class BrandController extends WebController
         $ids = $request->ids ?? [];
 
         try {
-            $result = $this->brandService->export($ids);
+            $result = $this->categoryService->export($ids);
             session()->flash('success', trans('site.success'));
 
             return $result;
@@ -128,7 +128,7 @@ class BrandController extends WebController
     public function getImportExample()
     {
         try {
-            $result = $this->brandService->getImportExample();
+            $result = $this->categoryService->getImportExample();
             session()->flash('success', trans('site.success'));
 
             return $result;
@@ -143,7 +143,7 @@ class BrandController extends WebController
     {
         try {
             $request->validate(['excel_file' => 'required|mimes:xls,xlsx']);
-            $this->brandService->import();
+            $this->categoryService->import();
 
             return redirect()
                 ->back()

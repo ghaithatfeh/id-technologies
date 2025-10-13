@@ -3,6 +3,7 @@
 namespace App\Http\Resources\v1;
 
 use App\Http\Resources\BaseResource\BaseResource;
+use App\Http\Resources\v1\CategoryResource;
 use App\Models\Brand;
 use Illuminate\Http\Request;
 
@@ -11,6 +12,7 @@ class BrandResource extends BaseResource
 {
     /**
      * Transform the resource into an array.
+     *
      * @return array<string, mixed>
      */
     public function toArray(Request $request): array
@@ -21,6 +23,7 @@ class BrandResource extends BaseResource
             'background_image' => $this->background_image,
             'icon' => $this->icon,
             'logo' => $this->logo,
+            'categories' => CategoryResource::collection($this->whenLoaded('categories')),
         ];
     }
 }
