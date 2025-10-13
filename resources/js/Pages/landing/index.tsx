@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import HomeHeroCard from "@/Components/landing/home-hero-card";
 import Brand from "@/Models/Brand";
 import { translate } from "@/Models/Translatable";
+import { Link } from "@inertiajs/react";
 
 const Index = ({ brands }: { brands: Brand[] }) => {
     const { t } = useTranslation();
@@ -75,11 +76,16 @@ const Index = ({ brands }: { brands: Brand[] }) => {
                 </div>
                 <div className="-bottom-[12%] grid w-full grid-cols-1 items-center justify-between gap-10 px-14 md:absolute md:grid-cols-4 md:px-44">
                     {brands.map((brand) => (
-                        <HomeHeroCard
-                            content={translate(brand.brand_title)}
-                            icon={brand.icon.url}
-                            background={brand.background_image.url}
-                        />
+                        <Link
+                            className={"h-full w-full"}
+                            href={route("landing.brands.show", brand.id)}
+                        >
+                            <HomeHeroCard
+                                content={translate(brand.brand_title)}
+                                icon={brand.icon.url}
+                                background={brand.background_image.url}
+                            />
+                        </Link>
                     ))}
                 </div>
             </div>
