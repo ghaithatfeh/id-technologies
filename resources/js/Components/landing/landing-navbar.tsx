@@ -31,7 +31,7 @@ const LandingNavbar = () => {
         <>
             <div
                 className={
-                    "flex max-h-[13%] items-center justify-between px-5 py-5 md:px-10 md:py-16 md:ps-28 md:pe-10"
+                    "flex max-h-[13%] items-center justify-between px-5 py-5 md:py-12 md:px-40 mb-8"
                 }
             >
                 {/* Mobile Menu Button */}
@@ -50,7 +50,7 @@ const LandingNavbar = () => {
                 {/* Desktop Navigation */}
                 <nav
                     className={
-                        "text-landing-primary hidden w-3/4 items-center gap-20 ps-13 text-lg font-bold md:flex"
+                        "text-landing-primary hidden w-3/4 items-center gap-20 text-lg font-bold md:flex"
                     }
                 >
                     <Link
@@ -62,7 +62,7 @@ const LandingNavbar = () => {
 
                     <Link
                         className={"hover:underline"}
-                        href={route("landing.customer.service")}
+                        href={""}
                     >
                         {t("customer")}
                     </Link>

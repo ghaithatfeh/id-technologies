@@ -14,16 +14,16 @@ const Show = ({ brand, category }: { brand: Brand; category: Category }) => {
         <div className={"w-full"}>
             <div
                 className={
-                    "relative max-h-[50vh] w-full bg-[url('/images/01-Cover.png')] bg-[length:100%_100%] bg-no-repeat md:h-[70vh] md:max-h-[70vh]"
+                    "relative w-full bg-[url('/images/01-Cover.png')] bg-[length:100%_100%] bg-no-repeat"
                 }
             >
                 <LandingNavbar />
                 <div
-                    className={"flex w-full items-center justify-center py-24"}
+                    className={"flex w-full items-center justify-center pb-42 pt-16"}
                 >
                     <h1
                         className={
-                            "text-landing-primary px-5 text-center text-3xl md:max-w-4/6 md:px-0 md:text-6xl"
+                            "text-landing-primary px-5 text-center text-3xl md:text-4xl leading-20"
                         }
                     >
                         {translate(brand.brand_title)}

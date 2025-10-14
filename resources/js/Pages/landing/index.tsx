@@ -12,25 +12,26 @@ const Index = ({ brands }: { brands: Brand[] }) => {
     return (
         <>
             <div
-                className={`relative w-full bg-[url('/images/01-BG.jpg')] md:h-screen rtl:bg-[url('/images/01-BGRTL.jpg')]`}
+                className={`relative w-full bg-[url('/images/01-BG.jpg')] rtl:bg-[url('/images/01-BGRTL.jpg')]`}
                 style={{
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat",
+                    backgroundAttachment: "fixed",
                 }}
             >
                 <LandingNavbar />
-                <div className={"w-full px-10 pt-10 pb-5 md:w-[55%] md:px-24"}>
+                <div className={"w-full px-10 pb-46 md:px-16 md:w-3/4"}>
                     <h2
                         className={
-                            "text-landing-primary mb-3 text-2xl font-bold md:ps-18"
+                            "text-landing-primary mb-3 text-2xl font-bold md:ps-26"
                         }
                     >
                         {t("partners_in_development")}
                     </h2>
-                    <div className={"flex items-center gap-5"}>
+                    <div className={"flex items-center gap-12"}>
                         <div
                             className={
-                                "hidden flex-col gap-3 rounded-2xl bg-white px-3 py-6 md:flex"
+                                "hidden flex-col gap-6 rounded-2xl bg-white px-3 py-6 md:flex"
                             }
                         >
                             <PhoneIcon className={"h-8 w-8"} strokeWidth={1} />
@@ -40,34 +41,34 @@ const Index = ({ brands }: { brands: Brand[] }) => {
                             <Settings className={"h-8 w-8"} strokeWidth={1} />
                         </div>
 
-                        <div className={"flex flex-col gap-2"}>
+                        <div className={"flex flex-col gap-8 mt-6"}>
                             <div className={"flex items-start gap-2"}>
                                 <span
                                     className={
-                                        "border-landing-primary my-1 h-4 w-17 rounded-md border md:w-10 rtl:h-6 rtl:w-10"
+                                        "border-landing-primary me-2 my-2 rounded-md border p-2"
                                     }
                                 />
-                                <p className={"text-xl text-white"}>
+                                <p className={"text-xl text-white leading-8"}>
                                     {t("hero_first_title")}
                                 </p>
                             </div>
                             <div className={"flex items-start gap-2"}>
                                 <span
                                     className={
-                                        "border-landing-primary my-1 h-4 w-17 rounded-md border md:w-10 rtl:h-6 rtl:w-10"
+                                        "border-landing-primary me-2 my-2 rounded-md border p-2"
                                     }
                                 />
-                                <p className={"text-xl text-white"}>
+                                <p className={"text-xl text-white leading-8"}>
                                     {t("hero_second_title")}
                                 </p>
                             </div>
                             <div className={"flex items-start gap-2"}>
                                 <span
                                     className={
-                                        "border-landing-primary my-1 h-4 w-17 rounded-md border md:w-10 rtl:h-6 rtl:w-10"
+                                        "border-landing-primary me-2 my-2 rounded-md border p-2"
                                     }
                                 />
-                                <p className={"text-xl text-white"}>
+                                <p className={"text-xl text-white leading-8"}>
                                     {t("hero_third_title")}
                                 </p>
                             </div>
@@ -92,25 +93,25 @@ const Index = ({ brands }: { brands: Brand[] }) => {
 
             <div
                 className={
-                    "flex w-full flex-col items-start justify-between gap-10 px-10 py-24 md:px-24 md:py-32"
+                    "flex w-full flex-col items-start justify-between gap-16 px-10 pt-24 md:px-24 md:pt-52"
                 }
                 style={{
                     backgroundImage: `url("${asset("images/08-BG.svg")}")`,
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat",
-                    backgroundPosition: "center",
+                    // backgroundAttachment: "fixed",
                 }}
             >
                 <div className={"flex w-full flex-col items-start"}>
                     <h2
                         className={
-                            "bg-landing-primary px-10 py-5 text-xl font-bold ltr:rounded-tr-2xl rtl:rounded-tl-2xl"
+                            "bg-landing-primary text-xl font-bold ltr:rounded-tr-2xl rtl:rounded-tl-2xl w-50 py-5 ps-8"
                         }
                     >
                         {t("about_us")}:
                     </h2>
                     <div className="h-[2px] w-40 rounded-full bg-gradient-to-r from-black to-transparent md:w-80" />
-                    <p className={"mt-5 text-lg md:pe-24"}>
+                    <p className={"mt-5 text-lg md:pe-24 font-semibold leading-10"}>
                         {t("about_us_description")}
                     </p>
                 </div>
@@ -118,13 +119,13 @@ const Index = ({ brands }: { brands: Brand[] }) => {
                 <div className={"flex w-full flex-col items-start"}>
                     <h2
                         className={
-                            "bg-landing-primary px-10 py-5 text-xl font-bold ltr:rounded-tr-2xl rtl:rounded-tl-2xl"
+                            "bg-landing-primary text-xl font-bold ltr:rounded-tr-2xl rtl:rounded-tl-2xl w-50 py-5 ps-8"
                         }
                     >
                         {t("our_mission")}:
                     </h2>
                     <div className="h-[2px] w-40 rounded-full bg-gradient-to-r from-black to-transparent md:w-80" />
-                    <p className={"mt-5 text-lg md:pe-24"}>
+                    <p className={"mt-5 text-lg md:pe-24 font-semibold leading-10"}>
                         {t("our_mission_description")}
                     </p>
                 </div>
@@ -132,26 +133,28 @@ const Index = ({ brands }: { brands: Brand[] }) => {
                 <div className={"flex w-full flex-col items-start"}>
                     <h2
                         className={
-                            "bg-landing-primary px-10 py-5 text-xl font-bold ltr:rounded-tr-2xl rtl:rounded-tl-2xl"
+                            "bg-landing-primary text-xl font-bold ltr:rounded-tr-2xl rtl:rounded-tl-2xl w-50 py-5 ps-8"
                         }
                     >
                         {t("our_vision")}:
                     </h2>
                     <div className="h-[2px] w-40 rounded-full bg-gradient-to-r from-black to-transparent md:w-80" />
-                    <p className={"mt-5 text-lg md:pe-24"}>
+                    <p className={"mt-5 text-lg md:pe-24 font-semibold leading-10"}>
                         {t("our_vision_description")}
                     </p>
                 </div>
-            </div>
-
-            <div className={"relative flex w-full flex-col items-start"}>
+                
                 <h2
                     className={
-                        "bg-landing-primary mx-10 px-10 py-5 text-xl font-bold md:mx-24 ltr:rounded-tr-2xl rtl:rounded-tl-2xl"
+                        "bg-landing-primary mt-16 text-xl font-bold ltr:rounded-tr-2xl rtl:rounded-tl-2xl w-50 py-5 ps-8"
                     }
                 >
                     {t("our_services")}:
                 </h2>
+            </div>
+
+            <div className={"relative flex w-full flex-col items-start"}>
+
                 <div
                     className={
                         "bg-landing-secondary w-full px-10 py-10 md:px-24"
@@ -161,9 +164,10 @@ const Index = ({ brands }: { brands: Brand[] }) => {
                         backgroundSize: "cover",
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "center",
-                    }}
+                        backgroundAttachment: "fixed",
+                }}
                 >
-                    <div className={"flex w-full flex-col items-start"}>
+                    <div className={"flex w-full flex-col items-start py-8"}>
                         <h2
                             className={
                                 "text-landing-primary text-2xl font-bold"
@@ -173,7 +177,7 @@ const Index = ({ brands }: { brands: Brand[] }) => {
                         </h2>
                         <div
                             className={
-                                "mt-10 flex flex-col items-start gap-2 text-xl text-white"
+                                "mt-10 flex flex-col items-start gap-6 text-xl text-white"
                             }
                         >
                             <div className={"flex items-start gap-4"}>
@@ -181,21 +185,21 @@ const Index = ({ brands }: { brands: Brand[] }) => {
                                     src={asset("/images/Icon01.svg")}
                                     className={"h-12 w-12 rounded-lg p-2"}
                                 />
-                                <p>{t("service_security_services")}</p>
+                                <p className="leading-10">{t("service_security_services")}</p>
                             </div>
                             <div className={"flex items-start gap-4"}>
                                 <img
                                     src={asset("/images/Icon02.svg")}
                                     className={"h-12 w-12 rounded-lg p-2"}
                                 />
-                                <p>{t("service_plastic_cards")}</p>
+                                <p className="leading-10">{t("service_plastic_cards")}</p>
                             </div>
                             <div className={"flex items-start gap-4"}>
                                 <img
                                     src={asset("/images/Icon04.svg")}
                                     className={"h-12 w-12 rounded-lg p-2"}
                                 />
-                                <p>{t("service_barcodes_systems")}</p>
+                                <p className="leading-10">{t("service_barcodes_systems")}</p>
                             </div>
 
                             <div className={"flex items-start gap-4"}>
@@ -203,19 +207,20 @@ const Index = ({ brands }: { brands: Brand[] }) => {
                                     src={asset("/images/Icon03.svg")}
                                     className={"h-12 w-12 rounded-lg p-2"}
                                 />
-                                <p>{t("service_gaming")}</p>
+                                <p className="leading-10">{t("service_gaming")}</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div
-                className={"w-full"}
+                className={"w-full pt-12"}
                 style={{
                     backgroundImage: `url("${asset("images/08-BG.svg")}")`,
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat",
                     backgroundPosition: "center",
+                    backgroundAttachment: "fixed",
                 }}
             >
                 <div
@@ -257,7 +262,7 @@ const Index = ({ brands }: { brands: Brand[] }) => {
 
                 <div
                     className={
-                        "grid w-full items-center gap-10 px-10 py-5 text-xl md:grid-cols-3 md:gap-24 md:px-50"
+                        "grid w-full items-center gap-10 px-10 py-10 text-xl md:grid-cols-3 md:gap-24 md:px-50 mt-8"
                     }
                 >
                     <div className={"flex flex-col items-start"}>
