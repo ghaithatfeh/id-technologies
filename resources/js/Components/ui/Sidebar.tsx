@@ -1,16 +1,15 @@
 import TableCells from "@/Components/icons/TableCells";
-import PresentationChart from "@/Components/icons/PresentationChart";
 import XMark from "@/Components/icons/XMark";
 import { asset } from "@/helper";
 import { Link } from "@inertiajs/react";
 import React, { ReactNode } from "react";
 
 const sidebarItems = [
-    {
-        href: route("v1.web.protected.index"),
-        title: "Dashboard",
-        icon: () => <PresentationChart />,
-    },
+    // {
+    //     href: route("v1.web.protected.index"),
+    //     title: "Dashboard",
+    //     icon: () => <PresentationChart />,
+    // },
     {
         title: "Brands",
         href: route("v1.web.protected.brands.index"),
@@ -102,7 +101,7 @@ export const SidebarItem = ({
 
     return (
         <Link
-            className={`text-brand flex w-full items-center gap-5 rounded-lg px-0 py-2 text-lg hover:bg-white hover:text-gray-700 ${
+            className={`text-brand flex w-full items-center gap-5 rounded-lg px-3 py-2 text-lg hover:bg-white hover:text-gray-700 ${
                 selected
                     ? "dark:bg-white-secondary bg-sky-100 dark:text-black"
                     : "dark:text-white"

@@ -59,7 +59,7 @@ const Edit = ({ product }: { product: Product }) => {
                                 setData("is_active", e.target.value == "true")
                             }
                             checked={(val: any) => val == product.is_active}
-                            label={"Is Active ?"}
+                            label={"Is Avilable?"}
                         />
                         <Input
                             name="image"

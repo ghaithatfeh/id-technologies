@@ -49,7 +49,7 @@ const Create = () => {
                             onChange={(e) =>
                                 setData("is_active", e.target.value == "true")
                             }
-                            label={"Is Active ?"}
+                            label={"Is Avilable?"}
                         />
                         <Input
                             name="image"

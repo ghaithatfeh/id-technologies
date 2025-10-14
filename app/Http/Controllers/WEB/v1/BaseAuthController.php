@@ -38,7 +38,7 @@ class BaseAuthController extends WebController
     {
         $user = $this->userService->login($request->validated(), $this->role, $this->relations);
         if ($user) {
-            return redirect()->route('v1.web.protected.index');
+            return redirect()->route('v1.web.protected.brands.index');
         } else {
             session()->flash('error', trans('site.credentials_not_match_records'));
 

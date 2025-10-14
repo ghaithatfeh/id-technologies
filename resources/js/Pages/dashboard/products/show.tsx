@@ -26,7 +26,7 @@ const Show = ({ product }: { product: Product }) => {
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
                 <SmallTextField label="Name" value={translate(product.name)} />
                 <SmallTextField
-                    label="Is Active ?"
+                    label="Is Avilable?"
                     value={product.is_active ? "Yes" : "No"}
                 />
                 <div className="dark:bg-dark my-2 mb-5 rounded-md bg-gray-50 p-4 text-xl font-bold dark:text-white">

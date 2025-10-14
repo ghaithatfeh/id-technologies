@@ -54,7 +54,7 @@ const Index = ({ exportables }: { exportables: string[] }) => {
                 },
                 {
                     name: "brand.brand_title",
-                    label: "Brand Brand Title",
+                    label: "Brand",
                     translatable: true,
                     render: (cell, record, setHidden, revalidate) => {
                         return (
