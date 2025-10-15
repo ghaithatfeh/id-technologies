@@ -32,7 +32,7 @@ class StoreUpdateProductRequest extends FormRequest
                     SerializedMedia::validator()
                 ]),
                 Rule::when($this->hasFile('image'), [
-                    'image', 'max:10000', 'mimes:jpeg,png,jpg,gif,svg,webp'
+                    'image:allow_svg', 'max:10000', 'mimes:jpeg,png,jpg,gif,svg,webp'
                 ])
             ],
             'pdf' => [
