@@ -10,6 +10,7 @@ use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use JsonSerializable;
 use Stringable;
 
@@ -146,7 +147,7 @@ class SerializedMedia implements Arrayable, Jsonable, JsonSerializable, Stringab
      * @param string[]|Closure[] $fileRules
      * @return Closure
      */
-    public static function validator(array $fileRules = ['image', 'max:10000', 'mimes:jpeg,png,jpg,gif,svg,webp']): Closure
+    public static function validator(array $fileRules = ['image:allow_svg', 'max:10000', 'mimes:jpeg,png,jpg,gif,svg,webp']): Closure
     {
         return function ($attribute, $value, $fail) use ($fileRules) {
             if (!SerializedMedia::isMediaArray($value)) {
