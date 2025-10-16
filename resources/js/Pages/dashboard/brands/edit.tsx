@@ -7,6 +7,7 @@ import TranslatableInput from "@/Components/form/fields/TranslatableInput";
 import TranslatableInputsContext from "@/Contexts/TranslatableInputsContext";
 import Brand from "@/Models/Brand";
 import Media from "@/Models/Media";
+import product from "@/Models/Product";
 
 const Edit = ({ brand }: { brand: Brand }) => {
     const { post, setData, processing } = useForm<{

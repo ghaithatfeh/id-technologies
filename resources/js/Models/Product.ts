@@ -8,6 +8,7 @@ interface Product {
     image?: Media | undefined;
     pdf?: Media | undefined;
     category?: Category;
+    support_link?: string;
 }
 
 export default Product;

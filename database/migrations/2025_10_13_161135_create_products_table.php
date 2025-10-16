@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->foreignIdFor(Category::class)->constrained()->cascadeOnDelete();
             $table->json('image');
             $table->json('pdf');
+            $table->string('support_link')->nullable();
             $table->timestamps();
         });
     }

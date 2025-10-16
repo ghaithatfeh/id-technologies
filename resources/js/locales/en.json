@@ -28,6 +28,8 @@
         "en": "English",
         "categories": "Categories",
         "download_pdf": "Download PDF",
-        "customer_service": "Customer Service"
+        "customer_service": "Customer Service",
+        "product": "Product",
+        "link": "Link"
     }
 }

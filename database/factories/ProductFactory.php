@@ -22,6 +22,7 @@ class ProductFactory extends Factory
             'category_id' => Category::factory(),
             'image' => new UploadedFile(storage_path("app/private/required/products/Product0$imageNum.png"), "$imageNum.png"),
             'pdf' => new UploadedFile(storage_path("app/private/required/products/sample.pdf"), "sample.pdf"),
+            'support_link' => fake()->url(),
         ];
     }
 }

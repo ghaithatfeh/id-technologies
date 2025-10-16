@@ -1,10 +1,13 @@
-import React from "react";
+import React, { Fragment } from "react";
 import LandingNavbar from "@/Components/landing/landing-navbar";
 import { useTranslation } from "react-i18next";
 import { asset } from "@/helper";
 import { FacebookIcon, Globe2, Mail, PhoneIcon } from "lucide-react";
+import Product from "@/Models/Product";
+import product from "@/Models/Product";
+import { translate } from "@/Models/Translatable";
 
-const CustomerService = () => {
+const CustomerService = ({ products }: { products: Product[] }) => {
     const { t } = useTranslation();
     return (
         <>
@@ -47,23 +50,50 @@ const CustomerService = () => {
 
             <div
                 className={
-                    "h-full w-full bg-[url('/images/08-BG.svg')] bg-cover py-16"
+                    "h-full w-full bg-[url('/images/08-BG.svg')] py-10 md:py-24"
                 }
             >
                 <div
                     className={
-                        "grid grid-cols-2 items-center justify-between px-10 md:grid-cols-3 md:px-38"
+                        "flex w-full items-center justify-between px-5 md:grid-cols-3 md:px-38"
                     }
                 >
-                    <img src={asset("/images/07-Product01.png")} />
-                    <img src={asset("/images/08-Product02.png")} />
-                    <img src={asset("/images/09-Product03.png")} />
-                    <img src={asset("/images/10-Product04.png")} />
-                    <img src={asset("/images/11-Product05.png")} />
-                    <img src={asset("/images/12-Product06.png")} />
-                    <img src={asset("/images/13-Product07.png")} />
-                    <img src={asset("/images/14-Product08.png")} />
-                    <img src={asset("/images/17-Product11.png")} />
+                    <div
+                        className={`border-landing-primary grid h-full w-full grid-cols-3 items-center border bg-transparent shadow-2xl`}
+                    >
+                        <h1
+                            className={
+                                "bg-landing-primary ltr:border-r-2 ltr:border-r-white rtl:border-l-2 rtl:border-l-white px-5 py-4 md:text-xl font-bold text-wrap"
+                            }
+                        >
+                            {t("product")}
+                        </h1>
+                        <h1
+                            className={
+                                "bg-landing-primary col-span-2 px-5 py-4 md:text-xl font-bold text-wrap"
+                            }
+                        >
+                            {t("link")}
+                        </h1>
+                        {products.map((p, index) => (
+                            <Fragment key={index}>
+                                <h2
+                                    className={
+                                        "border-landing-primary text-center font-bold h-full border break-words p-5 text-wrap text-sm md:text-md"
+                                    }
+                                >
+                                    {translate(p.name)}
+                                </h2>
+                                <h2
+                                    className={
+                                        "border-landing-primary col-span-2 h-full border break-all p-5 text-wrap text-sm md:text-md"
+                                    }
+                                >
+                                    {p.support_link}
+                                </h2>
+                            </Fragment>
+                        ))}
+                    </div>
                 </div>
             </div>
 
@@ -86,7 +116,7 @@ const CustomerService = () => {
 
                 <div
                     className={
-                        "grid w-full items-center gap-10 px-10 py-5 text-xl md:grid-cols-3 md:gap-24 md:px-50 text-white"
+                        "grid w-full items-center gap-10 px-10 py-5 text-xl text-white md:grid-cols-3 md:gap-24 md:px-50"
                     }
                 >
                     <div className={"flex flex-col items-start"}>
@@ -117,21 +147,27 @@ const CustomerService = () => {
                             <PhoneIcon
                                 className={"text-landing-primary me-2"}
                             />
-                            <a href={"tel:+963933303939"}>+963 933 303 939</a>
+                            <a dir="ltr" href={"tel:+963933303939"}>
+                                +963 933 303 939
+                            </a>
                         </div>
 
                         <div className={"flex items-center"}>
                             <PhoneIcon
                                 className={"text-landing-primary me-2"}
                             />
-                            <a href={"tel:+963935288888"}>+963 935 288 888</a>
+                            <a dir="ltr" href={"tel:+963935288888"}>
+                                +963 935 288 888
+                            </a>
                         </div>
 
                         <div className={"flex items-center"}>
                             <PhoneIcon
                                 className={"text-landing-primary me-2"}
                             />
-                            <a href={"tel:+963932865566"}>+963 932 865 566</a>
+                            <a dir="ltr" href={"tel:+963932865566"}>
+                                +963 932 865 566
+                            </a>
                         </div>
                     </div>
 

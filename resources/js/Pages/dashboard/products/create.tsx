@@ -20,6 +20,7 @@ const Create = () => {
         category_id: number;
         image?: File | undefined | Media;
         pdf?: File | undefined | Media;
+        support_link?: string;
     }>({
         name: "",
         is_active: true,
@@ -96,6 +97,15 @@ const Create = () => {
                             getOptionLabel={(data) => translate(data.name)}
                             optionValue={"id"}
                             required
+                        />
+
+                        <Input
+                            name={"support_link"}
+                            label={"Support Link"}
+                            type={"url"}
+                            onChange={(e) => {
+                                setData("support_link", e.target.value);
+                            }}
                         />
                     </div>
                 </Form>

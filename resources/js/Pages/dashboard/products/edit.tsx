@@ -12,6 +12,7 @@ import Radio from "@/Components/form/fields/Radio";
 import TranslatableInput from "@/Components/form/fields/TranslatableInput";
 import TranslatableInputsContext from "@/Contexts/TranslatableInputsContext";
 import Product from "@/Models/Product";
+import product from "@/Models/Product";
 
 const Edit = ({ product }: { product: Product }) => {
     const { post, setData, processing } = useForm<{
@@ -21,6 +22,7 @@ const Edit = ({ product }: { product: Product }) => {
         category_id: number;
         image?: File | undefined | Media;
         pdf?: File | undefined | Media;
+        support_link?: string;
     }>({
         _method: "PUT",
         name: product?.name,
@@ -28,6 +30,7 @@ const Edit = ({ product }: { product: Product }) => {
         category_id: product?.category_id,
         pdf: product?.pdf,
         image: product?.image,
+        support_link: product?.support_link,
     });
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -100,6 +103,15 @@ const Edit = ({ product }: { product: Product }) => {
                             optionValue={"id"}
                             defaultValue={product?.category}
                             required
+                        />
+                        <Input
+                            name={"support_link"}
+                            label={"Support Link"}
+                            type={"url"}
+                            defaultValue={product?.support_link}
+                            onChange={(e) =>
+                                setData("support_link", e.target.value)
+                            }
                         />
                     </div>
                 </Form>

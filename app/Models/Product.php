@@ -24,6 +24,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property Category|null                                                   $category
  * @property Carbon                                                          $created_at
  * @property Carbon                                                          $updated_at
+ * @property string|null                                                     $support_link
  * @method Builder isActive()
  * @mixin Builder<Product>
  * @use  HasFactory<ProductFactory>
@@ -39,7 +40,7 @@ class Product extends Model
         'category_id',
         'image',
         'pdf',
-
+        'support_link',
     ];
 
     protected function casts(): array

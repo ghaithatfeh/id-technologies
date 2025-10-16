@@ -29,18 +29,30 @@ const Show = ({ product }: { product: Product }) => {
                     label="Is Avilable?"
                     value={product.is_active ? "Yes" : "No"}
                 />
-                <div className="dark:bg-dark my-2 mb-5 rounded-md bg-gray-50 p-4 text-xl font-bold dark:text-white">
-                    <label className="text-lg font-semibold">Image :</label>
-                    <Gallery sources={[product.image?.url]} />
-                </div>
-                <div className="dark:bg-dark my-2 mb-5 rounded-md bg-gray-50 p-4 text-xl font-bold dark:text-white">
-                    <label className="text-lg font-semibold">Pdf :</label>
-                    <Gallery sources={[product.pdf?.url]} />
-                </div>
                 <SmallTextField
                     label="Category"
                     value={translate(product?.category?.name)}
                 />
+
+                <div className="dark:bg-dark my-2 mb-5 flex items-center justify-between rounded-md bg-gray-50 p-4 text-xl font-bold dark:text-white">
+                    <label className="text-lg font-semibold">Pdf :</label>
+                    <a href={product?.pdf?.url} target={"_blank"}>
+                        <Button sm color={"secondary"} type={"button"}>
+                            Download
+                        </Button>
+                    </a>
+                </div>
+
+                <div className={"md:col-span-2"}>
+                    <SmallTextField
+                        label="Support Link"
+                        value={product.support_link}
+                    />
+                </div>
+                <div className="dark:bg-dark my-2 mb-5 rounded-md bg-gray-50 p-4 text-xl font-bold md:col-span-2 dark:text-white">
+                    <label className="text-lg font-semibold">Image :</label>
+                    <Gallery sources={[product.image?.url]} />
+                </div>
             </div>
         </PageCard>
     );
