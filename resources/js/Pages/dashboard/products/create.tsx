@@ -49,6 +49,7 @@ const Create = () => {
                             onChange={(e) =>
                                 setData("is_active", e.target.value == "true")
                             }
+                            checked
                             label={"Is Avilable?"}
                         />
                         <Input

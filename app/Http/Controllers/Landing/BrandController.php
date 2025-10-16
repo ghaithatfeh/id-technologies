@@ -30,13 +30,13 @@ class BrandController extends Controller
             $query->where('id', $categoryId);
         })->where('brand_id', $brandId)->first();
 
-        if (!$category) {
-            abort(404);
-        }
+        // if (!$category) {
+        //     abort(404);
+        // }
 
         return Inertia::render('landing/brands/show', [
             'brand' => BrandResource::make($brand),
-            'category' => CategoryResource::make($category),
+            'category' => $category ? CategoryResource::make($category) : [],
         ]);
     }
 }
