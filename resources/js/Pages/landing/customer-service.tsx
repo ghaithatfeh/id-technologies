@@ -79,7 +79,7 @@ const CustomerService = ({ products }: { products: Product[] }) => {
                             <Fragment key={index}>
                                 <h2
                                     className={
-                                        "border-landing-primary text-center font-bold h-full border break-words p-5 text-wrap text-sm md:text-md"
+                                        "border-landing-primary font-bold h-full border break-words p-5 text-wrap text-sm md:text-md"
                                     }
                                 >
                                     {translate(p.name)}
