@@ -60,7 +60,7 @@ const LandingNavbar = () => {
                         {t("home")}
                     </Link>
 
-                    <Link className={"hover:underline"} href={""}>
+                    <Link className={"hover:underline"} href={route("landing.customer.service")}>
                         {t("customer_service")}
                     </Link>
 

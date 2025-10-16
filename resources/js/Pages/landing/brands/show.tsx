@@ -19,11 +19,13 @@ const Show = ({ brand, category }: { brand: Brand; category: Category }) => {
             >
                 <LandingNavbar />
                 <div
-                    className={"flex w-full items-center justify-center pb-42 pt-16"}
+                    className={
+                        "flex w-full items-center justify-center pt-16 pb-42"
+                    }
                 >
                     <h1
                         className={
-                            "text-landing-primary px-5 text-center text-3xl md:text-4xl leading-20"
+                            "text-landing-primary px-5 text-center text-3xl leading-20 md:text-4xl"
                         }
                     >
                         {translate(brand.brand_title)}
@@ -78,12 +80,16 @@ const Show = ({ brand, category }: { brand: Brand; category: Category }) => {
                     </div>
                 </div>
 
-                <div className={"grid h-full w-full md:w-[65%] grid-cols-1 md:grid-cols-3 gap-5 pt-5 md:pt-0"}>
+                <div
+                    className={
+                        "grid h-full w-full grid-cols-1 gap-5 pt-5 md:w-[65%] md:grid-cols-3 md:pt-0"
+                    }
+                >
                     {category.products?.map((product) => (
                         <div className={"flex h-full w-full flex-col gap-3"}>
                             <div
                                 className={
-                                    "border-landing-primary h-full min-h-60 md:min-h-72 w-full rounded-t-xl border-2"
+                                    "border-landing-primary h-full min-h-60 w-full rounded-t-xl border-2 md:min-h-72"
                                 }
                             >
                                 <img
@@ -160,7 +166,7 @@ const Show = ({ brand, category }: { brand: Brand; category: Category }) => {
                                 <PhoneIcon
                                     className={"text-landing-primary me-2"}
                                 />
-                                <a href={"tel:+963933303939"}>
+                                <a dir="ltr" href={"tel:+963933303939"}>
                                     +963 933 303 939
                                 </a>
                             </div>
@@ -169,7 +175,7 @@ const Show = ({ brand, category }: { brand: Brand; category: Category }) => {
                                 <PhoneIcon
                                     className={"text-landing-primary me-2"}
                                 />
-                                <a href={"tel:+963935288888"}>
+                                <a dir="ltr" href={"tel:+963935288888"}>
                                     +963 935 288 888
                                 </a>
                             </div>
@@ -178,7 +184,7 @@ const Show = ({ brand, category }: { brand: Brand; category: Category }) => {
                                 <PhoneIcon
                                     className={"text-landing-primary me-2"}
                                 />
-                                <a href={"tel:+963932865566"}>
+                                <a dir="ltr" href={"tel:+963932865566"}>
                                     +963 932 865 566
                                 </a>
                             </div>
