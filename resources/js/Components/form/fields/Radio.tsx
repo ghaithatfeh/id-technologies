@@ -26,7 +26,7 @@ const Radio: React.FC<IRadioProps> = ({
             }
         >
             {label ?? ""}
-            <div className="flex w-full flex-wrap gap-2">
+            <div className="flex w-full flex-wrap gap-8">
                 {items.map((item, index) => {
                     let isChecked = false;
                     if (checked !== undefined) {
@@ -39,7 +39,7 @@ const Radio: React.FC<IRadioProps> = ({
 
                     return (
                         <div key={index} className="flex items-center gap-2">
-                            <label className="ms-2 font-medium dark:text-white">
+                            <label className="font-medium dark:text-white">
                                 {item?.label}
                             </label>
                             <input

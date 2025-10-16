@@ -31,7 +31,7 @@ const LandingNavbar = () => {
         <>
             <div
                 className={
-                    "mb-8 flex max-h-[13%] items-center justify-between px-5 py-5 md:px-40 md:py-12"
+                    "flex max-h-[13%] items-center justify-between px-5 py-5 md:py-10 md:px-40 mb-8"
                 }
             >
                 {/* Mobile Menu Button */}
@@ -87,7 +87,7 @@ const LandingNavbar = () => {
 
                 <img
                     src={asset("/images/02-Logo.svg")}
-                    className={"h-full w-28"}
+                    className={"h-full w-32"}
                     alt={"id-technologies logo"}
                 />
             </div>
