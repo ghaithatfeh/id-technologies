@@ -31,7 +31,7 @@ const LandingNavbar = () => {
         <>
             <div
                 className={
-                    "flex max-h-[13%] items-center justify-between px-5 py-5 md:py-12 md:px-40 mb-8"
+                    "mb-8 flex max-h-[13%] items-center justify-between px-5 py-5 md:px-40 md:py-12"
                 }
             >
                 {/* Mobile Menu Button */}
@@ -60,11 +60,8 @@ const LandingNavbar = () => {
                         {t("home")}
                     </Link>
 
-                    <Link
-                        className={"hover:underline"}
-                        href={""}
-                    >
-                        {t("customer")}
+                    <Link className={"hover:underline"} href={""}>
+                        {t("customer_service")}
                     </Link>
 
                     <Link className={"hover:underline"} href={""}>
@@ -119,7 +116,7 @@ const LandingNavbar = () => {
                         className="text-landing-primary text-xl font-bold transition-opacity hover:opacity-70"
                         onClick={toggleMenu}
                     >
-                        {t("customer")}
+                        {t("customer_service")}
                     </Link>
 
                     <Link
