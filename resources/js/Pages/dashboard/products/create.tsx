@@ -20,7 +20,11 @@ const Create = () => {
         category_id: number;
         image?: File | undefined | Media;
         pdf?: File | undefined | Media;
-    }>();
+    }>({
+        name: "",
+        is_active: true,
+        category_id: 0,
+    });
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -49,7 +53,7 @@ const Create = () => {
                             onChange={(e) =>
                                 setData("is_active", e.target.value == "true")
                             }
-                            checked
+                            checked={true}
                             label={"Is Avilable?"}
                         />
                         <Input
