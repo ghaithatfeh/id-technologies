@@ -30,7 +30,7 @@ class StoreUpdateBrandRequest extends FormRequest
                     SerializedMedia::validator()
                 ]),
                 Rule::when($this->hasFile('background_image'), [
-                    'image', 'max:10000', 'mimes:jpeg,png,jpg,gif,svg,webp'
+                    'image:allow_svg', 'max:10000', 'mimes:jpeg,png,jpg,gif,svg,webp'
                 ])
             ],
             'icon' => [
@@ -39,7 +39,7 @@ class StoreUpdateBrandRequest extends FormRequest
                     SerializedMedia::validator()
                 ]),
                 Rule::when($this->hasFile('icon'), [
-                    'image', 'max:10000', 'mimes:jpeg,png,jpg,gif,svg,webp'
+                    'image:allow_svg', 'max:10000', 'mimes:jpeg,png,jpg,gif,svg,webp'
                 ])
             ],
             'logo' => [
@@ -48,7 +48,7 @@ class StoreUpdateBrandRequest extends FormRequest
                     SerializedMedia::validator()
                 ]),
                 Rule::when($this->hasFile('logo'), [
-                    'image', 'max:10000', 'mimes:jpeg,png,jpg,gif,svg,webp'
+                    'image:allow_svg', 'max:10000', 'mimes:jpeg,png,jpg,gif,svg,webp'
                 ])
             ],
         ];
