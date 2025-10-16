@@ -17,7 +17,7 @@ class BrandSeeder extends Seeder
         Brand::factory()->create([
             'brand_title' => Translatable::create([
                 'en' => 'Security and Protection Systems “HIKVISION Co”',
-                'ar' => 'أنظمة الحامية والأمان'
+                'ar' => 'أنظمة الحماية والأمان'
             ]),
             'background_image' => new UploadedFile(storage_path('/app/private/required/Security.png'), 'Security.png'),
             'logo' => new UploadedFile(storage_path('/app/private/required/03-Brand01.png'), '03-Brand01.png'),
