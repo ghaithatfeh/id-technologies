@@ -31,7 +31,7 @@ const LandingNavbar = () => {
         <>
             <div
                 className={
-                    "flex max-h-[13%] items-center justify-between px-5 py-5 md:py-10 md:px-40 mb-8"
+                    "flex max-h-[13vh] items-center justify-between px-5 py-5 md:py-10 md:px-40 mb-8"
                 }
             >
                 {/* Mobile Menu Button */}
