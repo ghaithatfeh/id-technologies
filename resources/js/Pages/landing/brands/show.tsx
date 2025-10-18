@@ -10,11 +10,12 @@ import { FacebookIcon, Globe2, Mail, PhoneIcon } from "lucide-react";
 
 const Show = ({ brand, category }: { brand: Brand; category: Category }) => {
     const { t } = useTranslation();
+    console.log(brand)
     return (
         <div className={"w-full"}>
             <div
                 className={
-                    "relative w-full bg-[url('/images/01-Cover.png')] bg-[length:100%_100%] bg-no-repeat"
+                    "relative w-full bg-[url('/images/01-Cover.png')] bg-cover bg-center bg-no-repeat"
                 }
             >
                 <LandingNavbar />
@@ -25,21 +26,21 @@ const Show = ({ brand, category }: { brand: Brand; category: Category }) => {
                 >
                     <h1
                         className={
-                            "text-landing-primary px-5 text-center text-3xl leading-20 md:text-4xl"
+                            "text-landing-primary px-5 text-center text-3xl leading-12 md:leading-20 md:text-4xl"
                         }
                     >
                         {translate(brand.brand_title)}
                     </h1>
                 </div>
 
-                <div className={"start-[40%] -bottom-20 hidden md:absolute"}>
-                    <img src={brand.logo?.url} className={"w-1/3"} />
+                <div className={"flex flex-wrap px-10 md:px-38 absolute -bottom-10 md:-bottom-20 justify-center w-full"}>
+                    <img src={brand.logo?.url} className={"w-1/2 md:w-1/4"} />
                 </div>
             </div>
 
             <div
                 className={
-                    "flex w-full flex-col items-start justify-between px-10 py-10 md:flex-row md:px-36 md:py-36"
+                    "flex w-full flex-col items-start justify-between px-10 py-10 pt-20 md:flex-row md:px-36 md:py-36 bg-[url('/images/08-BG.svg')] bg-cover bg-center bg-no-repeat"
                 }
             >
                 <div
@@ -127,7 +128,7 @@ const Show = ({ brand, category }: { brand: Brand; category: Category }) => {
                 <div className={"md:p-10"}>
                     <h2
                         className={
-                            "text-landing-primary px-10 py-5 text-center text-2xl font-bold text-wrap md:px-72"
+                            "text-landing-primary px-10 py-5 text-center text-2xl font-bold text-wrap md:px-72 leading-12"
                         }
                     >
                         {t("home_footer_quote")}

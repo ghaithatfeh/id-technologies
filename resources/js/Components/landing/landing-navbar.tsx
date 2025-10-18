@@ -64,9 +64,9 @@ const LandingNavbar = () => {
                         {t("customer_service")}
                     </Link>
 
-                    <Link className={"hover:underline"} href={""}>
+                    {/* <Link className={"hover:underline"} href={""}>
                         {t("about_us")}
-                    </Link>
+                    </Link> */}
 
                     <Link className={"hover:underline"} href={""}>
                         {t("our_projects")}
@@ -86,8 +86,8 @@ const LandingNavbar = () => {
                 </nav>
 
                 <img
-                    src={asset("/images/02-Logo.svg")}
-                    className={"h-full w-32"}
+                    src={asset("/images/02-Logo.png")}
+                    className={"h-full w-32 md:w-36"}
                     alt={"id-technologies logo"}
                 />
             </div>
@@ -119,13 +119,13 @@ const LandingNavbar = () => {
                         {t("customer_service")}
                     </Link>
 
-                    <Link
+                    {/* <Link
                         href={""}
                         className="text-landing-primary text-xl font-bold transition-opacity hover:opacity-70"
                         onClick={toggleMenu}
                     >
                         {t("about_us")}
-                    </Link>
+                    </Link> */}
 
                     <Link
                         href={""}
@@ -137,6 +137,7 @@ const LandingNavbar = () => {
 
                     <Link
                         href={""}
+                        className="text-landing-primary text-xl font-bold transition-opacity hover:opacity-70 mt-auto"
                         onClick={() => {
                             handleLanguageChange(
                                 language === "ar" ? "en" : "ar",

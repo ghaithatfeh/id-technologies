@@ -43,7 +43,7 @@ export const Sidebar = ({
             >
                 <div className={`flex items-center justify-center gap-1`}>
                     <img
-                        src={asset("/images/02-Logo.svg")}
+                        src={asset("/images/02-Logo.png")}
                         width={`${isOpen ? "40px" : "40px"}`}
                         alt="Company Logo"
                     />
