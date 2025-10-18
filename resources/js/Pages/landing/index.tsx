@@ -264,6 +264,7 @@ const Index = ({ brands }: { brands: Brand[] }) => {
                     className={
                         "grid w-full items-center gap-10 px-10 py-10 text-xl md:grid-cols-3 md:gap-24 md:px-50 mt-8"
                     }
+                    dir="ltr"
                 >
                     <div className={"flex flex-col items-start"}>
                         <div className={"flex items-center"}>
