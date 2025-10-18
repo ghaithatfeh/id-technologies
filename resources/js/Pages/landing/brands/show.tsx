@@ -33,8 +33,8 @@ const Show = ({ brand, category }: { brand: Brand; category: Category }) => {
                     </h1>
                 </div>
 
-                <div className={"flex flex-wrap px-10 md:px-38 absolute -bottom-10 md:-bottom-20 justify-center w-full"}>
-                    <img src={brand.logo?.url} className={"w-1/2 md:w-1/4"} />
+                <div className={"flex flex-wrap px-10 md:px-38 absolute -bottom-10 md:-bottom-12 justify-center w-full"}>
+                    <img src={brand.logo?.url} className={"w-1/2 md:w-1/5 shadow-xl rounded-lg md:rounded-xl"} />
                 </div>
             </div>
 

@@ -75,7 +75,7 @@ const Index = ({ brands }: { brands: Brand[] }) => {
                         </div>
                     </div>
                 </div>
-                <div className="-bottom-[12%] grid w-full grid-cols-1 items-center justify-between gap-10 px-14 md:absolute md:grid-cols-4 md:px-44">
+                <div className="-bottom-[12%] grid w-full grid-cols-2 items-center justify-between gap-10 px-14 md:absolute md:grid-cols-4 md:px-44">
                     {brands.map((brand) => (
                         <Link
                             className={"h-full w-full"}
@@ -110,7 +110,7 @@ const Index = ({ brands }: { brands: Brand[] }) => {
                     >
                         {t("about_us")}:
                     </h2>
-                    <div className="h-[2px] w-40 rounded-full bg-gradient-to-r from-black to-transparent md:w-80" />
+                    <div className="h-[2px] w-40 rounded-full bg-gradient-to-r rtl:bg-gradient-to-l from-black to-transparent md:w-80" />
                     <p className={"mt-5 text-lg md:pe-24 font-semibold leading-10"}>
                         {t("about_us_description")}
                     </p>
@@ -124,7 +124,7 @@ const Index = ({ brands }: { brands: Brand[] }) => {
                     >
                         {t("our_mission")}:
                     </h2>
-                    <div className="h-[2px] w-40 rounded-full bg-gradient-to-r from-black to-transparent md:w-80" />
+                    <div className="h-[2px] w-40 rounded-full bg-gradient-to-r rtl:bg-gradient-to-l from-black to-transparent md:w-80" />
                     <p className={"mt-5 text-lg md:pe-24 font-semibold leading-10"}>
                         {t("our_mission_description")}
                     </p>
@@ -138,7 +138,7 @@ const Index = ({ brands }: { brands: Brand[] }) => {
                     >
                         {t("our_vision")}:
                     </h2>
-                    <div className="h-[2px] w-40 rounded-full bg-gradient-to-r from-black to-transparent md:w-80" />
+                    <div className="h-[2px] w-40 rounded-full bg-gradient-to-r rtl:bg-gradient-to-l from-black to-transparent md:w-80" />
                     <p className={"mt-5 text-lg md:pe-24 font-semibold leading-10"}>
                         {t("our_vision_description")}
                     </p>
@@ -225,22 +225,26 @@ const Index = ({ brands }: { brands: Brand[] }) => {
             >
                 <div
                     className={
-                        "flex w-full max-w-full grid-cols-4 flex-col items-center justify-between gap-10 px-10 py-10 md:grid md:px-52"
+                        "flex w-full max-w-full grid-cols-4 flex-wrap items-center justify-center gap-10 px-10 py-10 md:grid md:px-52"
                     }
                 >
                     <img
+                        className="w-46 md:w-auto"
                         alt={"brand-logo"}
                         src={asset("/images/09-Brand.png")}
                     />
                     <img
+                        className="w-46 md:w-auto"
                         alt={"brand-logo"}
                         src={asset("/images/10-Brand.png")}
                     />
                     <img
+                        className="w-46 md:w-auto"
                         alt={"brand-logo"}
                         src={asset("/images/11-Brand.png")}
                     />
                     <img
+                        className="w-46 md:w-auto"
                         alt={"brand-logo"}
                         src={asset("/images/12-Brand.png")}
                     />
