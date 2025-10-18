@@ -254,7 +254,7 @@ const Index = ({ brands }: { brands: Brand[] }) => {
 
                 <h2
                     className={
-                        "text-landing-primary px-10 py-5 text-center text-2xl font-bold text-wrap md:px-72"
+                        "text-landing-primary px-10 py-5 text-center text-2xl font-bold text-wrap md:px-72 leading-12"
                     }
                 >
                     {t("home_footer_quote")}
