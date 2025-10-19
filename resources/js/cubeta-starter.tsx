@@ -10,7 +10,7 @@ import "../css/cubeta-starter.css";
 import "./bootstrap";
 import "./utils/i18n";
 
-const appName = import.meta.env.APP_NAME || "Laravel";
+const appName = import.meta.env.APP_NAME || "ID Technologies Co";
 
 const authPages = [
     "dashboard/login",
@@ -24,7 +24,7 @@ type PageWithLayout = React.ComponentType & {
 };
 
 createInertiaApp({
-    title: () => `${appName} Dashboard`,
+    title: () => `${appName}`,
     resolve: async (name: any) => {
         const pages = import.meta.glob<{
             default: PageWithLayout;
