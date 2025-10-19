@@ -41,10 +41,10 @@ const CustomerService = ({ products }: { products: Product[] }) => {
                         "flex flex-wrap md:px-38 absolute -bottom-12 w-full md:gap-10 gap-2 justify-center"
                     }
                 >
-                    <img className="max-w-38 md:w-1/5 shadow-xl rounded-lg md:rounded-xl" src={asset("/images/03-Brand01.png")} />
-                    <img className="max-w-38 md:w-1/5 shadow-xl rounded-lg md:rounded-xl" src={asset("/images/04-Brand02.png")} />
-                    <img className="max-w-38 md:w-1/5 shadow-xl rounded-lg md:rounded-xl" src={asset("/images/05-Brand03.png")} />
-                    <img className="max-w-38 md:w-1/5 shadow-xl rounded-lg md:rounded-xl" src={asset("/images/06-Brand04.png")} />
+                    <img className="max-w-38 md:max-w-[unset] md:w-1/5 shadow-xl rounded-lg md:rounded-xl" src={asset("/images/03-Brand01.png")} />
+                    <img className="max-w-38 md:max-w-[unset] md:w-1/5 shadow-xl rounded-lg md:rounded-xl" src={asset("/images/04-Brand02.png")} />
+                    <img className="max-w-38 md:max-w-[unset] md:w-1/5 shadow-xl rounded-lg md:rounded-xl" src={asset("/images/05-Brand03.png")} />
+                    <img className="max-w-38 md:max-w-[unset] md:w-1/5 shadow-xl rounded-lg md:rounded-xl" src={asset("/images/06-Brand04.png")} />
                 </div>
             </div>
 

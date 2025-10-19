@@ -36,10 +36,10 @@ const Index = ({
                 <LandingNavbar />
                 <div
                     className={
-                        "flex h-full w-full flex-col items-center justify-between px-10 pb-24 md:flex-row md:px-16 md:pb-46"
+                        "flex h-full w-full flex-col items-center justify-between px-10 pb-24 md:flex-row md:px-16 md:pb-46 md:pe-38 gap-4"
                     }
                 >
-                    <div className={"w-full md:w-[60%]"}>
+                    <div className={"w-full max-w-4xl"}>
                         <h2
                             className={
                                 "text-landing-primary mb-3 text-2xl font-bold md:ps-26"
@@ -123,7 +123,7 @@ const Index = ({
                         </div>
                     </div>
                     {featured_product && (
-                        <div className={"md:max-w-[40%]"}>
+                        <div className={"mt-24 md:mt-12 md:max-w-[40%]"}>
                             <Link
                                 href={route("landing.brands.show", {
                                     brandId:
@@ -133,7 +133,7 @@ const Index = ({
                             >
                                 <div
                                     className={
-                                        "bg-landing-primary relative max-h-full rounded-xl p-5"
+                                        "bg-landing-primary relative max-h-full rounded-xl p-5 pb-2"
                                     }
                                 >
                                     <h1
@@ -150,7 +150,7 @@ const Index = ({
                                     />
                                     <h2
                                         className={
-                                            "w-full text-center text-xl font-bold"
+                                            "w-full text-center text-xl font-bold mt-2"
                                         }
                                     >
                                         {translate(featured_product?.name)}
