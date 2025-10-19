@@ -36,7 +36,7 @@ class BrandSeeder extends Seeder
 
         Brand::factory()->create([
             'brand_title' => Translatable::create([
-                'en' => 'Technologies/Prepaid Entertainment Systems intercards co',
+                'en' => 'Prepaid Entertainment Systems intercards co',
                 'ar' => 'أنظمة الألعاب الدفع المسبق'
             ]),
             'background_image' => new UploadedFile(storage_path('/app/private/required/Technologies.png'), 'Technologies.png'),
