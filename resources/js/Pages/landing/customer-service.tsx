@@ -116,7 +116,7 @@ const CustomerService = ({ products }: { products: Product[] }) => {
                             <div className={"flex items-center"}>
                                 <Mail className={"text-landing-primary me-2"} />
                                 <a href={"mailto:sales1@idtechco.com"}>
-                                    sales1@idtechco.com
+                                    sales1 @idtechco.com
                                 </a>
                             </div>
 
@@ -140,27 +140,21 @@ const CustomerService = ({ products }: { products: Product[] }) => {
                                 <PhoneIcon
                                     className={"text-landing-primary me-2"}
                                 />
-                                <a dir="ltr" href={"tel:+963933303939"}>
-                                    +963 933 303 939
-                                </a>
+                                <a dir="ltr" target="_blank" href={"https://wa.me/+963933303939"}>+963 933 303 939</a>
                             </div>
 
                             <div className={"flex items-center"}>
                                 <PhoneIcon
                                     className={"text-landing-primary me-2"}
                                 />
-                                <a dir="ltr" href={"tel:+963935288888"}>
-                                    +963 935 288 888
-                                </a>
+                                <a dir="ltr" target="_blank" href={"https://wa.me/+963935288888"}>+963 935 288 888</a>
                             </div>
 
                             <div className={"flex items-center"}>
                                 <PhoneIcon
                                     className={"text-landing-primary me-2"}
                                 />
-                                <a dir="ltr" href={"tel:+963932865566"}>
-                                    +963 932 865 566
-                                </a>
+                                <a dir="ltr" target="_blank" href={"https://wa.me/+963932865566"}>+963 932 865 566</a>
                             </div>
                         </div>
 
