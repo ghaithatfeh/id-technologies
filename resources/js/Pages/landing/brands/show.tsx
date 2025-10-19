@@ -6,7 +6,7 @@ import { translate } from "@/Models/Translatable";
 import { useTranslation } from "react-i18next";
 import { Link } from "@inertiajs/react";
 import DownloadFile from "@/Hooks/DownloadFile";
-import { FacebookIcon, Globe2, Mail, PhoneIcon } from "lucide-react";
+import { FacebookIcon, Globe2, LinkedinIcon, Mail, PhoneIcon } from "lucide-react";
 
 const Show = ({ brand, category }: { brand: Brand; category: Category }) => {
     const { t } = useTranslation();
@@ -156,8 +156,8 @@ const Show = ({ brand, category }: { brand: Brand; category: Category }) => {
 
                             <div className={"flex items-center"}>
                                 <Mail className={"text-landing-primary me-2"} />
-                                <a href={"mailto:sales3@idtechco.com"}>
-                                    sales3@idtechco.com
+                                <a href={"mailto:sales4@idtechco.com"}>
+                                    sales4@idtechco.com
                                 </a>
                             </div>
                         </div>
@@ -217,12 +217,12 @@ const Show = ({ brand, category }: { brand: Brand; category: Category }) => {
                             </div>
 
                             <div className={"flex items-center"}>
-                                <PhoneIcon
+                                <LinkedinIcon
                                     className={"text-landing-primary me-2"}
                                 />
                                 <a
                                     target={"_blank"}
-                                    href={"https://www.facebook.com/IDTechco/"}
+                                    href={"https://www.linkedin.com/company/id-technologies-co/"}
                                 >
                                     ID Technologies Co
                                 </a>

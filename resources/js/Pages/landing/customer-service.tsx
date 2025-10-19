@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import LandingNavbar from "@/Components/landing/landing-navbar";
 import { useTranslation } from "react-i18next";
 import { asset } from "@/helper";
-import { FacebookIcon, Globe2, Mail, PhoneIcon } from "lucide-react";
+import { FacebookIcon, Globe2, LinkedinIcon, Mail, PhoneIcon } from "lucide-react";
 import Product from "@/Models/Product";
 import product from "@/Models/Product";
 import { translate } from "@/Models/Translatable";
@@ -129,8 +129,8 @@ const CustomerService = ({ products }: { products: Product[] }) => {
 
                             <div className={"flex items-center"}>
                                 <Mail className={"text-landing-primary me-2"} />
-                                <a href={"mailto:sales3@idtechco.com"}>
-                                    sales3@idtechco.com
+                                <a href={"mailto:sales4@idtechco.com"}>
+                                    sales4@idtechco.com
                                 </a>
                             </div>
                         </div>
@@ -190,12 +190,12 @@ const CustomerService = ({ products }: { products: Product[] }) => {
                             </div>
 
                             <div className={"flex items-center"}>
-                                <PhoneIcon
+                                <LinkedinIcon
                                     className={"text-landing-primary me-2"}
                                 />
                                 <a
                                     target={"_blank"}
-                                    href={"https://www.facebook.com/IDTechco/"}
+                                    href={"https://www.linkedin.com/company/id-technologies-co/"}
                                 >
                                     ID Technologies Co
                                 </a>

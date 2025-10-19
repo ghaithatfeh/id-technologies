@@ -1,6 +1,6 @@
 import LandingNavbar from "@/Components/landing/landing-navbar";
 import { asset } from "@/helper";
-import { FacebookIcon, Globe2, Mail, PhoneIcon, Settings } from "lucide-react";
+import { FacebookIcon, Globe2, LinkedinIcon, Mail, PhoneIcon, Settings } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import HomeHeroCard from "@/Components/landing/home-hero-card";
 import Brand from "@/Models/Brand";
@@ -34,9 +34,13 @@ const Index = ({ brands }: { brands: Brand[] }) => {
                                 "hidden flex-col gap-6 rounded-2xl bg-white px-3 py-6 md:flex"
                             }
                         >
-                            <PhoneIcon className={"h-8 w-8"} strokeWidth={1} />
+                            <a href="tel:+963933303939">
+                                <PhoneIcon className={"h-8 w-8"} strokeWidth={1} />
+                            </a>
                             <div className="h-[2px] bg-gradient-to-r from-transparent via-black to-transparent" />
-                            <Mail className={"h-8 w-8"} strokeWidth={1} />
+                            <a href="mailto:sales1@idtechco.com">
+                                <Mail className={"h-8 w-8"} strokeWidth={1} />
+                            </a>
                             <div className="h-[2px] bg-gradient-to-r from-transparent via-black to-transparent" />
                             <Settings className={"h-8 w-8"} strokeWidth={1} />
                         </div>
@@ -287,8 +291,8 @@ const Index = ({ brands }: { brands: Brand[] }) => {
 
                         <div className={"flex items-center"}>
                             <Mail className={"text-landing-primary me-2"} />
-                            <a href={"mailto:sales3@idtechco.com"}>
-                                sales3@idtechco.com
+                            <a href={"mailto:sales4@idtechco.com"}>
+                                sales4@idtechco.com
                             </a>
                         </div>
                     </div>
@@ -340,12 +344,12 @@ const Index = ({ brands }: { brands: Brand[] }) => {
                         </div>
 
                         <div className={"flex items-center"}>
-                            <PhoneIcon
+                            <LinkedinIcon
                                 className={"text-landing-primary me-2"}
                             />
                             <a
                                 target={"_blank"}
-                                href={"https://www.facebook.com/IDTechco/"}
+                                href={"https://www.linkedin.com/company/id-technologies-co/"}
                             >
                                 ID Technologies Co
                             </a>
