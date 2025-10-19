@@ -235,7 +235,7 @@ const Index = ({ brands }: { brands: Brand[] }) => {
                     <img
                         className="w-46 md:w-auto"
                         alt={"brand-logo"}
-                        src={asset("/images/09-Brand.png")}
+                        src={asset("/images/11-Brand.png")}
                     />
                     <img
                         className="w-46 md:w-auto"
@@ -245,12 +245,12 @@ const Index = ({ brands }: { brands: Brand[] }) => {
                     <img
                         className="w-46 md:w-auto"
                         alt={"brand-logo"}
-                        src={asset("/images/11-Brand.png")}
+                        src={asset("/images/12-Brand.png")}
                     />
                     <img
                         className="w-46 md:w-auto"
                         alt={"brand-logo"}
-                        src={asset("/images/12-Brand.png")}
+                        src={asset("/images/09-Brand.png")}
                     />
                 </div>
 
