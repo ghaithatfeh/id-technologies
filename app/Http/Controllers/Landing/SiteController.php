@@ -24,7 +24,7 @@ class SiteController extends Controller
                 'category.brand',
                 'category',
             ])->first()
-            ->toResource(ProductResource::class);
+            ?->toResource(ProductResource::class);
 
         return Inertia::render('landing/index', [
             'brands' => $brands,
