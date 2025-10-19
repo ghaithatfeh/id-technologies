@@ -16,7 +16,7 @@ class BrandSeeder extends Seeder
     {
         Brand::factory()->create([
             'brand_title' => Translatable::create([
-                'en' => 'Security and Protection Systems “HIKVISION Co”',
+                'en' => 'Security and Protection Systems HIKVISION Co',
                 'ar' => 'أنظمة الحماية والأمان'
             ]),
             'background_image' => new UploadedFile(storage_path('/app/private/required/Security.png'), 'Security.png'),
@@ -26,7 +26,7 @@ class BrandSeeder extends Seeder
 
         Brand::factory()->create([
             'brand_title' => Translatable::create([
-                'en' => 'Plastic Card Printers and its accessories “evolis co”',
+                'en' => 'Plastic Card Printers and its accessories evolis co',
                 'ar' => 'طابعات بطاقات بلاستيكية'
             ]),
             'background_image' => new UploadedFile(storage_path('/app/private/required/PlasticCards.png'), 'PlasticCards.png'),
@@ -36,7 +36,7 @@ class BrandSeeder extends Seeder
 
         Brand::factory()->create([
             'brand_title' => Translatable::create([
-                'en' => 'Technologies/Prepaid Entertainment Systems “intercards co”',
+                'en' => 'Technologies/Prepaid Entertainment Systems intercards co',
                 'ar' => 'أنظمة الألعاب الدفع المسبق'
             ]),
             'background_image' => new UploadedFile(storage_path('/app/private/required/Technologies.png'), 'Technologies.png'),
@@ -46,7 +46,7 @@ class BrandSeeder extends Seeder
 
         Brand::factory()->create([
             'brand_title' => Translatable::create([
-                'en' => 'Barcode Systems “Unitech co”',
+                'en' => 'Barcode Systems Unitech co',
                 'ar' => 'أنطمة الباركود'
             ]),
             'background_image' => new UploadedFile(storage_path('/app/private/required/BarcodeSystems.png'), 'BarcodeSystems.png'),

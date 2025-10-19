@@ -10,6 +10,20 @@ const HomeHeroCard = ({
     icon: string;
     background: string;
 }) => {
+    // Function to highlight specific strings in red
+    const highlightBrandNames = (text: string) => {
+        const brandNames = ["HIKVISION Co", "evolis co", "intercards co", "Unitech co"];
+        
+        let highlightedText = text;
+        
+        brandNames.forEach((str) => {
+            const regex = new RegExp(`(${str})`, 'gi');
+            highlightedText = highlightedText.replace(regex, '<span class="text-red-500 block">$1</span>');
+        });
+        
+        return highlightedText;
+    };
+
     return (
         <div className="group border-b-landing-primary relative h-full w-full overflow-visible rounded-t-3xl border-b-8 bg-white p-6 pb-10 shadow-xl min-h-42 flex items-center justify-center">
             <div className="absolute inset-0 z-0">
@@ -22,9 +36,10 @@ const HomeHeroCard = ({
                 />
             </div>
 
-            <p className="relative z-10 text-center text-lg font-bold text-wrap">
-                {content}
-            </p>
+            <p 
+                className="relative z-10 text-center text-lg font-bold text-wrap"
+                dangerouslySetInnerHTML={{ __html: highlightBrandNames(content) }}
+            />
 
             <div className="absolute -bottom-7 left-0 z-20 flex w-full items-center justify-center">
                 <img
