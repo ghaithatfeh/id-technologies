@@ -20,7 +20,7 @@ const Index = ({ brands }: { brands: Brand[] }) => {
                 }}
             >
                 <LandingNavbar />
-                <div className={"w-full px-10 pb-46 md:px-16 md:w-3/4"}>
+                <div className={"w-full px-10 pb-24 md:pb-46 md:px-16 md:w-3/4"}>
                     <h2
                         className={
                             "text-landing-primary mb-3 text-2xl font-bold md:ps-26"
@@ -79,7 +79,7 @@ const Index = ({ brands }: { brands: Brand[] }) => {
                         </div>
                     </div>
                 </div>
-                <div className="-bottom-[12%] grid w-full grid-cols-2 items-center justify-between gap-10 px-14 md:absolute md:grid-cols-4 md:px-44">
+                <div className="-bottom-[12%] grid w-full grid-cols-2 items-center justify-between gap-4 md:gap-10 px-6 md:absolute md:grid-cols-4 md:px-44">
                     {brands.map((brand) => (
                         <Link
                             className={"h-full w-full"}
