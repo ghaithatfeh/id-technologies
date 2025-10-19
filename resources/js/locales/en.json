@@ -30,6 +30,7 @@
         "download_pdf": "Download PDF",
         "customer_service": "Customer Service",
         "product": "Product",
-        "link": "Link"
+        "link": "Link",
+        "featured_product": "Featured Product"
     }
 }

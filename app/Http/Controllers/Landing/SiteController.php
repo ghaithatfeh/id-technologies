@@ -19,8 +19,16 @@ class SiteController extends Controller
             ->get()
             ->toResourceCollection(BrandResource::class);
 
+        $featuredProduct = Product::where('is_featured', true)
+            ->with([
+                'category.brand',
+                'category',
+            ])->first()
+            ->toResource(ProductResource::class);
+
         return Inertia::render('landing/index', [
             'brands' => $brands,
+            'featured_product' => $featuredProduct,
         ]);
     }
 

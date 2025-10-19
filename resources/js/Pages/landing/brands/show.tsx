@@ -10,7 +10,6 @@ import { FacebookIcon, Globe2, LinkedinIcon, Mail, PhoneIcon } from "lucide-reac
 
 const Show = ({ brand, category }: { brand: Brand; category: Category }) => {
     const { t } = useTranslation();
-    console.log(brand)
     return (
         <div className={"w-full"}>
             <div

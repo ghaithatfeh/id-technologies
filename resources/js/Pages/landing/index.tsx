@@ -1,13 +1,27 @@
 import LandingNavbar from "@/Components/landing/landing-navbar";
 import { asset } from "@/helper";
-import { FacebookIcon, Globe2, LinkedinIcon, Mail, PhoneIcon, Settings } from "lucide-react";
+import {
+    FacebookIcon,
+    Globe2,
+    LinkedinIcon,
+    Mail,
+    PhoneIcon,
+    Settings,
+} from "lucide-react";
 import { useTranslation } from "react-i18next";
 import HomeHeroCard from "@/Components/landing/home-hero-card";
 import Brand from "@/Models/Brand";
 import { translate } from "@/Models/Translatable";
 import { Link } from "@inertiajs/react";
+import Product from "@/Models/Product";
 
-const Index = ({ brands }: { brands: Brand[] }) => {
+const Index = ({
+    brands,
+    featured_product,
+}: {
+    brands: Brand[];
+    featured_product?: Product;
+}) => {
     const { t } = useTranslation();
     return (
         <>
@@ -20,66 +34,134 @@ const Index = ({ brands }: { brands: Brand[] }) => {
                 }}
             >
                 <LandingNavbar />
-                <div className={"w-full px-10 pb-24 md:pb-46 md:px-16 md:w-3/4"}>
-                    <h2
-                        className={
-                            "text-landing-primary mb-3 text-2xl font-bold md:ps-26"
-                        }
-                    >
-                        {t("partners_in_development")}
-                    </h2>
-                    <div className={"flex items-center gap-12"}>
-                        <div
+                <div
+                    className={
+                        "flex h-full w-full flex-col items-center justify-between px-10 pb-24 md:flex-row md:px-16 md:pb-46"
+                    }
+                >
+                    <div className={"w-full md:w-[60%]"}>
+                        <h2
                             className={
-                                "hidden flex-col gap-6 rounded-2xl bg-white px-3 py-6 md:flex"
+                                "text-landing-primary mb-3 text-2xl font-bold md:ps-26"
                             }
                         >
-                            <a target="_blank" href={"https://wa.me/+963933303939"}>
-                                <PhoneIcon className={"h-8 w-8"} strokeWidth={1} />
-                            </a>
-                            <div className="h-[2px] bg-gradient-to-r from-transparent via-black to-transparent" />
-                            <a href="mailto:sales1@idtechco.com">
-                                <Mail className={"h-8 w-8"} strokeWidth={1} />
-                            </a>
-                            <div className="h-[2px] bg-gradient-to-r from-transparent via-black to-transparent" />
-                            <Settings className={"h-8 w-8"} strokeWidth={1} />
-                        </div>
+                            {t("partners_in_development")}
+                        </h2>
+                        <div className={"flex items-center gap-12"}>
+                            <div
+                                className={
+                                    "hidden flex-col gap-6 rounded-2xl bg-white px-3 py-6 md:flex"
+                                }
+                            >
+                                <a
+                                    target="_blank"
+                                    href={"https://wa.me/+963933303939"}
+                                >
+                                    <PhoneIcon
+                                        className={"h-8 w-8"}
+                                        strokeWidth={1}
+                                    />
+                                </a>
+                                <div className="h-[2px] bg-gradient-to-r from-transparent via-black to-transparent" />
+                                <a href="mailto:sales1@idtechco.com">
+                                    <Mail
+                                        className={"h-8 w-8"}
+                                        strokeWidth={1}
+                                    />
+                                </a>
+                                <div className="h-[2px] bg-gradient-to-r from-transparent via-black to-transparent" />
+                                <Settings
+                                    className={"h-8 w-8"}
+                                    strokeWidth={1}
+                                />
+                            </div>
 
-                        <div className={"flex flex-col gap-8 mt-6"}>
-                            <div className={"flex items-start gap-2"}>
-                                <span
-                                    className={
-                                        "border-landing-primary me-2 my-2 rounded-md border p-2"
-                                    }
-                                />
-                                <p className={"text-xl text-white leading-8"}>
-                                    {t("hero_first_title")}
-                                </p>
-                            </div>
-                            <div className={"flex items-start gap-2"}>
-                                <span
-                                    className={
-                                        "border-landing-primary me-2 my-2 rounded-md border p-2"
-                                    }
-                                />
-                                <p className={"text-xl text-white leading-8"}>
-                                    {t("hero_second_title")}
-                                </p>
-                            </div>
-                            <div className={"flex items-start gap-2"}>
-                                <span
-                                    className={
-                                        "border-landing-primary me-2 my-2 rounded-md border p-2"
-                                    }
-                                />
-                                <p className={"text-xl text-white leading-8"}>
-                                    {t("hero_third_title")}
-                                </p>
+                            <div className={"mt-6 flex flex-col gap-8"}>
+                                <div className={"flex items-start gap-2"}>
+                                    <span
+                                        className={
+                                            "border-landing-primary my-2 me-2 rounded-md border p-2"
+                                        }
+                                    />
+                                    <p
+                                        className={
+                                            "text-xl leading-8 text-white"
+                                        }
+                                    >
+                                        {t("hero_first_title")}
+                                    </p>
+                                </div>
+                                <div className={"flex items-start gap-2"}>
+                                    <span
+                                        className={
+                                            "border-landing-primary my-2 me-2 rounded-md border p-2"
+                                        }
+                                    />
+                                    <p
+                                        className={
+                                            "text-xl leading-8 text-white"
+                                        }
+                                    >
+                                        {t("hero_second_title")}
+                                    </p>
+                                </div>
+                                <div className={"flex items-start gap-2"}>
+                                    <span
+                                        className={
+                                            "border-landing-primary my-2 me-2 rounded-md border p-2"
+                                        }
+                                    />
+                                    <p
+                                        className={
+                                            "text-xl leading-8 text-white"
+                                        }
+                                    >
+                                        {t("hero_third_title")}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    {featured_product && (
+                        <div className={"md:max-w-[40%]"}>
+                            <Link
+                                href={route("landing.brands.show", {
+                                    brandId:
+                                        featured_product.category?.brand_id,
+                                    categoryId: featured_product.category_id,
+                                })}
+                            >
+                                <div
+                                    className={
+                                        "bg-landing-primary relative max-h-full rounded-xl p-5"
+                                    }
+                                >
+                                    <h1
+                                        className={
+                                            "border-landing-primary absolute -top-5 left-1/2 -translate-x-1/2 rounded-full border-2 bg-white px-5 py-2 text-center font-bold whitespace-nowrap"
+                                        }
+                                    >
+                                        {t("featured_product")}
+                                    </h1>
+                                    <img
+                                        src={featured_product.image?.url}
+                                        className={"max-h-96 min-h-72 w-full"}
+                                        alt={t("featured_product")}
+                                    />
+                                    <h2
+                                        className={
+                                            "w-full text-center text-xl font-bold"
+                                        }
+                                    >
+                                        {translate(featured_product?.name)}
+                                    </h2>
+                                </div>
+                            </Link>
+                        </div>
+                    )}
                 </div>
-                <div className="-bottom-[12%] grid w-full grid-cols-2 items-center justify-between gap-4 md:gap-10 px-6 md:absolute md:grid-cols-4 md:px-44">
+
+                <div className="-bottom-[12%] grid w-full grid-cols-2 items-center justify-between gap-4 px-6 md:absolute md:grid-cols-4 md:gap-10 md:px-44">
                     {brands.map((brand) => (
                         <Link
                             className={"h-full w-full"}
@@ -109,13 +191,17 @@ const Index = ({ brands }: { brands: Brand[] }) => {
                 <div className={"flex w-full flex-col items-start"}>
                     <h2
                         className={
-                            "bg-landing-primary text-xl font-bold ltr:rounded-tr-2xl rtl:rounded-tl-2xl w-50 py-5 ps-8"
+                            "bg-landing-primary w-50 py-5 ps-8 text-xl font-bold ltr:rounded-tr-2xl rtl:rounded-tl-2xl"
                         }
                     >
                         {t("about_us")}:
                     </h2>
-                    <div className="h-[2px] w-40 rounded-full bg-gradient-to-r rtl:bg-gradient-to-l from-black to-transparent md:w-80" />
-                    <p className={"mt-5 text-lg md:pe-24 font-semibold leading-10"}>
+                    <div className="h-[2px] w-40 rounded-full bg-gradient-to-r from-black to-transparent md:w-80 rtl:bg-gradient-to-l" />
+                    <p
+                        className={
+                            "mt-5 text-lg leading-10 font-semibold md:pe-24"
+                        }
+                    >
                         {t("about_us_description")}
                     </p>
                 </div>
@@ -123,13 +209,17 @@ const Index = ({ brands }: { brands: Brand[] }) => {
                 <div className={"flex w-full flex-col items-start"}>
                     <h2
                         className={
-                            "bg-landing-primary text-xl font-bold ltr:rounded-tr-2xl rtl:rounded-tl-2xl w-50 py-5 ps-8"
+                            "bg-landing-primary w-50 py-5 ps-8 text-xl font-bold ltr:rounded-tr-2xl rtl:rounded-tl-2xl"
                         }
                     >
                         {t("our_mission")}:
                     </h2>
-                    <div className="h-[2px] w-40 rounded-full bg-gradient-to-r rtl:bg-gradient-to-l from-black to-transparent md:w-80" />
-                    <p className={"mt-5 text-lg md:pe-24 font-semibold leading-10"}>
+                    <div className="h-[2px] w-40 rounded-full bg-gradient-to-r from-black to-transparent md:w-80 rtl:bg-gradient-to-l" />
+                    <p
+                        className={
+                            "mt-5 text-lg leading-10 font-semibold md:pe-24"
+                        }
+                    >
                         {t("our_mission_description")}
                     </p>
                 </div>
@@ -137,20 +227,24 @@ const Index = ({ brands }: { brands: Brand[] }) => {
                 <div className={"flex w-full flex-col items-start"}>
                     <h2
                         className={
-                            "bg-landing-primary text-xl font-bold ltr:rounded-tr-2xl rtl:rounded-tl-2xl w-50 py-5 ps-8"
+                            "bg-landing-primary w-50 py-5 ps-8 text-xl font-bold ltr:rounded-tr-2xl rtl:rounded-tl-2xl"
                         }
                     >
                         {t("our_vision")}:
                     </h2>
-                    <div className="h-[2px] w-40 rounded-full bg-gradient-to-r rtl:bg-gradient-to-l from-black to-transparent md:w-80" />
-                    <p className={"mt-5 text-lg md:pe-24 font-semibold leading-10"}>
+                    <div className="h-[2px] w-40 rounded-full bg-gradient-to-r from-black to-transparent md:w-80 rtl:bg-gradient-to-l" />
+                    <p
+                        className={
+                            "mt-5 text-lg leading-10 font-semibold md:pe-24"
+                        }
+                    >
                         {t("our_vision_description")}
                     </p>
                 </div>
-                
+
                 <h2
                     className={
-                        "bg-landing-primary mt-16 text-xl font-bold ltr:rounded-tr-2xl rtl:rounded-tl-2xl w-50 py-5 ps-8"
+                        "bg-landing-primary mt-16 w-50 py-5 ps-8 text-xl font-bold ltr:rounded-tr-2xl rtl:rounded-tl-2xl"
                     }
                 >
                     {t("our_services")}:
@@ -158,7 +252,6 @@ const Index = ({ brands }: { brands: Brand[] }) => {
             </div>
 
             <div className={"relative flex w-full flex-col items-start"}>
-
                 <div
                     className={
                         "bg-landing-secondary w-full px-10 py-10 md:px-24"
@@ -169,7 +262,7 @@ const Index = ({ brands }: { brands: Brand[] }) => {
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "center",
                         backgroundAttachment: "fixed",
-                }}
+                    }}
                 >
                     <div className={"flex w-full flex-col items-start py-8"}>
                         <h2
@@ -189,21 +282,27 @@ const Index = ({ brands }: { brands: Brand[] }) => {
                                     src={asset("/images/Icon01.svg")}
                                     className={"h-12 w-12 rounded-lg p-2"}
                                 />
-                                <p className="leading-10">{t("service_security_services")}</p>
+                                <p className="leading-10">
+                                    {t("service_security_services")}
+                                </p>
                             </div>
                             <div className={"flex items-start gap-4"}>
                                 <img
                                     src={asset("/images/Icon02.svg")}
                                     className={"h-12 w-12 rounded-lg p-2"}
                                 />
-                                <p className="leading-10">{t("service_plastic_cards")}</p>
+                                <p className="leading-10">
+                                    {t("service_plastic_cards")}
+                                </p>
                             </div>
                             <div className={"flex items-start gap-4"}>
                                 <img
                                     src={asset("/images/Icon04.svg")}
                                     className={"h-12 w-12 rounded-lg p-2"}
                                 />
-                                <p className="leading-10">{t("service_barcodes_systems")}</p>
+                                <p className="leading-10">
+                                    {t("service_barcodes_systems")}
+                                </p>
                             </div>
 
                             <div className={"flex items-start gap-4"}>
@@ -211,7 +310,9 @@ const Index = ({ brands }: { brands: Brand[] }) => {
                                     src={asset("/images/Icon03.svg")}
                                     className={"h-12 w-12 rounded-lg p-2"}
                                 />
-                                <p className="leading-10">{t("service_gaming")}</p>
+                                <p className="leading-10">
+                                    {t("service_gaming")}
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -262,7 +363,7 @@ const Index = ({ brands }: { brands: Brand[] }) => {
 
                 <h2
                     className={
-                        "text-landing-primary px-10 py-5 text-center text-2xl font-bold text-wrap md:px-72 leading-12"
+                        "text-landing-primary px-10 py-5 text-center text-2xl leading-12 font-bold text-wrap md:px-72"
                     }
                 >
                     {t("home_footer_quote")}
@@ -270,7 +371,7 @@ const Index = ({ brands }: { brands: Brand[] }) => {
 
                 <div
                     className={
-                        "grid w-full items-center gap-10 px-10 py-10 text-xl md:grid-cols-3 md:gap-24 md:px-50 mt-8"
+                        "mt-8 grid w-full items-center gap-10 px-10 py-10 text-xl md:grid-cols-3 md:gap-24 md:px-50"
                     }
                     dir="ltr"
                 >
@@ -302,21 +403,39 @@ const Index = ({ brands }: { brands: Brand[] }) => {
                             <PhoneIcon
                                 className={"text-landing-primary me-2"}
                             />
-                            <a dir="ltr" target="_blank" href={"https://wa.me/+963933303939"}>+963 933 303 939</a>
+                            <a
+                                dir="ltr"
+                                target="_blank"
+                                href={"https://wa.me/+963933303939"}
+                            >
+                                +963 933 303 939
+                            </a>
                         </div>
 
                         <div className={"flex items-center"}>
                             <PhoneIcon
                                 className={"text-landing-primary me-2"}
                             />
-                            <a dir="ltr" target="_blank" href={"https://wa.me/+963935288888"}>+963 935 288 888</a>
+                            <a
+                                dir="ltr"
+                                target="_blank"
+                                href={"https://wa.me/+963935288888"}
+                            >
+                                +963 935 288 888
+                            </a>
                         </div>
 
                         <div className={"flex items-center"}>
                             <PhoneIcon
                                 className={"text-landing-primary me-2"}
                             />
-                            <a dir="ltr" target="_blank" href={"https://wa.me/+963932865566"}>+963 932 865 566</a>
+                            <a
+                                dir="ltr"
+                                target="_blank"
+                                href={"https://wa.me/+963932865566"}
+                            >
+                                +963 932 865 566
+                            </a>
                         </div>
                     </div>
 
@@ -349,7 +468,9 @@ const Index = ({ brands }: { brands: Brand[] }) => {
                             />
                             <a
                                 target={"_blank"}
-                                href={"https://www.linkedin.com/company/id-technologies-co/"}
+                                href={
+                                    "https://www.linkedin.com/company/id-technologies-co/"
+                                }
                             >
                                 ID Technologies Co
                             </a>
