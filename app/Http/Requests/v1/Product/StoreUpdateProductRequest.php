@@ -46,7 +46,8 @@ class StoreUpdateProductRequest extends FormRequest
                     'max:10000', 'mimes:pdf,docx,txt'
                 ])
             ],
-            'support_link' => 'string|url|nullable'
+            'support_link' => 'string|url|nullable',
+            'is_featured' => 'boolean|nullable',
         ];
     }
 }

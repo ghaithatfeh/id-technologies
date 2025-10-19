@@ -9,6 +9,7 @@ interface Product {
     pdf?: Media | undefined;
     category?: Category;
     support_link?: string;
+    is_featured?: boolean;
 }
 
 export default Product;

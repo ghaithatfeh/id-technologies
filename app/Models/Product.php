@@ -25,6 +25,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property Carbon                                                          $created_at
  * @property Carbon                                                          $updated_at
  * @property string|null                                                     $support_link
+ * @property bool                                                            $is_featured
  * @method Builder isActive()
  * @mixin Builder<Product>
  * @use  HasFactory<ProductFactory>
@@ -41,6 +42,7 @@ class Product extends Model
         'image',
         'pdf',
         'support_link',
+        'is_featured',
     ];
 
     protected function casts(): array
@@ -50,6 +52,7 @@ class Product extends Model
             'is_active' => 'boolean',
             'image' => MediaCast::class,
             'pdf' => MediaCast::class,
+            'is_featured' => 'boolean',
         ];
     }
 
@@ -61,7 +64,8 @@ class Product extends Model
             'image',
             'pdf',
             'category.name',
-
+            'support_link',
+            'is_featured',
         ];
     }
 
@@ -69,7 +73,7 @@ class Product extends Model
     {
         return [
             'name',
-
+            'is_featured'
         ];
     }
 

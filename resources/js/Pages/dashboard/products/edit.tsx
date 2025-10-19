@@ -23,6 +23,7 @@ const Edit = ({ product }: { product: Product }) => {
         image?: File | undefined | Media;
         pdf?: File | undefined | Media;
         support_link?: string;
+        is_featured?: boolean;
     }>({
         _method: "PUT",
         name: product?.name,
@@ -31,6 +32,7 @@ const Edit = ({ product }: { product: Product }) => {
         pdf: product?.pdf,
         image: product?.image,
         support_link: product?.support_link,
+        is_featured: product.is_featured ?? false,
     });
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -63,6 +65,19 @@ const Edit = ({ product }: { product: Product }) => {
                             }
                             checked={(val: any) => val == product.is_active}
                             label={"Is Avilable?"}
+                        />
+
+                        <Radio
+                            name="is_featured"
+                            items={[
+                                { label: "Yes", value: true },
+                                { label: "No", value: false },
+                            ]}
+                            onChange={(e) =>
+                                setData("is_featured", e.target.value == "true")
+                            }
+                            checked={false}
+                            label={"Is Featured?"}
                         />
                         <Input
                             name="image"

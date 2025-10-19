@@ -55,6 +55,14 @@ const Index = () => {
                     },
                 },
                 {
+                    name: "is_featured",
+                    label: "Is Featured?",
+                    sortable: true,
+                    render: (cell, record, setHidden, revalidate) => {
+                        return cell ? <span>Yes</span> : <span>No</span>;
+                    },
+                },
+                {
                     name: "category.name",
                     label: "Category",
                     translatable: true,

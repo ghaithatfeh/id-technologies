@@ -21,10 +21,12 @@ const Create = () => {
         image?: File | undefined | Media;
         pdf?: File | undefined | Media;
         support_link?: string;
+        is_featured?: boolean;
     }>({
         name: "",
         is_active: true,
         category_id: 0,
+        is_featured: false,
     });
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -56,6 +58,18 @@ const Create = () => {
                             }
                             checked={true}
                             label={"Is Avilable?"}
+                        />
+                        <Radio
+                            name="is_featured"
+                            items={[
+                                { label: "Yes", value: true },
+                                { label: "No", value: false },
+                            ]}
+                            onChange={(e) =>
+                                setData("is_featured", e.target.value == "true")
+                            }
+                            checked={false}
+                            label={"Is Featured?"}
                         />
                         <Input
                             name="image"
