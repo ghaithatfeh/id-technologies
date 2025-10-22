@@ -17,7 +17,11 @@ function TableBody<Data>({
                         return (
                             <tr
                                 key={`${index}-${item.label}`}
-                                className={`hover:opacity-50 dark:text-white`}
+                                className={`hover:opacity-50 dark:text-white ${
+                                    item.is_featured 
+                                        ? 'bg-yellow-100 dark:bg-yellow-900/20 border-l-4 border-yellow-500' 
+                                        : ''
+                                }`}
                             >
                                 {tableSchema.map((schema, index) => {
                                     if (!schema.render && schema.name) {
