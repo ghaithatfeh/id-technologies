@@ -2,7 +2,13 @@ import React, { Fragment } from "react";
 import LandingNavbar from "@/Components/landing/landing-navbar";
 import { useTranslation } from "react-i18next";
 import { asset } from "@/helper";
-import { FacebookIcon, Globe2, LinkedinIcon, Mail, PhoneIcon } from "lucide-react";
+import {
+    FacebookIcon,
+    Globe2,
+    LinkedinIcon,
+    Mail,
+    PhoneIcon,
+} from "lucide-react";
 import Product from "@/Models/Product";
 import product from "@/Models/Product";
 import { translate } from "@/Models/Translatable";
@@ -38,19 +44,31 @@ const CustomerService = ({ products }: { products: Product[] }) => {
                 </div>
                 <div
                     className={
-                        "flex flex-wrap md:px-38 absolute -bottom-12 w-full md:gap-10 gap-2 justify-center"
+                        "absolute -bottom-12 flex w-full flex-wrap justify-center gap-2 md:gap-10 md:px-38"
                     }
                 >
-                    <img className="max-w-38 md:max-w-[unset] md:w-1/5 shadow-xl rounded-lg md:rounded-xl" src={asset("/images/03-Brand01.png")} />
-                    <img className="max-w-38 md:max-w-[unset] md:w-1/5 shadow-xl rounded-lg md:rounded-xl" src={asset("/images/04-Brand02.png")} />
-                    <img className="max-w-38 md:max-w-[unset] md:w-1/5 shadow-xl rounded-lg md:rounded-xl" src={asset("/images/05-Brand03.png")} />
-                    <img className="max-w-38 md:max-w-[unset] md:w-1/5 shadow-xl rounded-lg md:rounded-xl" src={asset("/images/06-Brand04.png")} />
+                    <img
+                        className="max-w-38 rounded-lg shadow-xl md:w-1/5 md:max-w-[unset] md:rounded-xl"
+                        src={asset("/images/03-Brand01.png")}
+                    />
+                    <img
+                        className="max-w-38 rounded-lg shadow-xl md:w-1/5 md:max-w-[unset] md:rounded-xl"
+                        src={asset("/images/04-Brand02.png")}
+                    />
+                    <img
+                        className="max-w-38 rounded-lg shadow-xl md:w-1/5 md:max-w-[unset] md:rounded-xl"
+                        src={asset("/images/05-Brand03.png")}
+                    />
+                    <img
+                        className="max-w-38 rounded-lg shadow-xl md:w-1/5 md:max-w-[unset] md:rounded-xl"
+                        src={asset("/images/06-Brand04.png")}
+                    />
                 </div>
             </div>
 
             <div
                 className={
-                    "h-full w-full bg-[url('/images/08-BG.svg')] py-10 pt-30 md:py-48 bg-cover bg-center bg-no-repeat"
+                    "h-full w-full bg-[url('/images/08-BG.svg')] bg-cover bg-center bg-no-repeat py-10 pt-30 md:py-48"
                 }
             >
                 <div
@@ -63,14 +81,14 @@ const CustomerService = ({ products }: { products: Product[] }) => {
                     >
                         <h1
                             className={
-                                "bg-landing-primary ltr:border-r-2 ltr:border-r-white rtl:border-l-2 rtl:border-l-white px-5 py-4 md:text-xl font-bold text-wrap"
+                                "bg-landing-primary px-5 py-4 font-bold text-wrap md:text-xl ltr:border-r-2 ltr:border-r-white rtl:border-l-2 rtl:border-l-white"
                             }
                         >
                             {t("product")}
                         </h1>
                         <h1
                             className={
-                                "bg-landing-primary col-span-2 px-5 py-4 md:text-xl font-bold text-wrap"
+                                "bg-landing-primary col-span-2 px-5 py-4 font-bold text-wrap md:text-xl"
                             }
                         >
                             {t("link")}
@@ -79,18 +97,20 @@ const CustomerService = ({ products }: { products: Product[] }) => {
                             <Fragment key={index}>
                                 <h2
                                     className={
-                                        "border-landing-primary font-bold h-full border break-words p-5 text-wrap text-sm md:text-md"
+                                        "border-landing-primary md:text-md h-full border p-5 text-sm font-bold text-wrap break-words"
                                     }
                                 >
                                     {translate(p.name)}
                                 </h2>
-                                <h2
+                                <a
+                                    href={p.support_link}
+                                    target={"_blank"}
                                     className={
-                                        "border-landing-primary col-span-2 h-full border break-all p-5 text-wrap text-sm md:text-md"
+                                        "border-landing-primary md:text-md col-span-2 h-full border p-5 text-sm text-wrap break-all hover:underline"
                                     }
                                 >
                                     {p.support_link}
-                                </h2>
+                                </a>
                             </Fragment>
                         ))}
                     </div>
@@ -101,7 +121,7 @@ const CustomerService = ({ products }: { products: Product[] }) => {
                 <div className={"md:p-10"}>
                     <h2
                         className={
-                            "text-landing-primary px-10 py-5 text-center text-2xl font-bold text-wrap md:px-72 leading-12"
+                            "text-landing-primary px-10 py-5 text-center text-2xl leading-12 font-bold text-wrap md:px-72"
                         }
                     >
                         {t("home_footer_quote")}
@@ -140,21 +160,39 @@ const CustomerService = ({ products }: { products: Product[] }) => {
                                 <PhoneIcon
                                     className={"text-landing-primary me-2"}
                                 />
-                                <a dir="ltr" target="_blank" href={"https://wa.me/+963933303939"}>+963 933 303 939</a>
+                                <a
+                                    dir="ltr"
+                                    target="_blank"
+                                    href={"https://wa.me/+963933303939"}
+                                >
+                                    +963 933 303 939
+                                </a>
                             </div>
 
                             <div className={"flex items-center"}>
                                 <PhoneIcon
                                     className={"text-landing-primary me-2"}
                                 />
-                                <a dir="ltr" target="_blank" href={"https://wa.me/+963935288888"}>+963 935 288 888</a>
+                                <a
+                                    dir="ltr"
+                                    target="_blank"
+                                    href={"https://wa.me/+963935288888"}
+                                >
+                                    +963 935 288 888
+                                </a>
                             </div>
 
                             <div className={"flex items-center"}>
                                 <PhoneIcon
                                     className={"text-landing-primary me-2"}
                                 />
-                                <a dir="ltr" target="_blank" href={"https://wa.me/+963932865566"}>+963 932 865 566</a>
+                                <a
+                                    dir="ltr"
+                                    target="_blank"
+                                    href={"https://wa.me/+963932865566"}
+                                >
+                                    +963 932 865 566
+                                </a>
                             </div>
                         </div>
 
@@ -189,7 +227,9 @@ const CustomerService = ({ products }: { products: Product[] }) => {
                                 />
                                 <a
                                     target={"_blank"}
-                                    href={"https://www.linkedin.com/company/id-technologies-co/"}
+                                    href={
+                                        "https://www.linkedin.com/company/id-technologies-co/"
+                                    }
                                 >
                                     ID Technologies Co
                                 </a>

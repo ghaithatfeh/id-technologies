@@ -6,7 +6,13 @@ import { translate } from "@/Models/Translatable";
 import { useTranslation } from "react-i18next";
 import { Link } from "@inertiajs/react";
 import DownloadFile from "@/Hooks/DownloadFile";
-import { FacebookIcon, Globe2, LinkedinIcon, Mail, PhoneIcon } from "lucide-react";
+import {
+    FacebookIcon,
+    Globe2,
+    LinkedinIcon,
+    Mail,
+    PhoneIcon,
+} from "lucide-react";
 
 const Show = ({ brand, category }: { brand: Brand; category: Category }) => {
     const { t } = useTranslation();
@@ -25,21 +31,30 @@ const Show = ({ brand, category }: { brand: Brand; category: Category }) => {
                 >
                     <h1
                         className={
-                            "text-landing-primary px-5 text-center text-3xl leading-12 md:leading-20 md:text-4xl"
+                            "text-landing-primary px-5 text-center text-3xl leading-12 md:text-4xl md:leading-20"
                         }
                     >
                         {translate(brand.brand_title)}
                     </h1>
                 </div>
 
-                <div className={"flex flex-wrap px-10 md:px-38 absolute -bottom-10 md:-bottom-12 justify-center w-full"}>
-                    <img src={brand.logo?.url} className={"w-1/2 md:w-1/5 shadow-xl rounded-lg md:rounded-xl"} />
+                <div
+                    className={
+                        "absolute -bottom-10 flex w-full flex-wrap justify-center px-10 md:-bottom-12 md:px-38"
+                    }
+                >
+                    <img
+                        src={brand.logo?.url}
+                        className={
+                            "w-1/2 rounded-lg shadow-xl md:w-1/5 md:rounded-xl"
+                        }
+                    />
                 </div>
             </div>
 
             <div
                 className={
-                    "flex w-full flex-col items-start justify-between px-10 py-10 pt-20 md:flex-row md:px-36 md:py-36 bg-[url('/images/08-BG.svg')] bg-cover bg-center bg-no-repeat"
+                    "flex w-full flex-col items-start justify-between bg-[url('/images/08-BG.svg')] bg-cover bg-center bg-no-repeat px-10 py-10 pt-20 md:flex-row md:px-36 md:py-36"
                 }
             >
                 <div
@@ -89,7 +104,7 @@ const Show = ({ brand, category }: { brand: Brand; category: Category }) => {
                         <div className={"flex h-full w-full flex-col gap-3"}>
                             <div
                                 className={
-                                    "border-landing-primary h-full min-h-60 w-full rounded-t-xl border-2 md:min-h-72"
+                                    "border-landing-primary h-full min-h-60 w-full rounded-t-xl border-2 md:min-h-72 md:max-h-72"
                                 }
                             >
                                 <img
@@ -97,6 +112,7 @@ const Show = ({ brand, category }: { brand: Brand; category: Category }) => {
                                     className={
                                         "h-[80%] max-h-[80%] w-full rounded-t-xl object-fill"
                                     }
+                                    alt={product.name}
                                 />
                                 <h1
                                     className={
@@ -110,6 +126,7 @@ const Show = ({ brand, category }: { brand: Brand; category: Category }) => {
                                 href={product.pdf?.url}
                                 target={"_blank"}
                                 className={"w-full"}
+                                download
                             >
                                 <button
                                     className={
@@ -119,6 +136,22 @@ const Show = ({ brand, category }: { brand: Brand; category: Category }) => {
                                     {t("download_pdf")}
                                 </button>
                             </a>
+                            {product?.video && (
+                                <a
+                                    href={product.video?.url}
+                                    target={"_blank"}
+                                    className={"w-full"}
+                                    download
+                                >
+                                    <button
+                                        className={
+                                            "bg-landing-secondary w-full cursor-pointer px-5 py-3 text-center font-bold text-white"
+                                        }
+                                    >
+                                        {t("download_video")}
+                                    </button>
+                                </a>
+                            )}
                         </div>
                     ))}
                 </div>
@@ -127,7 +160,7 @@ const Show = ({ brand, category }: { brand: Brand; category: Category }) => {
                 <div className={"md:p-10"}>
                     <h2
                         className={
-                            "text-landing-primary px-10 py-5 text-center text-2xl font-bold text-wrap md:px-72 leading-12"
+                            "text-landing-primary px-10 py-5 text-center text-2xl leading-12 font-bold text-wrap md:px-72"
                         }
                     >
                         {t("home_footer_quote")}
@@ -166,21 +199,39 @@ const Show = ({ brand, category }: { brand: Brand; category: Category }) => {
                                 <PhoneIcon
                                     className={"text-landing-primary me-2"}
                                 />
-                                <a dir="ltr" target="_blank" href={"https://wa.me/+963933303939"}>+963 933 303 939</a>
+                                <a
+                                    dir="ltr"
+                                    target="_blank"
+                                    href={"https://wa.me/+963933303939"}
+                                >
+                                    +963 933 303 939
+                                </a>
                             </div>
 
                             <div className={"flex items-center"}>
                                 <PhoneIcon
                                     className={"text-landing-primary me-2"}
                                 />
-                                <a dir="ltr" target="_blank" href={"https://wa.me/+963935288888"}>+963 935 288 888</a>
+                                <a
+                                    dir="ltr"
+                                    target="_blank"
+                                    href={"https://wa.me/+963935288888"}
+                                >
+                                    +963 935 288 888
+                                </a>
                             </div>
 
                             <div className={"flex items-center"}>
                                 <PhoneIcon
                                     className={"text-landing-primary me-2"}
                                 />
-                                <a dir="ltr" target="_blank" href={"https://wa.me/+963932865566"}>+963 932 865 566</a>
+                                <a
+                                    dir="ltr"
+                                    target="_blank"
+                                    href={"https://wa.me/+963932865566"}
+                                >
+                                    +963 932 865 566
+                                </a>
                             </div>
                         </div>
 
@@ -215,7 +266,9 @@ const Show = ({ brand, category }: { brand: Brand; category: Category }) => {
                                 />
                                 <a
                                     target={"_blank"}
-                                    href={"https://www.linkedin.com/company/id-technologies-co/"}
+                                    href={
+                                        "https://www.linkedin.com/company/id-technologies-co/"
+                                    }
                                 >
                                     ID Technologies Co
                                 </a>

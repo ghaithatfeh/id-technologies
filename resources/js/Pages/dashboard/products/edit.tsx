@@ -24,6 +24,7 @@ const Edit = ({ product }: { product: Product }) => {
         pdf?: File | undefined | Media;
         support_link?: string;
         is_featured?: boolean;
+        video?: File | undefined | Media;
     }>({
         _method: "PUT",
         name: product?.name,
@@ -33,6 +34,7 @@ const Edit = ({ product }: { product: Product }) => {
         image: product?.image,
         support_link: product?.support_link,
         is_featured: product.is_featured ?? false,
+        video: product?.video,
     });
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -92,6 +94,14 @@ const Edit = ({ product }: { product: Product }) => {
                             label={"Pdf"}
                             onChange={(e) =>
                                 setData("pdf", e.target.files?.[0])
+                            }
+                            type={"file"}
+                        />
+                        <Input
+                            name="video"
+                            label={"Video"}
+                            onChange={(e) =>
+                                setData("video", e.target.files?.[0])
                             }
                             type={"file"}
                         />

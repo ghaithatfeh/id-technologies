@@ -36,7 +36,16 @@ const Show = ({ product }: { product: Product }) => {
 
                 <div className="dark:bg-dark my-2 mb-5 flex items-center justify-between rounded-md bg-gray-50 p-4 text-xl font-bold dark:text-white">
                     <label className="text-lg font-semibold">Pdf :</label>
-                    <a href={product?.pdf?.url} target={"_blank"}>
+                    <a href={product?.pdf?.url} target={"_blank"} download>
+                        <Button sm color={"secondary"} type={"button"}>
+                            Download
+                        </Button>
+                    </a>
+                </div>
+
+                <div className="dark:bg-dark my-2 mb-5 flex items-center justify-between rounded-md bg-gray-50 p-4 text-xl font-bold dark:text-white">
+                    <label className="text-lg font-semibold">Video :</label>
+                    <a href={product?.video?.url} target={"_blank"} download>
                         <Button sm color={"secondary"} type={"button"}>
                             Download
                         </Button>

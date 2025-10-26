@@ -22,6 +22,7 @@ const Create = () => {
         pdf?: File | undefined | Media;
         support_link?: string;
         is_featured?: boolean;
+        video?: File | undefined | Media;
     }>({
         name: "",
         is_active: true,
@@ -88,6 +89,14 @@ const Create = () => {
                             }
                             type={"file"}
                             required
+                        />
+                        <Input
+                            name="video"
+                            label={"Video"}
+                            onChange={(e) =>
+                                setData("video", e.target.files?.[0])
+                            }
+                            type={"file"}
                         />
                         <ApiSelect
                             name="category_id"

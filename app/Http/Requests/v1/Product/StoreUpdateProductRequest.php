@@ -46,6 +46,17 @@ class StoreUpdateProductRequest extends FormRequest
                     'max:10000', 'mimes:pdf,docx,txt'
                 ])
             ],
+            'video' => [
+                'nullable',
+                Rule::when(is_array($this->input('video')), [
+                    SerializedMedia::validator([
+                        'max:512000', 'mimes:mp4,mov,ogg,webm'
+                    ])
+                ]),
+                Rule::when($this->hasFile('video'), [
+                    'max:512000', 'mimes:mp4,mov,ogg,webm'
+                ])
+            ],
             'support_link' => 'string|url|nullable',
             'is_featured' => 'boolean|nullable',
         ];

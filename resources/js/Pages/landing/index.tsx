@@ -36,7 +36,7 @@ const Index = ({
                 <LandingNavbar />
                 <div
                     className={
-                        "flex h-full w-full flex-col items-center justify-between px-10 pb-24 md:flex-row md:px-16 md:pb-46 md:pe-38 gap-4"
+                        "flex h-full w-full flex-col items-center justify-between gap-4 px-10 pb-24 md:flex-row md:px-16 md:pe-32 md:pb-46"
                     }
                 >
                     <div className={"w-full max-w-4xl"}>
@@ -123,7 +123,7 @@ const Index = ({
                         </div>
                     </div>
                     {featured_product && (
-                        <div className={"mt-24 md:mt-12 md:max-w-[40%]"}>
+                        <div className={"mt-24 md:mt-12"}>
                             <Link
                                 href={route("landing.brands.show", {
                                     brandId:
@@ -145,12 +145,12 @@ const Index = ({
                                     </h1>
                                     <img
                                         src={featured_product.image?.url}
-                                        className={"max-h-96 min-h-72 w-full"}
+                                        className={"h-44 w-44"}
                                         alt={t("featured_product")}
                                     />
                                     <h2
                                         className={
-                                            "w-full text-center text-xl font-bold mt-2"
+                                            "mt-2 w-full text-center text-xl font-bold"
                                         }
                                     >
                                         {translate(featured_product?.name)}

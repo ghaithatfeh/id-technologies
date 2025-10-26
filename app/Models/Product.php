@@ -15,17 +15,18 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * @property int                                                             $id
- * @property TranslatableSerializer                                          $name
- * @property bool                                                            $is_active
- * @property int                                                             $category_id
- * @property array{url:string,size:string,extension:string,mime_type:string} $image
- * @property array{url:string,size:string,extension:string,mime_type:string} $pdf
- * @property Category|null                                                   $category
- * @property Carbon                                                          $created_at
- * @property Carbon                                                          $updated_at
- * @property string|null                                                     $support_link
- * @property bool                                                            $is_featured
+ * @property int                                                                  $id
+ * @property TranslatableSerializer                                               $name
+ * @property bool                                                                 $is_active
+ * @property int                                                                  $category_id
+ * @property array{url:string,size:string,extension:string,mime_type:string}      $image
+ * @property array{url:string,size:string,extension:string,mime_type:string}      $pdf
+ * @property Category|null                                                        $category
+ * @property Carbon                                                               $created_at
+ * @property Carbon                                                               $updated_at
+ * @property string|null                                                          $support_link
+ * @property bool                                                                 $is_featured
+ * @property array{url:string,size:string,extension:string,mime_type:string}|null $video
  * @method Builder isActive()
  * @mixin Builder<Product>
  * @use  HasFactory<ProductFactory>
@@ -43,6 +44,7 @@ class Product extends Model
         'pdf',
         'support_link',
         'is_featured',
+        'video'
     ];
 
     protected function casts(): array
@@ -53,6 +55,7 @@ class Product extends Model
             'image' => MediaCast::class,
             'pdf' => MediaCast::class,
             'is_featured' => 'boolean',
+            'video' => MediaCast::class,
         ];
     }
 
@@ -66,6 +69,7 @@ class Product extends Model
             'category.name',
             'support_link',
             'is_featured',
+            'video_url'
         ];
     }
 
