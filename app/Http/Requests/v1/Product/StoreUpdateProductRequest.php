@@ -22,6 +22,7 @@ class StoreUpdateProductRequest extends FormRequest
      */
     public function rules(): array
     {
+        dd($this->file('image')->getErrorMessage());
         return [
             'name' => ['json', new ValidTranslatableJson, 'required'],
             'is_active' => ['required', 'boolean'],
@@ -29,9 +30,6 @@ class StoreUpdateProductRequest extends FormRequest
             'image' => [
                 'nullable',
                 Rule::requiredIf(fn() => $this->isPost()),
-                Rule::when(is_array($this->input('image')), [
-                    SerializedMedia::validator()
-                ]),
                 Rule::when($this->hasFile('image'), [
                     'image:allow_svg', 'max:10000', 'mimes:jpeg,png,jpg,gif,svg,webp'
                 ])
@@ -39,22 +37,12 @@ class StoreUpdateProductRequest extends FormRequest
             'pdf' => [
                 'nullable',
                 Rule::requiredIf(fn() => $this->isPost()),
-                Rule::when(is_array($this->input('pdf')), [
-                    SerializedMedia::validator([
-                        'max:10000', 'mimes:pdf,docx,txt'
-                    ])
-                ]),
                 Rule::when($this->hasFile('pdf'), [
                     'max:10000', 'mimes:pdf,docx,txt'
                 ])
             ],
             'video' => [
                 'nullable',
-                Rule::when(is_array($this->input('video')), [
-                    SerializedMedia::validator([
-                        'max:512000', 'mimes:mp4,mov,ogg,webm'
-                    ])
-                ]),
                 Rule::when($this->hasFile('video'), [
                     'max:512000', 'mimes:mp4,mov,ogg,webm'
                 ])
