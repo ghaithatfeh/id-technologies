@@ -28,6 +28,7 @@ class StoreUpdateProductRequest extends FormRequest
             'category_id' => ['numeric', 'required', Rule::exists('categories', 'id')],
             'image' => [
                 'nullable',
+                Rule::requiredIf(fn() => $this->isPost()),
                 Rule::when(is_array($this->input('image')), [
                     SerializedMedia::validator()
                 ]),
@@ -37,6 +38,7 @@ class StoreUpdateProductRequest extends FormRequest
             ],
             'pdf' => [
                 'nullable',
+                Rule::requiredIf(fn() => $this->isPost()),
                 Rule::when(is_array($this->input('pdf')), [
                     SerializedMedia::validator([
                         'max:10000', 'mimes:pdf,docx,txt'
