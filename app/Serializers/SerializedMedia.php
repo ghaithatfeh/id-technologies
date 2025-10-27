@@ -42,20 +42,6 @@ class SerializedMedia implements Arrayable, Jsonable, JsonSerializable, Stringab
             $access = $this->private ? "private" : "public";
             $this->path = $file['path'] ?? str_replace(asset("/storage"), storage_path("/app/$access"), $this->url);
         } else {
-            // Validate the uploaded file before processing
-            if (!$file->isValid()) {
-                throw new Exception("Invalid uploaded file: " . $file->getError());
-            }
-            
-            if (!$file->getPathname() || !file_exists($file->getPathname())) {
-                throw new Exception("Uploaded file does not exist or has no path");
-            }
-            
-            // Additional validation for file size and content
-            if ($file->getSize() === 0) {
-                throw new Exception("Uploaded file is empty");
-            }
-            
             $this->file = $file;
             $path = $this->storeFile();
             $data = $this->format($path);

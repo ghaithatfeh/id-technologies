@@ -85,17 +85,11 @@ class MediaCast implements CastsAttributes
         }
 
         if ($value instanceof UploadedFile) {
-            try {
-                $file = new SerializedMedia($value, $model->getTable(), $this->private);
-                if (!$file->exists()) {
-                    return null;
-                }
-                return $file->toJson();
-            } catch (Exception $e) {
-                // Log the error and return null for invalid files
-                Log::warning("Failed to process uploaded file: " . $e->getMessage());
+            $file = new SerializedMedia($value, $model->getTable(), $this->private);
+            if (!$file->exists()) {
                 return null;
             }
+            return $file->toJson();
         }
 
         if (is_array($value) && SerializedMedia::isMediaArray($value)) {
