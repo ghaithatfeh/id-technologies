@@ -29,3 +29,8 @@ Route::post('/v1/products/import', [v1\ProductController::class, 'import'])->nam
 Route::get('/v1/products/get-import-example', [v1\ProductController::class, 'getImportExample'])->name('v1.web.protected.products.import.example');
 Route::get('/v1/products/data', [v1\ProductController::class, 'data'])->name('v1.web.protected.products.data');
 Route::resource('/v1/products', v1\ProductController::class)->names('v1.web.protected.products');
+Route::post('/v1/support-links/export', [v1\SupportLinkController::class, 'export'])->name('v1.web.protected.support.links.export');
+Route::post('/v1/support-links/import', [v1\SupportLinkController::class, 'import'])->name('v1.web.protected.support.links.import');
+Route::get('/v1/support-links/get-import-example', [v1\SupportLinkController::class, 'getImportExample'])->name('v1.web.protected.support.links.import.example');
+Route::get('/v1/support-links/data', [v1\SupportLinkController::class, 'data'])->name('v1.web.protected.support.links.data');
+Route::resource('/v1/support-links', v1\SupportLinkController::class)->names('v1.web.protected.support.links');

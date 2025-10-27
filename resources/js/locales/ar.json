@@ -32,6 +32,7 @@
         "product": "المنتج",
         "link": "الرابط",
         "featured_product": "منتج مميز",
-        "download_video": "تحميل الفيديو"
+        "download_video": "تحميل الفيديو",
+        "type": "النوع"
     }
 }

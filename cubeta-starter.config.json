@@ -122,6 +122,32 @@
                 ]
             },
             "version": "v1"
+        },
+        {
+            "model_name": "SupportLink",
+            "table_name": "support_links",
+            "attributes": [
+                {
+                    "name": "product_name",
+                    "type": "translatable",
+                    "nullable": false,
+                    "unique": false
+                },
+                {
+                    "name": "type",
+                    "type": "translatable",
+                    "nullable": false,
+                    "unique": false
+                },
+                {
+                    "name": "link",
+                    "type": "string",
+                    "nullable": false,
+                    "unique": false
+                }
+            ],
+            "relations": [],
+            "version": "v1"
         }
     ]
 }

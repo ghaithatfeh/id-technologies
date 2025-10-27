@@ -9,11 +9,10 @@ import {
     Mail,
     PhoneIcon,
 } from "lucide-react";
-import Product from "@/Models/Product";
-import product from "@/Models/Product";
 import { translate } from "@/Models/Translatable";
+import SupportLink from "@/Models/SupportLink";
 
-const CustomerService = ({ products }: { products: Product[] }) => {
+const CustomerService = ({ supportLinks }: { supportLinks: SupportLink[] }) => {
     const { t } = useTranslation();
     return (
         <>
@@ -73,11 +72,11 @@ const CustomerService = ({ products }: { products: Product[] }) => {
             >
                 <div
                     className={
-                        "flex w-full items-center justify-between px-5 md:grid-cols-3 md:px-38"
+                        "flex w-full items-center justify-between px-5 md:grid-cols-4 md:px-38"
                     }
                 >
                     <div
-                        className={`border-landing-primary grid h-full w-full grid-cols-3 items-center border bg-transparent shadow-2xl`}
+                        className={`border-landing-primary grid h-full w-full grid-cols-4 items-center border bg-transparent shadow-2xl`}
                     >
                         <h1
                             className={
@@ -88,28 +87,42 @@ const CustomerService = ({ products }: { products: Product[] }) => {
                         </h1>
                         <h1
                             className={
+                                "bg-landing-primary px-5 py-4 font-bold text-wrap md:text-xl ltr:border-r-2 ltr:border-r-white rtl:border-l-2 rtl:border-l-white"
+                            }
+                        >
+                            {t("type")}
+                        </h1>
+                        <h1
+                            className={
                                 "bg-landing-primary col-span-2 px-5 py-4 font-bold text-wrap md:text-xl"
                             }
                         >
                             {t("link")}
                         </h1>
-                        {products.map((p, index) => (
+                        {supportLinks.map((p, index) => (
                             <Fragment key={index}>
                                 <h2
                                     className={
                                         "border-landing-primary md:text-md h-full border p-5 text-sm font-bold text-wrap break-words"
                                     }
                                 >
-                                    {translate(p.name)}
+                                    {translate(p.product_name)}
+                                </h2>
+                                <h2
+                                    className={
+                                        "border-landing-primary md:text-md h-full border p-5 text-sm font-bold text-wrap break-words"
+                                    }
+                                >
+                                    {translate(p.type)}
                                 </h2>
                                 <a
-                                    href={p.support_link}
+                                    href={p.link}
                                     target={"_blank"}
                                     className={
                                         "border-landing-primary md:text-md col-span-2 h-full border p-5 text-sm text-wrap break-all hover:underline"
                                     }
                                 >
-                                    {p.support_link}
+                                    {p.link}
                                 </a>
                             </Fragment>
                         ))}

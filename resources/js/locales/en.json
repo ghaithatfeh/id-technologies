@@ -32,6 +32,7 @@
         "product": "Product",
         "link": "Link",
         "featured_product": "Featured Product",
-        "download_video": "Download Video"
+        "download_video": "Download Video",
+        "type": "Type"
     }
 }

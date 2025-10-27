@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Landing;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\v1\BrandResource;
 use App\Http\Resources\v1\ProductResource;
+use App\Http\Resources\v1\SupportLinkResource;
 use App\Models\Brand;
 use App\Models\Product;
+use App\Models\SupportLink;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -34,9 +36,9 @@ class SiteController extends Controller
 
     public function customerService()
     {
-        $products = Product::whereNotNull('support_link')->limit(100)->get();
+        $supportLinks = SupportLink::limit(100)->get();
         return Inertia::render('landing/customer-service', [
-            'products' => ProductResource::collection($products)
+            'supportLinks' => SupportLinkResource::collection($supportLinks)
         ]);
     }
 }
