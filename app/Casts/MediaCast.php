@@ -7,6 +7,7 @@ use Exception;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
@@ -84,11 +85,17 @@ class MediaCast implements CastsAttributes
         }
 
         if ($value instanceof UploadedFile) {
-            $file = new SerializedMedia($value, $model->getTable(), $this->private);
-            if (!$file->exists()) {
+            try {
+                $file = new SerializedMedia($value, $model->getTable(), $this->private);
+                if (!$file->exists()) {
+                    return null;
+                }
+                return $file->toJson();
+            } catch (Exception $e) {
+                // Log the error and return null for invalid files
+                Log::warning("Failed to process uploaded file: " . $e->getMessage());
                 return null;
             }
-            return $file->toJson();
         }
 
         if (is_array($value) && SerializedMedia::isMediaArray($value)) {
@@ -110,9 +117,15 @@ class MediaCast implements CastsAttributes
         $stored = [];
         foreach ($value as $item) {
             if (SerializedMedia::isMediaArray($item) || $item instanceof UploadedFile) {
-                $file = new SerializedMedia($item, $model->getTable(), $this->private);
-                if (!$file->exists()) {
-                    $stored[] = $file->toArray();
+                try {
+                    $file = new SerializedMedia($item, $model->getTable(), $this->private);
+                    if ($file->exists()) {
+                        $stored[] = $file->toArray();
+                    }
+                } catch (Exception $e) {
+                    // Log the error and skip invalid files
+                    Log::warning("Failed to process media item: " . $e->getMessage());
+                    continue;
                 }
             } elseif ($item instanceof SerializedMedia) {
                 if ($item->exists()) {
