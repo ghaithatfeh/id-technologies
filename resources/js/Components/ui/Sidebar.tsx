@@ -26,7 +26,7 @@ const sidebarItems = [
         icon: () => <TableCells />,
     },
     {
-        title: "SupportLink",
+        title: "Customer Service",
         href: route("v1.web.protected.support.links.index"),
         icon: () => <TableCells />,
     },
