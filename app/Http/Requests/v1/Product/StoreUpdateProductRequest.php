@@ -22,7 +22,6 @@ class StoreUpdateProductRequest extends FormRequest
      */
     public function rules(): array
     {
-        dd($this->file('image')->getErrorMessage());
         return [
             'name' => ['json', new ValidTranslatableJson, 'required'],
             'is_active' => ['required', 'boolean'],
