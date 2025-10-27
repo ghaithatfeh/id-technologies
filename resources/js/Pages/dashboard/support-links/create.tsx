@@ -22,7 +22,7 @@ const Create = () => {
     };
 
     return (
-        <PageCard title="Add New SupportLink">
+        <PageCard title="Add New Support Link">
             <TranslatableInputsContext>
                 <Form onSubmit={onSubmit} processing={processing}>
                     <div

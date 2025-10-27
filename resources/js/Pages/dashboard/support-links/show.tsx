@@ -8,7 +8,7 @@ import { translate } from "@/Models/Translatable";
 const Show = ({ supportLink }: { supportLink: SupportLink }) => {
     return (
         <PageCard
-            title="SupportLink Details"
+            title="Support Link Details"
             actions={
                 <div className="flex items-center justify-between">
                     <Link

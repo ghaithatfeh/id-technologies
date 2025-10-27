@@ -27,7 +27,7 @@ const Edit = ({ supportLink }: { supportLink: SupportLink }) => {
     };
 
     return (
-        <PageCard title="Edit SupportLink">
+        <PageCard title="Edit Support Link">
             <TranslatableInputsContext>
                 <Form onSubmit={onSubmit} processing={processing}>
                     <div

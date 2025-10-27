@@ -7,7 +7,7 @@ import Http from "@/Modules/Http/Http";
 const Index = ({ exportables }: { exportables: string[] }) => {
     return (
         <DataTable
-            title="SupportLink Table"
+            title="Support Links"
             createUrl={route("v1.web.protected.support.links.create")}
             importRoute={route("v1.web.protected.support.links.import")}
             exportRoute={route("v1.web.protected.support.links.export")}
