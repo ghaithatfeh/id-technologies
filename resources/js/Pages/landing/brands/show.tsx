@@ -170,6 +170,7 @@ const Show = ({ brand, category }: { brand: Brand; category: Category }) => {
                         className={
                             "grid w-full items-center gap-10 px-10 py-5 text-xl text-white md:grid-cols-3 md:gap-24 md:px-50"
                         }
+                        dir="ltr"
                     >
                         <div className={"flex flex-col items-start"}>
                             <div className={"flex items-center"}>
