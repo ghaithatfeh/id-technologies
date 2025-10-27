@@ -91,6 +91,21 @@ const Index = () => {
                             className={"hover:underline"}
                             target={"_blank"}
                             href={data.url}
+                            download
+                        >
+                            Download ({data.extension}) File
+                        </a>
+                    ),
+                },
+                {
+                    name: "video",
+                    label: "Video",
+                    render: (data) => (
+                        <a
+                            className={"hover:underline"}
+                            target={"_blank"}
+                            href={data.url}
+                            download
                         >
                             Download ({data.extension}) File
                         </a>

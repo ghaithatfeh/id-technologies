@@ -24,7 +24,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property Category|null                                                        $category
  * @property Carbon                                                               $created_at
  * @property Carbon                                                               $updated_at
- * @property string|null                                                          $support_link
  * @property bool                                                                 $is_featured
  * @property array{url:string,size:string,extension:string,mime_type:string}|null $video
  * @method Builder isActive()
@@ -42,7 +41,6 @@ class Product extends Model
         'category_id',
         'image',
         'pdf',
-        'support_link',
         'is_featured',
         'video'
     ];
@@ -67,7 +65,6 @@ class Product extends Model
             'image',
             'pdf',
             'category.name',
-            'support_link',
             'is_featured',
             'video_url'
         ];

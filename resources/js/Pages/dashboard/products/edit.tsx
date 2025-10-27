@@ -22,7 +22,6 @@ const Edit = ({ product }: { product: Product }) => {
         category_id: number;
         image?: File | undefined | Media;
         pdf?: File | undefined | Media;
-        support_link?: string;
         is_featured?: boolean;
         video?: File | undefined | Media;
     }>({
@@ -32,7 +31,6 @@ const Edit = ({ product }: { product: Product }) => {
         category_id: product?.category_id,
         pdf: product?.pdf,
         image: product?.image,
-        support_link: product?.support_link,
         is_featured: product.is_featured ?? false,
         video: product?.video,
     });
@@ -128,15 +126,6 @@ const Edit = ({ product }: { product: Product }) => {
                             optionValue={"id"}
                             defaultValue={product?.category}
                             required
-                        />
-                        <Input
-                            name={"support_link"}
-                            label={"Support Link"}
-                            type={"url"}
-                            defaultValue={product?.support_link}
-                            onChange={(e) =>
-                                setData("support_link", e.target.value)
-                            }
                         />
                     </div>
                 </Form>

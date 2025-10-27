@@ -51,13 +51,6 @@ const Show = ({ product }: { product: Product }) => {
                         </Button>
                     </a>
                 </div>
-
-                <div className={"md:col-span-2"}>
-                    <SmallTextField
-                        label="Support Link"
-                        value={product.support_link}
-                    />
-                </div>
                 <div className="dark:bg-dark my-2 mb-5 rounded-md bg-gray-50 p-4 text-xl font-bold md:col-span-2 dark:text-white">
                     <label className="text-lg font-semibold">Image :</label>
                     <Gallery sources={[product.image?.url]} />

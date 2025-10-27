@@ -8,7 +8,6 @@ interface Product {
     image?: Media | undefined;
     pdf?: Media | undefined;
     category?: Category;
-    support_link?: string;
     is_featured?: boolean;
     video?: Media;
 }

@@ -23,7 +23,6 @@ class ProductResource extends BaseResource
             'category_id' => $this->category_id,
             'image' => $this->image,
             'pdf' => $this->pdf,
-            'support_link' => $this->support_link,
             'is_featured' => $this->is_featured,
             'video' => $this->video,
         ];

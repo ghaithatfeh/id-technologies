@@ -46,7 +46,6 @@ class StoreUpdateProductRequest extends FormRequest
                     'max:512000', 'mimes:mp4,mov,ogg,webm'
                 ])
             ],
-            'support_link' => 'string|url|nullable',
             'is_featured' => 'boolean|nullable',
         ];
     }
