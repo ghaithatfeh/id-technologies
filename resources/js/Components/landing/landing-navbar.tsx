@@ -31,7 +31,7 @@ const LandingNavbar = () => {
         <>
             <div
                 className={
-                    "flex max-h-[13vh] items-center justify-between px-5 py-5 md:py-10 md:px-40 mb-8"
+                    "mb-8 flex max-h-[13vh] items-center justify-between px-5 py-5 md:px-40 md:py-10"
                 }
             >
                 {/* Mobile Menu Button */}
@@ -60,7 +60,10 @@ const LandingNavbar = () => {
                         {t("home")}
                     </Link>
 
-                    <Link className={"hover:underline"} href={route("landing.customer.service")}>
+                    <Link
+                        className={"hover:underline"}
+                        href={route("landing.customer.service")}
+                    >
                         {t("customer_service")}
                     </Link>
 
@@ -68,7 +71,10 @@ const LandingNavbar = () => {
                         {t("about_us")}
                     </Link> */}
 
-                    <Link className={"hover:underline"} href={""}>
+                    <Link
+                        className={"hover:underline"}
+                        href={route("landing.projects.index")}
+                    >
                         {t("our_projects")}
                     </Link>
 
@@ -128,7 +134,7 @@ const LandingNavbar = () => {
                     </Link> */}
 
                     <Link
-                        href={""}
+                        href={route("landing.projects.index")}
                         className="text-landing-primary text-xl font-bold transition-opacity hover:opacity-70"
                         onClick={toggleMenu}
                     >
@@ -136,8 +142,8 @@ const LandingNavbar = () => {
                     </Link>
 
                     <Link
-                        href={""}
-                        className="text-landing-primary text-xl font-bold transition-opacity hover:opacity-70 mt-auto"
+                        href={route("landing.projects.index")}
+                        className="text-landing-primary mt-auto text-xl font-bold transition-opacity hover:opacity-70"
                         onClick={() => {
                             handleLanguageChange(
                                 language === "ar" ? "en" : "ar",
