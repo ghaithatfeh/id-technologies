@@ -45,23 +45,17 @@ const Show = ({ project }: { project: Project }) => {
                         }
                     >
                         {project.images?.map((image, index) => (
-                            <div className={"h-full"}>
+                            <div className={"h-96 rounded overflow-hidden"}>
                                 <img
-                                    className={"h-56 w-full md:h-72"}
+                                    className={"h-full w-full object-cover"}
                                     src={image.url}
                                 />
                             </div>
                         ))}
-                    </div>
-                    <div
-                        className={
-                            "grid grid-cols-1 gap-5 py-5 md:grid-cols-2 md:gap-10 md:py-10"
-                        }
-                    >
                         {project.videos?.map((video, index) => (
-                            <div className={"h-full"}>
+                            <div className={"h-96 rounded overflow-hidden"}>
                                 <video
-                                    className={"h-56 w-full md:h-72"}
+                                    className={"h-full w-full object-cover"}
                                     src={video.url}
                                     controls
                                 />
