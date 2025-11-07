@@ -148,6 +148,44 @@
             ],
             "relations": [],
             "version": "v1"
+        },
+        {
+            "model_name": "Project",
+            "table_name": "projects",
+            "attributes": [
+                {
+                    "name": "title",
+                    "type": "translatable",
+                    "nullable": false,
+                    "unique": false
+                },
+                {
+                    "name": "description",
+                    "type": "translatable",
+                    "nullable": false,
+                    "unique": false
+                },
+                {
+                    "name": "cover",
+                    "type": "file",
+                    "nullable": false,
+                    "unique": false
+                },
+                {
+                    "name": "images",
+                    "type": "file",
+                    "nullable": true,
+                    "unique": false
+                },
+                {
+                    "name": "videos",
+                    "type": "file",
+                    "nullable": true,
+                    "unique": false
+                }
+            ],
+            "relations": [],
+            "version": "v1"
         }
     ]
 }

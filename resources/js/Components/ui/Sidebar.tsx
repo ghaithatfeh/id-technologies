@@ -5,29 +5,29 @@ import { Link } from "@inertiajs/react";
 import React, { ReactNode } from "react";
 
 const sidebarItems = [
-    // {
-    //     href: route("v1.web.protected.index"),
-    //     title: "Dashboard",
-    //     icon: () => <PresentationChart />,
-    // },
     {
         title: "Brands",
         href: route("v1.web.protected.brands.index"),
         icon: () => <TableCells />,
     },
     {
-        title: "Category",
+        title: "Categories",
         href: route("v1.web.protected.categories.index"),
         icon: () => <TableCells />,
     },
     {
-        title: "Product",
+        title: "Products",
         href: route("v1.web.protected.products.index"),
         icon: () => <TableCells />,
     },
     {
         title: "Customer Service",
         href: route("v1.web.protected.support.links.index"),
+        icon: () => <TableCells />,
+    },
+    {
+        title: "Projects",
+        href: route("v1.web.protected.projects.index"),
         icon: () => <TableCells />,
     },
 ];

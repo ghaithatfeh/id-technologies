@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             BrandSeeder::class,
-
-            \Database\Seeders\SupportLinkSeeder::class,
+            SupportLinkSeeder::class,
+            ProjectSeeder::class,
         ]);
     }
 }
