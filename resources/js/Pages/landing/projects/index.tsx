@@ -47,7 +47,7 @@ const Index = ({ projects }: { projects: { data: Project[] } }) => {
                                     project.id,
                                 )}
                             >
-                                <div className="group h-full cursor-pointer overflow-hidden rounded-lg border-6 border-landing-primary bg-landing-primary shadow-md transition-shadow duration-300 hover:shadow-2xl">
+                                <div className="group aspect-square cursor-pointer overflow-hidden rounded-lg border-6 border-landing-primary bg-landing-primary shadow-md transition-shadow duration-300 hover:shadow-2xl">
                                     <div className="relative h-[80%] overflow-hidden sm:h-[90%]">
                                         <img
                                             className={
@@ -58,7 +58,7 @@ const Index = ({ projects }: { projects: { data: Project[] } }) => {
                                     </div>
                                     <p
                                         className={
-                                            "pt-4 pb-3 text-center font-semibold text-wrap"
+                                            "pt-3 text-center font-semibold text-wrap"
                                         }
                                     >
                                         {translate(project.title)}
