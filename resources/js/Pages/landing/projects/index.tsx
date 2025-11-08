@@ -37,7 +37,7 @@ const Index = ({ projects }: { projects: { data: Project[] } }) => {
                 <InfiniteScroll data={"projects"}>
                     <div
                         className={
-                            "grid grid-cols-1 gap-10 px-16 md:grid-cols-2"
+                            "grid grid-cols-1 gap-10 px-16 md:grid-cols-3"
                         }
                     >
                         {projects.data.map((project) => (
