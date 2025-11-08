@@ -145,7 +145,7 @@ const Index = ({
                                     </h1>
                                     <img
                                         src={featured_product.image?.url}
-                                        className={"h-44 object-cover transition-transform duration-300 group-hover:scale-102 rounded"}
+                                        className={"h-44 w-44 object-cover transition-transform duration-300 group-hover:scale-102 rounded"}
                                         alt={t("featured_product")}
                                     />
                                     <h2
