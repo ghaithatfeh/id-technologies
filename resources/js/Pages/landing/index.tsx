@@ -133,19 +133,19 @@ const Index = ({
                             >
                                 <div
                                     className={
-                                        "bg-landing-primary relative max-h-full rounded-xl p-5 pb-2"
+                                        "bg-landing-primary relative max-h-full rounded-xl p-5 pb-2 shadow-xl hover:shadow-3xl transition-shadow duration-300 group"
                                     }
                                 >
                                     <h1
                                         className={
-                                            "border-landing-primary absolute -top-5 left-1/2 -translate-x-1/2 rounded-full border-2 bg-white px-5 py-2 text-center font-bold whitespace-nowrap"
+                                            "border-landing-primary absolute -top-5 left-1/2 -translate-x-1/2 rounded-full border-2 bg-white px-5 py-2 text-center font-bold whitespace-nowrap z-10"
                                         }
                                     >
                                         {t("featured_product")}
                                     </h1>
                                     <img
                                         src={featured_product.image?.url}
-                                        className={"h-44 w-44"}
+                                        className={"h-44 object-cover transition-transform duration-300 group-hover:scale-102 rounded"}
                                         alt={t("featured_product")}
                                     />
                                     <h2
