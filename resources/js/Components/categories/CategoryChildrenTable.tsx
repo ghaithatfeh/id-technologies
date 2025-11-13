@@ -1,21 +1,14 @@
 import ActionsButtons from "@/Components/Datatable/ActionsButtons";
 import DataTable from "@/Components/Datatable/DataTable";
 import Category from "@/Models/Category";
+import { translate } from "@/Models/Translatable";
 import Http from "@/Modules/Http/Http";
 import { Link } from "@inertiajs/react";
-import { translate } from "@/Models/Translatable";
 
-const Index = ({ exportables }: { exportables: string[] }) => {
+const CategoryChildrenTable = ({ categoryId }: { categoryId: number }) => {
     return (
         <DataTable
             title="Category Table"
-            createUrl={route("v1.web.protected.categories.create")}
-            importRoute={route("v1.web.protected.categories.import")}
-            exportRoute={route("v1.web.protected.categories.export")}
-            importExampleRoute={route(
-                "v1.web.protected.categories.import.example",
-            )}
-            exportables={exportables}
             getDataArray={(res) => res.data}
             getTotalPages={(res) => res?.paginate?.total_pages ?? 0}
             getTotalRecords={(res) => res.paginate?.total ?? 0}
@@ -28,12 +21,12 @@ const Index = ({ exportables }: { exportables: string[] }) => {
                 params?: object | undefined,
             ) =>
                 Http.make<Category[]>().get(
-                    route("v1.web.protected.categories.data"),
+                    route("v1.web.protected.categories.children", categoryId),
                     {
                         page: page,
                         search: search,
-                        sort_col: sortCol,
-                        sort_dir: sortDir,
+                        sort_col: sortCol ?? "sort_index",
+                        sort_dir: sortDir ?? "asc",
                         limit: perPage,
                         ...params,
                     },
@@ -55,7 +48,7 @@ const Index = ({ exportables }: { exportables: string[] }) => {
                     name: "brand.brand_title",
                     label: "Brand",
                     translatable: true,
-                    render: (cell, record, setHidden, revalidate) => {
+                    render: (_cell, record) => {
                         return (
                             record?.brand_id && (
                                 <Link
@@ -72,24 +65,9 @@ const Index = ({ exportables }: { exportables: string[] }) => {
                     },
                 },
                 {
-                    name: "parent.id",
-                    label: "Parent",
-                    translatable: true,
-                    render: (cell, record, setHidden, revalidate) => {
-                        return (
-                            record?.parent_id && (
-                                <Link
-                                    className="underline hover:text-primary"
-                                    href={route(
-                                        "v1.web.protected.categories.show",
-                                        record?.parent_id,
-                                    )}
-                                >
-                                    {translate(record.parent?.name)}
-                                </Link>
-                            )
-                        );
-                    },
+                    name: "sort_index",
+                    label: "Sort Index",
+                    sortable: true,
                 },
                 {
                     label: "Options",
@@ -107,4 +85,4 @@ const Index = ({ exportables }: { exportables: string[] }) => {
     );
 };
 
-export default Index;
+export default CategoryChildrenTable;

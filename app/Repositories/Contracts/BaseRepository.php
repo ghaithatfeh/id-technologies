@@ -4,15 +4,15 @@ namespace App\Repositories\Contracts;
 
 use App\Excel\BaseExporter;
 use App\Excel\BaseImporter;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Database\Eloquent\Model;
+use PhpOffice\PhpSpreadsheet\Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection as RegularCollection;
-use Maatwebsite\Excel\Facades\Excel;
-use PhpOffice\PhpSpreadsheet\Exception;
-use PhpOffice\PhpSpreadsheet\Writer\Exception as SpreadSheetException;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use PhpOffice\PhpSpreadsheet\Writer\Exception as SpreadSheetException;
 
 /**
  * @template MODEL of Model
@@ -35,6 +35,8 @@ abstract class BaseRepository
 
     private string $tableName;
 
+    protected int $perPage = 10;
+
     public function __construct()
     {
         $this->model = new $this->modelClass;
@@ -53,13 +55,14 @@ abstract class BaseRepository
         }
 
         $this->modelTableColumns = $this->getTableColumns();
+        $this->perPage = request()->integer('limit', 10);
     }
 
     public static function make(): static
     {
         if (is_null(self::$instance)) {
             self::$instance = new static;
-        } elseif (! (self::$instance instanceof static)) {
+        } elseif (!(self::$instance instanceof static)) {
             self::$instance = new static;
         }
 
@@ -147,7 +150,7 @@ abstract class BaseRepository
                 $value = array_values($value);
             }
 
-            if (! $value) {
+            if (!$value) {
                 continue;
             }
 
@@ -165,7 +168,7 @@ abstract class BaseRepository
                         return $this->handleRangeQuery($value, $q, $relTable, $col);
                     }
                     if ($operator === 'like') {
-                        return $q->{$method}("$relTable.$col", $operator, '%'.$value.'%');
+                        return $q->{$method}("$relTable.$col", $operator, '%' . $value . '%');
                     }
 
                     return $q->{$method}("$relTable.$col", $operator, $value);
@@ -174,9 +177,9 @@ abstract class BaseRepository
                 if ($range) {
                     $query = $this->handleRangeQuery($value, $query, $this->tableName, $field);
                 } elseif ($operator == 'like') {
-                    $query = $query->{$method}($this->tableName.'.'.$field, $operator, '%'.$value.'%');
+                    $query = $query->{$method}($this->tableName . '.' . $field, $operator, '%' . $value . '%');
                 } else {
-                    $query = $query->{$method}($this->tableName.'.'.$field, $operator, $value);
+                    $query = $query->{$method}($this->tableName . '.' . $field, $operator, $value);
                 }
             }
         }
@@ -236,6 +239,11 @@ abstract class BaseRepository
         return $result?->delete();
     }
 
+    /**
+     * @param       $id
+     * @param array $relationships
+     * @return MODEL|null
+     */
     public function find($id, array $relationships = []): ?Model
     {
         $result = $this->model->with($relationships)->find($id);
@@ -248,7 +256,7 @@ abstract class BaseRepository
     }
 
     /**
-     * @param  string|int|Model|MODEL  $id
+     * @param string|int|Model|MODEL $id
      * @return MODEL|null|Model
      */
     public function update(array $data, string|int|Model $id, array $relationships = []): ?Model
@@ -259,7 +267,7 @@ abstract class BaseRepository
             $item = $this->modelClass::find($id);
         }
 
-        if (! $item) {
+        if (!$item) {
             return null;
         }
 
@@ -269,15 +277,15 @@ abstract class BaseRepository
     }
 
     /**
-     * @param  mixed  $value
+     * @param mixed $value
      * @return Builder|MODEL
      */
     private function handleRangeQuery(array $value, Builder $query, string $table, string $column): Builder
     {
         if (count($value) == 2) {
-            if (! isset($value[0]) && isset($value[1])) {
+            if (!isset($value[0]) && isset($value[1])) {
                 $query = $query->where("$table.$column", '<=', $value[1]);
-            } elseif (isset($value[0]) && ! isset($value[1])) {
+            } elseif (isset($value[0]) && !isset($value[1])) {
                 $query->where("$table.$column", '>=', $value[0]);
             } elseif (isset($value[0]) && isset($value[1])) {
                 $query = $query->where("$table.$column", '>=', $value[0])
@@ -295,7 +303,7 @@ abstract class BaseRepository
      */
     public function export(array $ids = []): BinaryFileResponse
     {
-        if (! count($ids)) {
+        if (!count($ids)) {
             $collection = $this->globalQuery()->get();
         } else {
             $collection = $this->globalQuery()->whereIn('id', $ids)->get();
@@ -305,7 +313,7 @@ abstract class BaseRepository
 
         return Excel::download(
             new BaseExporter($collection, $this->model, $requestedColumns),
-            $this->model->getTable().'.xlsx',
+            $this->model->getTable() . '.xlsx',
         );
     }
 
@@ -317,7 +325,7 @@ abstract class BaseRepository
     {
         return Excel::download(
             new BaseExporter(collect(), $this->model, null, true),
-            $this->model->getTable().'-example.xlsx'
+            $this->model->getTable() . '-example.xlsx',
         );
     }
 
@@ -328,7 +336,7 @@ abstract class BaseRepository
 
     protected function unsetEmptyParams(string|array|null $param = null): string|array|null
     {
-        if (! $param) {
+        if (!$param) {
             return null;
         }
         if (is_array($param)) {

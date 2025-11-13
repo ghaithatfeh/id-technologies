@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\WEB\v1;
 
-use App\Http\Controllers\WebController;
-use App\Http\Requests\v1\Category\StoreUpdateCategoryRequest;
-use App\Http\Resources\v1\CategoryResource;
-use App\Models\Category;
-use App\Services\v1\Category\CategoryService;
 use Exception;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Models\Category;
+use Illuminate\Http\Request;
+use App\Http\Controllers\WebController;
+use App\Http\Resources\v1\CategoryResource;
+use App\Services\v1\Category\CategoryService;
+use App\Http\Requests\v1\Category\StoreUpdateCategoryRequest;
 
 class CategoryController extends WebController
 {
@@ -19,7 +19,7 @@ class CategoryController extends WebController
     {
         $this->categoryService = CategoryService::make();
         // place the relations you want to return them within the response
-        $this->relations = ['brand'];
+        $this->relations = ['brand', 'parent'];
     }
 
     public function data()
@@ -72,7 +72,7 @@ class CategoryController extends WebController
 
     public function edit($categoryId)
     {
-        $category = $this->categoryService->view($categoryId, $this->relations);
+        $category = $this->categoryService->view($categoryId, [...$this->relations, 'children']);
 
         if (!$category) {
             abort(404);
@@ -153,5 +153,35 @@ class CategoryController extends WebController
                 ->back()
                 ->with('message', trans('site.something_went_wrong'));
         }
+    }
+
+    public function getMainCategories()
+    {
+        $data = $this->categoryService->getMainCategories($this->relations);
+
+        return rest()
+            ->data($data)
+            ->ok()
+            ->getSuccess();
+    }
+
+    public function getCategoryChildren($categoryId)
+    {
+        $data = $this->categoryService->getCategoryChildren($categoryId, $this->relations);
+
+        return rest()
+            ->data($data)
+            ->ok()
+            ->getSuccess();
+    }
+
+    public function getMainByBrand($brandId)
+    {
+        $data = $this->categoryService->getMainByBrand($brandId, $this->relations);
+
+        return rest()
+            ->data($data)
+            ->ok()
+            ->getSuccess();
     }
 }

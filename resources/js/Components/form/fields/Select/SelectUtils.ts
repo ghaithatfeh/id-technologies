@@ -52,6 +52,7 @@ export interface IApiSelectProps<TResponse, TData> {
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     inputProps?: SelectInputProps;
     revalidateOnOpen?: boolean;
+    revalidateKey?: any;
     getNextPage?: (
         prevPage: number,
         isLast: boolean,

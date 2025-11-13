@@ -23,5 +23,9 @@ class AppServiceProvider extends ServiceProvider
         Request::macro('isPost', function () {
             return $this->method() == 'POST';
         });
+
+        Request::macro('isPut', function () {
+            return $this->method() == 'PUT';
+        });
     }
 }

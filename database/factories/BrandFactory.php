@@ -25,6 +25,6 @@ class BrandFactory extends Factory
 
     public function withCategories(int $count = 1): static
     {
-        return $this->has(Category::factory($count)->withProducts(10));
+        return $this->has(Category::factory($count)->withProducts(10)->withChildren());
     }
 }

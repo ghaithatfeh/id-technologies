@@ -5,6 +5,7 @@ import { Link } from "@inertiajs/react";
 import Gallery from "@/Components/Show/Gallery";
 import SmallTextField from "@/Components/Show/SmallTextField";
 import { translate } from "@/Models/Translatable";
+import BrandCategoriesTable from "@/Components/categories/BrandCategoriesTable";
 
 const Show = ({ brand }: { brand: Brand }) => {
     return (
@@ -25,21 +26,24 @@ const Show = ({ brand }: { brand: Brand }) => {
                     label="Brand Title"
                     value={translate(brand.brand_title)}
                 />
-                <div className="dark:bg-dark my-2 mb-5 rounded-md bg-gray-50 p-4 text-xl font-bold dark:text-white">
-                    <label className="text-lg font-semibold">
-                        Background Image :
-                    </label>
+            </div>
+
+            <div className={"grid grid-cols-3"}>
+                <div className="my-2 mb-5 w-full rounded-md bg-gray-50 p-4 font-bold dark:bg-dark dark:text-white">
+                    <label className="font-semibold">Background Image :</label>
                     <Gallery sources={[brand.background_image?.url]} />
                 </div>
-                <div className="dark:bg-dark my-2 mb-5 rounded-md bg-gray-50 p-4 text-xl font-bold dark:text-white">
-                    <label className="text-lg font-semibold">Icon :</label>
+                <div className="my-2 mb-5 w-full rounded-md bg-gray-50 p-4 font-bold dark:bg-dark dark:text-white">
+                    <label className="font-semibold">Icon :</label>
                     <Gallery sources={[brand.icon?.url]} />
                 </div>
-                <div className="dark:bg-dark my-2 mb-5 rounded-md bg-gray-50 p-4 text-xl font-bold dark:text-white">
-                    <label className="text-lg font-semibold">Logo :</label>
+                <div className="my-2 mb-5 w-full rounded-md bg-gray-50 p-4 font-bold dark:bg-dark dark:text-white">
+                    <label className="font-semibold">Logo :</label>
                     <Gallery sources={[brand.logo?.url]} />
                 </div>
             </div>
+
+            <BrandCategoriesTable brandId={brand.id} />
         </PageCard>
     );
 };

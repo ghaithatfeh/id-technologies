@@ -34,6 +34,7 @@ function ApiSelect<TResponse, TData>({
     inputProps = {},
     getNextPage = undefined,
     required = false,
+    revalidateKey = undefined,
 }: IApiSelectProps<TResponse, TData>) {
     const errors = usePage().props.errors;
     const error = name && errors[name] ? errors[name] : undefined;
@@ -198,6 +199,21 @@ function ApiSelect<TResponse, TData>({
         inputRef?.current?.dispatchEvent(new Event("input", { bubbles: true }));
     }, [selected]);
 
+    const revalidate = async () => {
+        setItems([]);
+        setPage(1);
+        setIsLast(false);
+        setTotalPages(1);
+        setSearch(undefined);
+        await getData();
+    };
+
+    useEffect(() => {
+        if (revalidateKey !== undefined) {
+            revalidate();
+        }
+    }, [revalidateKey]);
+
     const getInputValue = () => {
         if (isMultiple) {
             return `[${selected.map((option) => option.value)}]`;
@@ -272,7 +288,7 @@ function ApiSelect<TResponse, TData>({
                                 {styles?.loadingIcon ? (
                                     styles.loadingIcon()
                                 ) : (
-                                    <LoadingSpinner className="text-primary h-full w-full" />
+                                    <LoadingSpinner className="h-full w-full text-primary" />
                                 )}
                             </div>
                         )}
@@ -294,7 +310,7 @@ function ApiSelect<TResponse, TData>({
                         isOpen
                             ? `absolute left-0 z-50 ${
                                   styles?.dropDownItemsContainerClasses ??
-                                  "bg-white-secondary dark:bg-dark-secondary w-full rounded-lg border border-gray-200 px-3 pb-3 shadow-2xl"
+                                  "w-full rounded-lg border border-gray-200 bg-white-secondary px-3 pb-3 shadow-2xl dark:bg-dark-secondary"
                               }`
                             : "hidden"
                     }
@@ -309,7 +325,7 @@ function ApiSelect<TResponse, TData>({
                         <input
                             className={`${
                                 styles?.searchInputClasses ??
-                                "focus:border-primary focus:outline-primary dark:bg-secondary my-2 w-full rounded-md p-1 placeholder-white dark:text-white"
+                                "my-2 w-full rounded-md p-1 placeholder-white focus:border-primary focus:outline-primary dark:bg-secondary dark:text-white"
                             }`}
                             onClick={(e) => handleClickingOnSearchInput(e)}
                             onChange={(e) => handleSearchChange(e)}
@@ -327,12 +343,12 @@ function ApiSelect<TResponse, TData>({
                                 include(getOption(item), selected)
                                     ? `${
                                           styles?.selectedDropDownItemClasses ??
-                                          "bg-primary border-primary"
+                                          "border-primary bg-primary"
                                       }`
                                     : ""
                             } ${
                                 styles?.dropDownItemClasses ??
-                                "hover:border-primary hover:bg-primary my-1 w-full cursor-pointer rounded-md p-2 text-black dark:text-white"
+                                "my-1 w-full cursor-pointer rounded-md p-2 text-black hover:border-primary hover:bg-primary dark:text-white"
                             }`}
                             onClick={(e) => handleChoseItem(e, item)}
                         >

@@ -18,8 +18,8 @@ function TableBody<Data>({
                             <tr
                                 key={`${index}-${item.label}`}
                                 className={`hover:opacity-50 dark:text-white ${
-                                    item.is_featured 
-                                        ? 'bg-yellow-100 dark:bg-yellow-900/20 border-l-4 border-yellow-500' 
+                                    item.is_featured
+                                        ? 'bg-yellow-100 dark:bg-yellow-900/20 border-l-4 border-yellow-500'
                                         : ''
                                 }`}
                             >
@@ -73,7 +73,7 @@ function TableBody<Data>({
                                                           ) ?? "No Data"),
                                                     item,
                                                     setHidden,
-                                                    revalidate,
+
                                                 )}
                                             </td>
                                         );
@@ -92,7 +92,7 @@ function TableBody<Data>({
                                                     undefined,
                                                     item,
                                                     setHidden,
-                                                    revalidate,
+
                                                 )}
                                             </td>
                                         );

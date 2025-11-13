@@ -7,7 +7,7 @@ const Gallery = ({
 }) => {
     return (
         <div
-            className={`dark:bg-dark grid w-full grid-cols-4 gap-5 dark:text-white`}
+            className={`flex w-full flex-wrap items-center gap-5 dark:bg-dark dark:text-white`}
         >
             {sources?.map(
                 (img: string | undefined, index) =>

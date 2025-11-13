@@ -2,16 +2,16 @@
 
 namespace App\Models;
 
-use App\Casts\Translatable;
-use App\Serializers\Translatable as TranslatableSerializer;
 use Carbon\Carbon;
+use App\Casts\Translatable;
 use Database\Factories\CategoryFactory;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection as EloquentCollection;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Serializers\Translatable as TranslatableSerializer;
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 
 /**
  * @property int                              $id
@@ -20,6 +20,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property Brand|null                       $brand
  * @property Carbon                           $created_at
  * @property Carbon                           $updated_at
+ * @property integer                          $sort_index
+ * @property int|null                         $parent_id
+ * @property Category|null                    $parent
  * @mixin Builder<Category>
  * @use  HasFactory<CategoryFactory>
  * @property EloquentCollection<Product>|null $products
@@ -31,7 +34,8 @@ class Category extends Model
     protected $fillable = [
         'name',
         'brand_id',
-
+        'parent_id',
+        'sort_index',
     ];
 
     protected function casts(): array
@@ -83,5 +87,21 @@ class Category extends Model
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);
+    }
+
+    /**
+     * @return HasMany<Category, static>
+     */
+    public function children(): HasMany
+    {
+        return $this->hasMany(Category::class, 'parent_id', 'id');
+    }
+
+    /**
+     * @return BelongsTo<Category, static>
+     */
+    public function parent(): BelongsTo
+    {
+        return $this->belongsTo(Category::class, 'parent_id', 'id');
     }
 }

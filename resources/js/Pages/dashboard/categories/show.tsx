@@ -4,6 +4,7 @@ import Category from "@/Models/Category";
 import { Link } from "@inertiajs/react";
 import SmallTextField from "@/Components/Show/SmallTextField";
 import { translate } from "@/Models/Translatable";
+import CategoryChildrenTable from "@/Components/categories/CategoryChildrenTable";
 
 const Show = ({ category }: { category: Category }) => {
     return (
@@ -28,7 +29,17 @@ const Show = ({ category }: { category: Category }) => {
                     label="Brand"
                     value={translate(category?.brand?.brand_title)}
                 />
+
+                {category.parent && (
+                    <SmallTextField
+                        label="Parent Category"
+                        value={translate(category?.parent?.name)}
+                    />
+                )}
             </div>
+            {!category.parent_id && (
+                <CategoryChildrenTable categoryId={category.id} />
+            )}
         </PageCard>
     );
 };
