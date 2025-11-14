@@ -29,10 +29,12 @@ class CategoryFactory extends Factory
     public function withChildren(): CategoryFactory
     {
         return $this->afterCreating(function (Category $category) {
-            Category::factory(5)->create([
-                'parent_id' => $category->id,
-                'sort_index' => null,
-            ]);
+            Category::factory(5)
+                ->withProducts(5)
+                ->create([
+                    'parent_id' => $category->id,
+                    'sort_index' => null,
+                ]);
         });
     }
 }

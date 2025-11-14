@@ -2,11 +2,31 @@ import LandingFooter from "@/Components/landing/landing-footer";
 import LandingNavbar from "@/Components/landing/landing-navbar";
 import Brand from "@/Models/Brand";
 import Category from "@/Models/Category";
+import Product from "@/Models/Product";
 import { translate } from "@/Models/Translatable";
 import { Link } from "@inertiajs/react";
 import { useTranslation } from "react-i18next";
 
-const Show = ({ brand, category }: { brand: Brand; category: Category }) => {
+const sortCategories = (a: Category, b: Category) => {
+    const valA = a.sort_index ?? Infinity;
+    const valB = b.sort_index ?? Infinity;
+    return valA - valB;
+};
+
+const Show = ({
+    brand,
+    category,
+    products,
+    subCategoryId,
+    categories,
+}: {
+    brand: Brand;
+    category: Category;
+    products: Product[];
+    subCategoryId?: number;
+    categories: Category[];
+}) => {
+    console.log(category);
     const { t } = useTranslation();
     return (
         <div className={"w-full"}>
@@ -51,7 +71,7 @@ const Show = ({ brand, category }: { brand: Brand; category: Category }) => {
             >
                 <div
                     className={
-                        "flex w-full h-full flex-col items-start justify-between px-10 py-10 pt-20 md:flex-row md:px-36 md:py-36"
+                        "flex h-full w-full flex-col items-start justify-between px-10 py-10 pt-20 md:flex-row md:px-36 md:py-36"
                     }
                 >
                     <div
@@ -71,24 +91,69 @@ const Show = ({ brand, category }: { brand: Brand; category: Category }) => {
                                 "flex w-full flex-row flex-wrap items-start gap-5 pt-5 md:flex-col"
                             }
                         >
-                            {brand.categories?.map((c: Category) => (
-                                <Link
-                                    className={"flex w-full items-center gap-5"}
-                                    href={route("landing.brands.show", {
-                                        brandId: brand.id,
-                                        categoryId: c.id,
-                                    })}
-                                >
-                                    <input
-                                        type={"checkbox"}
-                                        className="h-5 w-5 appearance-none rounded-sm border-2 border-gray-300 checked:bg-landing-primary focus:ring-2 focus:ring-landing-primary/80"
-                                        defaultChecked={c.id == category.id}
-                                    />
-                                    <label className={"text-lg md:text-2xl"}>
-                                        {translate(c.name)}
-                                    </label>
-                                </Link>
-                            ))}
+                            {categories
+                                ?.sort(sortCategories)
+                                ?.map((c: Category) => (
+                                    <div className={"flex flex-col gap-2"}>
+                                        <Link
+                                            className={
+                                                "flex w-full cursor-pointer items-center gap-5"
+                                            }
+                                            href={route("landing.brands.show", {
+                                                brandId: brand.id,
+                                                categoryId: c.id,
+                                            })}
+                                        >
+                                            <input
+                                                type={"checkbox"}
+                                                className="h-5 w-5 cursor-pointer appearance-none rounded-sm border-2 border-gray-300 checked:bg-landing-primary focus:ring-2 focus:ring-landing-primary/80"
+                                                checked={c.id == category.id}
+                                            />
+                                            <label
+                                                className={
+                                                    "cursor-pointer text-lg md:text-2xl"
+                                                }
+                                            >
+                                                {translate(c.name)}
+                                            </label>
+                                        </Link>
+                                        {c.children
+                                            ?.sort(sortCategories)
+                                            ?.map((child: Category) => (
+                                                <Link
+                                                    className={
+                                                        "ms-10 flex w-full cursor-pointer items-center gap-5"
+                                                    }
+                                                    href={route(
+                                                        "landing.brands.show",
+                                                        {
+                                                            brandId: brand.id,
+                                                            categoryId:
+                                                                child.parent_id,
+                                                            subCategoryId:
+                                                                child.id,
+                                                        },
+                                                    )}
+                                                >
+                                                    <input
+                                                        type={"checkbox"}
+                                                        className="h-5 w-5 cursor-pointer appearance-none rounded-sm border-2 border-gray-300 checked:bg-landing-primary focus:ring-2 focus:ring-landing-primary/80"
+                                                        checked={
+                                                            child.id ==
+                                                            subCategoryId
+                                                        }
+                                                    />
+                                                    <label
+                                                        className={
+                                                            "cursor-pointer text-lg md:text-2xl"
+                                                        }
+                                                    >
+                                                        {translate(child.name)}
+                                                    </label>
+                                                </Link>
+                                            ))}
+                                    </div>
+                                ))}
                         </div>
                     </div>
 
@@ -97,7 +162,7 @@ const Show = ({ brand, category }: { brand: Brand; category: Category }) => {
                             "grid h-full w-full grid-cols-1 gap-5 pt-5 md:w-[65%] md:grid-cols-3 md:pt-0"
                         }
                     >
-                        {category.products?.map((product) => (
+                        {products?.map((product) => (
                             <div
                                 className={"flex h-full w-full flex-col gap-3"}
                             >
