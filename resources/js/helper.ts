@@ -30,3 +30,15 @@ export const getLocale = (): string => {
     const { currentLocale } = usePage<MiddlewareProps>().props;
     return currentLocale ?? "en";
 };
+
+export function arrayUnique<T>(array: T[], key: keyof T): T[] {
+    const map = new Map<T[keyof T], T>();
+
+    for (const item of array) {
+        const propertyValue = item[key];
+        if (!map.has(propertyValue)) {
+            map.set(propertyValue, item);
+        }
+    }
+    return Array.from(map.values());
+}

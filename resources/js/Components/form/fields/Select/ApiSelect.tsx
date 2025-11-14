@@ -7,7 +7,7 @@ import {
 import ChevronDown from "@/Components/icons/ChevronDown";
 import LoadingSpinner from "@/Components/icons/LoadingSpinner";
 import XMark from "@/Components/icons/XMark";
-import { getNestedPropertyValue } from "@/helper";
+import { arrayUnique, getNestedPropertyValue } from "@/helper";
 import { usePage } from "@inertiajs/react";
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 
@@ -80,10 +80,19 @@ function ApiSelect<TResponse, TData>({
             setIsLoading(true);
             await api(page, search, isLast, totalPages).then(
                 (data: TResponse) => {
-                    setItems((prev) => [
-                        ...(getDataArray(data) ?? []),
-                        ...prev,
-                    ]);
+                    if (optionValue) {
+                        setItems((prev) =>
+                            arrayUnique(
+                                [...(getDataArray(data) ?? []), ...prev],
+                                optionValue,
+                            ),
+                        );
+                    } else {
+                        setItems((prev) => [
+                            ...(getDataArray(data) ?? []),
+                            ...prev,
+                        ]);
+                    }
                     setIsLoading(false);
                     setIsLast(getIsLast(data) ?? true);
                     setTotalPages(getTotalPages(data) ?? 1);
