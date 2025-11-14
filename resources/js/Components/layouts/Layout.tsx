@@ -30,10 +30,10 @@ const Layout = ({ children }: { children?: React.ReactNode }) => {
 
     return (
         <>
-            <div className={`flex max-h-screen overflow-y-scroll`}>
+            <div className={`flex max-h-screen overflow-y-scroll`} dir="ltr">
                 <ToastContainer
                     theme={theme}
-                    rtl={usePage<MiddlewareProps>().props.currentLocale == "ar"}
+                    // rtl={usePage<MiddlewareProps>().props.currentLocale == "ar"}
                 />
                 <div
                     className={`bg-white-secondary dark:bg-dark-secondary h-screen shadow-lg ${

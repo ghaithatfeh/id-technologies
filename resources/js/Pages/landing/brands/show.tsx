@@ -174,7 +174,7 @@ const Show = ({
                                     <img
                                         src={product.image?.url}
                                         className={
-                                            "h-[80%] max-h-[80%] w-full rounded-t-xl object-fill"
+                                            "h-[80%] max-h-[80%] w-full rounded-t-xl object-cover"
                                         }
                                         alt={product.name}
                                     />

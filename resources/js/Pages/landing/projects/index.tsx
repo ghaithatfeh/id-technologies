@@ -31,46 +31,43 @@ const Index = ({ projects }: { projects: { data: Project[] } }) => {
             </div>
             <div
                 className={
-                    "h-full w-full bg-[url('/images/08-BG.svg')] bg-repeat"
+                    "h-full w-full bg-[url('/images/08-BG.svg')] bg-cover bg-no-repeat py-10 pt-30 md:py-28"
                 }
             >
-                <div
-                    className={
-                        "h-full w-full bg-transparent py-10 pt-30 md:py-48"
-                    }
-                >
-                    <InfiniteScroll data={"projects"}>
-                        <div
-                            className={
-                                "grid cursor-pointer grid-cols-1 gap-10 px-16 md:grid-cols-2"
-                            }
-                        >
-                            {projects.data.map((project) => (
-                                <Link
-                                    href={route(
-                                        "landing.projects.show",
-                                        project.id,
-                                    )}
-                                    className={
-                                        "flex h-full max-h-80 flex-col items-center border-2 border-landing-primary"
-                                    }
-                                >
-                                    <img
-                                        className={"h-[80%] w-full"}
-                                        src={project.cover?.url}
-                                    />
+                <InfiniteScroll data={"projects"}>
+                    <div
+                        className={
+                            "grid grid-cols-1 gap-10 px-16 md:grid-cols-3"
+                        }
+                    >
+                        {projects.data.map((project) => (
+                            <Link
+                                href={route(
+                                    "landing.projects.show",
+                                    project.id,
+                                )}
+                            >
+                                <div className="group aspect-square cursor-pointer overflow-hidden rounded-lg border-6 border-landing-primary bg-landing-primary shadow-md transition-shadow duration-300 hover:shadow-2xl">
+                                    <div className="relative h-[88%] overflow-hidden sm:h-[89%]">
+                                        <img
+                                            className={
+                                                "h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                            }
+                                            src={project.cover?.url}
+                                        />
+                                    </div>
                                     <p
                                         className={
-                                            "flex h-1/3 w-full items-center justify-center overflow-hidden bg-landing-primary p-1 text-center font-semibold text-wrap md:h-[20%]"
+                                            "pt-3 text-center font-semibold text-wrap"
                                         }
                                     >
                                         {translate(project.title)}
                                     </p>
-                                </Link>
-                            ))}
-                        </div>
-                    </InfiniteScroll>
-                </div>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                </InfiniteScroll>
             </div>
             <LandingFooter />
         </>
