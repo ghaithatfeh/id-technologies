@@ -97,7 +97,7 @@ const Create = () => {
                                 data?.paginate?.total_pages ?? 0
                             }
                             onChange={(e) =>
-                                setData("parent_id", Number(e.target.value))
+                                setData("parent_id", e.target.value ? Number(e.target.value) : undefined)
                             }
                             getOptionLabel={(data) => translate(data.name)}
                             optionValue={"id"}

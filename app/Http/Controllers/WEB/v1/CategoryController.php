@@ -129,11 +129,11 @@ class CategoryController extends WebController
             'sort_index' => [
                 'nullable',
                 'integer',
-                Rule::unique('categories', 'sort_index')
-                    ->where('parent_id', $category->parent_id)
-                    ->where('brand_id', $category->brand_id)
-                    ->whereNotNull('sort_index')
-                    ->ignore($categoryId),
+                // Rule::unique('categories', 'sort_index')
+                //     ->where('parent_id', $category->parent_id)
+                //     ->where('brand_id', $category->brand_id)
+                //     ->whereNotNull('sort_index')
+                //     ->ignore($categoryId),
             ]
         ]);
 

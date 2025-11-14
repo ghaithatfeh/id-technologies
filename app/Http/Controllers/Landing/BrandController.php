@@ -40,7 +40,7 @@ class BrandController extends Controller
             }
         }
 
-        if (!$subCategoryId) {
+        if (!$subCategoryId && $category) {
             $childCategoryIds = $category->children->pluck('id')->toArray();
             $categoryIds = array_merge([$category->id], $childCategoryIds);
             $products = Product::with(['category'])
@@ -54,10 +54,10 @@ class BrandController extends Controller
 
         return Inertia::render('landing/brands/show', [
             'brand' => BrandResource::make($brand),
-            'category' => CategoryResource::make($category),
+            'category' => $category ? CategoryResource::make($category) : null,
             'products' => ProductResource::collection($products),
             'subCategoryId' => $subCategoryId,
-            'categories' => CategoryResource::collection($categories),
+            'categories' => $categories ? CategoryResource::collection($categories) : null,
         ]);
     }
 }
