@@ -103,8 +103,10 @@ const Edit = ({ category }: { category: Category }) => {
                                 name="parent_id"
                                 label={"Parent Category"}
                                 api={getMainCategoriesByBrand}
-                                getDataArray={(response) =>
-                                    response?.data ?? []
+                                getDataArray={(response) => 
+                                    // Remove the current category from the list of parent categories
+                                    // so that it can't be selected as a parent category
+                                    response?.data?.filter((item: Category) => item.id !== category.id) ?? []
                                 }
                                 getIsLast={(data) =>
                                     data?.paginate?.is_last_page ?? false
