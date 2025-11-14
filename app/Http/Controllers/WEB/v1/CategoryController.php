@@ -7,9 +7,11 @@ use Inertia\Inertia;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\WebController;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\v1\CategoryResource;
 use App\Services\v1\Category\CategoryService;
 use App\Http\Requests\v1\Category\StoreUpdateCategoryRequest;
+use Illuminate\Validation\Rule;
 
 class CategoryController extends WebController
 {
@@ -105,6 +107,50 @@ class CategoryController extends WebController
             ->when(
                 $result,
                 fn($rest) => $rest->ok()->deleteSuccess(),
+                fn($rest) => $rest->noData(),
+            )->send();
+    }
+
+    /**
+     * Update only the sort_index of a category with an API-like response.
+     * Response structure mirrors destroy() action (rest()->when(...)->send()).
+     */
+    public function updateSortIndex(Request $request, $categoryId)
+    {
+        $category = $this->categoryService->view($categoryId);
+
+        if (!$category) {
+            return rest()->noData()->send();
+        }
+
+        $validator = Validator::make([
+            'sort_index' => $request->integer('sort_index'),
+        ],[
+            'sort_index' => [
+                'nullable',
+                'integer',
+                Rule::unique('categories', 'sort_index')
+                    ->where('parent_id', $category->parent_id)
+                    ->where('brand_id', $category->brand_id)
+                    ->whereNotNull('sort_index')
+                    ->ignore($categoryId),
+            ]
+        ]);
+
+        if ($validator->fails()){
+            return rest()
+                ->message($validator->errors()->first('sort_index'))
+                ->validationError();
+        }
+
+        $updated = $this->categoryService->update([
+            'sort_index' => $request->integer('sort_index') ?? null,
+        ], $categoryId, $this->relations);
+
+        return rest()
+            ->when(
+                $updated,
+                fn($rest) => $rest->ok()->updateSuccess(),
                 fn($rest) => $rest->noData(),
             )->send();
     }

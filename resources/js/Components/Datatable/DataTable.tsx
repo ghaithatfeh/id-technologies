@@ -50,6 +50,7 @@ function DataTable<ApiResponse, Data>({
 
     const fetchFromApi = async () => {
         setIsPending(true);
+        setItems([]);
 
         let s = !search || search == "" ? undefined : search;
         let sortD = !sortDir || sortDir == "" ? undefined : sortDir;

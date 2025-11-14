@@ -55,6 +55,11 @@ abstract class BaseService
         return $this->repository->update($data, $id, $relationships);
     }
 
+    /**
+     * @param       $id
+     * @param array $relationships
+     * @return MODEL|null
+     */
     public function view($id, array $relationships = []): ?Model
     {
         return $this->repository->find($id, $relationships);

@@ -8,7 +8,7 @@ import { translate } from "@/Models/Translatable";
 const Index = ({ exportables }: { exportables: string[] }) => {
     return (
         <DataTable
-            title="Category Table"
+            title="Categories"
             createUrl={route("v1.web.protected.categories.create")}
             importRoute={route("v1.web.protected.categories.import")}
             exportRoute={route("v1.web.protected.categories.export")}

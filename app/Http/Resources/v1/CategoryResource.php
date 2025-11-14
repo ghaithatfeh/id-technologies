@@ -25,6 +25,7 @@ class CategoryResource extends BaseResource
             'products' => ProductResource::collection($this->whenLoaded('products')),
             'children' => CategoryResource::collection($this->whenLoaded('children')),
             'parent' => CategoryResource::make($this->whenLoaded('parent')),
+            'sort_index' => $this->sort_index,
         ];
     }
 }
