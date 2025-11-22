@@ -14,6 +14,23 @@ const LandingNavbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const isRTL = language === "ar";
 
+    const isActive = (routePath: string) => {
+        const currentPath = window.location.pathname.replace(/\/$/, "");
+        let targetPath: string;
+        if (routePath.startsWith("http")) {
+            const urlObj = new URL(routePath);
+            targetPath = urlObj.pathname;
+        } else {
+            targetPath = routePath.split("?")[0];
+        }
+        targetPath = targetPath.replace(/\/$/, "");
+        console.log("targetPath", targetPath);
+        console.log("currentPath", currentPath);
+        if (targetPath == "" && (currentPath === "" || currentPath.startsWith("/brands"))) return true;
+        if (targetPath != "" && currentPath.includes(targetPath)) return true;
+        return false;
+    };
+
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
@@ -54,25 +71,35 @@ const LandingNavbar = () => {
                     }
                 >
                     <Link
-                        className={"hover:underline"}
+                        className={`hover:text-white ${
+                            isActive(route("landing.index")) ? "text-white underline" : ""
+                        }`}
                         href={route("landing.index")}
                     >
                         {t("home")}
                     </Link>
 
                     <Link
-                        className={"hover:underline"}
+                        className={`hover:text-white ${
+                            isActive(route("landing.customer.service"))
+                                ? "text-white underline"
+                                : ""
+                        }`}
                         href={route("landing.customer.service")}
                     >
                         {t("customer_service")}
                     </Link>
 
-                    {/* <Link className={"hover:underline"} href={""}>
+                    {/* <Link className={"hover:text-white"} href={""}>
                         {t("about_us")}
                     </Link> */}
 
                     <Link
-                        className={"hover:underline"}
+                        className={`hover:text-white ${
+                            isActive(route("landing.projects.index"))
+                                ? "text-white underline"
+                                : ""
+                        }`}
                         href={route("landing.projects.index")}
                     >
                         {t("our_projects")}
@@ -85,7 +112,7 @@ const LandingNavbar = () => {
                                 language === "ar" ? "en" : "ar",
                             );
                         }}
-                        className={"hover:underline"}
+                        className={"hover:text-white"}
                     >
                         {language == "en" ? t("ar") : t("en")}
                     </Link>
@@ -111,7 +138,9 @@ const LandingNavbar = () => {
                 <nav className="flex flex-col gap-6 p-8 pt-24">
                     <Link
                         href={route("landing.index")}
-                        className="text-landing-primary text-xl font-bold transition-opacity hover:opacity-70"
+                        className={`text-landing-primary text-xl font-bold transition-opacity hover:opacity-70 ${
+                            isActive(route("landing.index")) ? "underline" : ""
+                        }`}
                         onClick={toggleMenu}
                     >
                         {t("home")}
@@ -119,7 +148,11 @@ const LandingNavbar = () => {
 
                     <Link
                         href={route("landing.customer.service")}
-                        className="text-landing-primary text-xl font-bold transition-opacity hover:opacity-70"
+                        className={`text-landing-primary text-xl font-bold transition-opacity hover:opacity-70 ${
+                            isActive(route("landing.customer.service"))
+                                ? "underline"
+                                : ""
+                        }`}
                         onClick={toggleMenu}
                     >
                         {t("customer_service")}
@@ -127,7 +160,9 @@ const LandingNavbar = () => {
 
                     {/* <Link
                         href={""}
-                        className="text-landing-primary text-xl font-bold transition-opacity hover:opacity-70"
+                        className={`text-landing-primary text-xl font-bold transition-opacity hover:opacity-70 ${
+                            isActive("") ? "underline" : ""
+                        }`}
                         onClick={toggleMenu}
                     >
                         {t("about_us")}
@@ -135,7 +170,11 @@ const LandingNavbar = () => {
 
                     <Link
                         href={route("landing.projects.index")}
-                        className="text-landing-primary text-xl font-bold transition-opacity hover:opacity-70"
+                        className={`text-landing-primary text-xl font-bold transition-opacity hover:opacity-70 ${
+                            isActive(route("landing.projects.index"))
+                                ? "underline"
+                                : ""
+                        }`}
                         onClick={toggleMenu}
                     >
                         {t("our_projects")}

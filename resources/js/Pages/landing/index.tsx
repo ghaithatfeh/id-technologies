@@ -69,11 +69,11 @@ const Index = ({
                                         strokeWidth={1}
                                     />
                                 </a>
-                                <div className="h-[2px] bg-gradient-to-r from-transparent via-black to-transparent" />
+                                {/* <div className="h-[2px] bg-gradient-to-r from-transparent via-black to-transparent" />
                                 <Settings
                                     className={"h-8 w-8"}
                                     strokeWidth={1}
-                                />
+                                /> */}
                             </div>
 
                             <div className={"mt-6 flex flex-col gap-8"}>
