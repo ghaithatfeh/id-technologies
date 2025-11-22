@@ -20,6 +20,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: "BahijTheSansArabic";
+    src: url("/fonts/Bahij_TheSansArabic-Bold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+}
+
 @layer base {
     :root {
         --color-brand: #012970;
@@ -76,11 +83,11 @@
     --breakpoint-md: 1024px;
 }
 
-body {
-    font-family: "Poppins", sans-serif !important;
+html[lang="en"] body {
+    font-family: "Poppins", sans-serif;
 }
 
-body {
+html[lang="ar"] body {
     @apply font-bahij;
 }
 

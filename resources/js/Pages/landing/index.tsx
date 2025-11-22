@@ -164,7 +164,7 @@ const Index = ({
                 <div className="-bottom-[12%] grid w-full grid-cols-2 items-center justify-between gap-4 px-6 md:absolute md:grid-cols-4 md:gap-10 md:px-44">
                     {brands.map((brand) => (
                         <Link
-                            className={"h-full w-full"}
+                            className={"h-full w-full max-w-[17rem]"}
                             href={route("landing.brands.show", brand.id)}
                         >
                             <HomeHeroCard

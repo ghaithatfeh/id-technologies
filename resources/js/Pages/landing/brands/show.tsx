@@ -43,7 +43,7 @@ const Show = ({
                 >
                     <h1
                         className={
-                            "px-5 text-center text-3xl leading-12 text-landing-primary md:text-4xl md:leading-20"
+                            "px-5 text-center text-4xl leading-12 md:leading-20 text-landing-primary md:text-5xl text-bold"
                         }
                     >
                         {translate(brand.brand_title)}

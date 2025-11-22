@@ -30,7 +30,7 @@ const CustomerService = ({ supportLinks }: { supportLinks: SupportLink[] }) => {
                 >
                     <h1
                         className={
-                            "text-landing-primary px-5 text-center text-3xl leading-20 md:text-4xl"
+                            "px-5 text-center text-4xl leading-12 md:leading-20 text-landing-primary md:text-5xl text-bold"
                         }
                     >
                         {t("customer")}

@@ -22,7 +22,7 @@ const Index = ({ projects }: { projects: { data: Project[] } }) => {
                 >
                     <h1
                         className={
-                            "px-5 text-center text-3xl leading-20 text-landing-primary md:text-4xl"
+                            "px-5 text-center text-4xl leading-12 md:leading-20 text-landing-primary md:text-5xl text-bold"
                         }
                     >
                         {t("our_projects")}
@@ -47,10 +47,10 @@ const Index = ({ projects }: { projects: { data: Project[] } }) => {
                                     project.id,
                                 )}
                             >
-                                <div className="group cursor-pointer overflow-hidden rounded-lg border-6 border-landing-primary bg-landing-primary shadow-md transition-shadow duration-300 hover:shadow-2xl">
+                                <div className="group cursor-pointer overflow-hidden rounded-lg border-6 border-landing-primary bg-landing-primary shadow-md transition-all duration-300 hover:shadow-xl hover:scale-101">
                                     <img
                                         className={
-                                            "h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                            "h-[17rem] w-full object-cover"
                                         }
                                         src={project.cover?.url}
                                     />

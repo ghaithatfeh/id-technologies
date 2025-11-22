@@ -25,7 +25,7 @@ const HomeHeroCard = ({
     };
 
     return (
-        <div className="group border-b-landing-primary relative h-full w-full overflow-visible rounded-t-3xl border-b-8 bg-white pt-6 pb-10 px-2 shadow-xl min-h-42 flex items-center justify-center">
+        <div className="group border-b-landing-primary relative h-full w-full overflow-visible rounded-t-3xl border-b-8 bg-white pt-6 pb-10 px-4 shadow-xl min-h-42 flex items-center justify-center">
             <div className="absolute inset-0 z-0">
                 <div className="absolute inset-0 rounded-t-lg bg-white bg-[length:125%_130%] bg-center bg-no-repeat" />
                 <div
@@ -41,7 +41,7 @@ const HomeHeroCard = ({
                 dangerouslySetInnerHTML={{ __html: highlightBrandNames(content) }}
             />
 
-            <div className="absolute -bottom-7 left-0 z-20 flex w-full items-center justify-center">
+            <div className="absolute -bottom-9 left-0 z-20 flex w-full items-center justify-center">
                 <img
                     src={icon}
                     className="bg-landing-secondary h-16 w-16 rounded-lg p-2 shadow-md"
