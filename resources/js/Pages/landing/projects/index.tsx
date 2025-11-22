@@ -47,7 +47,7 @@ const Index = ({ projects }: { projects: { data: Project[] } }) => {
                                     project.id,
                                 )}
                             >
-                                <div className="group cursor-pointer overflow-hidden rounded-lg border-6 border-landing-primary bg-landing-primary shadow-md transition-all duration-300 hover:shadow-xl hover:scale-101">
+                                <div className="group cursor-pointer overflow-hidden rounded-lg border-6 border-landing-primary bg-landing-primary shadow-md transition-all duration-300 hover:shadow-xl hover:scale-102">
                                     <img
                                         className={
                                             "h-[17rem] w-full object-cover"
