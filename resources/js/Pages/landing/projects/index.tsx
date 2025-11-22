@@ -56,7 +56,7 @@ const Index = ({ projects }: { projects: { data: Project[] } }) => {
                                     />
                                     <p
                                         className={
-                                            "text-lg text-center font-semibold text-wrap py-3"
+                                            "text-lg text-center font-semibold text-wrap pb-3 px-1 pt-4"
                                         }
                                     >
                                         {translate(project.title)}
