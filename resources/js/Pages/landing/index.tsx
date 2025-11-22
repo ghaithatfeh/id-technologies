@@ -282,27 +282,21 @@ const Index = ({
                                     src={asset("/images/Icon01.svg")}
                                     className={"h-12 w-12 rounded-lg p-2"}
                                 />
-                                <p className="leading-10">
-                                    {t("service_security_services")}
-                                </p>
+                                <p className="leading-10" dangerouslySetInnerHTML={{ __html: t("service_security_services") }} />
                             </div>
                             <div className={"flex items-start gap-4"}>
                                 <img
                                     src={asset("/images/Icon02.svg")}
                                     className={"h-12 w-12 rounded-lg p-2"}
                                 />
-                                <p className="leading-10">
-                                    {t("service_plastic_cards")}
-                                </p>
+                                <p className="leading-10" dangerouslySetInnerHTML={{ __html: t("service_plastic_cards") }} />
                             </div>
                             <div className={"flex items-start gap-4"}>
                                 <img
                                     src={asset("/images/Icon04.svg")}
                                     className={"h-12 w-12 rounded-lg p-2"}
                                 />
-                                <p className="leading-10">
-                                    {t("service_barcodes_systems")}
-                                </p>
+                                <p className="leading-10" dangerouslySetInnerHTML={{ __html: t("service_barcodes_systems") }} />
                             </div>
 
                             <div className={"flex items-start gap-4"}>
@@ -310,9 +304,7 @@ const Index = ({
                                     src={asset("/images/Icon03.svg")}
                                     className={"h-12 w-12 rounded-lg p-2"}
                                 />
-                                <p className="leading-10">
-                                    {t("service_gaming")}
-                                </p>
+                                <p className="leading-10" dangerouslySetInnerHTML={{ __html: t("service_gaming") }} />
                             </div>
                         </div>
                     </div>
@@ -341,7 +333,7 @@ const Index = ({
                     <img
                         className="w-46 md:w-auto"
                         alt={"brand-logo"}
-                        src={asset("/images/10-Brand.png")}
+                        src={asset("/images/10-Brand.svg")}
                     />
                     <img
                         className="w-46 md:w-auto"

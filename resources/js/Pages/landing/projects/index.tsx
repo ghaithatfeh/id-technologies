@@ -37,7 +37,7 @@ const Index = ({ projects }: { projects: { data: Project[] } }) => {
                 <InfiniteScroll data={"projects"}>
                     <div
                         className={
-                            "grid grid-cols-1 gap-10 px-16 md:grid-cols-3"
+                            "grid grid-cols-1 gap-10 px-16 md:grid-cols-4"
                         }
                     >
                         {projects.data.map((project) => (
@@ -47,18 +47,16 @@ const Index = ({ projects }: { projects: { data: Project[] } }) => {
                                     project.id,
                                 )}
                             >
-                                <div className="group aspect-square cursor-pointer overflow-hidden rounded-lg border-6 border-landing-primary bg-landing-primary shadow-md transition-shadow duration-300 hover:shadow-2xl">
-                                    <div className="relative h-[88%] overflow-hidden sm:h-[89%]">
-                                        <img
-                                            className={
-                                                "h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                                            }
-                                            src={project.cover?.url}
-                                        />
-                                    </div>
+                                <div className="group cursor-pointer overflow-hidden rounded-lg border-6 border-landing-primary bg-landing-primary shadow-md transition-shadow duration-300 hover:shadow-2xl">
+                                    <img
+                                        className={
+                                            "h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                        }
+                                        src={project.cover?.url}
+                                    />
                                     <p
                                         className={
-                                            "pt-3 text-center font-semibold text-wrap"
+                                            "text-lg text-center font-semibold text-wrap py-3"
                                         }
                                     >
                                         {translate(project.title)}

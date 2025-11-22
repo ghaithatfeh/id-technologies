@@ -44,7 +44,7 @@ const CustomerService = ({ supportLinks }: { supportLinks: SupportLink[] }) => {
                 </div>
                 <div
                     className={
-                        "absolute -bottom-12 flex w-full flex-wrap justify-center gap-2 md:gap-10 md:px-38"
+                        "absolute -bottom-12 flex w-full flex-wrap justify-center gap-2 md:gap-10 md:px-38 max-w-[90rem] left-1/2 -translate-x-1/2 center"
                     }
                 >
                     <img
@@ -73,7 +73,7 @@ const CustomerService = ({ supportLinks }: { supportLinks: SupportLink[] }) => {
             >
                 <div
                     className={
-                        "flex w-full items-center justify-between px-5 md:grid-cols-4 md:px-38"
+                        "flex w-full items-center justify-between px-5 md:grid-cols-4 md:px-38 max-w-[83rem] mx-auto"
                     }
                 >
                     <div
