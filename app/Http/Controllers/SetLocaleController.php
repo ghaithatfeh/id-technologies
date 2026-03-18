@@ -21,8 +21,6 @@ class SetLocaleController extends Controller
         app()->setLocale($lang);
 
         // Redirect back to the previous page
-        return response()->json([
-            'message' => 'success'
-        ]);
+        return redirect()->back();
     }
 }
