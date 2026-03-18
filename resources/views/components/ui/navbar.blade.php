@@ -39,8 +39,9 @@
                 class="hidden"
                 hidden
                 value="{{ app()->getLocale() == "en" ? "ar" : "en" }}"
+                name="lang"
             />
-            <button type="submit" class="hover:text-white">
+            <button type="submit" class="hover:text-white cursor-pointer">
                 {{ app()->getLocale() == "en" ? trans("site.ar") : trans("site.en") }}
             </button>
         </form>
@@ -84,10 +85,11 @@
                 class="hidden"
                 hidden
                 value="{{ app()->getLocale() == "en" ? "ar" : "en" }}"
+                name="lang"
             />
             <button
                 type="submit"
-                class="text-xl font-bold text-landing-primary transition-opacity hover:opacity-70"
+                class="text-xl font-bold text-landing-primary transition-opacity hover:opacity-70 cursor-pointer"
             >
                 {{ app()->getLocale() == "en" ? trans("site.ar") : trans("site.en") }}
             </button>

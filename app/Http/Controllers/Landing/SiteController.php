@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Landing;
 
-use Inertia\Inertia;
 use App\Models\Brand;
 use App\Models\Product;
 use App\Models\SupportLink;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\v1\SupportLinkResource;
 
 class SiteController extends Controller
 {
@@ -29,8 +27,6 @@ class SiteController extends Controller
     public function customerService()
     {
         $supportLinks = SupportLink::limit(100)->get();
-        return Inertia::render('landing/customer-service', [
-            'supportLinks' => SupportLinkResource::collection($supportLinks),
-        ]);
+        return view('landing.customer-service', compact('supportLinks'));
     }
 }
