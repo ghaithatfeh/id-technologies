@@ -7,8 +7,6 @@ use App\Models\Brand;
 use App\Models\Product;
 use App\Models\SupportLink;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\v1\BrandResource;
-use App\Http\Resources\v1\ProductResource;
 use App\Http\Resources\v1\SupportLinkResource;
 
 class SiteController extends Controller
@@ -17,15 +15,13 @@ class SiteController extends Controller
     {
         $brands = Brand::query()
             ->limit(4)
-            ->get()
-            ->toResourceCollection(BrandResource::class);
+            ->get();
 
         $featuredProduct = Product::where('is_featured', true)
             ->with([
                 'category.brand',
                 'category',
-            ])->first()
-            ?->toResource(ProductResource::class);
+            ])->first();
 
         return view('landing.index', compact('brands', 'featuredProduct'));
     }

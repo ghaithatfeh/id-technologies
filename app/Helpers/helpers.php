@@ -8,3 +8,10 @@ if (!function_exists('rest')) {
         return ApiResponse::create();
     }
 }
+
+if (!function_exists('urlActive')) {
+    function urlActive(string $url): string
+    {
+        return request()->fullUrl() == $url;
+    }
+}

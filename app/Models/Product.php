@@ -2,30 +2,30 @@
 
 namespace App\Models;
 
-use App\Casts\MediaCast;
-use App\Casts\Translatable;
-use App\Models\Category;
-use App\Serializers\Translatable as TranslatableSerializer;
-use App\Traits\HasMedia;
 use Carbon\Carbon;
+use App\Casts\MediaCast;
+use App\Traits\HasMedia;
+use App\Casts\Translatable;
+use App\Serializers\SerializedMedia;
 use Database\Factories\ProductFactory;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Serializers\Translatable as TranslatableSerializer;
 
 /**
- * @property int                                                                  $id
- * @property TranslatableSerializer                                               $name
- * @property bool                                                                 $is_active
- * @property int                                                                  $category_id
- * @property array{url:string,size:string,extension:string,mime_type:string}      $image
- * @property array{url:string,size:string,extension:string,mime_type:string}      $pdf
- * @property Category|null                                                        $category
- * @property Carbon                                                               $created_at
- * @property Carbon                                                               $updated_at
- * @property bool                                                                 $is_featured
- * @property array{url:string,size:string,extension:string,mime_type:string}|null $video
+ * @property int                    $id
+ * @property TranslatableSerializer $name
+ * @property bool                   $is_active
+ * @property int                    $category_id
+ * @property SerializedMedia        $image
+ * @property SerializedMedia        $pdf
+ * @property Category|null          $category
+ * @property Carbon                 $created_at
+ * @property Carbon                 $updated_at
+ * @property bool                   $is_featured
+ * @property SerializedMedia|null   $video
  * @method Builder isActive()
  * @mixin Builder<Product>
  * @use  HasFactory<ProductFactory>
@@ -42,7 +42,7 @@ class Product extends Model
         'image',
         'pdf',
         'is_featured',
-        'video'
+        'video',
     ];
 
     protected function casts(): array
@@ -66,7 +66,7 @@ class Product extends Model
             'pdf',
             'category.name',
             'is_featured',
-            'video_url'
+            'video_url',
         ];
     }
 
@@ -74,7 +74,7 @@ class Product extends Model
     {
         return [
             'name',
-            'is_featured'
+            'is_featured',
         ];
     }
 
