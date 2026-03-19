@@ -2,13 +2,11 @@ import AuthLayout from "@/Components/layouts/AuthLayout";
 import DashboardLayout from "@/Components/layouts/Layout";
 import ErrorBoundary from "@/Handlers/ErrorBoundry";
 import FatalErrorPage from "@/Handlers/FatalError";
-import LocaleProvider from "@/providers/locale-provider";
 import { createInertiaApp } from "@inertiajs/react";
 import React, { Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import "../css/cubeta-starter.css";
 import "./bootstrap";
-import "./utils/i18n";
 
 const appName = import.meta.env.APP_NAME || "ID Technologies Co";
 

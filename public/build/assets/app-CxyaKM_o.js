@@ -1,1 +1,0 @@
-import{I as o}from"./ui-libs-CvQKSxs6.js";import{c as a,X as i,M as n,L as r,F as s,E as e,a as t,P as c}from"./lucide-nZhRg86J.js";import"./react-core-ChMw1pjV.js";import"./vendor-Cd5qmv5Z.js";a({icons:{Phone:c,Mail:t,Globe2:e,Facebook:s,Linkedin:r,Menu:n,X:i}});window.InfiniteScroll=o;
