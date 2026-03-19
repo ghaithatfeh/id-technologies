@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\Landing;
 
-use Inertia\Inertia;
 use App\Models\Project;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\v1\ProjectResource;
 
 class ProjectController extends Controller
 {
@@ -23,8 +21,6 @@ class ProjectController extends Controller
             abort(404);
         }
 
-        return Inertia::render('landing/projects/show', [
-            'project' => ProjectResource::make($project),
-        ]);
+        return view('landing.projects.show', compact('project'));
     }
 }
