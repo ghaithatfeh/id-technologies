@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Landing;
 
+use Inertia\Inertia;
+use App\Models\Project;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\v1\ProjectResource;
-use App\Models\Project;
-use Illuminate\Http\Request;
-use Inertia\Inertia;
 
 class ProjectController extends Controller
 {
@@ -14,9 +13,7 @@ class ProjectController extends Controller
     {
         $projects = Project::paginate();
 
-        return Inertia::render('landing/projects/index', [
-            'projects' => Inertia::scroll(fn() => ProjectResource::collection($projects)),
-        ]);
+        return view('landing.projects.index', compact('projects'));
     }
 
     public function show($projectId)
