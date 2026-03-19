@@ -65,6 +65,14 @@
                                         type="checkbox"
                                         class="h-5 w-5 cursor-pointer appearance-none rounded-sm border-2 border-gray-300 checked:bg-landing-primary focus:ring-2 focus:ring-landing-primary/80"
                                         @checked($c->id == $category->id)
+                                        onclick="
+                                        event.preventDefault();
+                                        window.location.href = '{{
+                                            route("landing.brands.show", [
+                                                "brandId" => $brand->id,
+                                                "categoryId" => $c->id,
+                                            ])
+                                        }}'"
                                     />
                                     <label
                                         class="cursor-pointer text-lg md:text-2xl"
@@ -85,6 +93,13 @@
                                             type="checkbox"
                                             class="h-5 w-5 cursor-pointer appearance-none rounded-sm border-2 border-gray-300 checked:bg-landing-primary focus:ring-2 focus:ring-landing-primary/80"
                                             @checked($child->id == $subCategoryId)
+                                            onclick="event.preventDefault(); window.location.href = '{{
+                                                route("landing.brands.show", [
+                                                    "brandId" => $brand->id,
+                                                    "categoryId" => $child->parent_id,
+                                                    "subCategoryId" => $child->id,
+                                                ])
+                                            }}';"
                                         />
                                         <label
                                             class="cursor-pointer text-lg md:text-2xl"
