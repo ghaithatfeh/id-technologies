@@ -39,8 +39,8 @@ createInertiaApp({
             !authPages.includes(name) && name.includes("dashboard")
                 ? (page) => <DashboardLayout>{page}</DashboardLayout>
                 : authPages.includes(name)
-                  ? (page) => <AuthLayout>{page}</AuthLayout>
-                  : (page) => <LocaleProvider>{page}</LocaleProvider>;
+                    ? (page) => <AuthLayout>{page}</AuthLayout>
+                    : (page) => <>{page}</>;
 
         return page;
     },
