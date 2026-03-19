@@ -1,11 +1,137 @@
 {
+  "_components-DMusMFqp.js": {
+    "file": "assets/components-DMusMFqp.js",
+    "name": "components",
+    "imports": [
+      "_react-core-ChMw1pjV.js",
+      "_inertia-B16amyk7.js",
+      "_lucide-nZhRg86J.js",
+      "_vendor-Cd5qmv5Z.js"
+    ]
+  },
+  "_i18n-Lgj2Bm8L.js": {
+    "file": "assets/i18n-Lgj2Bm8L.js",
+    "name": "i18n"
+  },
+  "_inertia-B16amyk7.js": {
+    "file": "assets/inertia-B16amyk7.js",
+    "name": "inertia",
+    "imports": [
+      "_vendor-Cd5qmv5Z.js",
+      "_react-core-ChMw1pjV.js"
+    ]
+  },
+  "_layouts-7aoAy10b.js": {
+    "file": "assets/layouts-7aoAy10b.js",
+    "name": "layouts",
+    "imports": [
+      "_react-core-ChMw1pjV.js",
+      "_components-DMusMFqp.js",
+      "_inertia-B16amyk7.js"
+    ]
+  },
+  "_lucide-nZhRg86J.js": {
+    "file": "assets/lucide-nZhRg86J.js",
+    "name": "lucide",
+    "imports": [
+      "_react-core-ChMw1pjV.js"
+    ]
+  },
+  "_pages-auth-ysV4VtO4.js": {
+    "file": "assets/pages-auth-ysV4VtO4.js",
+    "name": "pages-auth",
+    "imports": [
+      "_react-core-ChMw1pjV.js",
+      "_components-DMusMFqp.js",
+      "_inertia-B16amyk7.js"
+    ]
+  },
+  "_pages-dashboard-Bt1YJYpY.js": {
+    "file": "assets/pages-dashboard-Bt1YJYpY.js",
+    "name": "pages-dashboard",
+    "imports": [
+      "_react-core-ChMw1pjV.js",
+      "_components-DMusMFqp.js",
+      "_inertia-B16amyk7.js"
+    ]
+  },
+  "_pages-entities-CEY2us5z.js": {
+    "file": "assets/pages-entities-CEY2us5z.js",
+    "name": "pages-entities",
+    "imports": [
+      "_react-core-ChMw1pjV.js",
+      "_inertia-B16amyk7.js",
+      "_components-DMusMFqp.js"
+    ]
+  },
+  "_react-core-ChMw1pjV.js": {
+    "file": "assets/react-core-ChMw1pjV.js",
+    "name": "react-core",
+    "imports": [
+      "_vendor-Cd5qmv5Z.js"
+    ],
+    "css": [
+      "assets/css/react-core-GNLSjkBZ.css"
+    ]
+  },
+  "_react-core-GNLSjkBZ.css": {
+    "file": "assets/css/react-core-GNLSjkBZ.css",
+    "src": "_react-core-GNLSjkBZ.css"
+  },
+  "_ui-libs-CvQKSxs6.js": {
+    "file": "assets/ui-libs-CvQKSxs6.js",
+    "name": "ui-libs",
+    "imports": [
+      "_react-core-ChMw1pjV.js",
+      "_vendor-Cd5qmv5Z.js"
+    ]
+  },
+  "_vendor-Cd5qmv5Z.js": {
+    "file": "assets/vendor-Cd5qmv5Z.js",
+    "name": "vendor",
+    "imports": [
+      "_react-core-ChMw1pjV.js"
+    ]
+  },
+  "resources/css/cubeta-starter.css": {
+    "file": "assets/css/cubeta-starter-CokpixJJ.css",
+    "src": "resources/css/cubeta-starter.css",
+    "isEntry": true,
+    "names": [
+      "cubeta-starter.css"
+    ]
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-CxyaKM_o.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "imports": [
+      "_ui-libs-CvQKSxs6.js",
+      "_lucide-nZhRg86J.js",
+      "_react-core-ChMw1pjV.js",
+      "_vendor-Cd5qmv5Z.js"
+    ]
+  },
   "resources/js/cubeta-starter.tsx": {
-    "file": "assets/cubeta-starter-H0jzVf2_.js",
+    "file": "assets/cubeta-starter-D8sdoLGd.js",
     "name": "cubeta-starter",
     "src": "resources/js/cubeta-starter.tsx",
     "isEntry": true,
+    "imports": [
+      "_pages-entities-CEY2us5z.js",
+      "_pages-auth-ysV4VtO4.js",
+      "_pages-dashboard-Bt1YJYpY.js",
+      "_react-core-ChMw1pjV.js",
+      "_layouts-7aoAy10b.js",
+      "_inertia-B16amyk7.js",
+      "_vendor-Cd5qmv5Z.js",
+      "_i18n-Lgj2Bm8L.js",
+      "_components-DMusMFqp.js",
+      "_lucide-nZhRg86J.js"
+    ],
     "css": [
-      "assets/cubeta-starter-D0Q1oy-i.css"
+      "assets/css/cubeta-starter-CokpixJJ.css"
     ]
   }
 }
