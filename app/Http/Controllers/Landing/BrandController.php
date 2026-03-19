@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers\Landing;
 
-use Inertia\Inertia;
 use App\Models\Brand;
 use App\Models\Product;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\v1\BrandResource;
-use App\Http\Resources\v1\ProductResource;
-use App\Http\Resources\v1\CategoryResource;
 
 class BrandController extends Controller
 {
@@ -52,12 +48,12 @@ class BrandController extends Controller
                 ->get();
         }
 
-        return Inertia::render('landing/brands/show', [
-            'brand' => BrandResource::make($brand),
-            'category' => $category ? CategoryResource::make($category) : null,
-            'products' => ProductResource::collection($products),
-            'subCategoryId' => $subCategoryId,
-            'categories' => $categories ? CategoryResource::collection($categories) : null,
-        ]);
+        return view('landing.brands.show', compact(
+            'brand',
+            'category',
+            'products',
+            'subCategoryId',
+            'categories',
+        ));
     }
 }
