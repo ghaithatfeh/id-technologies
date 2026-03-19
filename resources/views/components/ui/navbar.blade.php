@@ -7,7 +7,8 @@
         aria-label="Toggle Menu"
         data-isopen="false"
     >
-        <i data-lucide="menu"></i>
+        <i id="menu-icon" data-lucide="menu"></i>
+        <i id="close-icon" data-lucide="x" class="hidden"></i>
     </button>
     <nav
         class="hidden w-3/4 items-center gap-20 text-lg font-bold text-landing-primary md:flex"
@@ -55,7 +56,7 @@
 
 <div
     id="mobile-nav-container"
-    class="{{ app()->getLocale() == "ar" ? "right-0" : "left-0" }} fixed top-0 z-40 h-full w-64 transform bg-white shadow-2xl transition-transform duration-300 ease-in-out md:hidden"
+    class="{{ app()->getLocale() == "ar" ? "right-0 translate-x-full" : "left-0 -translate-x-full" }} fixed top-0 z-40 h-full w-64 transform bg-white shadow-2xl transition-transform duration-300 ease-in-out md:hidden"
 >
     <nav class="flex flex-col gap-6 p-8 pt-24">
         <a
@@ -98,12 +99,12 @@
 </div>
 
 @push("scripts")
-    <script>
+    <script type="module">
         document.addEventListener('DOMContentLoaded', () => {
             const navbarToggle = document.getElementById('navbar-toggle');
-            const mobileNavContainer = document.getElementById(
-                'mobile-nav-container',
-            );
+            const mobileNavContainer = document.getElementById('mobile-nav-container');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
 
             function onToggleMenu() {
                 navbarToggle.setAttribute(
@@ -112,20 +113,27 @@
                         ? 'false'
                         : 'true',
                 );
-                const isOpen =
-                    navbarToggle.getAttribute('data-isopen') === 'true';
+                const isOpen = navbarToggle.getAttribute('data-isopen') === 'true';
+
                 if (isOpen) {
                     mobileNavContainer.classList.add('translate-x-0');
-                    mobileNavContainer.classList.remove('translate-x-full');
-                    mobileNavContainer.classList.remove('-translate-x-full');
-                    navbarToggle.innerHTML = '  <i data-lucide="x"></i>';
+                    mobileNavContainer.classList.remove('translate-x-full', '-translate-x-full');
+                    menuIcon.classList.add('hidden');
+                    closeIcon.classList.remove('hidden');
+
                     if (!document.getElementById('mobile-menu-overlay')) {
                         const overlay = document.createElement('div');
                         overlay.classList.add(
-                            'fixed inset-0 z-30 bg-black opacity-50 md:hidden',
+                            'fixed',
+                            'inset-0',
+                            'z-30',
+                            'bg-black',
+                            'bg-opacity-50',
+                            'md:hidden'
                         );
                         overlay.id = 'mobile-menu-overlay';
-                        document.body.prepend(overlay);
+                        overlay.addEventListener('click', onToggleMenu);
+                        document.body.appendChild(overlay);
                     }
                 } else {
                     document.getElementById('mobile-menu-overlay')?.remove();
@@ -135,11 +143,12 @@
                     } else {
                         mobileNavContainer.classList.add('-translate-x-full');
                     }
-                    navbarToggle.innerHTML = '  <i data-lucide="menu"></i>';
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
                 }
             }
 
-            navbarToggle.addEventListener('onclick', onToggleMenu);
+            navbarToggle.addEventListener('click', onToggleMenu);
         });
     </script>
 @endpush
