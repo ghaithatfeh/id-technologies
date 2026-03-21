@@ -54,6 +54,9 @@ class StoreUpdateProductRequest extends FormRequest
                 ]),
             ],
             'is_featured' => 'boolean|nullable',
+
+            'image_alt' => 'string|nullable|min:0|max:255',
+            'image_description' => 'string|nullable|min:0|max:1000',
         ];
     }
 }

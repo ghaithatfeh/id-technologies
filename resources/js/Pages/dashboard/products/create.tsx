@@ -1,16 +1,16 @@
-import { useForm } from "@inertiajs/react";
-import { FormEvent } from "react";
-import PageCard from "@/Components/ui/PageCard";
-import Form from "@/Components/form/Form";
-import Http from "@/Modules/Http/Http";
-import Category from "@/Models/Category";
-import ApiSelect from "@/Components/form/fields/Select/ApiSelect";
-import { translate } from "@/Models/Translatable";
 import Input from "@/Components/form/fields/Input";
 import Radio from "@/Components/form/fields/Radio";
+import ApiSelect from "@/Components/form/fields/Select/ApiSelect";
 import TranslatableInput from "@/Components/form/fields/TranslatableInput";
+import Form from "@/Components/form/Form";
+import PageCard from "@/Components/ui/PageCard";
 import TranslatableInputsContext from "@/Contexts/TranslatableInputsContext";
+import Category from "@/Models/Category";
 import Media from "@/Models/Media";
+import { translate } from "@/Models/Translatable";
+import Http from "@/Modules/Http/Http";
+import { useForm } from "@inertiajs/react";
+import { FormEvent } from "react";
 
 const Create = () => {
     const { post, setData, processing } = useForm<{
@@ -22,6 +22,8 @@ const Create = () => {
         pdf?: File | undefined | Media;
         is_featured?: boolean;
         video?: File | undefined | Media;
+        image_alt?: string | undefined;
+        image_description?: string | undefined;
     }>({
         name: "",
         is_active: true,
@@ -79,6 +81,21 @@ const Create = () => {
                             }
                             type={"file"}
                             required
+                        />
+
+                        <Input
+                            name="image_alt"
+                            label={"Image ALT"}
+                            onChange={(e) =>
+                                setData("image_alt", e.target.value)
+                            }
+                        />
+                        <Input
+                            name="image_description"
+                            label={"Image Description"}
+                            onChange={(e) =>
+                                setData("image_description", e.target.value)
+                            }
                         />
                         <Input
                             name="pdf"

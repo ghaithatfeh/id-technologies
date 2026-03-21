@@ -26,6 +26,8 @@ use App\Serializers\Translatable as TranslatableSerializer;
  * @property Carbon                 $updated_at
  * @property bool                   $is_featured
  * @property SerializedMedia|null   $video
+ * @property string|null            $image_alt
+ * @property string|null            $image_description
  * @method Builder isActive()
  * @mixin Builder<Product>
  * @use  HasFactory<ProductFactory>
@@ -43,6 +45,8 @@ class Product extends Model
         'pdf',
         'is_featured',
         'video',
+        'image_alt',
+        'image_description',
     ];
 
     protected function casts(): array

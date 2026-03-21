@@ -25,6 +25,8 @@ class ProductResource extends BaseResource
             'pdf' => $this->pdf,
             'is_featured' => $this->is_featured,
             'video' => $this->video,
+            'image_description' => $this->image_description,
+            'image_alt' => $this->image_alt,
         ];
     }
 }

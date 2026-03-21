@@ -1,18 +1,17 @@
-import { useForm } from "@inertiajs/react";
-import { FormEvent } from "react";
-import PageCard from "@/Components/ui/PageCard";
-import Form from "@/Components/form/Form";
-import Http from "@/Modules/Http/Http";
-import Category from "@/Models/Category";
-import ApiSelect from "@/Components/form/fields/Select/ApiSelect";
-import { translate } from "@/Models/Translatable";
-import Media from "@/Models/Media";
 import Input from "@/Components/form/fields/Input";
 import Radio from "@/Components/form/fields/Radio";
+import ApiSelect from "@/Components/form/fields/Select/ApiSelect";
 import TranslatableInput from "@/Components/form/fields/TranslatableInput";
+import Form from "@/Components/form/Form";
+import PageCard from "@/Components/ui/PageCard";
 import TranslatableInputsContext from "@/Contexts/TranslatableInputsContext";
+import Category from "@/Models/Category";
+import Media from "@/Models/Media";
 import Product from "@/Models/Product";
-import product from "@/Models/Product";
+import { translate } from "@/Models/Translatable";
+import Http from "@/Modules/Http/Http";
+import { useForm } from "@inertiajs/react";
+import { FormEvent } from "react";
 
 const Edit = ({ product }: { product: Product }) => {
     const { post, setData, processing } = useForm<{
@@ -24,6 +23,8 @@ const Edit = ({ product }: { product: Product }) => {
         pdf?: File | undefined | Media;
         is_featured?: boolean;
         video?: File | undefined | Media;
+        image_alt?: string | undefined;
+        image_description?: string | undefined;
     }>({
         _method: "PUT",
         name: product?.name,
@@ -33,6 +34,8 @@ const Edit = ({ product }: { product: Product }) => {
         image: product?.image,
         is_featured: product.is_featured ?? false,
         video: product?.video,
+        image_alt: product?.image_alt,
+        image_description: product?.image_description,
     });
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -86,6 +89,22 @@ const Edit = ({ product }: { product: Product }) => {
                                 setData("image", e.target.files?.[0])
                             }
                             type={"file"}
+                        />
+                        <Input
+                            name="image_alt"
+                            label={"Image ALT"}
+                            onChange={(e) =>
+                                setData("image_alt", e.target.value)
+                            }
+                            defaultValue={product.image_alt}
+                        />
+                        <Input
+                            name="image_description"
+                            label={"Image Description"}
+                            onChange={(e) =>
+                                setData("image_description", e.target.value)
+                            }
+                            defaultValue={product.image_description}
                         />
                         <Input
                             name="pdf"

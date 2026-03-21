@@ -1,10 +1,10 @@
+import Gallery from "@/Components/Show/Gallery";
+import SmallTextField from "@/Components/Show/SmallTextField";
 import Button from "@/Components/ui/Button";
 import PageCard from "@/Components/ui/PageCard";
 import Product from "@/Models/Product";
-import { Link } from "@inertiajs/react";
-import SmallTextField from "@/Components/Show/SmallTextField";
 import { translate } from "@/Models/Translatable";
-import Gallery from "@/Components/Show/Gallery";
+import { Link } from "@inertiajs/react";
 
 const Show = ({ product }: { product: Product }) => {
     return (
@@ -34,7 +34,7 @@ const Show = ({ product }: { product: Product }) => {
                     value={translate(product?.category?.name)}
                 />
 
-                <div className="dark:bg-dark my-2 mb-5 flex items-center justify-between rounded-md bg-gray-50 p-4 text-xl font-bold dark:text-white">
+                <div className="my-2 mb-5 flex items-center justify-between rounded-md bg-gray-50 p-4 text-xl font-bold dark:bg-dark dark:text-white">
                     <label className="text-lg font-semibold">Pdf :</label>
                     <a href={product?.pdf?.url} target={"_blank"} download>
                         <Button sm color={"secondary"} type={"button"}>
@@ -43,7 +43,7 @@ const Show = ({ product }: { product: Product }) => {
                     </a>
                 </div>
 
-                <div className="dark:bg-dark my-2 mb-5 flex items-center justify-between rounded-md bg-gray-50 p-4 text-xl font-bold dark:text-white">
+                <div className="my-2 mb-5 flex items-center justify-between rounded-md bg-gray-50 p-4 text-xl font-bold dark:bg-dark dark:text-white">
                     <label className="text-lg font-semibold">Video :</label>
                     <a href={product?.video?.url} target={"_blank"} download>
                         <Button sm color={"secondary"} type={"button"}>
@@ -51,7 +51,14 @@ const Show = ({ product }: { product: Product }) => {
                         </Button>
                     </a>
                 </div>
-                <div className="dark:bg-dark my-2 mb-5 rounded-md bg-gray-50 p-4 text-xl font-bold md:col-span-2 dark:text-white">
+                <SmallTextField label="Image ALT" value={product.image_alt} />
+
+                <SmallTextField
+                    label={"Image Description"}
+                    value={product.image_description}
+                />
+
+                <div className="my-2 mb-5 rounded-md bg-gray-50 p-4 text-xl font-bold md:col-span-2 dark:bg-dark dark:text-white">
                     <label className="text-lg font-semibold">Image :</label>
                     <Gallery sources={[product.image?.url]} />
                 </div>

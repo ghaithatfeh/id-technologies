@@ -10,6 +10,8 @@ interface Product {
     category?: Category;
     is_featured?: boolean;
     video?: Media;
+    image_alt?: string;
+    image_description?: string;
 }
 
 export default Product;
