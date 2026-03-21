@@ -9,10 +9,8 @@ use App\Http\Controllers\Controller;
 
 class BrandController extends Controller
 {
-    public function show($brandId, $categoryId = null)
+    public function show($brandId, $categoryId = null, $subCategoryId = null)
     {
-        $subCategoryId = request()->query('subCategoryId', null);
-
         $brand = Brand::with(['categories' => function ($query) {
             $query->whereNull('parent_id')->with(['children']);
         }])->find($brandId);

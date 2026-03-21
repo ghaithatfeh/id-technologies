@@ -1,3 +1,7 @@
+@php
+    use Illuminate\Support\Facades\Route;
+@endphp
+
 <div
     class="mb-8 flex max-h-[13vh] items-center justify-between px-5 py-5 md:px-40 md:py-10"
 >
@@ -34,18 +38,19 @@
             {{ trans("site.our_projects") }}
         </a>
 
-        <form action="{{ route("set-locale") }}" method="POST">
-            @csrf
-            <input
-                class="hidden"
-                hidden
-                value="{{ app()->getLocale() == "en" ? "ar" : "en" }}"
-                name="lang"
-            />
-            <button type="submit" class="hover:text-white cursor-pointer">
-                {{ app()->getLocale() == "en" ? trans("site.ar") : trans("site.en") }}
-            </button>
-        </form>
+        <a
+            class="cursor-pointer text-xl font-bold text-landing-primary transition-opacity hover:opacity-70"
+            href="{{
+                route(Route::currentRouteName(), [
+                    ...request()
+                        ->route()
+                        ->parameters(),
+                    "locale" => app()->getLocale() == "en" ? "ar" : "en",
+                ])
+            }}"
+        >
+            {{ app()->getLocale() == "en" ? trans("site.ar") : trans("site.en") }}
+        </a>
     </nav>
     <img
         src="{{ asset("/images/02-Logo.png") }}"
@@ -80,21 +85,19 @@
             {{ trans("site.our_projects") }}
         </a>
 
-        <form action="{{ route("set-locale") }}" method="POST">
-            @csrf
-            <input
-                class="hidden"
-                hidden
-                value="{{ app()->getLocale() == "en" ? "ar" : "en" }}"
-                name="lang"
-            />
-            <button
-                type="submit"
-                class="text-xl font-bold text-landing-primary transition-opacity hover:opacity-70 cursor-pointer"
-            >
-                {{ app()->getLocale() == "en" ? trans("site.ar") : trans("site.en") }}
-            </button>
-        </form>
+        <a
+            class="cursor-pointer text-xl font-bold text-landing-primary transition-opacity hover:opacity-70"
+            href="{{
+                route(Route::currentRouteName(), [
+                    ...request()
+                        ->route()
+                        ->parameters(),
+                    "locale" => app()->getLocale() == "en" ? "ar" : "en",
+                ])
+            }}"
+        >
+            {{ app()->getLocale() == "en" ? trans("site.ar") : trans("site.en") }}
+        </a>
     </nav>
 </div>
 
@@ -102,7 +105,9 @@
     <script type="module">
         document.addEventListener('DOMContentLoaded', () => {
             const navbarToggle = document.getElementById('navbar-toggle');
-            const mobileNavContainer = document.getElementById('mobile-nav-container');
+            const mobileNavContainer = document.getElementById(
+                'mobile-nav-container',
+            );
             const menuIcon = document.getElementById('menu-icon');
             const closeIcon = document.getElementById('close-icon');
 
@@ -113,11 +118,15 @@
                         ? 'false'
                         : 'true',
                 );
-                const isOpen = navbarToggle.getAttribute('data-isopen') === 'true';
+                const isOpen =
+                    navbarToggle.getAttribute('data-isopen') === 'true';
 
                 if (isOpen) {
                     mobileNavContainer.classList.add('translate-x-0');
-                    mobileNavContainer.classList.remove('translate-x-full', '-translate-x-full');
+                    mobileNavContainer.classList.remove(
+                        'translate-x-full',
+                        '-translate-x-full',
+                    );
                     menuIcon.classList.add('hidden');
                     closeIcon.classList.remove('hidden');
 
@@ -129,7 +138,7 @@
                             'z-30',
                             'bg-black',
                             'bg-opacity-50',
-                            'md:hidden'
+                            'md:hidden',
                         );
                         overlay.id = 'mobile-menu-overlay';
                         overlay.addEventListener('click', onToggleMenu);

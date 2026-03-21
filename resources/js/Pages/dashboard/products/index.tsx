@@ -1,10 +1,10 @@
 import ActionsButtons from "@/Components/Datatable/ActionsButtons";
 import DataTable from "@/Components/Datatable/DataTable";
+import ImagePreview from "@/Components/Show/ImagePreview";
 import Product from "@/Models/Product";
+import { translate } from "@/Models/Translatable";
 import Http from "@/Modules/Http/Http";
 import { Link } from "@inertiajs/react";
-import { translate } from "@/Models/Translatable";
-import ImagePreview from "@/Components/Show/ImagePreview";
 
 const Index = () => {
     return (
@@ -62,7 +62,7 @@ const Index = () => {
                         return (
                             record?.category_id && (
                                 <Link
-                                    className="hover:text-primary underline"
+                                    className="underline hover:text-primary"
                                     href={route(
                                         "v1.web.protected.categories.show",
                                         record?.category_id,
@@ -100,16 +100,19 @@ const Index = () => {
                 {
                     name: "video",
                     label: "Video",
-                    render: (data) => (
-                        <a
-                            className={"hover:underline"}
-                            target={"_blank"}
-                            href={data.url}
-                            download
-                        >
-                            Download ({data.extension}) File
-                        </a>
-                    ),
+                    render: (data) =>
+                        data?.url ? (
+                            <a
+                                className={"hover:underline"}
+                                target={"_blank"}
+                                href={data.url}
+                                download
+                            >
+                                Download ({data.extension}) File
+                            </a>
+                        ) : (
+                            "No Video"
+                        ),
                 },
                 {
                     label: "Options",
