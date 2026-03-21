@@ -2,32 +2,37 @@
 
 namespace App\Models;
 
-use App\Casts\MediaCast;
-use App\Casts\Translatable;
-use App\Models\Category;
-use App\Serializers\Translatable as TranslatableSerializer;
-use App\Traits\HasMedia;
 use Carbon\Carbon;
+use App\Casts\MediaCast;
+use App\Traits\HasMedia;
+use App\Casts\Translatable;
 use Database\Factories\BrandFactory;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection as EloquentCollection;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Serializers\SerializedMedia;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Serializers\Translatable as TranslatableSerializer;
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 
-/*** @property int $id
- * @property TranslatableSerializer $brand_title
- * @property array{url:string,size:string,extension:string,mime_type:string} $background_image
- * @property array{url:string,size:string,extension:string,mime_type:string} $icon
- * @property array{url:string,size:string,extension:string,mime_type:string} $logo
- * @property Carbon $created_at
- * @property Carbon $updated_at
- *
- * @mixin Builder<Brand>
- *
- * @use  HasFactory<BrandFactory>
+/**
+ * @property int                               $id
+ * @property TranslatableSerializer            $brand_title
+ * @property SerializedMedia|null              $background_image
+ * @property SerializedMedia|null              $icon
+ * @property SerializedMedia|null              $logo
+ * @property Carbon                            $created_at
+ * @property Carbon                            $updated_at
  * @property EloquentCollection<Category>|null $categories
-*/
+ * @property string|null                       $background_image_alt
+ * @property string|null                       $background_image_description
+ * @property string|null                       $icon_alt
+ * @property string|null                       $icon_description
+ * @property string|null                       $logo_alt
+ * @property string|null                       $logo_description
+ * @mixin Builder<Brand>
+ * @use  HasFactory<BrandFactory>
+ */
 class Brand extends Model
 {
     use HasFactory;
@@ -38,7 +43,12 @@ class Brand extends Model
         'background_image',
         'icon',
         'logo',
-
+        'background_image_alt',
+        'background_image_description',
+        'icon_alt',
+        'icon_description',
+        'logo_alt',
+        'logo_description',
     ];
 
     protected function casts(): array
@@ -81,7 +91,7 @@ class Brand extends Model
     }
 
     /**
-    @return  HasMany<Category, static>
+     * @return  HasMany<Category, static>
      */
     public function categories(): HasMany
     {

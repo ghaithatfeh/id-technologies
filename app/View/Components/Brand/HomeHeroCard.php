@@ -3,6 +3,7 @@
 namespace App\View\Components\Brand;
 
 use Closure;
+use App\Models\Brand;
 use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory;
@@ -11,15 +12,8 @@ use Illuminate\View\View as IlluminateView;
 
 class HomeHeroCard extends Component
 {
-    public $content;
-    public $icon;
-    public $background;
-
-    public function __construct($content, $icon, $background)
+    public function __construct(public Brand $brand)
     {
-        $this->content = $content;
-        $this->icon = $icon;
-        $this->background = $background;
     }
 
     public function highlightBrandNames($text): array|string|null

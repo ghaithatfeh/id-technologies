@@ -1,11 +1,12 @@
+import BrandCategoriesTable from "@/Components/categories/BrandCategoriesTable";
+import Gallery from "@/Components/Show/Gallery";
+import LongTextField from "@/Components/Show/LongTextField";
+import SmallTextField from "@/Components/Show/SmallTextField";
 import Button from "@/Components/ui/Button";
 import PageCard from "@/Components/ui/PageCard";
 import Brand from "@/Models/Brand";
-import { Link } from "@inertiajs/react";
-import Gallery from "@/Components/Show/Gallery";
-import SmallTextField from "@/Components/Show/SmallTextField";
 import { translate } from "@/Models/Translatable";
-import BrandCategoriesTable from "@/Components/categories/BrandCategoriesTable";
+import { Link } from "@inertiajs/react";
 
 const Show = ({ brand }: { brand: Brand }) => {
     return (
@@ -25,6 +26,29 @@ const Show = ({ brand }: { brand: Brand }) => {
                 <SmallTextField
                     label="Brand Title"
                     value={translate(brand.brand_title)}
+                />
+
+                <SmallTextField
+                    label="Background Image ALT"
+                    value={brand.background_image_alt}
+                />
+
+                <SmallTextField label="Icon ALT" value={brand.icon_alt} />
+
+                <SmallTextField label="Logo ALT" value={brand.logo_alt} />
+
+                <LongTextField
+                    label={"Background Image Description"}
+                    value={brand.background_image_description}
+                />
+                <LongTextField
+                    label={"Icon Description"}
+                    value={brand.icon_description}
+                />
+
+                <LongTextField
+                    label={"Logo Description"}
+                    value={brand.logo_description}
                 />
             </div>
 

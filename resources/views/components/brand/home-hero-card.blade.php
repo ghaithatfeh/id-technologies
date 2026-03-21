@@ -8,20 +8,24 @@
 
         <div
             class="absolute inset-0 rounded-t-lg bg-cover bg-center bg-no-repeat opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100"
-            style="background-image: url('{{ $background }}')"
+            style="
+                background-image: url('{{ $brand->background_image?->url }}');
+            "
         ></div>
     </div>
 
     <p class="relative z-10 text-center text-lg font-bold text-wrap">
-        {!! $highlightBrandNames($content) !!}
+        {!! $highlightBrandNames($brand->brand_title) !!}
     </p>
 
     <div
         class="absolute -bottom-9 left-0 z-20 flex w-full items-center justify-center"
     >
         <img
-            src="{{ $icon }}"
+            src="{{ $brand->icon?->url }}"
             class="h-16 w-16 rounded-lg bg-landing-secondary p-2 shadow-md"
+            alt="{{ $brand->icon_alt }}"
+            title="{{ $brand->icon_description }}"
         />
     </div>
 </div>

@@ -43,7 +43,7 @@ function CategorySortIndexColumn(
         <input
             type="number"
             value={value}
-            className="dark:bg-dark-primary w-24 rounded border px-2 py-1"
+            className="dark:bg-dark-primary w-24 rounded border bg-transparent px-2 py-1 dark:text-white"
             onBlur={(e) =>
                 e.currentTarget.value
                     ? save(Number(e.currentTarget.value))

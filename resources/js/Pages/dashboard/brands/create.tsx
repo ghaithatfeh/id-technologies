@@ -1,18 +1,22 @@
-import { useForm } from "@inertiajs/react";
-import { FormEvent } from "react";
-import PageCard from "@/Components/ui/PageCard";
-import Form from "@/Components/form/Form";
-import Media from "@/Models/Media";
 import Input from "@/Components/form/fields/Input";
 import TranslatableInput from "@/Components/form/fields/TranslatableInput";
+import Form from "@/Components/form/Form";
+import PageCard from "@/Components/ui/PageCard";
 import TranslatableInputsContext from "@/Contexts/TranslatableInputsContext";
-import Brand from "@/Models/Brand";
+import { useForm } from "@inertiajs/react";
+import { FormEvent } from "react";
 
 const Create = () => {
     const { post, setData, processing } = useForm<{
         _method?: "PUT" | "POST";
         brand_title: string;
         background_image?: File | undefined;
+        background_image_alt?: string | undefined;
+        background_image_description?: string | undefined;
+        icon_alt?: string | undefined;
+        icon_description?: string | undefined;
+        logo_alt?: string | undefined;
+        logo_description?: string | undefined;
         icon?: File | undefined;
         logo?: File | undefined;
     }>();
@@ -56,6 +60,7 @@ const Create = () => {
                             type={"file"}
                             required
                         />
+
                         <Input
                             name="logo"
                             label={"Logo"}

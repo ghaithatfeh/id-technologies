@@ -23,6 +23,12 @@ class BrandResource extends BaseResource
             'background_image' => $this->background_image,
             'icon' => $this->icon,
             'logo' => $this->logo,
+            'background_image_alt' => $this->background_image_alt,
+            'background_image_description' => $this->background_image_description,
+            'icon_alt' => $this->icon_alt,
+            'icon_description' => $this->icon_description,
+            'logo_alt' => $this->logo_alt,
+            'logo_description' => $this->logo_description,
             'categories' => CategoryResource::collection($this->whenLoaded('categories')),
         ];
     }

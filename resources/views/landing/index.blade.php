@@ -118,11 +118,7 @@
                     class="h-full w-full max-w-[17rem]"
                     href="{{ route("landing.brands.show", $brand->id) }}"
                 >
-                    <x-brand.home-hero-card
-                        :content="$brand->brand_title"
-                        :icon="$brand->icon->url"
-                        :background="$brand->background_image->url"
-                    />
+                    <x-brand.home-hero-card :brand="$brand" />
                 </a>
             @endforeach
         </div>
