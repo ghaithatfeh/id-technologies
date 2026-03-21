@@ -1,4 +1,5 @@
 @extends("landing.layout")
+@section("title", " - " . trans("site.our_projects"))
 @section("content")
     <div
         class="relative w-full bg-cover bg-center bg-no-repeat"
@@ -67,7 +68,6 @@
 @push("scripts")
     {{-- Add this before your closing </body> tag --}}
     <script type="module">
-
         let elem = document.querySelector('#project-container');
         let infScroll = new InfiniteScroll(elem, {
             // Path to the next page (looks for the 'rel=next' link in Laravel pagination)

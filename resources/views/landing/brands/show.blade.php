@@ -4,9 +4,13 @@
     /** @var \Illuminate\Database\Eloquent\Collection<\App\Models\Product> $products */
     /** @var int $subCategoryId */
     /** @var \Illuminate\Database\Eloquent\Collection|null $categories  */
+    $title = str("- {$brand->brand_title}")
+        ->when(isset($category), fn ($s) => str("$s  - {$category->name}"))
+        ->when(isset($subCategoryId), fn ($s) => str("$s - {$category->children->where("id", $subCategoryId)->first()?->name}"));
 @endphp
 
 @extends("landing.layout")
+@section("title", $title)
 @section("content")
     <div class="w-full">
         <div

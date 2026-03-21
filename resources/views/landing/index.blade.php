@@ -6,6 +6,7 @@
 @endphp
 
 @extends("landing.layout")
+@section("title", " - " . trans("site.home"))
 @section("content")
     <div
         class="relative w-full"

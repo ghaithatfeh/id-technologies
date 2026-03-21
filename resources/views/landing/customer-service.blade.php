@@ -6,6 +6,7 @@
 @endphp
 
 @extends("landing.layout")
+@section("title", " - " . trans("site.customer_service"))
 @section("content")
     <div
         class="relative w-full bg-[url('/images/01-Cover.png')] bg-cover bg-center bg-no-repeat"

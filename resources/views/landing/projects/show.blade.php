@@ -1,4 +1,5 @@
 @extends("landing.layout")
+@section("title", " - " . $project->title)
 @section("content")
     <div class="h-full w-full">
         <div class="max-h-[13vh] bg-landing-secondary">

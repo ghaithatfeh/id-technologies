@@ -16,7 +16,6 @@ class ProjectController extends Controller
 
     public function show($projectId)
     {
-        dd($projectId);
         $project = Project::find($projectId);
         if (!$project) {
             abort(404);
