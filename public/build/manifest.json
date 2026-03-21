@@ -51,8 +51,8 @@
       "_inertia-BgP3mBFL.js"
     ]
   },
-  "_pages-entities-hrsKZvNA.js": {
-    "file": "assets/pages-entities-hrsKZvNA.js",
+  "_pages-entities-Dwi_naH4.js": {
+    "file": "assets/pages-entities-Dwi_naH4.js",
     "name": "pages-entities",
     "imports": [
       "_react-core-Cgk7sWxN.js",
@@ -90,7 +90,7 @@
     ]
   },
   "resources/css/cubeta-starter.css": {
-    "file": "assets/css/cubeta-starter-CcF1x-sk.css",
+    "file": "assets/css/cubeta-starter-BtQaWrxm.css",
     "src": "resources/css/cubeta-starter.css",
     "isEntry": true,
     "names": [
@@ -110,12 +110,12 @@
     ]
   },
   "resources/js/cubeta-starter.tsx": {
-    "file": "assets/cubeta-starter-CTxI5FDo.js",
+    "file": "assets/cubeta-starter-DDTkmhPR.js",
     "name": "cubeta-starter",
     "src": "resources/js/cubeta-starter.tsx",
     "isEntry": true,
     "imports": [
-      "_pages-entities-hrsKZvNA.js",
+      "_pages-entities-Dwi_naH4.js",
       "_pages-auth-CHWq2i11.js",
       "_pages-dashboard-DoV8LwOA.js",
       "_react-core-Cgk7sWxN.js",
@@ -126,7 +126,7 @@
       "_lucide-DLsL4gmz.js"
     ],
     "css": [
-      "assets/css/cubeta-starter-CcF1x-sk.css"
+      "assets/css/cubeta-starter-BtQaWrxm.css"
     ]
   }
 }
