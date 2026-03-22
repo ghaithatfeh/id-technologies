@@ -13,6 +13,7 @@
         </title>
         <link rel="canonical" href="{{ url()->current() }}" />
         <meta name="csrf-token" content="{{ csrf_token() }}" />
+        @stack('meta')
 
         <!-- Scripts -->
         @vite(["resources/css/cubeta-starter.css", "resources/js/app.js"])

@@ -6,6 +6,11 @@
 @endphp
 
 @extends("landing.layout")
+
+@push("meta")
+    <meta property="og:image" content="{{ asset("/images/02-Logo.png") }}" />
+@endpush
+
 @section("title", " - " . trans("site.customer_service"))
 @section("content")
     <div

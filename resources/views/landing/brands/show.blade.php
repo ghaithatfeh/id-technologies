@@ -4,13 +4,32 @@
     /** @var \Illuminate\Database\Eloquent\Collection<\App\Models\Product> $products */
     /** @var int $subCategoryId */
     /** @var \Illuminate\Database\Eloquent\Collection|null $categories  */
-    $title = str("- {$brand->brand_title}")
-        ->when(isset($category), fn ($s) => str("$s  - {$category->name}"))
-        ->when(isset($subCategoryId), fn ($s) => str("$s - {$category->children->where("id", $subCategoryId)->first()?->name}"));
+    $title = " - $brand->brand_title";
+
+    $metaTitle = $category->meta_title ?? $brand->brand_title;
+    $metaDescription = $category->meta_description ?? $brand->brand_title;
+
+    if ($subCategoryId) {
+        $subCategory = $category->children->firstWhere("id", $subCategoryId);
+        $metaTitle = $subCategory->meta_title ?? "$metaTitle - $subCategory->name";
+        $metaDescription = $subCategory->meta_description ?? $metaDescription;
+    }
 @endphp
 
 @extends("landing.layout")
 @section("title", $title)
+@push("meta")
+    <meta name="description" content="{{ $metaDescription }}" />
+    <meta property="og:title" content="{{ $metaTitle }}" />
+    <meta property="og:description" content="{{ $metaDescription }}" />
+    <meta property="og:type" content="product.group" />
+    <meta property="og:url" content="{{ url()->current() }}" />
+    <meta property="og:image" content="{{ $brand->logo?->url }}" />
+    @foreach ($products->take(2) as $product)
+        <meta property="og:image" content="{{ $product->image?->url }}" />
+    @endforeach
+@endpush
+
 @section("content")
     <div class="w-full">
         <div
@@ -168,3 +187,26 @@
         <x-ui.footer />
     </div>
 @endsection
+
+@push("scripts")
+    <script type="application/ld+json">
+        {
+                "@@context": "https://schema.org",
+                "@type": "ItemList",
+                "itemListElement": [
+        @foreach ($products as $index => $product)
+            {
+              "@type": "ListItem",
+              "position": {{ $index + 1 }},
+                    "url": "{{ url()->current() }}",
+                    "name": "{{ $product->name }}",
+                    "image": "{{ $product->image?->url }}"
+                  }
+            @if(!$loop->last)
+                ,
+            @endif
+        @endforeach
+               ]
+        }
+    </script>
+@endpush
