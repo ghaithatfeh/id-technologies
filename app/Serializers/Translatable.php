@@ -37,11 +37,14 @@ class Translatable implements JsonSerializable, Arrayable, Stringable
     /**
      * @throws Exception
      */
-    public function __construct(string|array $value)
+    public function __construct(string|array|null $value)
     {
-        if (is_string($value) && Str::isJson($value)) {
+        if (!$value) {
+            $this->data = [];
+        }
+        elseif (is_string($value) && Str::isJson($value)) {
             $this->data = json_decode($value, true);
-        } elseif (is_string($value) && !Str::isJson($value)){
+        } elseif (is_string($value) && !Str::isJson($value)) {
             $this->data[config('cubeta-starter.default_locale')] = $value;
         } else {
             $this->data = $value;
@@ -116,6 +119,7 @@ class Translatable implements JsonSerializable, Arrayable, Stringable
      * if a corresponding value for the requested locale doesn't exist, it will loop on the available locales defined
      * in the config and get the first one with a value, finally if there is no value with any locale it will returns an
      * empty string
+     *
      * @param string|null $locale
      * @return string
      */

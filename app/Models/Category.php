@@ -23,6 +23,8 @@ use Illuminate\Database\Eloquent\Collection as EloquentCollection;
  * @property integer                          $sort_index
  * @property int|null                         $parent_id
  * @property Category|null                    $parent
+ * @property TranslatableSerializer|null      $meta_title
+ * @property TranslatableSerializer|null      $meta_description
  * @mixin Builder<Category>
  * @use  HasFactory<CategoryFactory>
  * @property EloquentCollection<Product>|null $products
@@ -36,12 +38,16 @@ class Category extends Model
         'brand_id',
         'parent_id',
         'sort_index',
+        'meta_title',
+        'meta_description',
     ];
 
     protected function casts(): array
     {
         return [
             'name' => Translatable::class,
+            'meta_title' => Translatable::class,
+            'meta_description' => Translatable::class,
         ];
     }
 

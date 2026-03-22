@@ -1,4 +1,5 @@
 import ApiSelect from "@/Components/form/fields/Select/ApiSelect";
+import TranslatableEditor from "@/Components/form/fields/TranslatableEditor";
 import TranslatableInput from "@/Components/form/fields/TranslatableInput";
 import Form from "@/Components/form/Form";
 import PageCard from "@/Components/ui/PageCard";
@@ -17,6 +18,8 @@ const Create = () => {
         name: string;
         brand_id: number;
         parent_id?: number;
+        meta_title?: string;
+        meta_description?: string;
     }>();
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -54,6 +57,13 @@ const Create = () => {
                             label={"Name"}
                             onChange={(e) => setData("name", e.target.value)}
                             required
+                        />
+                        <TranslatableInput
+                            name="meta_title"
+                            label={"Meta Title (SEO)"}
+                            onChange={(e) =>
+                                setData("meta_title", e.target.value)
+                            }
                         />
                         <ApiSelect
                             name="brand_id"
@@ -97,12 +107,26 @@ const Create = () => {
                                 data?.paginate?.total_pages ?? 0
                             }
                             onChange={(e) =>
-                                setData("parent_id", e.target.value ? Number(e.target.value) : undefined)
+                                setData(
+                                    "parent_id",
+                                    e.target.value
+                                        ? Number(e.target.value)
+                                        : undefined,
+                                )
                             }
                             getOptionLabel={(data) => translate(data.name)}
                             optionValue={"id"}
                             revalidateKey={brandId}
                         />
+                        <div className={"md:col-span-2"}>
+                            <TranslatableEditor
+                                name={"meta_description"}
+                                label={"Meta Description (SEO)"}
+                                onChange={(e) =>
+                                    setData("meta_description", e.target.value)
+                                }
+                            />
+                        </div>
                     </div>
                 </Form>
             </TranslatableInputsContext>

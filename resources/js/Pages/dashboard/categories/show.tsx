@@ -5,6 +5,7 @@ import { Link } from "@inertiajs/react";
 import SmallTextField from "@/Components/Show/SmallTextField";
 import { translate } from "@/Models/Translatable";
 import CategoryChildrenTable from "@/Components/categories/CategoryChildrenTable";
+import LongTextField from "@/Components/Show/LongTextField";
 
 const Show = ({ category }: { category: Category }) => {
     return (
@@ -30,12 +31,23 @@ const Show = ({ category }: { category: Category }) => {
                     value={translate(category?.brand?.brand_title)}
                 />
 
+                <SmallTextField
+                    label="Meta Title"
+                    value={translate(category?.meta_title)}
+                />
+
                 {category.parent && (
                     <SmallTextField
                         label="Parent Category"
                         value={translate(category?.parent?.name)}
                     />
                 )}
+                <div className={"md:col-span-2"}>
+                    <LongTextField
+                        label={"Meta Description"}
+                        value={translate(category?.meta_description)}
+                    />
+                </div>
             </div>
             {!category.parent_id && (
                 <CategoryChildrenTable categoryId={category.id} />

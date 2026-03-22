@@ -18,6 +18,8 @@ class CategoryFactory extends Factory
         return [
             'name' => Translatable::fake('firstName')->toJson(),
             'brand_id' => Brand::inRandomOrder()->first()->id,
+            'meta_title' => Translatable::fake('sentence')->toJson(),
+            'meta_description' => Translatable::fake('sentence')->toJson(),
         ];
     }
 

@@ -26,6 +26,8 @@ class CategoryResource extends BaseResource
             'children' => CategoryResource::collection($this->whenLoaded('children')),
             'parent' => CategoryResource::make($this->whenLoaded('parent')),
             'sort_index' => $this->sort_index,
+            'meta_description' => $this->meta_description,
+            'meta_title' => $this->meta_title,
         ];
     }
 }

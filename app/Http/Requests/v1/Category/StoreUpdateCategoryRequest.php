@@ -39,6 +39,8 @@ class StoreUpdateCategoryRequest extends FormRequest
                     ->whereNotNull('sort_index')
                     ->ignore($this->route('category')),
             ],
+            'meta_title' => ['json', new ValidTranslatableJson, 'nullable'],
+            'meta_description' => ['json', new ValidTranslatableJson, 'nullable'],
         ];
     }
 }

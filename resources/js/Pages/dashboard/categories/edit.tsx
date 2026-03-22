@@ -10,6 +10,7 @@ import ApiResponse from "@/Modules/Http/ApiResponse";
 import Http from "@/Modules/Http/Http";
 import { useForm } from "@inertiajs/react";
 import { FormEvent, useState } from "react";
+import TranslatableEditor from "@/Components/form/fields/TranslatableEditor";
 
 const Edit = ({ category }: { category: Category }) => {
     const { post, setData, processing } = useForm<{
@@ -17,11 +18,15 @@ const Edit = ({ category }: { category: Category }) => {
         name: string;
         brand_id: number;
         parent_id?: number;
+        meta_title?: string;
+        meta_description?: string;
     }>({
         _method: "PUT",
         name: category?.name,
         brand_id: category?.brand_id,
         parent_id: category.parent_id,
+        meta_title: category?.meta_title,
+        meta_description: category?.meta_description,
     });
 
     const [brandId, setBrandId] = useState<number | undefined>(
@@ -66,6 +71,14 @@ const Edit = ({ category }: { category: Category }) => {
                             defaultValue={category.name}
                             required
                         />
+                        <TranslatableInput
+                            name="meta_title"
+                            label={"Meta Title (SEO)"}
+                            onChange={(e) =>
+                                setData("meta_title", e.target.value)
+                            }
+                            defaultValue={category.meta_title}
+                        />
                         <ApiSelect
                             name="brand_id"
                             label={"Brand"}
@@ -103,10 +116,13 @@ const Edit = ({ category }: { category: Category }) => {
                                 name="parent_id"
                                 label={"Parent Category"}
                                 api={getMainCategoriesByBrand}
-                                getDataArray={(response) => 
+                                getDataArray={(response) =>
                                     // Remove the current category from the list of parent categories
                                     // so that it can't be selected as a parent category
-                                    response?.data?.filter((item: Category) => item.id !== category.id) ?? []
+                                    response?.data?.filter(
+                                        (item: Category) =>
+                                            item.id !== category.id,
+                                    ) ?? []
                                 }
                                 getIsLast={(data) =>
                                     data?.paginate?.is_last_page ?? false
@@ -123,6 +139,16 @@ const Edit = ({ category }: { category: Category }) => {
                                 defaultValue={category?.parent}
                             />
                         )}
+                        <div className={"md:col-span-2"}>
+                            <TranslatableEditor
+                                name={"meta_description"}
+                                label={"Meta Description (SEO)"}
+                                onChange={(e) =>
+                                    setData("meta_description", e.target.value)
+                                }
+                                defaultValue={category?.meta_description}
+                            />
+                        </div>
                     </div>
                 </Form>
             </TranslatableInputsContext>

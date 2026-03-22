@@ -11,6 +11,8 @@ interface Category {
     parent?: Category;
     children?: Category[];
     sort_index?:number;
+    meta_title?: string;
+    meta_description?: string;
 }
 
 export default Category;
