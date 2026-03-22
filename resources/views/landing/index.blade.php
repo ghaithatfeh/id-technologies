@@ -1,5 +1,6 @@
 @php
-    use App\Models\Brand;use App\Models\Product;
+    use App\Models\Brand;
+    use App\Models\Product;
 
     /** @var Product $featuredProduct */
     /** @var Brand[] $brands */
@@ -14,7 +15,7 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            background-image: {{app()->getLocale() == "ar" ? 'url('.asset('images/01-BGRTL.jpg').')' : 'url('.asset('images/01-BG.jpg').')'}};
+            background-image: {{ app()->getLocale() == "ar" ? "url(" . asset("images/01-BGRTL.jpg") . ")" : "url(" . asset("images/01-BG.jpg") . ")" }};
         "
     >
         <x-ui.navbar />
@@ -23,7 +24,7 @@
         >
             <div class="w-full max-w-4xl">
                 <h2
-                    class="text-landing-primary mb-3 text-2xl font-bold md:ps-26"
+                    class="mb-3 text-2xl font-bold text-landing-primary md:ps-26"
                 >
                     {{ trans("site.partners_in_development") }}
                 </h2>
@@ -78,13 +79,15 @@
                 </div>
             </div>
 
-            @if(isset($featuredProduct))
+            @if (isset($featuredProduct))
                 <div class="mt-24 md:mt-12">
                     <a
-                        href="{{ route("landing.brands.show", [
+                        href="{{
+                            route("landing.brands.show", [
                                 "brandId" => $featuredProduct->category?->brand_id,
                                 "categoryId" => $featuredProduct->category_id,
-                            ]) }}"
+                            ])
+                        }}"
                     >
                         <div
                             class="hover:shadow-3xl group relative max-h-full rounded-xl bg-landing-primary p-5 pb-2 shadow-xl transition-shadow duration-300"
@@ -241,7 +244,7 @@
     </div>
 
     <div
-        class="w-full pt-12"
+        class="w-full pt-12 pb-16"
         style="
             background-image: url('{{ asset("images/08-BG.svg") }}');
             background-size: cover;
@@ -250,114 +253,150 @@
             background-attachment: fixed;
         "
     >
+        <!-- Brand Logos Section -->
         <div
-            class="flex w-full max-w-full grid-cols-4 flex-wrap items-center justify-center gap-10 px-10 py-10 md:grid md:px-52">
-            <img src="{{asset('images/11-Brand.png')}}" class="w-46 md:w-auto" alt="brand-logo">
+            class="flex w-full max-w-full grid-cols-4 flex-wrap items-center justify-center gap-10 px-10 py-10 md:grid md:px-52"
+        >
             <img
-                class="w-46 md:w-auto"
-                alt={"brand-logo"}
-                src="{{asset("/images/10-Brand.svg")}}"
+                src="{{ asset("images/11-Brand.png") }}"
+                class="w-46 opacity-80 transition-opacity hover:opacity-100 md:w-auto"
+                alt="brand-logo"
             />
             <img
-                class="w-46 md:w-auto"
-                alt={"brand-logo"}
-                src="{{asset("/images/12-Brand.png")}}"
+                class="w-46 opacity-80 transition-opacity hover:opacity-100 md:w-auto"
+                alt="brand-logo"
+                src="{{ asset("/images/10-Brand.svg") }}"
             />
             <img
-                class="w-46 md:w-auto"
-                alt={"brand-logo"}
-                src="{{asset("/images/09-Brand.png")}}"
+                class="w-46 opacity-80 transition-opacity hover:opacity-100 md:w-auto"
+                alt="brand-logo"
+                src="{{ asset("/images/12-Brand.png") }}"
+            />
+            <img
+                class="w-46 opacity-80 transition-opacity hover:opacity-100 md:w-auto"
+                alt="brand-logo"
+                src="{{ asset("/images/09-Brand.png") }}"
             />
         </div>
+
+        <!-- Decorative Divider -->
         <div class="flex items-center justify-center py-5">
-            <div class="h-0.5 w-[80vw] bg-black md:w-[75vw]"></div>
+            <div class="h-0.5 w-[80vw] bg-black/20 md:w-[75vw]"></div>
         </div>
-        <h2 class="text-landing-primary px-10 py-5 text-center text-2xl leading-12 font-bold text-wrap md:px-72">
-            {{trans('site.home_footer_quote')}}
+
+        <!-- Quote Section -->
+        <h2
+            class="px-10 py-5 text-center text-2xl leading-12 font-bold text-wrap text-landing-primary md:px-72"
+        >
+            {{ trans("site.home_footer_quote") }}
         </h2>
-        <div class="mt-8 grid w-full items-center gap-10 px-10 py-10 text-xl md:grid-cols-3 md:gap-24 md:px-50"
-             dir="ltr">
-            <div class="flex flex-col items-start">
-                <div class="flex items-center">
-                    <i data-lucide="mail" class="text-landing-primary me-2"></i>
-                    <a href="mailto:sales1@idtechco.com">sales1@idtechco.com</a>
-                </div>
 
-                <div class="flex items-center">
-                    <i data-lucide="mail" class="text-landing-primary me-2"></i>
-                    <a href="mailto:sales1@idtechco.com">sales2@idtechco.com</a>
-                </div>
-
-                <div class="flex items-center">
-                    <i data-lucide="mail" class="text-landing-primary me-2"></i>
-                    <a href="mailto:sales4@idtechco.com">sales4@idtechco.com</a>
-                </div>
+        <!-- Interactive Contact Grid -->
+        <div
+            class="mt-8 grid w-full items-start gap-6 px-10 py-5 text-lg md:grid-cols-3 md:gap-10 md:px-50"
+            dir="ltr"
+        >
+            <!-- Email Column -->
+            <div class="flex flex-col gap-4">
+                @foreach (["sales1@idtechco.com", "sales2@idtechco.com", "sales4@idtechco.com"] as $email)
+                    <a
+                        href="mailto:{{ $email }}"
+                        class="group flex items-center rounded-xl border border-black/10 bg-white/5 p-3 shadow-sm transition-all duration-300 hover:border-landing-primary hover:bg-landing-primary"
+                    >
+                        <i
+                            data-lucide="mail"
+                            class="me-3 text-landing-primary transition-colors group-hover:text-black"
+                        ></i>
+                        <span
+                            class="truncate font-medium text-black group-hover:text-black"
+                        >
+                            {{ $email }}
+                        </span>
+                    </a>
+                @endforeach
             </div>
-            <div class="flex flex-col items-start">
-                <div class="flex items-center">
-                    <i data-lucide="phone" class="text-landing-primary me-2 "></i>
-                    <a
-                        dir="ltr"
-                        target="_blank"
-                        href="https://wa.me/+963933303939"
-                    >
-                        +963 933 303 939
-                    </a>
-                </div>
 
-                <div class="flex items-center">
-                    <i data-lucide="phone" class="text-landing-primary me-2 "></i>
+            <!-- Phone/WhatsApp Column -->
+            <div class="flex flex-col gap-4">
+                @foreach ([
+                        "+963 933 303 939" => "963933303939",
+                        "+963 935 288 888" => "963935288888",
+                        "+963 932 865 566" => "963932865566"
+                    ]
+                    as $display => $val)
                     <a
-                        dir="ltr"
+                        href="https://wa.me/{{ $val }}"
                         target="_blank"
-                        href="https://wa.me/+963935288888"
+                        class="group flex items-center rounded-xl border border-black/10 bg-white/5 p-3 shadow-sm transition-all duration-300 hover:border-landing-primary hover:bg-landing-primary"
                     >
-                        +963 935 288 888
+                        <i
+                            data-lucide="phone"
+                            class="me-3 text-landing-primary transition-colors group-hover:text-black"
+                        ></i>
+                        <span
+                            dir="ltr"
+                            class="font-medium text-black group-hover:text-black"
+                        >
+                            {{ $display }}
+                        </span>
                     </a>
-                </div>
-
-                <div class="flex items-center">
-                    <i data-lucide="phone" class="text-landing-primary me-2 "></i>
-                    <a
-                        dir="ltr"
-                        target="_blank"
-                        href="https://wa.me/+963932865566"
-                    >
-                        +963 932 865 566
-                    </a>
-                </div>
+                @endforeach
             </div>
-            <div class="flex flex-col items-start">
-                <div class="flex items-center">
-                    <i data-lucide="globe-2" class="text-landing-primary me-2"></i>
-                    <a
-                        target="_blank"
-                        href="https://www.idtechcho.com"
-                    >
+
+            <!-- Social Column -->
+            <div class="flex flex-col gap-4">
+                <a
+                    href="https://www.idtechcho.com"
+                    target="_blank"
+                    class="group flex items-center rounded-xl border border-black/10 bg-white/5 p-3 shadow-sm transition-all duration-300 hover:border-landing-primary hover:bg-landing-primary"
+                >
+                    <i
+                        data-lucide="globe-2"
+                        class="me-3 text-landing-primary group-hover:text-black"
+                    ></i>
+                    <span class="font-medium text-black group-hover:text-black">
                         www.idtechcho.com
-                    </a>
-                </div>
-
-                <div class="flex items-center">
-                    <i data-lucide="facebook" class="text-landing-primary me-2"></i>
-                    <a
-                        target="_blank"
-                        href="https://www.facebook.com/IDTechco/"
-                    >
+                    </span>
+                </a>
+                <a
+                    href="https://www.facebook.com/IDTechco/"
+                    target="_blank"
+                    class="group flex items-center rounded-xl border border-black/10 bg-white/5 p-3 shadow-sm transition-all duration-300 hover:border-landing-primary hover:bg-landing-primary"
+                >
+                    <i
+                        data-lucide="facebook"
+                        class="me-3 text-landing-primary group-hover:text-black"
+                    ></i>
+                    <span class="font-medium text-black group-hover:text-black">
                         ID Technologies Co
-                    </a>
-                </div>
-
-                <div class="flex items-center">
-                    <i data-lucide="linkedin" class="text-landing-primary me-2"></i>
-                    <a
-                        target="_blank"
-                        href="https://www.linkedin.com/company/id-technologies-co/"
-                    >
+                    </span>
+                </a>
+                <a
+                    href="https://www.linkedin.com/company/id-technologies-co/"
+                    target="_blank"
+                    class="group flex items-center rounded-xl border border-black/10 bg-white/5 p-3 shadow-sm transition-all duration-300 hover:border-landing-primary hover:bg-landing-primary"
+                >
+                    <i
+                        data-lucide="linkedin"
+                        class="me-3 text-landing-primary group-hover:text-black"
+                    ></i>
+                    <span class="font-medium text-black group-hover:text-black">
                         ID Technologies Co
-                    </a>
-                </div>
+                    </span>
+                </a>
             </div>
+        </div>
+
+        <!-- Google Maps CTA -->
+        <div class="mt-12 flex justify-center px-10">
+            <a
+                href="https://www.google.com/maps/search/?api=1&query=ID+Technologies+Co"
+                target="_blank"
+                class="flex items-center gap-3 rounded-full bg-landing-secondary px-10 py-4 text-center text-xl font-bold text-landing-primary shadow-xl transition-all hover:scale-105 hover:bg-landing-primary hover:text-landing-secondary"
+            >
+                <i data-lucide="map-pin"></i>
+                {{ trans("site.find_us_on_maps") }}
+            </a>
         </div>
     </div>
 @endsection

@@ -22,7 +22,7 @@ return Application::configure(basePath: dirname(__DIR__))
             Route::middleware(['web', 'locale', 'authenticated:web'])
                 ->group(base_path('routes/v1/web/protected.php'));
 
-            Route::prefix('{locale}')
+            Route::prefix('{locale?}')
                 ->namespace()
                 ->where(['locale' => implode('|', config('cubeta-starter.available_locales'))])
                 ->middleware(['web', 'url-locale'])

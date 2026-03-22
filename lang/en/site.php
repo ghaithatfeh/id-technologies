@@ -71,4 +71,5 @@ return [
     "featured_product" => "Featured Product",
     "download_video" => "Download Video",
     "type" => "Type",
+    'find_us_on_maps' => 'Find Us on Google Maps'
 ];
