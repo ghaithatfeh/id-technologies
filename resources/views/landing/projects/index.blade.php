@@ -32,7 +32,7 @@
             @foreach ($projects as $project)
                 <div class="project-item">
                     <a
-                        href="{{ route("landing.projects.show", $project->id) }}"
+                        href="{{ route("landing.projects.show", $project->slug) }}"
                         class="group"
                     >
                         <div

@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use App\Casts\MediaCast;
 use App\Traits\HasMedia;
+use App\Traits\Sluggable;
 use App\Casts\Translatable;
 use Database\Factories\BrandFactory;
 use App\Serializers\SerializedMedia;
@@ -30,6 +31,7 @@ use Illuminate\Database\Eloquent\Collection as EloquentCollection;
  * @property string|null                       $icon_description
  * @property string|null                       $logo_alt
  * @property string|null                       $logo_description
+ * @property string                            $slug
  * @mixin Builder<Brand>
  * @use  HasFactory<BrandFactory>
  */
@@ -37,6 +39,7 @@ class Brand extends Model
 {
     use HasFactory;
     use HasMedia;
+    use Sluggable;
 
     protected $fillable = [
         'brand_title',
@@ -49,6 +52,7 @@ class Brand extends Model
         'icon_description',
         'logo_alt',
         'logo_description',
+        'slug',
     ];
 
     protected function casts(): array
@@ -58,6 +62,17 @@ class Brand extends Model
             'background_image' => MediaCast::class,
             'icon' => MediaCast::class,
             'logo' => MediaCast::class,
+        ];
+    }
+
+    public function sluggable(): array
+    {
+        return [
+            [
+                'col' => 'brand_title',
+                'slug_col' => 'slug',
+                'separator' => '-',
+            ],
         ];
     }
 

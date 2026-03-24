@@ -7,9 +7,10 @@
 @endphp
 
 @extends("landing.layout")
-@push('meta')
+@push("meta")
     <meta property="og:image" content="{{ asset("/images/02-Logo.png") }}" />
 @endpush
+
 @section("title", " - " . trans("site.home"))
 @section("content")
     <div
@@ -85,12 +86,10 @@
             @if (isset($featuredProduct))
                 <div class="mt-24 md:mt-12">
                     <a
-                        href="{{
-                            route("landing.brands.show", [
-                                "brandId" => $featuredProduct->category?->brand_id,
-                                "categoryId" => $featuredProduct->category_id,
-                            ])
-                        }}"
+                        href="{{ route("landing.brands.show", [
+                                "brandSlug" => $featuredProduct->category?->brand->slug,
+                                "categorySlug" => $featuredProduct->category?->slug,
+                            ]), }}"
                     >
                         <div
                             class="hover:shadow-3xl group relative max-h-full rounded-xl bg-landing-primary p-5 pb-2 shadow-xl transition-shadow duration-300"
@@ -122,7 +121,11 @@
             @foreach ($brands as $brand)
                 <a
                     class="h-full w-full max-w-[17rem]"
-                    href="{{ route("landing.brands.show", $brand->id) }}"
+                    href="{{
+                        route("landing.brands.show", [
+                            "brandSlug" => $brand->slug,
+                        ])
+                    }}"
                 >
                     <x-brand.home-hero-card :brand="$brand" />
                 </a>

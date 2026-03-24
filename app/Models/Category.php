@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use App\Traits\Sluggable;
 use App\Casts\Translatable;
 use Database\Factories\CategoryFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -25,13 +26,14 @@ use Illuminate\Database\Eloquent\Collection as EloquentCollection;
  * @property Category|null                    $parent
  * @property TranslatableSerializer|null      $meta_title
  * @property TranslatableSerializer|null      $meta_description
+ * @property string                           $slug
  * @mixin Builder<Category>
  * @use  HasFactory<CategoryFactory>
  * @property EloquentCollection<Product>|null $products
  */
 class Category extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
 
     protected $fillable = [
         'name',
@@ -40,6 +42,7 @@ class Category extends Model
         'sort_index',
         'meta_title',
         'meta_description',
+        'slug',
     ];
 
     protected function casts(): array
@@ -48,6 +51,17 @@ class Category extends Model
             'name' => Translatable::class,
             'meta_title' => Translatable::class,
             'meta_description' => Translatable::class,
+        ];
+    }
+
+    public function sluggable(): array
+    {
+        return [
+            [
+                'col' => 'name',
+                'slug_col' => 'slug',
+                'separator' => '-',
+            ],
         ];
     }
 

@@ -5,17 +5,17 @@ namespace App\Http\Controllers\Landing;
 use App\Models\Brand;
 use App\Models\Product;
 use App\Models\Category;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class BrandController extends Controller
 {
-    public function show(Request $request, $brandId, $categoryId = null, $subCategoryId = null)
+    public function show(Request $request, $brandSlug, $categorySlug = null, $subCategorySlug = null)
     {
         $search = $request->query('search');
         $brand = Brand::with(['categories' => function ($query) {
             $query->whereNull('parent_id')->with(['children']);
-        }])->find($brandId);
+        }])->firstWhere('slug', $brandSlug);
 
         if (!$brand) {
             abort(404);
@@ -23,29 +23,32 @@ class BrandController extends Controller
 
         $categories = $brand->categories;
 
-        if (!$categoryId) {
+        if (!$categorySlug) {
             $category = $categories->first();
         } else {
-            $category = $categories->firstWhere('id', $categoryId);
+            $category = $categories->firstWhere('slug', $categorySlug);
             if (!$category) {
                 $category = Category::with(['children', 'brand'])
-                    ->where('id', $categoryId)
+                    ->where('slug', $categorySlug)
                     ->whereNull('parent_id')
-                    ->where('brand_id', $brandId)
+                    ->where('brand_id', $brand->id)
                     ->first();
             }
         }
 
+        $subCategory = $subCategorySlug ? $category->children->firstWhere('slug', $subCategorySlug) : null;
+        $subCategoryId = $subCategory?->id;
+
         if ($search) {
             $allCategoryIds = $categories->flatMap(
-                fn($cat) => array_merge([$cat->id], $cat->children->pluck('id')->toArray())
+                fn($cat) => array_merge([$cat->id], $cat->children->pluck('id')->toArray()),
             )->toArray();
 
             $products = Product::with(['category'])
                 ->whereIn('category_id', $allCategoryIds)
                 ->where('name', 'like', "%{$search}%")
                 ->get();
-        } elseif (!$subCategoryId && $category) {
+        } elseif (!$subCategorySlug && $category) {
             $childCategoryIds = $category->children->pluck('id')->toArray();
             $categoryIds = array_merge([$category->id], $childCategoryIds);
             $products = Product::with(['category'])
@@ -61,9 +64,10 @@ class BrandController extends Controller
             'brand',
             'category',
             'products',
-            'subCategoryId',
+            'subCategorySlug',
             'categories',
             'search',
+            'subCategoryId',
         ));
     }
 }

@@ -14,9 +14,9 @@ class ProjectController extends Controller
         return view('landing.projects.index', compact('projects'));
     }
 
-    public function show($projectId)
+    public function show($projectSlug)
     {
-        $project = Project::find($projectId);
+        $project = Project::firstWhere('slug', $projectSlug);
         if (!$project) {
             abort(404);
         }

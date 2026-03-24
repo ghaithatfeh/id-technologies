@@ -2,25 +2,28 @@
 
 namespace App\Models;
 
-use App\Casts\MediaCast;
-use App\Casts\Translatable;
-use App\Serializers\Translatable as TranslatableSerializer;
-use App\Traits\HasMedia;
 use Carbon\Carbon;
+use App\Traits\HasMedia;
+use App\Casts\MediaCast;
+use App\Traits\Sluggable;
+use App\Casts\Translatable;
+use App\Serializers\SerializedMedia;
 use Database\Factories\ProjectFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Serializers\Translatable as TranslatableSerializer;
 
 /**
- * @property int                                                                  $id
- * @property TranslatableSerializer                                               $title
- * @property TranslatableSerializer                                               $description
- * @property array{url:string,size:string,extension:string,mime_type:string}      $cover
- * @property array{url:string,size:string,extension:string,mime_type:string}|null $images
- * @property array{url:string,size:string,extension:string,mime_type:string}|null $videos
- * @property Carbon                                                               $created_at
- * @property Carbon                                                               $updated_at
+ * @property int                    $id
+ * @property TranslatableSerializer $title
+ * @property TranslatableSerializer $description
+ * @property SerializedMedia        $cover
+ * @property SerializedMedia|null   $images
+ * @property SerializedMedia|null   $videos
+ * @property string                 $slug
+ * @property Carbon                 $created_at
+ * @property Carbon                 $updated_at
  * @mixin Builder<Project>
  * @use  HasFactory<ProjectFactory>
  */
@@ -28,6 +31,7 @@ class Project extends Model
 {
     use HasFactory;
     use HasMedia;
+    use Sluggable;
 
     protected $fillable = [
         'title',
@@ -35,7 +39,7 @@ class Project extends Model
         'cover',
         'images',
         'videos',
-
+        'slug',
     ];
 
     protected function casts(): array
@@ -46,6 +50,17 @@ class Project extends Model
             'cover' => MediaCast::class,
             'images' => MediaCast::class,
             'videos' => MediaCast::class,
+        ];
+    }
+
+    public function sluggable(): array
+    {
+        return [
+            [
+                'col' => 'title',
+                'slug_col' => 'slug',
+                'separator' => '-',
+            ],
         ];
     }
 

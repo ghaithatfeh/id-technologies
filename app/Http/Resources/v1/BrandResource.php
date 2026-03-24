@@ -30,6 +30,7 @@ class BrandResource extends BaseResource
             'logo_alt' => $this->logo_alt,
             'logo_description' => $this->logo_description,
             'categories' => CategoryResource::collection($this->whenLoaded('categories')),
+            'slug' => $this->slug,
         ];
     }
 }

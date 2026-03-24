@@ -28,6 +28,7 @@ class CategoryResource extends BaseResource
             'sort_index' => $this->sort_index,
             'meta_description' => $this->meta_description,
             'meta_title' => $this->meta_title,
+            'slug' => $this->slug,
         ];
     }
 }

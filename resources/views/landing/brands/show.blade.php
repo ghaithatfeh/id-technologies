@@ -93,8 +93,8 @@
                                 <a
                                     class="flex w-full cursor-pointer items-center gap-5"
                                     href="{{ route("landing.brands.show", [
-                                            "brandId" => $brand->id,
-                                            "categoryId" => $c->id,
+                                            "brandSlug" => $brand->slug,
+                                            "categorySlug" => $c->slug,
                                         ]), }}"
                                 >
                                     <input
@@ -103,10 +103,12 @@
                                         @checked(in_array($c->id, $productsCategories) || $c->children->some(fn ($child) => in_array($child->id, $productsCategories)))
                                         onclick="
                                         event.preventDefault();
-                                        window.location.href = '{{ route("landing.brands.show", [
-                                                "brandId" => $brand->id,
-                                                "categoryId" => $c->id,
-                                            ]), }}'"
+                                        window.location.href = '{{
+                                            route("landing.brands.show", [
+                                                "brandSlug" => $brand->slug,
+                                                "categorySlug" => $c->slug,
+                                            ])
+                                        }}'"
                                     />
                                     <label
                                         class="cursor-pointer text-lg md:text-2xl"
@@ -118,9 +120,9 @@
                                     <a
                                         class="ms-10 flex w-full cursor-pointer items-center gap-5"
                                         href="{{ route("landing.brands.show", [
-                                                "brandId" => $brand->id,
-                                                "categoryId" => $child->parent_id,
-                                                "subCategoryId" => $child->id,
+                                                "brandSlug" => $brand->slug,
+                                                "categorySlug" => $child->parent?->slug,
+                                                "subCategorySlug" => $child->slug,
                                             ]), }}"
                                     >
                                         <input
@@ -128,9 +130,9 @@
                                             class="h-5 w-5 cursor-pointer appearance-none rounded-sm border-2 border-gray-300 checked:bg-landing-primary focus:ring-2 focus:ring-landing-primary/80"
                                             @checked(in_array($child->id, $productsCategories))
                                             onclick="event.preventDefault(); window.location.href = '{{ route("landing.brands.show", [
-                                                    "brandId" => $brand->id,
-                                                    "categoryId" => $child->parent_id,
-                                                    "subCategoryId" => $child->id,
+                                                    "brandSlug" => $brand->slug,
+                                                    "categorySlug" => $child->parent?->slug,
+                                                    "subCategorySlug" => $child->slug,
                                                 ]), }}';"
                                         />
                                         <label
@@ -161,7 +163,7 @@
                                 name="search"
                                 value="{{ $search }}"
                                 placeholder="{{ trans("site.search_products") }}"
-                                class="w-full px-4 py-3 text-lg outline-none border-none"
+                                class="w-full border-none px-4 py-3 text-lg outline-none"
                             />
                             <button
                                 type="submit"
