@@ -71,5 +71,9 @@ return [
     "featured_product" => "Featured Product",
     "download_video" => "Download Video",
     "type" => "Type",
-    'find_us_on_maps' => 'Find Us on Google Maps'
+    'find_us_on_maps' => 'Find Us on Google Maps',
+    'search' => 'Search',
+    'search_products' => 'Search products...',
+    'results_for' => 'results for',
+    'clear_search' => 'Clear search',
 ];

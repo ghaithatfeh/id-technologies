@@ -70,5 +70,9 @@ return [
     "featured_product" => "منتج مميز",
     "download_video" => "تحميل الفيديو",
     "type" => "النوع",
-    'find_us_on_maps' => 'ابحث عنا على الخريطة'
+    'find_us_on_maps' => 'ابحث عنا على الخريطة',
+    'search' => 'بحث',
+    'search_products' => 'ابحث عن منتج...',
+    'results_for' => 'نتيجة لـ',
+    'clear_search' => 'مسح البحث',
 ];

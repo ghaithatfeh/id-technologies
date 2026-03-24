@@ -6,11 +6,13 @@ use App\Models\Brand;
 use App\Models\Product;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {
-    public function show($brandId, $categoryId = null, $subCategoryId = null)
+    public function show(Request $request, $brandId, $categoryId = null, $subCategoryId = null)
     {
+        $search = $request->query('search');
         $brand = Brand::with(['categories' => function ($query) {
             $query->whereNull('parent_id')->with(['children']);
         }])->find($brandId);
@@ -34,7 +36,16 @@ class BrandController extends Controller
             }
         }
 
-        if (!$subCategoryId && $category) {
+        if ($search) {
+            $allCategoryIds = $categories->flatMap(
+                fn($cat) => array_merge([$cat->id], $cat->children->pluck('id')->toArray())
+            )->toArray();
+
+            $products = Product::with(['category'])
+                ->whereIn('category_id', $allCategoryIds)
+                ->where('name', 'like', "%{$search}%")
+                ->get();
+        } elseif (!$subCategoryId && $category) {
             $childCategoryIds = $category->children->pluck('id')->toArray();
             $categoryIds = array_merge([$category->id], $childCategoryIds);
             $products = Product::with(['category'])
@@ -52,6 +63,7 @@ class BrandController extends Controller
             'products',
             'subCategoryId',
             'categories',
+            'search',
         ));
     }
 }

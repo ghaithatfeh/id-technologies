@@ -4,10 +4,21 @@
     /** @var \Illuminate\Database\Eloquent\Collection<\App\Models\Product> $products */
     /** @var int $subCategoryId */
     /** @var \Illuminate\Database\Eloquent\Collection|null $categories  */
+    /** @var string|null $search */
+
     $title = " - $brand->brand_title";
 
     $metaTitle = $category->meta_title ?? $brand->brand_title;
     $metaDescription = $category->meta_description ?? $brand->brand_title;
+
+    if ($search) {
+        $productsCategories = $products
+            ->map(fn ($p) => $p->category_id)
+            ->unique()
+            ->toArray();
+    } else {
+        $productsCategories = $subCategoryId ? [$category->id, $subCategoryId] : [$category->id];
+    }
 
     if ($subCategoryId) {
         $subCategory = $category->children->firstWhere("id", $subCategoryId);
@@ -89,7 +100,7 @@
                                     <input
                                         type="checkbox"
                                         class="h-5 w-5 cursor-pointer appearance-none rounded-sm border-2 border-gray-300 checked:bg-landing-primary focus:ring-2 focus:ring-landing-primary/80"
-                                        @checked($c->id == $category->id)
+                                        @checked(in_array($c->id, $productsCategories) || $c->children->some(fn ($child) => in_array($child->id, $productsCategories)))
                                         onclick="
                                         event.preventDefault();
                                         window.location.href = '{{ route("landing.brands.show", [
@@ -115,7 +126,7 @@
                                         <input
                                             type="checkbox"
                                             class="h-5 w-5 cursor-pointer appearance-none rounded-sm border-2 border-gray-300 checked:bg-landing-primary focus:ring-2 focus:ring-landing-primary/80"
-                                            @checked($child->id == $subCategoryId)
+                                            @checked(in_array($child->id, $productsCategories))
                                             onclick="event.preventDefault(); window.location.href = '{{ route("landing.brands.show", [
                                                     "brandId" => $brand->id,
                                                     "categoryId" => $child->parent_id,
@@ -135,39 +146,69 @@
                 </div>
 
                 <div
-                    class="grid h-full w-full grid-cols-1 gap-5 pt-5 md:w-[65%] md:grid-cols-3 md:pt-0"
+                    class="flex h-full w-full flex-col gap-5 pt-5 md:w-[65%] md:pt-0"
                 >
-                    @foreach ($products as $product)
-                        <div class="flex h-full w-full flex-col gap-3">
-                            <div
-                                class="h-full min-h-60 w-full rounded-t-xl border-2 border-landing-primary md:max-h-72 md:min-h-72"
+                    <form
+                        method="GET"
+                        action="{{ url()->current() }}"
+                        class="w-full"
+                    >
+                        <div
+                            class="flex w-full overflow-hidden rounded-lg border-2 border-landing-primary"
+                        >
+                            <input
+                                type="search"
+                                name="search"
+                                value="{{ $search }}"
+                                placeholder="{{ trans("site.search_products") }}"
+                                class="w-full px-4 py-3 text-lg outline-none border-none"
+                            />
+                            <button
+                                type="submit"
+                                class="cursor-pointer bg-landing-primary px-6 py-3 font-bold text-white"
                             >
-                                <img
-                                    src="{{ $product->image?->url }}"
-                                    class="h-[80%] max-h-[80%] w-full rounded-t-xl object-cover"
-                                    alt="{{ $product->name }}"
-                                />
-                                <h1
-                                    class="flex h-[20%] w-full items-center justify-center bg-landing-primary font-bold"
-                                >
-                                    {{ $product->name }}
-                                </h1>
-                            </div>
+                                {{ trans("site.search") }}
+                            </button>
+                        </div>
+                    </form>
+
+                    @if ($search)
+                        <div class="flex items-center gap-3 text-sm">
+                            <span class="text-gray-500">
+                                {{ $products->count() }}
+                                {{ trans("site.results_for") }}
+                                &ldquo;{{ $search }}&rdquo;
+                            </span>
                             <a
-                                href="{{ $product->pdf?->url }}"
-                                target="_blank"
-                                class="w-full"
-                                download
+                                href="{{ url()->current() }}"
+                                class="font-semibold text-landing-secondary underline"
                             >
-                                <button
-                                    class="w-full cursor-pointer bg-landing-secondary px-5 py-3 text-center font-bold text-white"
-                                >
-                                    {{ trans("site.download_pdf") }}
-                                </button>
+                                {{ trans("site.clear_search") }}
                             </a>
-                            @if (isset($product->video))
+                        </div>
+                    @endif
+
+                    <div
+                        class="grid h-full w-full grid-cols-1 gap-5 md:grid-cols-3"
+                    >
+                        @foreach ($products as $product)
+                            <div class="flex h-full w-full flex-col gap-3">
+                                <div
+                                    class="h-full min-h-60 w-full rounded-t-xl border-2 border-landing-primary md:max-h-72 md:min-h-72"
+                                >
+                                    <img
+                                        src="{{ $product->image?->url }}"
+                                        class="h-[80%] max-h-[80%] w-full rounded-t-xl object-cover"
+                                        alt="{{ $product->name }}"
+                                    />
+                                    <h1
+                                        class="flex h-[20%] w-full items-center justify-center bg-landing-primary font-bold"
+                                    >
+                                        {{ $product->name }}
+                                    </h1>
+                                </div>
                                 <a
-                                    href="{{ $product->video?->url }}"
+                                    href="{{ $product->pdf?->url }}"
                                     target="_blank"
                                     class="w-full"
                                     download
@@ -175,12 +216,26 @@
                                     <button
                                         class="w-full cursor-pointer bg-landing-secondary px-5 py-3 text-center font-bold text-white"
                                     >
-                                        {{ trans("site.download_video") }}
+                                        {{ trans("site.download_pdf") }}
                                     </button>
                                 </a>
-                            @endif
-                        </div>
-                    @endforeach
+                                @if (isset($product->video))
+                                    <a
+                                        href="{{ $product->video?->url }}"
+                                        target="_blank"
+                                        class="w-full"
+                                        download
+                                    >
+                                        <button
+                                            class="w-full cursor-pointer bg-landing-secondary px-5 py-3 text-center font-bold text-white"
+                                        >
+                                            {{ trans("site.download_video") }}
+                                        </button>
+                                    </a>
+                                @endif
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
