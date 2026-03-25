@@ -98,7 +98,7 @@
             <a
                 href="https://www.google.com/maps/search/?api=1&query=ID+Technologies+Co"
                 target="_blank"
-                class="flex w-full items-center justify-center rounded-full bg-landing-primary px-10 py-4 text-xl font-bold text-landing-secondary transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-landing-primary/20 md:w-auto"
+                class="flex w-full items-center justify-center rounded-full bg-landing-primary px-10 py-4 text-xl font-bold text-landing-secondary transition-all duration-300 hover:scale-105 hover:bg-landing-secondary hover:text-landing-primary hover:shadow-lg hover:shadow-landing-primary/20 md:w-auto"
             >
                 <i class="me-3" data-lucide="map-pin"></i>
                 {{ trans("site.find_us_on_maps") }}
