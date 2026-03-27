@@ -15,12 +15,12 @@ const TranslatableInputsContext = ({ children }: { children: ReactNode }) => {
             <div className="lang-btn-holder my-4 flex items-center justify-end">
                 {availableLocales.map((lang, index) => (
                     <label
-                        className="border-primary has-[:checked]:border-primar dark:bg-dark-secondary has-[:checked]:bg-primary borderbg-primary lang-btn flex cursor-pointer items-center justify-center rounded-md border bg-white px-3 py-2 text-gray-900 has-[:checked]:text-white dark:text-white"
+                        className="has-[:checked]:border-primar borderbg-primary lang-btn flex cursor-pointer items-center justify-center rounded-md border border-primary bg-white px-3 py-2 text-gray-900 has-[:checked]:bg-primary has-[:checked]:text-white dark:bg-dark-secondary dark:text-white"
                         key={index}
                     >
                         <input
                             type="radio"
-                            className="border-primary sr-only"
+                            className="sr-only border-primary"
                             value={lang}
                             checked={lang == locale}
                             onChange={() => {

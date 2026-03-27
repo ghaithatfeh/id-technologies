@@ -12,7 +12,7 @@ const PageCard = ({
     return (
         <div
             className={
-                "bg-white-secondary dark:bg-dark-secondary w-full rounded-md p-8"
+                "w-full rounded-md bg-white-secondary p-8 dark:bg-dark-secondary"
             }
             style={{
                 boxShadow: "0 35px 60px 15px rgba(0, 0, 0, 0.2)",
@@ -20,7 +20,7 @@ const PageCard = ({
         >
             {title || actions ? (
                 <div
-                    className={`dark:bg-dark mb-5 flex w-full items-center justify-between rounded-md bg-white p-4 shadow-md`}
+                    className={`mb-5 flex w-full items-center justify-between rounded-md bg-white p-4 shadow-md dark:bg-dark`}
                 >
                     <h2 className="text-xl font-bold dark:text-white">
                         {title}

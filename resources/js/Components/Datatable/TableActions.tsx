@@ -25,7 +25,7 @@ function TableActions({
                 {createUrl ? (
                     <Link href={createUrl ?? "#"}>
                         <DocumentPlus
-                            className={`text-primary h-7 w-7 hover:text-black dark:hover:text-white`}
+                            className={`h-7 w-7 text-primary hover:text-black dark:hover:text-white`}
                         />
                     </Link>
                 ) : (
@@ -39,7 +39,7 @@ function TableActions({
                     >
                         <Filter
                             className={
-                                "text-info h-7 w-7 hover:text-black dark:hover:text-white"
+                                "h-7 w-7 text-info hover:text-black dark:hover:text-white"
                             }
                         />
                     </button>
@@ -53,7 +53,7 @@ function TableActions({
                     >
                         <ArrowDownTray
                             className={
-                                "text-secondary h-7 w-7 hover:text-black dark:hover:text-white"
+                                "h-7 w-7 text-secondary hover:text-black dark:hover:text-white"
                             }
                         />
                     </button>
@@ -65,7 +65,7 @@ function TableActions({
                     >
                         <TableCells
                             className={
-                                "text-success h-7 w-7 hover:text-black dark:hover:text-white"
+                                "h-7 w-7 text-success hover:text-black dark:hover:text-white"
                             }
                         />
                     </button>

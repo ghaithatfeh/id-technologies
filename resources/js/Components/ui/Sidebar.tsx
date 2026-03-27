@@ -41,21 +41,21 @@ export const Sidebar = ({
 }) => {
     return (
         <div
-            className={`bg-white-secondary dark:bg-dark-secondary sticky flex h-full max-h-screen flex-col overflow-y-scroll shadow-xl`}
+            className={`sticky flex h-full max-h-screen flex-col overflow-y-scroll bg-white-secondary shadow-xl dark:bg-dark-secondary`}
         >
             <div
-                className={`flex ${isOpen ? "justify-around" : "justify-center"} bg-white-secondary dark:bg-dark-secondary sticky top-0 h-[7.7%] max-h-20 items-center px-0 ${isOpen ? "shadow-sm" : " "}`}
+                className={`flex ${isOpen ? "justify-around" : "justify-center"} sticky top-0 h-[7.7%] max-h-20 items-center bg-white-secondary px-0 dark:bg-dark-secondary ${isOpen ? "shadow-sm" : " "}`}
             >
                 <div className={`flex items-center justify-center gap-1`}>
                     <img
-                        src={asset("/images/02-Logo.png")}
+                        src={asset("/images/02-Logo.webp")}
                         width={`${isOpen ? "40px" : "40px"}`}
                         alt="Company Logo"
                     />
                     {isOpen && (
                         <a
                             href={route("v1.web.protected.index")}
-                            className={`text-brand w-full px-2 text-xl hover:underline dark:text-white`}
+                            className={`w-full px-2 text-xl text-brand hover:underline dark:text-white`}
                         >
                             ID Technologies
                         </a>
@@ -68,14 +68,14 @@ export const Sidebar = ({
                         type={"button"}
                         onClick={() => toggleSidebar()}
                     >
-                        <XMark className="text-brand h-8 w-8 dark:text-white" />
+                        <XMark className="h-8 w-8 text-brand dark:text-white" />
                     </button>
                 )}
             </div>
 
             <div
                 id="sidebar-list"
-                className={`bg-white-secondary dark:bg-dark-secondary mt-6 flex w-full flex-col gap-1 px-4 ${isOpen ? "items-start" : "items-center"}`}
+                className={`mt-6 flex w-full flex-col gap-1 bg-white-secondary px-4 dark:bg-dark-secondary ${isOpen ? "items-start" : "items-center"}`}
             >
                 {sidebarItems.map((item, index) => (
                     <SidebarItem
@@ -106,9 +106,9 @@ export const SidebarItem = ({
 
     return (
         <Link
-            className={`text-brand flex w-full items-center gap-5 rounded-lg px-3 py-2 text-lg hover:bg-white hover:text-gray-700 ${
+            className={`flex w-full items-center gap-5 rounded-lg px-3 py-2 text-lg text-brand hover:bg-white hover:text-gray-700 ${
                 selected
-                    ? "dark:bg-white-secondary bg-sky-100 dark:text-black"
+                    ? "bg-sky-100 dark:bg-white-secondary dark:text-black"
                     : "dark:text-white"
             } ${!isOpen && "justify-center"}`}
             href={href}
@@ -138,9 +138,9 @@ export const CompactSidebarItem = ({
             open={selected}
         >
             <summary
-                className={`text-brand flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-lg hover:bg-gray-100 hover:text-gray-700 ${
+                className={`flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-lg text-brand hover:bg-gray-100 hover:text-gray-700 ${
                     selected
-                        ? "dark:bg-white-secondary bg-sky-100 dark:text-black"
+                        ? "bg-sky-100 dark:bg-white-secondary dark:text-black"
                         : "dark:text-white"
                 }`}
             >

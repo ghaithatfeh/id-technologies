@@ -1,11 +1,11 @@
+import CategoryChildrenTable from "@/Components/categories/CategoryChildrenTable";
+import LongTextField from "@/Components/Show/LongTextField";
+import SmallTextField from "@/Components/Show/SmallTextField";
 import Button from "@/Components/ui/Button";
 import PageCard from "@/Components/ui/PageCard";
 import Category from "@/Models/Category";
-import { Link } from "@inertiajs/react";
-import SmallTextField from "@/Components/Show/SmallTextField";
 import { translate } from "@/Models/Translatable";
-import CategoryChildrenTable from "@/Components/categories/CategoryChildrenTable";
-import LongTextField from "@/Components/Show/LongTextField";
+import { Link } from "@inertiajs/react";
 
 const Show = ({ category }: { category: Category }) => {
     return (

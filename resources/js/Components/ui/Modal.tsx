@@ -37,7 +37,7 @@ const Modal = ({
                 onClick={onClose}
             ></div>
             <div
-                className={`dark:bg-dark-secondary w-full max-w-lg transform overflow-hidden rounded-lg bg-white shadow-lg transition-transform duration-300 ${
+                className={`w-full max-w-lg transform overflow-hidden rounded-lg bg-white shadow-lg transition-transform duration-300 dark:bg-dark-secondary ${
                     isOpen ? "scale-100" : "scale-95"
                 }`}
             >

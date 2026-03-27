@@ -46,7 +46,10 @@ const Index = () => {
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
                 <StatCard label="Total Visitors" value={stats.total} />
                 <StatCard label="Visitors Today" value={stats.today} />
-                <StatCard label="Visitors (Last 7 Days)" value={stats.this_week} />
+                <StatCard
+                    label="Visitors (Last 7 Days)"
+                    value={stats.this_week}
+                />
             </div>
 
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
@@ -58,7 +61,7 @@ const Index = () => {
                     {stats.daily.length === 0 ? (
                         <p className="text-sm text-gray-400">No data yet.</p>
                     ) : (
-                        <div className="flex items-end gap-1.5 h-40">
+                        <div className="flex h-40 items-end gap-1.5">
                             {stats.daily.map((d) => (
                                 <div
                                     key={d.date}
@@ -71,10 +74,10 @@ const Index = () => {
                                             minHeight: "4px",
                                         }}
                                     />
-                                    <span className="absolute -top-5 hidden text-xs text-gray-600 dark:text-gray-300 group-hover:block">
+                                    <span className="absolute -top-5 hidden text-xs text-gray-600 group-hover:block dark:text-gray-300">
                                         {d.count}
                                     </span>
-                                    <span className="mt-1 text-[10px] text-gray-400 rotate-45 origin-left">
+                                    <span className="mt-1 origin-left rotate-45 text-[10px] text-gray-400">
                                         {d.date.slice(5)}
                                     </span>
                                 </div>

@@ -1,8 +1,8 @@
 import ActionsButtons from "@/Components/Datatable/ActionsButtons";
 import DataTable from "@/Components/Datatable/DataTable";
+import ImagePreview from "@/Components/Show/ImagePreview";
 import Project from "@/Models/Project";
 import Http from "@/Modules/Http/Http";
-import ImagePreview from "@/Components/Show/ImagePreview";
 
 const Index = () => {
     return (

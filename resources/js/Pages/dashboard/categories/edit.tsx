@@ -1,4 +1,5 @@
 import ApiSelect from "@/Components/form/fields/Select/ApiSelect";
+import TranslatableEditor from "@/Components/form/fields/TranslatableEditor";
 import TranslatableInput from "@/Components/form/fields/TranslatableInput";
 import Form from "@/Components/form/Form";
 import PageCard from "@/Components/ui/PageCard";
@@ -10,7 +11,6 @@ import ApiResponse from "@/Modules/Http/ApiResponse";
 import Http from "@/Modules/Http/Http";
 import { useForm } from "@inertiajs/react";
 import { FormEvent, useState } from "react";
-import TranslatableEditor from "@/Components/form/fields/TranslatableEditor";
 
 const Edit = ({ category }: { category: Category }) => {
     const { post, setData, processing } = useForm<{

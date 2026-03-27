@@ -1,9 +1,9 @@
+import SmallTextField from "@/Components/Show/SmallTextField";
 import Button from "@/Components/ui/Button";
 import PageCard from "@/Components/ui/PageCard";
 import SupportLink from "@/Models/SupportLink";
-import { Link } from "@inertiajs/react";
-import SmallTextField from "@/Components/Show/SmallTextField";
 import { translate } from "@/Models/Translatable";
+import { Link } from "@inertiajs/react";
 
 const Show = ({ supportLink }: { supportLink: SupportLink }) => {
     return (

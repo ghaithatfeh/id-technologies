@@ -2,8 +2,8 @@ import ActionsButtons from "@/Components/Datatable/ActionsButtons";
 import DataTable from "@/Components/Datatable/DataTable";
 import Category from "@/Models/Category";
 import Http from "@/Modules/Http/Http";
-import { toast } from "react-toastify";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 function CategorySortIndexColumn(
     _data: any,

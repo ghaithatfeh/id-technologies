@@ -84,7 +84,7 @@ function DataTable<ApiResponse, Data>({
                     <div className="mt-4 flex items-center justify-between">
                         <button
                             type="button"
-                            className="bg-info inline-flex justify-center rounded-md px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none"
+                            className="inline-flex justify-center rounded-md bg-info px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none"
                             onClick={() => {
                                 setParams(tempParams);
                                 setOpenFilter(false);
@@ -95,7 +95,7 @@ function DataTable<ApiResponse, Data>({
 
                         <button
                             type="button"
-                            className="bg-danger inline-flex justify-center rounded-md px-4 py-2 text-sm font-medium text-white hover:bg-red-700 focus:outline-none"
+                            className="inline-flex justify-center rounded-md bg-danger px-4 py-2 text-sm font-medium text-white hover:bg-red-700 focus:outline-none"
                             onClick={() => {
                                 setTempParams({});
                                 setParams({});
@@ -149,7 +149,7 @@ function DataTable<ApiResponse, Data>({
                         />
                         <div className="rounded-lg">
                             <div className="overflow-x-auto rounded-t-lg">
-                                <table className="bg-white-secondary dark:bg-dark-secondary relative min-w-full scroll-my-0 overflow-y-hidden text-sm dark:text-white">
+                                <table className="relative min-w-full scroll-my-0 overflow-y-hidden bg-white-secondary text-sm dark:bg-dark-secondary dark:text-white">
                                     <TableHead
                                         schema={schema}
                                         setSortDir={setSortDir}

@@ -310,7 +310,7 @@
                                                                             <img
                                                                                 align="center"
                                                                                 border="0"
-                                                                                src="{{ asset("/images/lock-image.png") }}"
+                                                                                src="{{ asset("/images/lock-image.webp") }}"
                                                                                 alt="image"
                                                                                 title="image"
                                                                                 style="

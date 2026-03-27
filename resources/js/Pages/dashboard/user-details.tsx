@@ -14,9 +14,9 @@ const UserDetails = ({ user }: { user: User }) => {
                     onClick={() => {
                         setSelectedTab("overview");
                     }}
-                    className={`hover:text-primary hover:border-b-primary cursor-pointer px-8 py-2 hover:border-b ${
+                    className={`cursor-pointer px-8 py-2 hover:border-b hover:border-b-primary hover:text-primary ${
                         selectedTab == "overview"
-                            ? "text-primary border-b-primary border-b"
+                            ? "border-b border-b-primary text-primary"
                             : "dark:text-white"
                     }`}
                 >
@@ -26,9 +26,9 @@ const UserDetails = ({ user }: { user: User }) => {
                     onClick={() => {
                         setSelectedTab("edit_profile");
                     }}
-                    className={`hover:text-primary hover:border-b-primary cursor-pointer px-8 py-2 hover:border-b ${
+                    className={`cursor-pointer px-8 py-2 hover:border-b hover:border-b-primary hover:text-primary ${
                         selectedTab == "edit_profile"
-                            ? "text-primary border-b-primary border-b"
+                            ? "border-b border-b-primary text-primary"
                             : "dark:text-white"
                     }`}
                 >

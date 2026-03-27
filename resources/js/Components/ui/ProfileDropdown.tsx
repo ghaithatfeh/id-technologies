@@ -40,7 +40,7 @@ const ProfileDropdown = () => {
             <div
                 className={`${
                     open ? "absolute" : "hidden"
-                } bg-white-secondary dark:bg-dark-secondary start-0 z-10 w-44 rounded-lg shadow`}
+                } start-0 z-10 w-44 rounded-lg bg-white-secondary shadow dark:bg-dark-secondary`}
             >
                 <ul className="h-full text-sm text-gray-700 shadow-md dark:text-white">
                     <li>

@@ -8,14 +8,14 @@
 @extends("landing.layout")
 
 @push("meta")
-    <meta property="og:image" content="{{ asset("/images/02-Logo.png") }}" />
+    <meta property="og:image" content="{{ asset("/images/02-Logo.webp") }}" />
 @endpush
 
 @section("title", " - " . trans("site.customer_service"))
 @section("content")
     <div
-        class="relative w-full bg-[url('/images/01-Cover.png')] bg-cover bg-center bg-no-repeat"
-        style="background-image: url('{{ asset("images/01-Cover.png") }}')"
+        class="relative w-full bg-[url('/images/01-Cover.webp')] bg-cover bg-center bg-no-repeat"
+        style="background-image: url('{{ asset("images/01-Cover.webp") }}')"
     >
         <x-ui.navbar />
         <div class="flex h-full w-full flex-col items-center gap-2 pt-16 pb-42">
@@ -26,7 +26,7 @@
             </h1>
             <div class="w-1/3 md:w-1/8">
                 <img
-                    src="{{ asset("/images/02-Icon.png") }}"
+                    src="{{ asset("/images/02-Icon.webp") }}"
                     class="h-full w-full"
                 />
             </div>
@@ -36,19 +36,19 @@
         >
             <img
                 class="max-w-38 rounded-lg shadow-xl md:w-1/5 md:max-w-[unset] md:rounded-xl"
-                src="{{ asset("/images/03-Brand01.png") }}"
+                src="{{ asset("/images/03-Brand01.webp") }}"
             />
             <img
                 class="max-w-38 rounded-lg shadow-xl md:w-1/5 md:max-w-[unset] md:rounded-xl"
-                src="{{ asset("/images/04-Brand02.png") }}"
+                src="{{ asset("/images/04-Brand02.webp") }}"
             />
             <img
                 class="max-w-38 rounded-lg shadow-xl md:w-1/5 md:max-w-[unset] md:rounded-xl"
-                src="{{ asset("/images/05-Brand03.png") }}"
+                src="{{ asset("/images/05-Brand03.webp") }}"
             />
             <img
                 class="max-w-38 rounded-lg shadow-xl md:w-1/5 md:max-w-[unset] md:rounded-xl"
-                src="{{ asset("/images/06-Brand04.png") }}"
+                src="{{ asset("/images/06-Brand04.webp") }}"
             />
         </div>
     </div>

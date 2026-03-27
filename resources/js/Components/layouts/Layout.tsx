@@ -36,7 +36,7 @@ const Layout = ({ children }: { children?: React.ReactNode }) => {
                     // rtl={usePage<MiddlewareProps>().props.currentLocale == "ar"}
                 />
                 <div
-                    className={`bg-white-secondary dark:bg-dark-secondary h-screen shadow-lg ${
+                    className={`h-screen bg-white-secondary shadow-lg dark:bg-dark-secondary ${
                         isOpen
                             ? "slide-sidebar-right"
                             : "slide-sidebar-left w-1/4"
@@ -45,13 +45,13 @@ const Layout = ({ children }: { children?: React.ReactNode }) => {
                     <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
                 </div>
                 <div
-                    className={`dark:bg-dark h-screen w-full overflow-y-scroll bg-white`}
+                    className={`h-screen w-full overflow-y-scroll bg-white dark:bg-dark`}
                 >
                     <Navbar
                         isSidebarOpen={isOpen}
                         toggleSidebar={toggleSidebar}
                     />
-                    <main className={"dark:bg-dark m-5 bg-white"}>
+                    <main className={"m-5 bg-white dark:bg-dark"}>
                         {children}
                     </main>
                 </div>

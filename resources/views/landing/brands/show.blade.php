@@ -46,7 +46,7 @@
         <div
             class="relative w-full bg-cover bg-center bg-no-repeat"
             style="
-                background-image: url('{{ asset("/images/01-Cover.png") }}');
+                background-image: url('{{ asset("/images/01-Cover.webp") }}');
             "
         >
             <x-ui.navbar />

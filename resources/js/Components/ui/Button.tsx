@@ -12,7 +12,7 @@ interface IButtonProps extends React.ComponentProps<"button"> {
         | "danger"
         | "light"
         | "dark";
-    sm?:boolean;
+    sm?: boolean;
 }
 
 const Button: React.FunctionComponent<IButtonProps> = ({

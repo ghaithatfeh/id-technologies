@@ -20,7 +20,7 @@ const Login = () => {
         <PageCard>
             <div className="my-5 flex flex-col">
                 <div className="flex items-center justify-center">
-                    <h1 className="text-brand text-3xl font-semibold">
+                    <h1 className="text-3xl font-semibold text-brand">
                         Welcome Back
                     </h1>
                 </div>
@@ -58,7 +58,7 @@ const Login = () => {
                             href={route(
                                 "v1.web.public.request.reset.password.page",
                             )}
-                            className="hover:text-primary text-blue-700"
+                            className="text-blue-700 hover:text-primary"
                         >
                             Reset Your Password
                         </Link>

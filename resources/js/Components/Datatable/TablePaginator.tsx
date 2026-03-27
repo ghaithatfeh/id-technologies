@@ -51,7 +51,7 @@ function TablePaginator<ApiResponse>({
                     <button
                         onClick={() => setPrevPage()}
                         disabled={isFirstPage()}
-                        className="bg-secondary inline-flex size-8 cursor-pointer items-center justify-center rounded-md border-0 text-white outline-0 rtl:rotate-180"
+                        className="inline-flex size-8 cursor-pointer items-center justify-center rounded-md border-0 bg-secondary text-white outline-0 rtl:rotate-180"
                     >
                         <span className="sr-only">Prev Page</span>
                         <ChevronLeft />
@@ -67,7 +67,7 @@ function TablePaginator<ApiResponse>({
                                     className={`size-8 cursor-pointer rounded-md text-center leading-8 ${
                                         index + 1 == page
                                             ? "bg-primary text-white"
-                                            : "text-primary bg-white dark:bg-white"
+                                            : "bg-white text-primary dark:bg-white"
                                     }`}
                                 >
                                     {index + 1}
@@ -92,7 +92,7 @@ function TablePaginator<ApiResponse>({
                                     className={`size-8 cursor-pointer rounded-md text-center leading-8 ${
                                         index + 1 == page
                                             ? "bg-primary text-white"
-                                            : "text-primary bg-white dark:bg-white"
+                                            : "bg-white text-primary dark:bg-white"
                                     }`}
                                 >
                                     {index + 1}
@@ -108,7 +108,7 @@ function TablePaginator<ApiResponse>({
                             setNextPage();
                         }}
                         disabled={isLastPage()}
-                        className="bg-secondary inline-flex size-8 cursor-pointer items-center justify-center rounded-md border-0 text-white outline-0 rtl:rotate-180"
+                        className="inline-flex size-8 cursor-pointer items-center justify-center rounded-md border-0 bg-secondary text-white outline-0 rtl:rotate-180"
                     >
                         <span className="sr-only">Next Page</span>
                         <ChevronRight />

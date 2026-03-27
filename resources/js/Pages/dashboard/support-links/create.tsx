@@ -1,11 +1,10 @@
-import { useForm } from "@inertiajs/react";
-import { FormEvent } from "react";
-import PageCard from "@/Components/ui/PageCard";
 import Form from "@/Components/form/Form";
 import Input from "@/Components/form/fields/Input";
 import TranslatableInput from "@/Components/form/fields/TranslatableInput";
+import PageCard from "@/Components/ui/PageCard";
 import TranslatableInputsContext from "@/Contexts/TranslatableInputsContext";
-import SupportLink from "@/Models/SupportLink";
+import { useForm } from "@inertiajs/react";
+import { FormEvent } from "react";
 
 const Create = () => {
     const { post, setData, processing } = useForm<{

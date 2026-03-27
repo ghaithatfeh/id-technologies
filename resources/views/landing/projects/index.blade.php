@@ -1,6 +1,6 @@
 @extends("landing.layout")
 @push("meta")
-    <meta property="og:image" content="{{ asset("/images/02-Logo.png") }}" />
+    <meta property="og:image" content="{{ asset("/images/02-Logo.webp") }}" />
 @endpush
 
 @section("title", " - " . trans("site.our_projects"))
@@ -8,7 +8,7 @@
     <div
         class="relative w-full bg-cover bg-center bg-no-repeat"
         style="
-            background-image: url('{{ asset("/images/our-projects.jpg") }}');
+            background-image: url('{{ asset("/images/our-projects.webp") }}');
         "
     >
         <x-ui.navbar />

@@ -17,7 +17,7 @@ const ResetPasswordCodeForm = () => {
         <PageCard>
             <div className="my-5 flex flex-col">
                 <div className="flex items-center justify-center">
-                    <h1 className="text-brand text-center text-2xl font-semibold">
+                    <h1 className="text-center text-2xl font-semibold text-brand">
                         Please Check Your Email For An Email From Us !
                     </h1>
                 </div>

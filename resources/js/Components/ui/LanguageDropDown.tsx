@@ -55,10 +55,10 @@ const LanguageDropdown = () => {
             ) : (
                 <>
                     <div
-                        className="bg-white-secondary dark:bg-dark-secondary inline-flex items-center overflow-hidden rounded-md"
+                        className="inline-flex items-center overflow-hidden rounded-md bg-white-secondary dark:bg-dark-secondary"
                         onClick={() => setOpen((prevState) => !prevState)}
                     >
-                        <div className="bg-primary flex p-2 text-sm/none text-white">
+                        <div className="flex bg-primary p-2 text-sm/none text-white">
                             {selectedLocale as string}
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -76,7 +76,7 @@ const LanguageDropdown = () => {
                     </div>
 
                     <div
-                        className={`${open ? "absolute" : "hidden"} bg-white-secondary dark:bg-dark-secondary end-0 z-10 mt-2 w-20 rounded-md shadow-lg`}
+                        className={`${open ? "absolute" : "hidden"} end-0 z-10 mt-2 w-20 rounded-md bg-white-secondary shadow-lg dark:bg-dark-secondary`}
                         role="menu"
                     >
                         <div className="p-2">

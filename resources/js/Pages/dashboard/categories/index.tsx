@@ -1,9 +1,9 @@
 import ActionsButtons from "@/Components/Datatable/ActionsButtons";
 import DataTable from "@/Components/Datatable/DataTable";
 import Category from "@/Models/Category";
+import { translate } from "@/Models/Translatable";
 import Http from "@/Modules/Http/Http";
 import { Link } from "@inertiajs/react";
-import { translate } from "@/Models/Translatable";
 
 const Index = ({ exportables }: { exportables: string[] }) => {
     return (

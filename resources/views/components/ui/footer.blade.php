@@ -1,6 +1,6 @@
 <div
     style="
-        background-image: url('{{ asset("/images/BackgroundFooter.png") }}');
+        background-image: url('{{ asset("/images/BackgroundFooter.webp") }}');
         background-size: cover;
     "
     class="py-10"

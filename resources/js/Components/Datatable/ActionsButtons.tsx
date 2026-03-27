@@ -62,24 +62,24 @@ function ActionsButtons<Data extends Record<string, any>>({
             {buttons.includes("show") && (
                 <Link
                     href={sUrl}
-                    className="hover:bg-white-secondary rounded-md p-0.5"
+                    className="rounded-md p-0.5 hover:bg-white-secondary"
                 >
-                    <Eye className="text-info h-5 w-5" />
+                    <Eye className="h-5 w-5 text-info" />
                 </Link>
             )}
             {buttons.includes("edit") && (
                 <Link
                     href={eUrl}
-                    className="hover:bg-white-secondary rounded-md p-0.5"
+                    className="rounded-md p-0.5 hover:bg-white-secondary"
                 >
-                    <Pencil className="text-success h-5 w-5" />
+                    <Pencil className="h-5 w-5 text-success" />
                 </Link>
             )}
 
             {buttons.includes("delete") && (
-                <button className="hover:bg-white-secondary rounded-md p-0.5">
+                <button className="rounded-md p-0.5 hover:bg-white-secondary">
                     <Trash
-                        className="text-danger h-5 w-5 cursor-pointer"
+                        className="h-5 w-5 cursor-pointer text-danger"
                         onClick={() => {
                             swal.fire({
                                 title: "Do you want to Delete this item ?",

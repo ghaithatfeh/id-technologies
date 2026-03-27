@@ -17,7 +17,7 @@ const ForgetPassword = () => {
         <PageCard>
             <div className="my-5 flex flex-col">
                 <div className="flex items-center justify-center">
-                    <h1 className="text-brand text-3xl font-semibold">
+                    <h1 className="text-3xl font-semibold text-brand">
                         Forget Your Password ?
                     </h1>
                 </div>

@@ -8,7 +8,7 @@
 
 @extends("landing.layout")
 @push("meta")
-    <meta property="og:image" content="{{ asset("/images/02-Logo.png") }}" />
+    <meta property="og:image" content="{{ asset("/images/02-Logo.webp") }}" />
 @endpush
 
 @section("title", " - " . trans("site.home"))
@@ -19,7 +19,7 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            background-image: {{ app()->getLocale() == "ar" ? "url(" . asset("images/01-BGRTL.jpg") . ")" : "url(" . asset("images/01-BG.jpg") . ")" }};
+            background-image: {{ app()->getLocale() == "ar" ? "url(" . asset("images/01-BGRTL.webp") . ")" : "url(" . asset("images/01-BG.webp") . ")" }};
         "
     >
         <x-ui.navbar />
@@ -264,7 +264,7 @@
             class="flex w-full max-w-full grid-cols-4 flex-wrap items-center justify-center gap-10 px-10 py-10 md:grid md:px-52"
         >
             <img
-                src="{{ asset("images/11-Brand.png") }}"
+                src="{{ asset("images/11-Brand.webp") }}"
                 class="w-46 opacity-80 transition-opacity hover:opacity-100 md:w-auto"
                 alt="brand-logo"
             />
@@ -276,12 +276,12 @@
             <img
                 class="w-46 opacity-80 transition-opacity hover:opacity-100 md:w-auto"
                 alt="brand-logo"
-                src="{{ asset("/images/12-Brand.png") }}"
+                src="{{ asset("/images/12-Brand.webp") }}"
             />
             <img
                 class="w-46 opacity-80 transition-opacity hover:opacity-100 md:w-auto"
                 alt="brand-logo"
-                src="{{ asset("/images/09-Brand.png") }}"
+                src="{{ asset("/images/09-Brand.webp") }}"
             />
         </div>
 

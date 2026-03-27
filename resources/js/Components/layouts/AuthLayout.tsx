@@ -8,10 +8,10 @@ const AuthLayout = ({ children }: { children: ReactNode }) => {
                 <div className="flex flex-col items-center">
                     <div className="my-2 flex items-center gap-1">
                         <img
-                            src={asset("images/02-Logo.png")}
+                            src={asset("images/02-Logo.webp")}
                             width={"50px"}
                         />
-                        <h1 className="text-brand text-4xl font-bold">
+                        <h1 className="text-4xl font-bold text-brand">
                             ID Technologies
                         </h1>
                     </div>

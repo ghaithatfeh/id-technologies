@@ -25,7 +25,7 @@
     </head>
 
     <body
-        class="{{ str_contains(request()->fullUrl(), "dashboard") ? "dark:bg-dark bg-white antialiased transition-all duration-300" : "" }}"
+        class="{{ str_contains(request()->fullUrl(), "dashboard") ? "bg-white antialiased transition-all duration-300 dark:bg-dark" : "" }}"
     >
         @inertia
     </body>

@@ -224,7 +224,7 @@ function Select<TData>({
                         isOpen
                             ? `absolute left-0 z-50 ${
                                   styles?.dropDownItemsContainer ??
-                                  "dark:bg-dark w-full rounded-lg border border-gray-200 bg-white px-3 pb-3 shadow-2xl"
+                                  "w-full rounded-lg border border-gray-200 bg-white px-3 pb-3 shadow-2xl dark:bg-dark"
                               }`
                             : "hidden"
                     }
@@ -238,7 +238,7 @@ function Select<TData>({
                         <input
                             className={`${
                                 styles?.searchInputClasses ??
-                                "focus:border-primary focus:outline-primary my-2 w-full rounded-md p-1"
+                                "my-2 w-full rounded-md p-1 focus:border-primary focus:outline-primary"
                             }`}
                             onClick={(e) => handleClickingOnSearchInput(e)}
                             onChange={(e) => handleSearchChange(e)}
@@ -258,12 +258,12 @@ function Select<TData>({
                                         include(getOption(item), selected)
                                             ? `${
                                                   styles?.selectedDropDownItemClasses ??
-                                                  "bg-primary border-primary"
+                                                  "border-primary bg-primary"
                                               }`
                                             : ""
                                     } ${
                                         styles?.dropDownItemClasses ??
-                                        "hover:border-primary hover:bg-primary my-1 w-full cursor-pointer rounded-md p-2 text-black"
+                                        "my-1 w-full cursor-pointer rounded-md p-2 text-black hover:border-primary hover:bg-primary"
                                     }`}
                                     onClick={(e) => handleChoseItem(e, item)}
                                 >
@@ -284,12 +284,12 @@ function Select<TData>({
                                             include(getOption(item), selected)
                                                 ? `${
                                                       styles?.selectedDropDownItemClasses ??
-                                                      "bg-primary border-primary"
+                                                      "border-primary bg-primary"
                                                   }`
                                                 : ""
                                         } ${
                                             styles?.dropDownItemClasses ??
-                                            "hover:border-primary hover:bg-primary my-1 w-full cursor-pointer rounded-md p-2 text-black"
+                                            "my-1 w-full cursor-pointer rounded-md p-2 text-black hover:border-primary hover:bg-primary"
                                         }`}
                                         onClick={(e) =>
                                             handleChoseItem(e, item)

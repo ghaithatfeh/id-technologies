@@ -19,8 +19,8 @@ function TableBody<Data>({
                                 key={`${index}-${item.label}`}
                                 className={`hover:opacity-50 dark:text-white ${
                                     item.is_featured
-                                        ? 'bg-yellow-100 dark:bg-yellow-900/20 border-l-4 border-yellow-500'
-                                        : ''
+                                        ? "border-l-4 border-yellow-500 bg-yellow-100 dark:bg-yellow-900/20"
+                                        : ""
                                 }`}
                             >
                                 {tableSchema.map((schema, index) => {

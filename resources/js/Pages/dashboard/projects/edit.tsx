@@ -1,13 +1,13 @@
-import { useForm } from "@inertiajs/react";
-import { FormEvent } from "react";
-import PageCard from "@/Components/ui/PageCard";
 import Form from "@/Components/form/Form";
 import Input from "@/Components/form/fields/Input";
-import TranslatableInput from "@/Components/form/fields/TranslatableInput";
-import TranslatableInputsContext from "@/Contexts/TranslatableInputsContext";
-import Project from "@/Models/Project";
-import Media from "@/Models/Media";
 import TranslatableEditor from "@/Components/form/fields/TranslatableEditor";
+import TranslatableInput from "@/Components/form/fields/TranslatableInput";
+import PageCard from "@/Components/ui/PageCard";
+import TranslatableInputsContext from "@/Contexts/TranslatableInputsContext";
+import Media from "@/Models/Media";
+import Project from "@/Models/Project";
+import { useForm } from "@inertiajs/react";
+import { FormEvent } from "react";
 
 const Edit = ({ project }: { project: Project }) => {
     const { post, setData, processing } = useForm<{

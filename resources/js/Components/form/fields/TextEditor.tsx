@@ -31,7 +31,7 @@ const TextEditor: React.FC<TextEditorProps> = ({
                     id="OrderNotes"
                     className={
                         className ??
-                        "dark:bg-dark-secondary w-full rounded-lg border-gray-200 align-top shadow-sm sm:text-sm"
+                        "w-full rounded-lg border-gray-200 align-top shadow-sm sm:text-sm dark:bg-dark-secondary"
                     }
                     rows={4}
                     name={name ?? ""}

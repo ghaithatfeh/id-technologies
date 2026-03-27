@@ -58,7 +58,7 @@ const ExportModal = ({
                                   {exp}
                                   <input
                                       type="checkbox"
-                                      className="accent-primary rounded-md"
+                                      className="rounded-md accent-primary"
                                       value={exp as string}
                                       name="columns"
                                       onChange={(e) => {

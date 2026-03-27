@@ -1,8 +1,8 @@
 import ActionsButtons from "@/Components/Datatable/ActionsButtons";
 import DataTable from "@/Components/Datatable/DataTable";
+import ImagePreview from "@/Components/Show/ImagePreview";
 import Brand from "@/Models/Brand";
 import Http from "@/Modules/Http/Http";
-import ImagePreview from "@/Components/Show/ImagePreview";
 
 const Index = () => {
     return (
@@ -47,7 +47,7 @@ const Index = () => {
                     name: "background_image",
                     label: "Background Image",
                     render: (data) => (
-                        <div className={"w-24 h-24"}>
+                        <div className={"h-24 w-24"}>
                             <ImagePreview src={data.url} />
                         </div>
                     ),
@@ -56,7 +56,7 @@ const Index = () => {
                     name: "logo",
                     label: "Logo",
                     render: (data) => (
-                        <div className={"w-24 h-24"}>
+                        <div className={"h-24 w-24"}>
                             <ImagePreview src={data.url} />
                         </div>
                     ),
@@ -65,7 +65,7 @@ const Index = () => {
                     name: "icon",
                     label: "Icon",
                     render: (data) => (
-                        <div className={"w-24 h-24"}>
+                        <div className={"h-24 w-24"}>
                             <ImagePreview src={data.url} />
                         </div>
                     ),

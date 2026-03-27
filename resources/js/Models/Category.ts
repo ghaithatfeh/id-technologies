@@ -1,5 +1,5 @@
-import Product from "@/Models/Product";
 import Brand from "@/Models/Brand";
+import Product from "@/Models/Product";
 
 interface Category {
     id: number;
@@ -10,7 +10,7 @@ interface Category {
     parent_id?: number;
     parent?: Category;
     children?: Category[];
-    sort_index?:number;
+    sort_index?: number;
     meta_title?: string;
     meta_description?: string;
 }
