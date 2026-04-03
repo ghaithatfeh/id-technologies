@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests\v1\Product;
 
-use App\Rules\ValidTranslatableJson;
-use App\Serializers\SerializedMedia;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use App\Serializers\SerializedMedia;
+use App\Rules\ValidTranslatableJson;
+use Illuminate\Foundation\Http\FormRequest;
 
 class StoreUpdateProductRequest extends FormRequest
 {
@@ -29,34 +29,35 @@ class StoreUpdateProductRequest extends FormRequest
             'image' => [
                 'nullable',
                 Rule::when(is_array($this->input('image')), [
-                    SerializedMedia::validator()
+                    SerializedMedia::validator(),
                 ]),
                 Rule::when($this->hasFile('image'), [
-                    'image:allow_svg', 'max:10000', 'mimes:jpeg,png,jpg,gif,svg,webp'
-                ])
+                    'image:allow_svg', 'max:10000', 'mimes:jpeg,png,jpg,gif,svg,webp',
+                ]),
             ],
             'pdf' => [
                 'nullable',
                 Rule::requiredIf(fn() => $this->isPost()),
                 Rule::when($this->hasFile('pdf'), [
-                    'max:10000', 'mimes:pdf,docx,txt'
+                    'max:10000', 'mimes:pdf,docx,txt',
                 ]),
                 Rule::when(is_array($this->input('pdf')), [
                     SerializedMedia::validator([
-                        'max:10000', 'mimes:pdf,docx,txt'
-                    ])
+                        'max:10000', 'mimes:pdf,docx,txt',
+                    ]),
                 ]),
             ],
             'video' => [
                 'nullable',
                 Rule::when($this->hasFile('video'), [
-                    'max:512000', 'mimes:mp4,mov,ogg,webm'
+                    'max:512000', 'mimes:mp4,mov,ogg,webm',
                 ]),
             ],
             'is_featured' => 'boolean|nullable',
 
             'image_alt' => 'string|nullable|min:0|max:255',
             'image_description' => 'string|nullable|min:0|max:1000',
+            'description' => 'string|nullable|max:1000',
         ];
     }
 }

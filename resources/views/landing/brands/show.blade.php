@@ -103,12 +103,10 @@
                                         @checked(in_array($c->id, $productsCategories) || $c->children->some(fn ($child) => in_array($child->id, $productsCategories)))
                                         onclick="
                                         event.preventDefault();
-                                        window.location.href = '{{
-                                            route("landing.brands.show", [
+                                        window.location.href = '{{ route("landing.brands.show", [
                                                 "brandSlug" => $brand->slug,
                                                 "categorySlug" => $c->slug,
-                                            ])
-                                        }}'"
+                                            ]), }}'"
                                     />
                                     <label
                                         class="cursor-pointer text-lg md:text-2xl"
@@ -234,6 +232,14 @@
                                             {{ trans("site.download_video") }}
                                         </button>
                                     </a>
+                                @endif
+
+                                @if (isset($product->description))
+                                    <p
+                                        class="h-full rounded-md border border-landing-secondary p-2 text-center text-justify text-sm"
+                                    >
+                                        {{ $product->description }}
+                                    </p>
                                 @endif
                             </div>
                         @endforeach

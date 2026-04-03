@@ -27,6 +27,7 @@ class ProductResource extends BaseResource
             'video' => $this->video,
             'image_description' => $this->image_description,
             'image_alt' => $this->image_alt,
+            'description' => $this->description,
         ];
     }
 }

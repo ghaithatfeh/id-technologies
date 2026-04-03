@@ -12,6 +12,7 @@ interface Product {
     video?: Media;
     image_alt?: string;
     image_description?: string;
+    description?: string;
 }
 
 export default Product;

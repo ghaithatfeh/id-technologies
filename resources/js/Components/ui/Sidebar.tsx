@@ -3,32 +3,45 @@ import XMark from "@/Components/icons/XMark";
 import { asset } from "@/helper";
 import { Link } from "@inertiajs/react";
 import React, { ReactNode } from "react";
+import {
+    BoxIcon,
+    CompassIcon,
+    GroupIcon,
+    LayoutDashboardIcon,
+    LucideClipboardCheck,
+    LucideUserCog,
+} from "lucide-react";
 
 const sidebarItems = [
     {
+        title: "Dashboard",
+        href: route("v1.web.protected.index"),
+        icon: () => <LayoutDashboardIcon />,
+    },
+    {
         title: "Brands",
         href: route("v1.web.protected.brands.index"),
-        icon: () => <TableCells />,
+        icon: () => <CompassIcon />,
     },
     {
         title: "Categories",
         href: route("v1.web.protected.categories.index"),
-        icon: () => <TableCells />,
+        icon: () => <GroupIcon />,
     },
     {
         title: "Products",
         href: route("v1.web.protected.products.index"),
-        icon: () => <TableCells />,
+        icon: () => <BoxIcon />,
     },
     {
         title: "Customer Service",
         href: route("v1.web.protected.support.links.index"),
-        icon: () => <TableCells />,
+        icon: () => <LucideUserCog />,
     },
     {
         title: "Projects",
         href: route("v1.web.protected.projects.index"),
-        icon: () => <TableCells />,
+        icon: () => <LucideClipboardCheck />,
     },
 ];
 

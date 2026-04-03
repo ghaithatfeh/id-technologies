@@ -1,6 +1,7 @@
 import Input from "@/Components/form/fields/Input";
 import Radio from "@/Components/form/fields/Radio";
 import ApiSelect from "@/Components/form/fields/Select/ApiSelect";
+import TextEditor from "@/Components/form/fields/TextEditor";
 import TranslatableInput from "@/Components/form/fields/TranslatableInput";
 import Form from "@/Components/form/Form";
 import PageCard from "@/Components/ui/PageCard";
@@ -25,6 +26,7 @@ const Edit = ({ product }: { product: Product }) => {
         video?: File | undefined | Media;
         image_alt?: string | undefined;
         image_description?: string | undefined;
+        description?: string;
     }>({
         _method: "PUT",
         name: product?.name,
@@ -36,6 +38,7 @@ const Edit = ({ product }: { product: Product }) => {
         video: product?.video,
         image_alt: product?.image_alt,
         image_description: product?.image_description,
+        description: product.description,
     });
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -146,6 +149,16 @@ const Edit = ({ product }: { product: Product }) => {
                             defaultValue={product?.category}
                             required
                         />
+                        <div className={"md:col-span-2"}>
+                            <TextEditor
+                                name={"description"}
+                                onChange={(e) => {
+                                    setData("description", e.target.value);
+                                }}
+                                label={"Description"}
+                                defaultValue={product?.description}
+                            />
+                        </div>
                     </div>
                 </Form>
             </TranslatableInputsContext>

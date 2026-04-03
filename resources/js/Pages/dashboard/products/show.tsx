@@ -1,4 +1,5 @@
 import Gallery from "@/Components/Show/Gallery";
+import LongTextField from "@/Components/Show/LongTextField";
 import SmallTextField from "@/Components/Show/SmallTextField";
 import Button from "@/Components/ui/Button";
 import PageCard from "@/Components/ui/PageCard";
@@ -57,6 +58,13 @@ const Show = ({ product }: { product: Product }) => {
                     label={"Image Description"}
                     value={product.image_description}
                 />
+
+                <div className={"md:col-span-2"}>
+                    <LongTextField
+                        label={"Description"}
+                        value={product.description}
+                    />
+                </div>
 
                 <div className="my-2 mb-5 rounded-md bg-gray-50 p-4 text-xl font-bold md:col-span-2 dark:bg-dark dark:text-white">
                     <label className="text-lg font-semibold">Image :</label>

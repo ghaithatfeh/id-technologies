@@ -28,6 +28,7 @@ use App\Serializers\Translatable as TranslatableSerializer;
  * @property SerializedMedia|null   $video
  * @property string|null            $image_alt
  * @property string|null            $image_description
+ * @property string|null            $description
  * @method Builder isActive()
  * @mixin Builder<Product>
  * @use  HasFactory<ProductFactory>
@@ -47,6 +48,7 @@ class Product extends Model
         'video',
         'image_alt',
         'image_description',
+        'description',
     ];
 
     protected function casts(): array
@@ -66,11 +68,14 @@ class Product extends Model
         return [
             'name',
             'is_active',
+            'category_id',
             'image',
             'pdf',
-            'category.name',
             'is_featured',
-            'video_url',
+            'video',
+            'image_alt',
+            'image_description',
+            'description',
         ];
     }
 
@@ -79,6 +84,7 @@ class Product extends Model
         return [
             'name',
             'is_featured',
+            'description'
         ];
     }
 
