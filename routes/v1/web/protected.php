@@ -47,3 +47,9 @@ Route::post('/v1/projects/import', [v1\ProjectController::class, 'import'])->nam
 Route::get('/v1/projects/get-import-example', [v1\ProjectController::class, 'getImportExample'])->name('v1.web.protected.projects.import.example');
 Route::get('/v1/projects/data', [v1\ProjectController::class, 'data'])->name('v1.web.protected.projects.data');
 Route::resource('/v1/projects', v1\ProjectController::class)->names('v1.web.protected.projects');
+
+Route::post('/v1/exhibitions/export', [v1\ExhibitionController::class, 'export'])->name('v1.web.protected.exhibitions.export');
+Route::post('/v1/exhibitions/import', [v1\ExhibitionController::class, 'import'])->name('v1.web.protected.exhibitions.import');
+Route::get('/v1/exhibitions/get-import-example', [v1\ExhibitionController::class, 'getImportExample'])->name('v1.web.protected.exhibitions.import.example');
+Route::get('/v1/exhibitions/data', [v1\ExhibitionController::class, 'data'])->name('v1.web.protected.exhibitions.data');
+Route::resource('/v1/exhibitions', v1\ExhibitionController::class)->names('v1.web.protected.exhibitions');

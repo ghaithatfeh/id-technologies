@@ -5,73 +5,54 @@ namespace App\Models;
 use Carbon\Carbon;
 use App\Traits\HasMedia;
 use App\Casts\MediaCast;
-use App\Traits\Sluggable;
 use App\Casts\Translatable;
 use App\Serializers\SerializedMedia;
-use Database\Factories\ProjectFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Database\Factories\ExhibitionFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Serializers\Translatable as TranslatableSerializer;
 
 /**
  * @property int                    $id
- * @property TranslatableSerializer $title
+ * @property TranslatableSerializer $name
+ * @property Carbon                 $date
  * @property TranslatableSerializer $description
- * @property SerializedMedia        $cover
- * @property SerializedMedia[]|null   $images
- * @property SerializedMedia[]|null   $videos
- * @property string                 $slug
+ * @property SerializedMedia[]      $images
  * @property Carbon                 $created_at
  * @property Carbon                 $updated_at
- * @mixin Builder<Project>
- * @use  HasFactory<ProjectFactory>
+ * @mixin Builder<Exhibition>
+ * @use  HasFactory<ExhibitionFactory>
  */
-class Project extends Model
+class Exhibition extends Model
 {
     use HasFactory;
     use HasMedia;
-    use Sluggable;
 
     protected $fillable = [
-        'title',
+        'name',
+        'date',
         'description',
-        'cover',
         'images',
-        'videos',
-        'slug',
     ];
 
     protected function casts(): array
     {
         return [
-            'title' => Translatable::class,
+            'name' => Translatable::class,
+            'date' => 'datetime',
             'description' => Translatable::class,
-            'cover' => MediaCast::class,
             'images' => MediaCast::class,
-            'videos' => MediaCast::class,
-        ];
-    }
-
-    public function sluggable(): array
-    {
-        return [
-            [
-                'col' => 'title',
-                'slug_col' => 'slug',
-                'separator' => '-',
-            ],
         ];
     }
 
     public function exportable(): array
     {
         return [
-            'title',
+            'name',
+            'date',
             'description',
-            'cover',
             'images',
-            'videos',
 
         ];
     }
@@ -79,9 +60,9 @@ class Project extends Model
     public static function searchableArray(): array
     {
         return [
-            'title',
+            'name',
             'description',
-
+            'date',
         ];
     }
 

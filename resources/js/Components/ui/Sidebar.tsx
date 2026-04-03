@@ -1,8 +1,6 @@
-import TableCells from "@/Components/icons/TableCells";
 import XMark from "@/Components/icons/XMark";
 import { asset } from "@/helper";
 import { Link } from "@inertiajs/react";
-import React, { ReactNode } from "react";
 import {
     BoxIcon,
     CompassIcon,
@@ -10,7 +8,9 @@ import {
     LayoutDashboardIcon,
     LucideClipboardCheck,
     LucideUserCog,
+    TentTreeIcon,
 } from "lucide-react";
+import React, { ReactNode } from "react";
 
 const sidebarItems = [
     {
@@ -42,6 +42,11 @@ const sidebarItems = [
         title: "Projects",
         href: route("v1.web.protected.projects.index"),
         icon: () => <LucideClipboardCheck />,
+    },
+    {
+        title: "Exhibitions",
+        href: route("v1.web.protected.exhibitions.index"),
+        icon: () => <TentTreeIcon />,
     },
 ];
 

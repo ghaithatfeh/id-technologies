@@ -143,7 +143,7 @@ class SerializedMedia implements Arrayable, Jsonable, JsonSerializable, Stringab
     }
 
     /**
-     * Note: default rules are for images
+     * Note: the default rules are for images
      * @param string[]|Closure[] $fileRules
      * @return Closure
      */

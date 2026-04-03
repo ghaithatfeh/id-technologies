@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Builder;
 
 class BrandController extends Controller
 {
@@ -46,7 +47,10 @@ class BrandController extends Controller
 
             $products = Product::with(['category'])
                 ->whereIn('category_id', $allCategoryIds)
-                ->where('name', 'like', "%{$search}%")
+                ->where(function (Builder $query) use ($search) {
+                    return $query->where('name', 'like', "%{$search}%")
+                        ->orWhere('description', 'like', "%{$search}%");
+                })
                 ->get();
         } elseif (!$subCategorySlug && $category) {
             $childCategoryIds = $category->children->pluck('id')->toArray();
