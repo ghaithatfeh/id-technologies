@@ -392,7 +392,7 @@
         <!-- Google Maps CTA -->
         <div class="mt-12 flex justify-center px-10">
             <a
-                href="https://www.google.com/maps/search/?api=1&query=ID+Technologies+Co"
+                href="https://maps.app.goo.gl/c9g4dfcNDoNLYMoGA"
                 target="_blank"
                 class="flex items-center gap-3 rounded-full bg-landing-secondary px-10 py-4 text-center text-xl font-bold text-landing-primary shadow-xl transition-all hover:scale-105 hover:bg-landing-primary hover:text-landing-secondary"
             >

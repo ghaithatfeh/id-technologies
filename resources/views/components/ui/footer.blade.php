@@ -96,7 +96,7 @@
         <!-- Google Maps Section -->
         <div class="mt-10 flex justify-center px-6">
             <a
-                href="https://www.google.com/maps/search/?api=1&query=ID+Technologies+Co"
+                href="https://maps.app.goo.gl/c9g4dfcNDoNLYMoGA"
                 target="_blank"
                 class="flex w-full items-center justify-center rounded-full bg-landing-primary px-10 py-4 text-xl font-bold text-landing-secondary transition-all duration-300 hover:scale-105 hover:bg-landing-secondary hover:text-landing-primary hover:shadow-lg hover:shadow-landing-primary/20 md:w-auto"
             >

@@ -147,7 +147,7 @@
                                 @foreach ($selectedImages as $image)
                                     <button
                                         type="button"
-                                        class="slider-dot {{ $loop->first ? "bg-landing-secondary" : "bg-slate-300" }} h-3 w-3 rounded-full transition"
+                                        class="slider-dot {{ $loop->first ? "bg-landing-secondary" : "bg-slate-300" }} h-3 w-3 cursor-pointer rounded-full transition"
                                         data-index="{{ $loop->index }}"
                                         aria-label="{{ trans("site.go_to_image") }} {{ $loop->iteration }}"
                                     ></button>
