@@ -14,6 +14,15 @@
         <link rel="canonical" href="{{ url()->current() }}" />
         <meta property="og:url" content="{{ url()->current() }}" />
         <meta name="csrf-token" content="{{ csrf_token() }}" />
+        @hasSection("og_image")
+            @yield("og_image")
+        @else
+            <meta
+                property="og:image"
+                content="{{ asset("/images/02-Logo.webp") }}"
+            />
+        @endif
+
         @stack("meta")
 
         <!-- Scripts -->

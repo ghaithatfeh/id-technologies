@@ -29,15 +29,18 @@
 
 @extends("landing.layout")
 @section("title", $title)
+@section("og_image")
+    <meta property="og:image" content="{{ $brand->logo?->url }}" />
+    @foreach ($products->take(2) as $product)
+        <meta property="og:image" content="{{ $product->image?->url }}" />
+    @endforeach
+@endsection
+
 @push("meta")
     <meta name="description" content="{{ $metaDescription }}" />
     <meta property="og:title" content="{{ $metaTitle }}" />
     <meta property="og:description" content="{{ $metaDescription }}" />
     <meta property="og:type" content="product.group" />
-    <meta property="og:image" content="{{ $brand->logo?->url }}" />
-    @foreach ($products->take(2) as $product)
-        <meta property="og:image" content="{{ $product->image?->url }}" />
-    @endforeach
 @endpush
 
 @section("content")

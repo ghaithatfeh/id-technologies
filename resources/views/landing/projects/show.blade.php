@@ -1,9 +1,4 @@
 @extends("landing.layout")
-
-@push("meta")
-    <meta property="og:image" content="{{ asset("/images/02-Logo.webp") }}" />
-@endpush
-
 @section("title", " - " . $project->title)
 @section("content")
     <div class="h-full w-full">
