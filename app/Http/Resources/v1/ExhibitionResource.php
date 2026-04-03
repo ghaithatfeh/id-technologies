@@ -19,6 +19,7 @@ class ExhibitionResource extends BaseResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'slug' => $this->slug,
             'date' => $this->date?->format('Y-m-d'),
             'description' => $this->description,
             'images' => $this->images,

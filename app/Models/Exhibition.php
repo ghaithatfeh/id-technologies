@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use App\Traits\Sluggable;
 use App\Traits\HasMedia;
 use App\Casts\MediaCast;
 use App\Casts\Translatable;
@@ -19,6 +20,7 @@ use App\Serializers\Translatable as TranslatableSerializer;
  * @property Carbon                 $date
  * @property TranslatableSerializer $description
  * @property SerializedMedia[]      $images
+ * @property string                 $slug
  * @property Carbon                 $created_at
  * @property Carbon                 $updated_at
  * @mixin Builder<Exhibition>
@@ -28,12 +30,14 @@ class Exhibition extends Model
 {
     use HasFactory;
     use HasMedia;
+    use Sluggable;
 
     protected $fillable = [
         'name',
         'date',
         'description',
         'images',
+        'slug',
     ];
 
     protected function casts(): array
@@ -46,10 +50,22 @@ class Exhibition extends Model
         ];
     }
 
+    public function sluggable(): array
+    {
+        return [
+            [
+                'col' => 'name',
+                'slug_col' => 'slug',
+                'separator' => '-',
+            ],
+        ];
+    }
+
     public function exportable(): array
     {
         return [
             'name',
+            'slug',
             'date',
             'description',
             'images',
@@ -61,6 +77,7 @@ class Exhibition extends Model
     {
         return [
             'name',
+            'slug',
             'description',
             'date',
         ];

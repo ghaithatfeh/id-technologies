@@ -1,5 +1,13 @@
 @php
     use Illuminate\Support\Facades\Route;
+
+    $switchLocaleUrl = route(Route::currentRouteName(), [
+        ...request()->query(),
+        ...request()
+            ->route()
+            ->parameters(),
+        "locale" => app()->getLocale() == "en" ? "ar" : "en",
+    ]);
 @endphp
 
 <div
@@ -18,36 +26,36 @@
         class="hidden w-3/4 items-center gap-20 text-lg font-bold text-landing-primary md:flex"
     >
         <a
-            class="{{ urlActive(route("landing.index")) ? "text-white underline" : "" }} hover:text-white"
+            class="{{ Route::currentRouteNamed("landing.index") ? "text-white underline" : "" }} hover:text-white"
             href="{{ route("landing.index") }}"
         >
             {{ trans("site.home") }}
         </a>
 
         <a
-            class="{{ urlActive(route("landing.customer.service")) ? "text-white underline" : "" }} hover:text-white"
+            class="{{ Route::currentRouteNamed("landing.customer.service") ? "text-white underline" : "" }} hover:text-white"
             href="{{ route("landing.customer.service") }}"
         >
             {{ trans("site.customer_service") }}
         </a>
 
         <a
-            class="{{ urlActive(route("landing.projects.index")) ? "text-white underline" : "" }} hover:text-white"
+            class="{{ Route::currentRouteNamed("landing.projects.index") ? "text-white underline" : "" }} hover:text-white"
             href="{{ route("landing.projects.index") }}"
         >
             {{ trans("site.our_projects") }}
         </a>
 
         <a
+            class="{{ Route::currentRouteNamed("landing.exhibitions.index") ? "text-white underline" : "" }} hover:text-white"
+            href="{{ route("landing.exhibitions.index") }}"
+        >
+            {{ trans("site.exhibitions") }}
+        </a>
+
+        <a
             class="cursor-pointer text-xl font-bold text-landing-primary transition-opacity hover:opacity-70"
-            href="{{
-                route(Route::currentRouteName(), [
-                    ...request()
-                        ->route()
-                        ->parameters(),
-                    "locale" => app()->getLocale() == "en" ? "ar" : "en",
-                ])
-            }}"
+            href="{{ $switchLocaleUrl }}"
         >
             {{ app()->getLocale() == "en" ? trans("site.ar") : trans("site.en") }}
         </a>
@@ -65,36 +73,36 @@
 >
     <nav class="flex flex-col gap-6 p-8 pt-24">
         <a
-            class="{{ urlActive(route("landing.index")) ? "underline" : "" }} text-xl font-bold text-landing-primary transition-opacity hover:opacity-70"
+            class="{{ Route::currentRouteNamed("landing.index") ? "underline" : "" }} text-xl font-bold text-landing-primary transition-opacity hover:opacity-70"
             href="{{ route("landing.index") }}"
         >
             {{ trans("site.home") }}
         </a>
 
         <a
-            class="{{ urlActive(route("landing.customer.service")) ? "underline" : "" }} text-xl font-bold text-landing-primary transition-opacity hover:opacity-70"
+            class="{{ Route::currentRouteNamed("landing.customer.service") ? "underline" : "" }} text-xl font-bold text-landing-primary transition-opacity hover:opacity-70"
             href="{{ route("landing.customer.service") }}"
         >
             {{ trans("site.customer_service") }}
         </a>
 
         <a
-            class="{{ urlActive(route("landing.projects.index")) ? "underline" : "" }} text-xl font-bold text-landing-primary transition-opacity hover:opacity-70"
+            class="{{ Route::currentRouteNamed("landing.projects.index") ? "underline" : "" }} text-xl font-bold text-landing-primary transition-opacity hover:opacity-70"
             href="{{ route("landing.projects.index") }}"
         >
             {{ trans("site.our_projects") }}
         </a>
 
         <a
+            class="{{ Route::currentRouteNamed("landing.exhibitions.index") ? "underline" : "" }} text-xl font-bold text-landing-primary transition-opacity hover:opacity-70"
+            href="{{ route("landing.exhibitions.index") }}"
+        >
+            {{ trans("site.exhibitions") }}
+        </a>
+
+        <a
             class="cursor-pointer text-xl font-bold text-landing-primary transition-opacity hover:opacity-70"
-            href="{{
-                route(Route::currentRouteName(), [
-                    ...request()
-                        ->route()
-                        ->parameters(),
-                    "locale" => app()->getLocale() == "en" ? "ar" : "en",
-                ])
-            }}"
+            href="{{ $switchLocaleUrl }}"
         >
             {{ app()->getLocale() == "en" ? trans("site.ar") : trans("site.en") }}
         </a>

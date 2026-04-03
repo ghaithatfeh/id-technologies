@@ -12,6 +12,7 @@
             {{ config("app.name", "Laravel") }} @yield("title", "")
         </title>
         <link rel="canonical" href="{{ url()->current() }}" />
+        <meta property="og:url" content="{{ url()->current() }}" />
         <meta name="csrf-token" content="{{ csrf_token() }}" />
         @stack("meta")
 
@@ -41,6 +42,12 @@
                 }}"
             />
         @endforeach
+
+        <style>
+            @view-transition {
+                navigation: auto;
+            }
+        </style>
     </head>
 
     <body>

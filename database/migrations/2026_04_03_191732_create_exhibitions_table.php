@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('exhibitions', function (Blueprint $table) {
             $table->id();
             $table->json('name');
+            $table->string('slug')->unique();
             $table->date('date');
             $table->json('description');
             $table->json('images');

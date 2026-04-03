@@ -34,7 +34,6 @@
     <meta property="og:title" content="{{ $metaTitle }}" />
     <meta property="og:description" content="{{ $metaDescription }}" />
     <meta property="og:type" content="product.group" />
-    <meta property="og:url" content="{{ url()->current() }}" />
     <meta property="og:image" content="{{ $brand->logo?->url }}" />
     @foreach ($products->take(2) as $product)
         <meta property="og:image" content="{{ $product->image?->url }}" />

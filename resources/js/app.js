@@ -1,5 +1,7 @@
 import InfiniteScroll from "infinite-scroll";
 import {
+    ChevronLeft,
+    ChevronRight,
     createIcons,
     Facebook,
     Globe2,
@@ -19,6 +21,8 @@ createIcons({
         Linkedin,
         Menu,
         X,
+        ChevronRight,
+        ChevronLeft,
     },
 });
 

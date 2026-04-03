@@ -3,10 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Landing\SiteController;
 use App\Http\Controllers\Landing\BrandController;
+use App\Http\Controllers\Landing\ExhibitionController;
 use App\Http\Controllers\Landing\ProjectController;
 
 Route::get('/', [SiteController::class, 'index'])->name('index');
 Route::get('/customer-service', [SiteController::class, 'customerService'])->name('customer.service');
+Route::get('/exhibitions/{exhibitionSlug?}', [ExhibitionController::class, 'index'])->name('exhibitions.index');
 
 Route::get('/brands/{brandSlug}/categories/{categorySlug?}/{subCategorySlug?}', [BrandController::class, 'show'])->name('brands.show');
 
