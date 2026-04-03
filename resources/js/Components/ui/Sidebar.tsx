@@ -66,7 +66,7 @@ export const Sidebar = ({
             >
                 <div className={`flex items-center justify-center gap-1`}>
                     <img
-                        src={asset("/images/02-Logo.webp")}
+                        src={asset("/images/02-Logo.svg")}
                         width={`${isOpen ? "40px" : "40px"}`}
                         alt="Company Logo"
                     />

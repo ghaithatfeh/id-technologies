@@ -19,7 +19,7 @@
         @else
             <meta
                 property="og:image"
-                content="{{ asset("/images/02-Logo.webp") }}"
+                content="{{ asset("/images/02-Logo.svg") }}"
             />
         @endif
 
