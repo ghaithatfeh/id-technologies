@@ -4,15 +4,16 @@ namespace App\Serializers;
 
 use Closure;
 use Exception;
+use Throwable;
+use Stringable;
+use JsonSerializable;
+use Spatie\Image\Image;
 use GuzzleHttp\Psr7\MimeType;
-use Illuminate\Contracts\Support\Arrayable;
-use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
-use JsonSerializable;
-use Stringable;
+use Illuminate\Contracts\Support\Jsonable;
+use Illuminate\Contracts\Support\Arrayable;
 
 class SerializedMedia implements Arrayable, Jsonable, JsonSerializable, Stringable
 {
@@ -50,6 +51,48 @@ class SerializedMedia implements Arrayable, Jsonable, JsonSerializable, Stringab
             $this->extension = $data['extension'];
             $this->mimeType = $data['mime_type'];
             $this->path = $data['full_path'];
+        }
+    }
+
+    public static function normalizeUploadedFile(UploadedFile $file): UploadedFile
+    {
+        $mimeType = (string)$file->getMimeType();
+
+        if (
+            !str_starts_with($mimeType, 'image/')
+            || in_array($mimeType, ['image/svg+xml', 'image/webp'], true)
+        ) {
+            return $file;
+        }
+
+        $temporaryFile = tempnam(sys_get_temp_dir(), 'media-webp-');
+
+        if ($temporaryFile === false) {
+            return $file;
+        }
+
+        @unlink($temporaryFile);
+
+        $temporaryFilePath = sprintf('%s.webp', $temporaryFile);
+
+        try {
+            Image::load($file->getPathname())
+                ->format('webp')
+                ->save($temporaryFilePath);
+
+            return new UploadedFile(
+                $temporaryFilePath,
+                pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME) . '.webp',
+                'image/webp',
+                null,
+                true,
+            );
+        } catch (Throwable) {
+            if (is_file($temporaryFilePath)) {
+                @unlink($temporaryFilePath);
+            }
+
+            return $file;
         }
     }
 
@@ -144,6 +187,7 @@ class SerializedMedia implements Arrayable, Jsonable, JsonSerializable, Stringab
 
     /**
      * Note: the default rules are for images
+     *
      * @param string[]|Closure[] $fileRules
      * @return Closure
      */
