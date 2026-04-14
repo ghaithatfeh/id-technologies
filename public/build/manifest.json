@@ -1,11 +1,11 @@
 {
-  "_components-B3EKkksG.js": {
-    "file": "assets/components-B3EKkksG.js",
+  "_components-LIe3gNhX.js": {
+    "file": "assets/components-LIe3gNhX.js",
     "name": "components",
     "imports": [
       "_react-core-Cgk7sWxN.js",
       "_inertia-BgP3mBFL.js",
-      "_lucide-CB2pwqJL.js",
+      "_lucide-C1KBSEjG.js",
       "_vendor-BphdXQC4.js"
     ]
   },
@@ -17,46 +17,46 @@
       "_react-core-Cgk7sWxN.js"
     ]
   },
-  "_layouts-CnQLk6W1.js": {
-    "file": "assets/layouts-CnQLk6W1.js",
+  "_layouts-HivH3iqG.js": {
+    "file": "assets/layouts-HivH3iqG.js",
     "name": "layouts",
     "imports": [
       "_react-core-Cgk7sWxN.js",
-      "_components-B3EKkksG.js",
+      "_components-LIe3gNhX.js",
       "_inertia-BgP3mBFL.js"
     ]
   },
-  "_lucide-CB2pwqJL.js": {
-    "file": "assets/lucide-CB2pwqJL.js",
+  "_lucide-C1KBSEjG.js": {
+    "file": "assets/lucide-C1KBSEjG.js",
     "name": "lucide",
     "imports": [
       "_react-core-Cgk7sWxN.js"
     ]
   },
-  "_pages-auth-hmLNr0RV.js": {
-    "file": "assets/pages-auth-hmLNr0RV.js",
+  "_pages-auth-CD0QR5Z_.js": {
+    "file": "assets/pages-auth-CD0QR5Z_.js",
     "name": "pages-auth",
     "imports": [
       "_react-core-Cgk7sWxN.js",
-      "_components-B3EKkksG.js",
+      "_components-LIe3gNhX.js",
       "_inertia-BgP3mBFL.js"
     ]
   },
-  "_pages-dashboard-GtwZmFTO.js": {
-    "file": "assets/pages-dashboard-GtwZmFTO.js",
+  "_pages-dashboard-DD0cNnRL.js": {
+    "file": "assets/pages-dashboard-DD0cNnRL.js",
     "name": "pages-dashboard",
     "imports": [
       "_react-core-Cgk7sWxN.js",
-      "_components-B3EKkksG.js",
+      "_components-LIe3gNhX.js",
       "_inertia-BgP3mBFL.js"
     ]
   },
-  "_pages-entities-DbQhtVyP.js": {
-    "file": "assets/pages-entities-DbQhtVyP.js",
+  "_pages-entities-ClOWWsaz.js": {
+    "file": "assets/pages-entities-ClOWWsaz.js",
     "name": "pages-entities",
     "imports": [
       "_react-core-Cgk7sWxN.js",
-      "_components-B3EKkksG.js",
+      "_components-LIe3gNhX.js",
       "_inertia-BgP3mBFL.js"
     ]
   },
@@ -90,7 +90,7 @@
     ]
   },
   "resources/css/cubeta-starter.css": {
-    "file": "assets/css/cubeta-starter-BfzVLbAq.css",
+    "file": "assets/css/cubeta-starter-C13PJuAV.css",
     "src": "resources/css/cubeta-starter.css",
     "isEntry": true,
     "names": [
@@ -98,35 +98,35 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-PTJr8yZZ.js",
+    "file": "assets/app-skGPgBJu.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "imports": [
       "_ui-libs-CAhAz_VQ.js",
-      "_lucide-CB2pwqJL.js",
+      "_lucide-C1KBSEjG.js",
       "_react-core-Cgk7sWxN.js",
       "_vendor-BphdXQC4.js"
     ]
   },
   "resources/js/cubeta-starter.tsx": {
-    "file": "assets/cubeta-starter-BV2QV3r9.js",
+    "file": "assets/cubeta-starter-41S-dbxh.js",
     "name": "cubeta-starter",
     "src": "resources/js/cubeta-starter.tsx",
     "isEntry": true,
     "imports": [
-      "_pages-entities-DbQhtVyP.js",
-      "_pages-dashboard-GtwZmFTO.js",
-      "_pages-auth-hmLNr0RV.js",
+      "_pages-entities-ClOWWsaz.js",
+      "_pages-dashboard-DD0cNnRL.js",
+      "_pages-auth-CD0QR5Z_.js",
       "_react-core-Cgk7sWxN.js",
-      "_layouts-CnQLk6W1.js",
+      "_layouts-HivH3iqG.js",
       "_inertia-BgP3mBFL.js",
       "_vendor-BphdXQC4.js",
-      "_components-B3EKkksG.js",
-      "_lucide-CB2pwqJL.js"
+      "_components-LIe3gNhX.js",
+      "_lucide-C1KBSEjG.js"
     ],
     "css": [
-      "assets/css/cubeta-starter-BfzVLbAq.css"
+      "assets/css/cubeta-starter-C13PJuAV.css"
     ]
   }
 }

@@ -3,22 +3,22 @@ import{r as h}from"./react-core-Cgk7sWxN.js";/**
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
- */const C=e=>e.replace(/([a-z0-9])([A-Z])/g,"$1-$2").toLowerCase(),b=e=>e.replace(/^([A-Z])|[\s-_]+(\w)/g,(t,a,o)=>o?o.toUpperCase():a.toLowerCase()),u=e=>{const t=b(e);return t.charAt(0).toUpperCase()+t.slice(1)},f=(...e)=>e.filter((t,a,o)=>!!t&&t.trim()!==""&&o.indexOf(t)===a).join(" ").trim(),A=e=>{for(const t in e)if(t.startsWith("aria-")||t==="role"||t==="title")return!0};/**
+ */const C=e=>e.replace(/([a-z0-9])([A-Z])/g,"$1-$2").toLowerCase(),b=e=>e.replace(/^([A-Z])|[\s-_]+(\w)/g,(t,o,a)=>a?a.toUpperCase():o.toLowerCase()),u=e=>{const t=b(e);return t.charAt(0).toUpperCase()+t.slice(1)},f=(...e)=>e.filter((t,o,a)=>!!t&&t.trim()!==""&&a.indexOf(t)===o).join(" ").trim(),M=e=>{for(const t in e)if(t.startsWith("aria-")||t==="role"||t==="title")return!0};/**
  * @license lucide-react v0.544.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
- */var M={xmlns:"http://www.w3.org/2000/svg",width:24,height:24,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round"};/**
+ */var A={xmlns:"http://www.w3.org/2000/svg",width:24,height:24,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round"};/**
  * @license lucide-react v0.544.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
- */const E=h.forwardRef(({color:e="currentColor",size:t=24,strokeWidth:a=2,absoluteStrokeWidth:o,className:r="",children:c,iconNode:n,...s},d)=>h.createElement("svg",{ref:d,...M,width:t,height:t,stroke:e,strokeWidth:o?Number(a)*24/Number(t):a,className:f("lucide",r),...!c&&!A(s)&&{"aria-hidden":"true"},...s},[...n.map(([l,p])=>h.createElement(l,p)),...Array.isArray(c)?c:[c]]));/**
+ */const E=h.forwardRef(({color:e="currentColor",size:t=24,strokeWidth:o=2,absoluteStrokeWidth:a,className:r="",children:c,iconNode:n,...s},d)=>h.createElement("svg",{ref:d,...A,width:t,height:t,stroke:e,strokeWidth:a?Number(o)*24/Number(t):o,className:f("lucide",r),...!c&&!M(s)&&{"aria-hidden":"true"},...s},[...n.map(([l,p])=>h.createElement(l,p)),...Array.isArray(c)?c:[c]]));/**
  * @license lucide-react v0.544.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
- */const i=(e,t)=>{const a=h.forwardRef(({className:o,...r},c)=>h.createElement(E,{ref:c,iconNode:t,className:f(`lucide-${C(u(e))}`,`lucide-${e}`,o),...r}));return a.displayName=u(e),a};/**
+ */const i=(e,t)=>{const o=h.forwardRef(({className:a,...r},c)=>h.createElement(E,{ref:c,iconNode:t,className:f(`lucide-${C(u(e))}`,`lucide-${e}`,a),...r}));return o.displayName=u(e),o};/**
  * @license lucide-react v0.544.0 - ISC
  *
  * This source code is licensed under the ISC license.
@@ -53,12 +53,12 @@ import{r as h}from"./react-core-Cgk7sWxN.js";/**
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
- */const V=[["circle",{cx:"4",cy:"4",r:"2",key:"bt5ra8"}],["path",{d:"m14 5 3-3 3 3",key:"1sorif"}],["path",{d:"m14 10 3-3 3 3",key:"1jyi9h"}],["path",{d:"M17 14V2",key:"8ymqnk"}],["path",{d:"M17 14H7l-5 8h20Z",key:"13ar7p"}],["path",{d:"M8 14v8",key:"1ghmqk"}],["path",{d:"m9 14 5 8",key:"13pgi6"}]],K=i("tent-tree",V);/**
+ */const P=[["circle",{cx:"4",cy:"4",r:"2",key:"bt5ra8"}],["path",{d:"m14 5 3-3 3 3",key:"1sorif"}],["path",{d:"m14 10 3-3 3 3",key:"1jyi9h"}],["path",{d:"M17 14V2",key:"8ymqnk"}],["path",{d:"M17 14H7l-5 8h20Z",key:"13ar7p"}],["path",{d:"M8 14v8",key:"1ghmqk"}],["path",{d:"m9 14 5 8",key:"13pgi6"}]],K=i("tent-tree",P);/**
  * @license lucide-react v0.544.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
- */const H=[["path",{d:"M10 15H6a4 4 0 0 0-4 4v2",key:"1nfge6"}],["path",{d:"m14.305 16.53.923-.382",key:"1itpsq"}],["path",{d:"m15.228 13.852-.923-.383",key:"eplpkm"}],["path",{d:"m16.852 12.228-.383-.923",key:"13v3q0"}],["path",{d:"m16.852 17.772-.383.924",key:"1i8mnm"}],["path",{d:"m19.148 12.228.383-.923",key:"1q8j1v"}],["path",{d:"m19.53 18.696-.382-.924",key:"vk1qj3"}],["path",{d:"m20.772 13.852.924-.383",key:"n880s0"}],["path",{d:"m20.772 16.148.924.383",key:"1g6xey"}],["circle",{cx:"18",cy:"15",r:"3",key:"gjjjvw"}],["circle",{cx:"9",cy:"7",r:"4",key:"nufk8"}]],X=i("user-cog",H);/**
+ */const V=[["path",{d:"M10 15H6a4 4 0 0 0-4 4v2",key:"1nfge6"}],["path",{d:"m14.305 16.53.923-.382",key:"1itpsq"}],["path",{d:"m15.228 13.852-.923-.383",key:"eplpkm"}],["path",{d:"m16.852 12.228-.383-.923",key:"13v3q0"}],["path",{d:"m16.852 17.772-.383.924",key:"1i8mnm"}],["path",{d:"m19.148 12.228.383-.923",key:"1q8j1v"}],["path",{d:"m19.53 18.696-.382-.924",key:"vk1qj3"}],["path",{d:"m20.772 13.852.924-.383",key:"n880s0"}],["path",{d:"m20.772 16.148.924.383",key:"1g6xey"}],["circle",{cx:"18",cy:"15",r:"3",key:"gjjjvw"}],["circle",{cx:"9",cy:"7",r:"4",key:"nufk8"}]],X=i("user-cog",V);/**
  * @license lucide v0.577.0 - ISC
  *
  * This source code is licensed under the ISC license.
@@ -68,7 +68,7 @@ import{r as h}from"./react-core-Cgk7sWxN.js";/**
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
- */const w=([e,t,a])=>{const o=document.createElementNS("http://www.w3.org/2000/svg",e);return Object.keys(t).forEach(r=>{o.setAttribute(r,String(t[r]))}),a?.length&&a.forEach(r=>{const c=w(r);o.appendChild(c)}),o},P=(e,t={})=>{const o={...g,...t};return w(["svg",o,e])};/**
+ */const w=([e,t,o])=>{const a=document.createElementNS("http://www.w3.org/2000/svg",e);return Object.keys(t).forEach(r=>{a.setAttribute(r,String(t[r]))}),o?.length&&o.forEach(r=>{const c=w(r);a.appendChild(c)}),a},H=(e,t={})=>{const a={...g,...t};return w(["svg",a,e])};/**
  * @license lucide v0.577.0 - ISC
  *
  * This source code is licensed under the ISC license.
@@ -78,12 +78,12 @@ import{r as h}from"./react-core-Cgk7sWxN.js";/**
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
- */const S=(...e)=>e.filter((t,a,o)=>!!t&&t.trim()!==""&&o.indexOf(t)===a).join(" ").trim();/**
+ */const S=(...e)=>e.filter((t,o,a)=>!!t&&t.trim()!==""&&a.indexOf(t)===o).join(" ").trim();/**
  * @license lucide v0.577.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
- */const U=e=>e.replace(/^([A-Z])|[\s-_]+(\w)/g,(t,a,o)=>o?o.toUpperCase():a.toLowerCase());/**
+ */const U=e=>e.replace(/^([A-Z])|[\s-_]+(\w)/g,(t,o,a)=>a?a.toUpperCase():o.toLowerCase());/**
  * @license lucide v0.577.0 - ISC
  *
  * This source code is licensed under the ISC license.
@@ -93,7 +93,7 @@ import{r as h}from"./react-core-Cgk7sWxN.js";/**
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
- */const T=e=>Array.from(e.attributes).reduce((t,a)=>(t[a.name]=a.value,t),{}),m=e=>typeof e=="string"?e:!e||!e.class?"":e.class&&typeof e.class=="string"?e.class.split(" "):e.class&&Array.isArray(e.class)?e.class:"",k=(e,{nameAttr:t,icons:a,attrs:o})=>{const r=e.getAttribute(t);if(r==null)return;const c=B(r),n=a[c];if(!n)return console.warn(`${e.outerHTML} icon name was not found in the provided icons object.`);const s=T(e),d=I(s)?{}:{"aria-hidden":"true"},l={...g,"data-lucide":r,...d,...o,...s},p=m(s),v=m(o),y=S("lucide",`lucide-${r}`,...p,...v);y&&Object.assign(l,{class:y});const x=P(n,l);return e.parentNode?.replaceChild(x,e)};/**
+ */const T=e=>Array.from(e.attributes).reduce((t,o)=>(t[o.name]=o.value,t),{}),m=e=>typeof e=="string"?e:!e||!e.class?"":e.class&&typeof e.class=="string"?e.class.split(" "):e.class&&Array.isArray(e.class)?e.class:"",k=(e,{nameAttr:t,icons:o,attrs:a})=>{const r=e.getAttribute(t);if(r==null)return;const c=B(r),n=o[c];if(!n)return console.warn(`${e.outerHTML} icon name was not found in the provided icons object.`);const s=T(e),d=I(s)?{}:{"aria-hidden":"true"},l={...g,"data-lucide":r,...d,...a,...s},p=m(s),v=m(a),y=S("lucide",`lucide-${r}`,...p,...v);y&&Object.assign(l,{class:y});const x=H(n,l);return e.parentNode?.replaceChild(x,e)};/**
  * @license lucide v0.577.0 - ISC
  *
  * This source code is licensed under the ISC license.
@@ -123,27 +123,32 @@ import{r as h}from"./react-core-Cgk7sWxN.js";/**
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
- */const oe=[["path",{d:"m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"}],["rect",{x:"2",y:"4",width:"20",height:"16",rx:"2"}]];/**
+ */const ae=[["path",{d:"m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"}],["rect",{x:"2",y:"4",width:"20",height:"16",rx:"2"}]];/**
  * @license lucide v0.577.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
- */const ae=[["path",{d:"M4 5h16"}],["path",{d:"M4 12h16"}],["path",{d:"M4 19h16"}]];/**
+ */const oe=[["path",{d:"M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"}],["circle",{cx:"12",cy:"10",r:"3"}]];/**
  * @license lucide v0.577.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
- */const re=[["path",{d:"M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"}]];/**
+ */const re=[["path",{d:"M4 5h16"}],["path",{d:"M4 12h16"}],["path",{d:"M4 19h16"}]];/**
  * @license lucide v0.577.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
- */const ce=[["path",{d:"M18 6 6 18"}],["path",{d:"m6 6 12 12"}]];/**
+ */const ce=[["path",{d:"M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"}]];/**
  * @license lucide v0.577.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
- */const O=({icons:e={},nameAttr:t="data-lucide",attrs:a={},root:o=document,inTemplates:r}={})=>{if(!Object.values(e).length)throw new Error(`Please provide an icons object.
+ */const ne=[["path",{d:"M18 6 6 18"}],["path",{d:"m6 6 12 12"}]];/**
+ * @license lucide v0.577.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const O=({icons:e={},nameAttr:t="data-lucide",attrs:o={},root:a=document,inTemplates:r}={})=>{if(!Object.values(e).length)throw new Error(`Please provide an icons object.
 If you want to use all the icons you can import it like:
  \`import { createIcons, icons } from 'lucide';
-lucide.createIcons({icons});\``);if(typeof o>"u")throw new Error("`createIcons()` only works in a browser environment.");if(Array.from(o.querySelectorAll(`[${t}]`)).forEach(n=>k(n,{nameAttr:t,icons:e,attrs:a})),r&&Array.from(o.querySelectorAll("template")).forEach(s=>O({icons:e,nameAttr:t,attrs:a,root:s.content,inTemplates:r})),t==="data-lucide"){const n=o.querySelectorAll("[icon-name]");n.length>0&&(console.warn("[Lucide] Some icons were found with the now deprecated icon-name attribute. These will still be replaced for backwards compatibility, but will no longer be supported in v1.0 and you should switch to data-lucide"),Array.from(n).forEach(s=>k(s,{nameAttr:"icon-name",icons:e,attrs:a})))}};export{Z as B,z as C,Y as E,ee as F,F as G,D as L,ae as M,re as P,K as T,X as U,ce as X,W as a,G as b,O as c,Q as d,J as e,te as f,oe as g};
+lucide.createIcons({icons});\``);if(typeof a>"u")throw new Error("`createIcons()` only works in a browser environment.");if(Array.from(a.querySelectorAll(`[${t}]`)).forEach(n=>k(n,{nameAttr:t,icons:e,attrs:o})),r&&Array.from(a.querySelectorAll("template")).forEach(s=>O({icons:e,nameAttr:t,attrs:o,root:s.content,inTemplates:r})),t==="data-lucide"){const n=a.querySelectorAll("[icon-name]");n.length>0&&(console.warn("[Lucide] Some icons were found with the now deprecated icon-name attribute. These will still be replaced for backwards compatibility, but will no longer be supported in v1.0 and you should switch to data-lucide"),Array.from(n).forEach(s=>k(s,{nameAttr:"icon-name",icons:e,attrs:o})))}};export{Z as B,z as C,Y as E,ee as F,F as G,D as L,oe as M,ce as P,K as T,X as U,ne as X,W as a,G as b,O as c,Q as d,J as e,re as f,te as g,ae as h};
