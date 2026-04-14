@@ -18,63 +18,40 @@
             background-image: {{ app()->getLocale() == "ar" ? "url(" . asset("images/01-BGRTL.webp") . ")" : "url(" . asset("images/01-BG.webp") . ")" }};
         "
     >
+        <x-contact-floating-utility/>
+
         <x-ui.navbar />
         <div
             class="flex h-full w-full flex-col items-center justify-between gap-4 px-10 pb-24 md:flex-row md:px-16 md:pe-32 md:pb-46"
         >
-            <div class="w-full max-w-4xl">
-                <h2
-                    class="mb-3 text-2xl font-bold text-landing-primary md:ps-26"
-                >
+            <div class="flex w-full max-w-4xl flex-col items-start md:ps-26">
+                <h2 class="mb-3 text-2xl font-bold text-landing-primary">
                     {{ trans("site.partners_in_development") }}
                 </h2>
-                <div class="flex items-center gap-12">
-                    <div
-                        class="hidden flex-col gap-6 rounded-2xl bg-white px-3 py-6 md:flex"
-                    >
-                        <a target="_blank" href="https://wa.me/+963933303939">
-                            <i
-                                data-lucide="phone"
-                                class="h-8 w-8"
-                                stroke-width="1"
-                            ></i>
-                        </a>
-                        <div
-                            class="h-[2px] bg-gradient-to-r from-transparent via-black to-transparent"
-                        ></div>
-                        <a href="mailto:sales1@idtechco.com">
-                            <i
-                                data-lucide="mail"
-                                stroke-width="1"
-                                class="h-8 w-8"
-                            ></i>
-                        </a>
+                <div class="mt-6 flex flex-col gap-8">
+                    <div class="flex items-start gap-2">
+                        <span
+                            class="my-2 me-2 rounded-md border border-landing-primary p-2"
+                        ></span>
+                        <p class="text-xl leading-8 text-white">
+                            {{ trans("site.hero_first_title") }}
+                        </p>
                     </div>
-                    <div class="mt-6 flex flex-col gap-8">
-                        <div class="flex items-start gap-2">
-                            <span
-                                class="my-2 me-2 rounded-md border border-landing-primary p-2"
-                            ></span>
-                            <p class="text-xl leading-8 text-white">
-                                {{ trans("site.hero_first_title") }}
-                            </p>
-                        </div>
-                        <div class="flex items-start gap-2">
-                            <span
-                                class="my-2 me-2 rounded-md border border-landing-primary p-2"
-                            ></span>
-                            <p class="text-xl leading-8 text-white">
-                                {{ trans("site.hero_second_title") }}
-                            </p>
-                        </div>
-                        <div class="flex items-start gap-2">
-                            <span
-                                class="my-2 me-2 rounded-md border border-landing-primary p-2"
-                            ></span>
-                            <p class="text-xl leading-8 text-white">
-                                {{ trans("site.hero_third_title") }}
-                            </p>
-                        </div>
+                    <div class="flex items-start gap-2">
+                        <span
+                            class="my-2 me-2 rounded-md border border-landing-primary p-2"
+                        ></span>
+                        <p class="text-xl leading-8 text-white">
+                            {{ trans("site.hero_second_title") }}
+                        </p>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <span
+                            class="my-2 me-2 rounded-md border border-landing-primary p-2"
+                        ></span>
+                        <p class="text-xl leading-8 text-white">
+                            {{ trans("site.hero_third_title") }}
+                        </p>
                     </div>
                 </div>
             </div>

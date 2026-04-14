@@ -10,6 +10,7 @@ import {
     Menu,
     Phone,
     X,
+    MapPin,
 } from "lucide";
 
 createIcons({
@@ -23,6 +24,7 @@ createIcons({
         X,
         ChevronRight,
         ChevronLeft,
+        MapPin,
     },
 });
 
