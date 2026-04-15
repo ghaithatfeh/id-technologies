@@ -107,7 +107,7 @@
     </div>
 
     <div
-        class="flex w-full flex-col items-start justify-between gap-16 px-10 pt-24 md:px-24 md:pt-52"
+        class="flex w-full flex-col items-start justify-between gap-16 px-10 pt-24 md:px-36 md:pt-52"
         style="
             background-image: url('{{ asset("images/08-BG.svg") }}');
             background-size: cover;
@@ -162,7 +162,7 @@
 
     <div class="relative flex w-full flex-col items-start">
         <div
-            class="w-full bg-landing-secondary px-10 py-10 md:px-24"
+            class="w-full bg-landing-secondary px-10 py-10 md:px-36"
             style="
                 background-image: url('{{ asset("images/08-BG.svg") }}');
                 background-size: cover;
