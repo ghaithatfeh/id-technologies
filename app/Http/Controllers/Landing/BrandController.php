@@ -48,8 +48,11 @@ class BrandController extends Controller
             $products = Product::with(['category'])
                 ->whereIn('category_id', $allCategoryIds)
                 ->where(function (Builder $query) use ($search) {
-                    return $query->where('name', 'like', "%{$search}%")
-                        ->orWhere('description', 'like', "%{$search}%");
+                    return $query->whereRaw('LOWER(name) LIKE LOWER(?)', ["%{$search}%"])
+                        ->orWhereRaw('LOWER(description) LIKE LOWER(?)', ["%{$search}%"]);
+                })
+                ->orWhereHas('category', function (Category|Builder $c) use ($search) {
+                    return $c->whereRaw('LOWER(name) LIKE LOWER(?)', ["%{$search}%"]);
                 })
                 ->get();
         } elseif (!$subCategorySlug && $category) {
