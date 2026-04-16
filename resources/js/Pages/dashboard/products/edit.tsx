@@ -13,6 +13,7 @@ import { translate } from "@/Models/Translatable";
 import Http from "@/Modules/Http/Http";
 import { useForm } from "@inertiajs/react";
 import { FormEvent } from "react";
+import TranslatableEditor from "@/Components/form/fields/TranslatableEditor";
 
 const Edit = ({ product }: { product: Product }) => {
     const { post, setData, processing } = useForm<{
@@ -150,7 +151,7 @@ const Edit = ({ product }: { product: Product }) => {
                             required
                         />
                         <div className={"md:col-span-2"}>
-                            <TextEditor
+                            <TranslatableEditor
                                 name={"description"}
                                 onChange={(e) => {
                                     setData("description", e.target.value);

@@ -15,20 +15,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Serializers\Translatable as TranslatableSerializer;
 
 /**
- * @property int                    $id
- * @property TranslatableSerializer $name
- * @property bool                   $is_active
- * @property int                    $category_id
- * @property SerializedMedia        $image
- * @property SerializedMedia        $pdf
- * @property Category|null          $category
- * @property Carbon                 $created_at
- * @property Carbon                 $updated_at
- * @property bool                   $is_featured
- * @property SerializedMedia|null   $video
- * @property string|null            $image_alt
- * @property string|null            $image_description
- * @property string|null            $description
+ * @property int                         $id
+ * @property TranslatableSerializer      $name
+ * @property bool                        $is_active
+ * @property int                         $category_id
+ * @property SerializedMedia             $image
+ * @property SerializedMedia             $pdf
+ * @property Category|null               $category
+ * @property Carbon                      $created_at
+ * @property Carbon                      $updated_at
+ * @property bool                        $is_featured
+ * @property SerializedMedia|null        $video
+ * @property string|null                 $image_alt
+ * @property string|null                 $image_description
+ * @property TranslatableSerializer|null $description
  * @method Builder isActive()
  * @mixin Builder<Product>
  * @use  HasFactory<ProductFactory>
@@ -60,6 +60,7 @@ class Product extends Model
             'pdf' => MediaCast::class,
             'is_featured' => 'boolean',
             'video' => MediaCast::class,
+            'description' => Translatable::class,
         ];
     }
 
@@ -84,7 +85,7 @@ class Product extends Model
         return [
             'name',
             'is_featured',
-            'description'
+            'description',
         ];
     }
 

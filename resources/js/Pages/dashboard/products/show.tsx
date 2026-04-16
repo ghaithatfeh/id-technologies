@@ -62,7 +62,7 @@ const Show = ({ product }: { product: Product }) => {
                 <div className={"md:col-span-2"}>
                     <LongTextField
                         label={"Description"}
-                        value={product.description}
+                        value={translate(product.description)}
                     />
                 </div>
 
