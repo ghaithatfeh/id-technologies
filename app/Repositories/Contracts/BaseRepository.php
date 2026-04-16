@@ -109,7 +109,7 @@ abstract class BaseRepository
 
             if (count($this->searchableKeys) > 0) {
                 foreach ($this->searchableKeys as $search_attribute) {
-                    $query->orWhere($search_attribute, 'LIKE', "%{$keyword}%");
+                    $query->orWhereRaw("LOWER({$search_attribute}) LIKE LOWER(?)", ["%{$keyword}%"]);
                 }
             }
 
@@ -119,7 +119,7 @@ abstract class BaseRepository
 
                     foreach ($values as $key => $search_attribute) {
                         $query->orWhereHas($relation, function ($q) use ($keyword, $search_attribute) {
-                            $q->where($search_attribute, 'LIKE', "%{$keyword}%");
+                            $q->whereRaw("LOWER({$search_attribute}) LIKE LOWER(?)", ["%{$keyword}%"]);
                         });
                     }
                 }
