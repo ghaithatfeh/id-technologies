@@ -6,6 +6,7 @@ interface Exhibition {
     date: string;
     description: string;
     images?: Media[] | undefined;
+    videos?: Media[] | undefined;
 }
 
 export default Exhibition;

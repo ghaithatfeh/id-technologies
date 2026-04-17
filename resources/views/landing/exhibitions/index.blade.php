@@ -1,10 +1,20 @@
 @php
     use App\Models\Exhibition;
+    use Illuminate\Support\Collection;
 
-    /** @var \Illuminate\Support\Collection<int, Exhibition> $exhibitions */
+    /** @var Collection<int, Exhibition> $exhibitions */
     /** @var Exhibition|null $selectedExhibition */
 
     $selectedImages = $selectedExhibition?->images ?? [];
+    $selectedVideos = $selectedExhibition?->videos ?? [];
+    $selectedMedia = collect($selectedImages)
+        ->map(fn ($image) => ["type" => "image", "item" => $image])
+        ->merge(
+            collect($selectedVideos)->map(
+                fn ($video) => ["type" => "video", "item" => $video],
+            ),
+        )
+        ->values();
 @endphp
 
 @extends("landing.layout")
@@ -87,21 +97,48 @@
                         <div
                             class="relative aspect-[4/3] overflow-hidden bg-slate-100"
                         >
-                            @if (count($selectedImages) > 0)
+                            @if ($selectedMedia->isNotEmpty())
                                 <div
                                     id="exhibition-carousel"
                                     dir="ltr"
                                     class="flex h-full w-full transition-transform duration-500 ease-out"
                                 >
-                                    @foreach ($selectedImages as $image)
+                                    @foreach ($selectedMedia as $media)
                                         <div
-                                            class="h-full w-full shrink-0 grow-0 basis-full"
+                                            class="relative h-full w-full shrink-0 grow-0 basis-full"
                                         >
-                                            <img
-                                                src="{{ $image->url }}"
-                                                alt="{{ $selectedExhibition->name }}"
-                                                class="h-full w-full object-cover"
-                                            />
+                                            @if ($media["type"] === "image")
+                                                <img
+                                                    src="{{ $media["item"]->url }}"
+                                                    alt="{{ $selectedExhibition->name }}"
+                                                    class="h-full w-full object-cover"
+                                                />
+                                            @else
+                                                <video
+                                                    class="h-full w-full object-cover"
+                                                    src="{{ $media["item"]->url }}"
+                                                    muted
+                                                    playsinline
+                                                    autoplay
+                                                    loop
+                                                    preload="metadata"
+                                                >
+                                                    Your browser does not
+                                                    support the video tag.
+                                                </video>
+
+                                                <button
+                                                    type="button"
+                                                    class="video-fullscreen absolute right-4 bottom-4 z-10 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-white/90 text-landing-primary shadow-lg transition-colors hover:bg-white"
+                                                    aria-label="Open video in fullscreen"
+                                                    title="Open video in fullscreen"
+                                                >
+                                                    <i
+                                                        data-lucide="expand"
+                                                        class="size-5"
+                                                    ></i>
+                                                </button>
+                                            @endif
                                         </div>
                                     @endforeach
                                 </div>
@@ -113,7 +150,7 @@
                                 </div>
                             @endif
 
-                            @if (count($selectedImages) > 1)
+                            @if ($selectedMedia->count() > 1)
                                 <button
                                     type="button"
                                     id="slider-prev"
@@ -140,11 +177,11 @@
                             @endif
                         </div>
 
-                        @if (count($selectedImages) > 1)
+                        @if ($selectedMedia->count() > 1)
                             <div
                                 class="flex items-center justify-center gap-2 px-6 py-5"
                             >
-                                @foreach ($selectedImages as $image)
+                                @foreach ($selectedMedia as $media)
                                     <button
                                         type="button"
                                         class="slider-dot {{ $loop->first ? "bg-landing-secondary" : "bg-slate-300" }} h-3 w-3 cursor-pointer rounded-full transition"
@@ -224,8 +261,20 @@
             const nextButton = document.getElementById('slider-next');
             const totalSlides =
                 carousel instanceof HTMLElement ? carousel.children.length : 0;
+            const slides =
+                carousel instanceof HTMLElement
+                    ? Array.from(carousel.children)
+                    : [];
+            const slideVideos =
+                carousel instanceof HTMLElement
+                    ? Array.from(carousel.querySelectorAll('video'))
+                    : [];
+            const fullscreenButtons = Array.from(
+                document.querySelectorAll('.video-fullscreen'),
+            );
+            let fullscreenVideo = null;
 
-            if (!(carousel instanceof HTMLElement) || totalSlides <= 1) {
+            if (!(carousel instanceof HTMLElement) || totalSlides === 0) {
                 return;
             }
 
@@ -246,7 +295,42 @@
                         index !== currentIndex,
                     );
                 });
+
+                slideVideos.forEach((video) => {
+                    const slide = video.parentElement;
+                    const slideIndex = slide ? slides.indexOf(slide) : -1;
+
+                    if (slideIndex === currentIndex) {
+                        video.controls = video === fullscreenVideo;
+                        video.muted = video !== fullscreenVideo;
+                        video.currentTime = 0;
+                        void video.play().catch(() => {});
+                    } else {
+                        video.controls = false;
+                        video.muted = true;
+                        video.pause();
+                    }
+                });
             };
+
+            const syncFullscreenControls = () => {
+                const activeFullscreenVideo =
+                    document.fullscreenElement instanceof HTMLVideoElement
+                        ? document.fullscreenElement
+                        : null;
+
+                fullscreenVideo = activeFullscreenVideo;
+
+                slideVideos.forEach((video) => {
+                    video.controls = video === fullscreenVideo;
+                    video.muted = video !== fullscreenVideo;
+                });
+            };
+
+            if (totalSlides <= 1) {
+                updateSlider(0);
+                return;
+            }
 
             const restartAutoplay = () => {
                 window.clearInterval(autoplayInterval);
@@ -268,6 +352,51 @@
                 dot.addEventListener('click', () => {
                     updateSlider(index);
                     restartAutoplay();
+                });
+            });
+
+            fullscreenButtons.forEach((button) => {
+                button.addEventListener('click', async () => {
+                    const slide = button.parentElement;
+                    const video = slide?.querySelector('video');
+
+                    if (!(video instanceof HTMLVideoElement)) {
+                        return;
+                    }
+
+                    if (document.fullscreenElement !== video) {
+                        fullscreenVideo = video;
+                        video.controls = true;
+                        video.muted = false;
+                        await video.requestFullscreen?.().catch(() => {});
+                    }
+
+                    if ('webkitEnterFullscreen' in video) {
+                        fullscreenVideo = video;
+                        video.controls = true;
+                        video.muted = false;
+                        video.webkitEnterFullscreen?.();
+                    }
+                });
+            });
+
+            document.addEventListener('fullscreenchange', () => {
+                syncFullscreenControls();
+                updateSlider(currentIndex);
+            });
+
+            slideVideos.forEach((video) => {
+                video.addEventListener('webkitbeginfullscreen', () => {
+                    fullscreenVideo = video;
+                    video.controls = true;
+                    video.muted = false;
+                });
+
+                video.addEventListener('webkitendfullscreen', () => {
+                    fullscreenVideo = null;
+                    video.controls = false;
+                    video.muted = true;
+                    updateSlider(currentIndex);
                 });
             });
 

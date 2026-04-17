@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use App\Traits\Sluggable;
 use App\Traits\HasMedia;
 use App\Casts\MediaCast;
+use App\Traits\Sluggable;
 use App\Casts\Translatable;
 use App\Serializers\SerializedMedia;
 use Illuminate\Database\Eloquent\Model;
@@ -20,6 +20,7 @@ use App\Serializers\Translatable as TranslatableSerializer;
  * @property Carbon                 $date
  * @property TranslatableSerializer $description
  * @property SerializedMedia[]      $images
+ * @property SerializedMedia[]|null $videos
  * @property string                 $slug
  * @property Carbon                 $created_at
  * @property Carbon                 $updated_at
@@ -38,6 +39,7 @@ class Exhibition extends Model
         'description',
         'images',
         'slug',
+        'videos',
     ];
 
     protected function casts(): array
@@ -47,6 +49,7 @@ class Exhibition extends Model
             'date' => 'datetime',
             'description' => Translatable::class,
             'images' => MediaCast::class,
+            'videos' => MediaCast::class,
         ];
     }
 

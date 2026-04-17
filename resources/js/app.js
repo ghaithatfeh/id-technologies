@@ -11,6 +11,7 @@ import {
     Phone,
     X,
     MapPin,
+    Expand,
 } from "lucide";
 
 createIcons({
@@ -25,6 +26,7 @@ createIcons({
         ChevronRight,
         ChevronLeft,
         MapPin,
+        Expand
     },
 });
 

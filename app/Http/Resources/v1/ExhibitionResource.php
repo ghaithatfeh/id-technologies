@@ -23,6 +23,7 @@ class ExhibitionResource extends BaseResource
             'date' => $this->date?->format('Y-m-d'),
             'description' => $this->description,
             'images' => $this->images,
+            'videos' => $this->videos,
         ];
     }
 }

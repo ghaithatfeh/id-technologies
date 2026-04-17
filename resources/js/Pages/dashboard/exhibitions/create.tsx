@@ -15,6 +15,7 @@ const Create = () => {
         date: string;
         description: string;
         images?: File[] | Media[];
+        videos?: File[] | undefined;
     }>();
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -57,6 +58,22 @@ const Create = () => {
                             type={"file"}
                             required
                             multiple={true}
+                            accept={"image/*"}
+                        />
+                        <Input
+                            name="videos"
+                            label={"Videos"}
+                            onChange={(e) =>
+                                setData(
+                                    "videos",
+                                    e.target.files
+                                        ? Array.from(e.target.files)
+                                        : undefined,
+                                )
+                            }
+                            type={"file"}
+                            accept={"video/*"}
+                            multiple
                         />
                         <div className={"md:col-span-2"}>
                             <TranslatableEditor

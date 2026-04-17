@@ -42,6 +42,25 @@ const Show = ({ exhibition }: { exhibition: Exhibition }) => {
                         sources={exhibition?.images?.map((image) => image.url)}
                     />
                 </div>
+                <div className="my-2 mb-5 rounded-md bg-gray-50 p-4 text-xl font-bold md:col-span-2 dark:bg-dark dark:text-white">
+                    <label className="text-lg font-semibold">Videos :</label>
+                    {exhibition?.videos?.map((video, index) => (
+                        <div
+                            className={
+                                "flex w-full items-center justify-between border-b py-1"
+                            }
+                        >
+                            <p className={"text-sm font-normal"}>
+                                Video {index}
+                            </p>
+                            <a href={video.url} download>
+                                <Button color={"secondary"} sm>
+                                    Download Video
+                                </Button>
+                            </a>
+                        </div>
+                    ))}
+                </div>
             </div>
         </PageCard>
     );

@@ -16,12 +16,14 @@ const Edit = ({ exhibition }: { exhibition: Exhibition }) => {
         date: string;
         description: string;
         images?: File[] | Media[] | undefined;
+        videos?: File[] | undefined | Media[];
     }>({
         _method: "PUT",
         name: exhibition?.name,
         date: exhibition?.date,
         description: exhibition?.description,
         images: exhibition?.images,
+        videos: exhibition?.videos,
     });
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -65,6 +67,23 @@ const Edit = ({ exhibition }: { exhibition: Exhibition }) => {
                             }
                             type={"file"}
                             multiple={true}
+                            accept={"image/*"}
+                        />
+
+                        <Input
+                            name="videos"
+                            label={"Videos"}
+                            onChange={(e) =>
+                                setData(
+                                    "videos",
+                                    e.target.files
+                                        ? Array.from(e.target.files)
+                                        : undefined,
+                                )
+                            }
+                            type={"file"}
+                            accept={"video/*"}
+                            multiple
                         />
 
                         <div className={"md:col-span-2"}>

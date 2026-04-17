@@ -33,6 +33,15 @@ class StoreUpdateExhibitionRequest extends FormRequest
                     [SerializedMedia::validator()],
                     ['image:allow_svg', 'max:10000', 'mimes:jpeg,png,jpg,gif,svg,webp'],
                 ),
-            ],];
+            ],
+            'videos' => ['nullable', 'array'],
+            'videos.*' => [
+                Rule::when(
+                    is_array($this->input('videos.*')),
+                    [SerializedMedia::validator(['file', 'max:50000', 'mimes:mp4,avi,mov,webm',])],
+                    ['file', 'max:50000', 'mimes:mp4,avi,mov,webm',],
+                ),
+            ],
+        ];
     }
 }
