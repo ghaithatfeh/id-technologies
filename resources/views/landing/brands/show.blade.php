@@ -194,9 +194,11 @@
                         class="grid h-full w-full grid-cols-1 gap-5 md:grid-cols-3"
                     >
                         @foreach ($products as $product)
-                            <div class="flex h-full w-full flex-col gap-3">
+                            <div
+                                class="flex h-full w-full flex-col gap-3 py-2 rounded-md border-2 border-landing-primary bg-white"
+                            >
                                 <div
-                                    class="h-full min-h-60 w-full rounded-t-xl border-2 border-landing-primary md:max-h-72 md:min-h-72"
+                                    class="h-full min-h-60 w-full md:max-h-72 md:min-h-72"
                                 >
                                     <img
                                         src="{{ $product->image?->url }}"
@@ -204,19 +206,27 @@
                                         alt="{{ $product->name }}"
                                     />
                                     <h1
-                                        class="flex h-[20%] w-full items-center justify-center bg-landing-primary font-bold"
+                                        class="flex h-[20%] my-2 w-full items-center justify-center bg-gray-300 font-bold"
                                     >
                                         {{ $product->name }}
                                     </h1>
                                 </div>
+                                @if (isset($product->description))
+                                    <p
+                                        class="h-full p-2 text-center text-sm"
+                                    >
+                                        {{ $product->description }}
+                                    </p>
+                                @endif
+
                                 <a
                                     href="{{ $product->pdf?->url }}"
                                     target="_blank"
-                                    class="w-full"
+                                    class="w-full px-2"
                                     download
                                 >
                                     <button
-                                        class="w-full cursor-pointer bg-landing-secondary px-5 py-3 text-center font-bold text-white"
+                                        class="w-full cursor-pointer rounded-md bg-landing-secondary px-5 py-3 text-center font-bold text-white"
                                     >
                                         {{ trans("site.download_pdf") }}
                                     </button>
@@ -225,23 +235,15 @@
                                     <a
                                         href="{{ $product->video?->url }}"
                                         target="_blank"
-                                        class="w-full"
+                                        class="w-full px-2"
                                         download
                                     >
                                         <button
-                                            class="w-full cursor-pointer bg-landing-secondary px-5 py-3 text-center font-bold text-white"
+                                            class="w-full cursor-pointer rounded-md bg-landing-secondary px-5 py-3 text-center font-bold text-white"
                                         >
                                             {{ trans("site.download_video") }}
                                         </button>
                                     </a>
-                                @endif
-
-                                @if (isset($product->description))
-                                    <p
-                                        class="h-full rounded-md border border-landing-secondary p-2 text-center text-justify text-sm"
-                                    >
-                                        {{ $product->description }}
-                                    </p>
                                 @endif
                             </div>
                         @endforeach
