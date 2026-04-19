@@ -195,7 +195,7 @@
                     >
                         @foreach ($products as $product)
                             <div
-                                class="flex h-full w-full flex-col gap-3 pb-2 rounded-md border-2 border-landing-primary bg-white"
+                                class="flex h-full w-full flex-col gap-3 pb-2 rounded-md overflow-hidden border-2 border-landing-primary bg-white"
                             >
                                 <div
                                     class="h-full min-h-60 w-full md:max-h-72 md:min-h-72"
