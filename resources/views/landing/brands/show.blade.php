@@ -195,18 +195,18 @@
                     >
                         @foreach ($products as $product)
                             <div
-                                class="flex h-full w-full flex-col gap-3 py-2 rounded-md border-2 border-landing-primary bg-white"
+                                class="flex h-full w-full flex-col gap-3 pb-2 rounded-md border-2 border-landing-primary bg-white"
                             >
                                 <div
                                     class="h-full min-h-60 w-full md:max-h-72 md:min-h-72"
                                 >
                                     <img
                                         src="{{ $product->image?->url }}"
-                                        class="h-[80%] max-h-[80%] w-full rounded-t-xl object-cover"
+                                        class="h-[80%] max-h-[80%] w-full object-cover"
                                         alt="{{ $product->name }}"
                                     />
                                     <h1
-                                        class="flex h-[20%] my-2 w-full items-center justify-center bg-gray-300 font-bold"
+                                        class="flex h-[20%] mb-2 w-full items-center justify-center bg-gray-300 font-bold"
                                     >
                                         {{ $product->name }}
                                     </h1>
