@@ -339,6 +339,13 @@
                 }, 5000);
             };
 
+            const stopAutoplay = () => {
+                window.clearInterval(autoplayInterval);
+            };
+
+            carousel.addEventListener('mouseenter', stopAutoplay);
+            carousel.addEventListener('mouseleave', restartAutoplay);
+
             prevButton?.addEventListener('click', () => {
                 updateSlider(currentIndex - 1);
                 restartAutoplay();
