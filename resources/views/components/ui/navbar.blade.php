@@ -61,7 +61,7 @@
         </a>
     </nav>
     <img
-        src="{{ asset("/images/02-Logo.svg") }}"
+        src="{{ asset("/images/02-Logo.webp") }}"
         class="h-full w-32 md:w-36"
         alt="id-technologies logo"
     />
