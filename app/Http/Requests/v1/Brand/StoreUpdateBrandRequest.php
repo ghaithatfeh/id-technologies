@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\v1\Brand;
 
-use Illuminate\Validation\Rule;
 use App\Serializers\SerializedMedia;
 use App\Rules\ValidTranslatableJson;
 use Illuminate\Foundation\Http\FormRequest;
@@ -24,33 +23,9 @@ class StoreUpdateBrandRequest extends FormRequest
     {
         return [
             'brand_title' => ['json', new ValidTranslatableJson, 'required'],
-            'background_image' => [
-                'nullable',
-                Rule::when(is_array($this->input('background_image')), [
-                    SerializedMedia::validator(),
-                ]),
-                Rule::when($this->hasFile('background_image'), [
-                    'image:allow_svg', 'max:10000', 'mimes:jpeg,png,jpg,gif,svg,webp',
-                ]),
-            ],
-            'icon' => [
-                'nullable',
-                Rule::when(is_array($this->input('icon')), [
-                    SerializedMedia::validator(),
-                ]),
-                Rule::when($this->hasFile('icon'), [
-                    'image:allow_svg', 'max:10000', 'mimes:jpeg,png,jpg,gif,svg,webp',
-                ]),
-            ],
-            'logo' => [
-                'nullable',
-                Rule::when(is_array($this->input('logo')), [
-                    SerializedMedia::validator(),
-                ]),
-                Rule::when($this->hasFile('logo'), [
-                    'image:allow_svg', 'max:10000', 'mimes:jpeg,png,jpg,gif,svg,webp',
-                ]),
-            ],
+            'background_image' => [SerializedMedia::mixedValidator(), 'required'],
+            'icon' => [SerializedMedia::mixedValidator(), 'required'],
+            'logo' => [SerializedMedia::mixedValidator(), 'required'],
             'background_image_alt' => 'string|nullable|min:0|max:255',
             'background_image_description' => 'string|nullable|min:0|max:1000',
 

@@ -26,30 +26,16 @@ class StoreUpdateProductRequest extends FormRequest
             'name' => ['json', new ValidTranslatableJson, 'required'],
             'is_active' => ['required', 'boolean'],
             'category_id' => ['numeric', 'required', Rule::exists('categories', 'id')],
-            'image' => [
-                'nullable',
-                Rule::when(is_array($this->input('image')), [
-                    SerializedMedia::validator(),
-                ]),
-                Rule::when($this->hasFile('image'), [
-                    'image:allow_svg', 'max:10000', 'mimes:jpeg,png,jpg,gif,svg,webp',
-                ]),
-            ],
+            'image' => [SerializedMedia::mixedValidator(), 'required'],
             'pdf' => [
-                'nullable',
-                Rule::requiredIf(fn() => $this->isPost()),
-                Rule::when($this->hasFile('pdf'), [
+                'required',
+                SerializedMedia::mixedValidator([
                     'max:10000', 'mimes:pdf,docx,txt',
-                ]),
-                Rule::when(is_array($this->input('pdf')), [
-                    SerializedMedia::validator([
-                        'max:10000', 'mimes:pdf,docx,txt',
-                    ]),
                 ]),
             ],
             'video' => [
                 'nullable',
-                Rule::when($this->hasFile('video'), [
+                SerializedMedia::mixedValidator([
                     'max:512000', 'mimes:mp4,mov,ogg,webm',
                 ]),
             ],

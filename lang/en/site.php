@@ -39,8 +39,9 @@ return [
 
     "partners_in_development" => "Partners in Development",
     "hero_first_title" => "Sabbagh Brothers - Auto Identification Technology established in 2004. The company specializes in providing comprehensive technology solutions.",
-    "hero_second_title" => "Believing that technology is the key to success, we dedicate our expertise to deliver the best services to our clients in the field of smart technologies.",
-    "hero_third_title" => "Today, we are proud to have a wide network of clients and distributors, which strengthens our position as a trusted partner in the journey of development and growth.",
+    'hero_second_title' => 'ID Technologies Company is the authorized distributor in Syria for Hikvision, Evolis, Intercards, and Unitech.',
+    "hero_third_title" => "Believing that technology is the key to success, we dedicate our expertise to deliver the best services to our clients in the field of smart technologies.",
+    "hero_fourth_title" => "Today, we are proud to have a wide network of clients and distributors, which strengthens our position as a trusted partner in the journey of development and growth.",
     "security_and_protection" => "Security and Protection Systems “HIKVISION Co”",
     "plastic_cards_and_printers" => "Plastic Card Printers and its accessories “evolis co”",
     "technologies_and_prepaid" => "Technologies/Prepaid Entertainment Systems “intercards co”",

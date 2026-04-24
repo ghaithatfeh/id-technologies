@@ -1,6 +1,7 @@
 import Form from "@/Components/form/Form";
 import Input from "@/Components/form/fields/Input";
 import TranslatableInput from "@/Components/form/fields/TranslatableInput";
+import FileUploader from "@/Components/form/fields/file-uploader/FileUploader";
 import PageCard from "@/Components/ui/PageCard";
 import TranslatableInputsContext from "@/Contexts/TranslatableInputsContext";
 import Brand from "@/Models/Brand";
@@ -49,14 +50,17 @@ const Edit = ({ brand }: { brand: Brand }) => {
                             defaultValue={brand.brand_title}
                             required
                         />
-                        <Input
-                            name="background_image"
-                            label={"Background Image"}
-                            onChange={(e) =>
-                                setData("background_image", e.target.files?.[0])
-                            }
-                            type={"file"}
-                        />
+                        <div className={"md:col-span-2"}>
+                            <FileUploader
+                                acceptedFileTypes={["image/*"]}
+                                name="background_image"
+                                label={"Background Image"}
+                                onChange={(files) =>
+                                    setData("background_image", files)
+                                }
+                                defaultValue={brand.background_image}
+                            />
+                        </div>
                         <Input
                             name="background_image_alt"
                             label={"Background Image ALT"}
@@ -76,14 +80,15 @@ const Edit = ({ brand }: { brand: Brand }) => {
                             }
                             defaultValue={brand.background_image_description}
                         />
-                        <Input
-                            name="icon"
-                            label={"Icon"}
-                            onChange={(e) =>
-                                setData("icon", e.target.files?.[0])
-                            }
-                            type={"file"}
-                        />
+                        <div className={"md:col-span-2"}>
+                            <FileUploader
+                                acceptedFileTypes={["image/*"]}
+                                name="icon"
+                                label={"Icon"}
+                                onChange={(files) => setData("icon", files)}
+                                defaultValue={brand.icon}
+                            />
+                        </div>
                         <Input
                             name="icon_alt"
                             label={"Icon ALT"}
@@ -100,15 +105,16 @@ const Edit = ({ brand }: { brand: Brand }) => {
                             }
                             defaultValue={brand.icon_description}
                         />
-                        <Input
-                            name="logo"
-                            label={"Logo"}
-                            onChange={(e) =>
-                                setData("logo", e.target.files?.[0])
-                            }
-                            type={"file"}
-                        />
 
+                        <div className={"md:col-span-2"}>
+                            <FileUploader
+                                acceptedFileTypes={["image/*"]}
+                                name="logo"
+                                label={"Logo"}
+                                onChange={(files) => setData("logo", files)}
+                                defaultValue={brand.logo}
+                            />
+                        </div>
                         <Input
                             name="logo_alt"
                             label={"Logo ALT"}

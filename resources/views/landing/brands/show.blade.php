@@ -195,7 +195,7 @@
                     >
                         @foreach ($products as $product)
                             <div
-                                class="flex h-full w-full flex-col gap-3 pb-2 rounded-md overflow-hidden border-2 border-landing-primary bg-white"
+                                class="flex h-full w-full flex-col gap-3 overflow-hidden rounded-md border-2 border-landing-primary bg-white pb-2"
                             >
                                 <div
                                     class="h-full min-h-60 w-full md:max-h-72 md:min-h-72"
@@ -206,15 +206,13 @@
                                         alt="{{ $product->name }}"
                                     />
                                     <h1
-                                        class="flex h-[20%] mb-2 w-full items-center justify-center bg-gray-300 font-bold"
+                                        class="mb-2 flex h-[20%] w-full items-center justify-center bg-landing-primary font-bold text-landing-secondary"
                                     >
                                         {{ $product->name }}
                                     </h1>
                                 </div>
                                 @if (isset($product->description))
-                                    <p
-                                        class="h-full p-2 text-center text-sm"
-                                    >
+                                    <p class="h-full p-2 text-center text-sm">
                                         {{ $product->description }}
                                     </p>
                                 @endif

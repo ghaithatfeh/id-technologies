@@ -1,4 +1,6 @@
-import Input from "@/Components/form/fields/Input";
+import FileUploader, {
+    MediaInput,
+} from "@/Components/form/fields/file-uploader/FileUploader";
 import TranslatableInput from "@/Components/form/fields/TranslatableInput";
 import Form from "@/Components/form/Form";
 import PageCard from "@/Components/ui/PageCard";
@@ -10,15 +12,15 @@ const Create = () => {
     const { post, setData, processing } = useForm<{
         _method?: "PUT" | "POST";
         brand_title: string;
-        background_image?: File | undefined;
+        background_image?: MediaInput | undefined;
         background_image_alt?: string | undefined;
         background_image_description?: string | undefined;
         icon_alt?: string | undefined;
         icon_description?: string | undefined;
         logo_alt?: string | undefined;
         logo_description?: string | undefined;
-        icon?: File | undefined;
-        logo?: File | undefined;
+        icon?: MediaInput | undefined;
+        logo?: MediaInput | undefined;
     }>();
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -42,34 +44,25 @@ const Create = () => {
                             }
                             required
                         />
-                        <Input
-                            name="background_image"
-                            label={"Background Image"}
-                            onChange={(e) =>
-                                setData("background_image", e.target.files?.[0])
-                            }
-                            type={"file"}
-                            required
-                        />
-                        <Input
-                            name="icon"
-                            label={"Icon"}
-                            onChange={(e) =>
-                                setData("icon", e.target.files?.[0])
-                            }
-                            type={"file"}
-                            required
-                        />
-
-                        <Input
-                            name="logo"
-                            label={"Logo"}
-                            onChange={(e) =>
-                                setData("logo", e.target.files?.[0])
-                            }
-                            type={"file"}
-                            required
-                        />
+                        <div className={"md:col-span-2"}>
+                            <FileUploader
+                                name="background_image"
+                                label={"Background Image"}
+                                onChange={(files) =>
+                                    setData("background_image", files)
+                                }
+                            />
+                            <FileUploader
+                                name="icon"
+                                label={"Icon"}
+                                onChange={(files) => setData("icon", files)}
+                            />
+                            <FileUploader
+                                name="logo"
+                                label={"Logo"}
+                                onChange={(files) => setData("logo", files)}
+                            />
+                        </div>
                     </div>
                 </Form>
             </TranslatableInputsContext>

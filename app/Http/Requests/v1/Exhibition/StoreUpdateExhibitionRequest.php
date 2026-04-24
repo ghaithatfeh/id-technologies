@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\v1\Exhibition;
 
-use Illuminate\Validation\Rule;
 use App\Rules\ValidTranslatableJson;
 use App\Serializers\SerializedMedia;
 use Illuminate\Foundation\Http\FormRequest;
@@ -27,21 +26,9 @@ class StoreUpdateExhibitionRequest extends FormRequest
             'date' => ['required', 'date', 'date_format:Y-m-d'],
             'description' => ['json', new ValidTranslatableJson, 'required'],
             'images' => ['nullable', 'array'],
-            'images.*' => [
-                Rule::when(
-                    is_array($this->input('images.*')),
-                    [SerializedMedia::validator()],
-                    ['image:allow_svg', 'max:10000', 'mimes:jpeg,png,jpg,gif,svg,webp'],
-                ),
-            ],
+            'images.*' => [SerializedMedia::mixedValidator()],
             'videos' => ['nullable', 'array'],
-            'videos.*' => [
-                Rule::when(
-                    is_array($this->input('videos.*')),
-                    [SerializedMedia::validator(['file', 'max:50000', 'mimes:mp4,avi,mov,webm',])],
-                    ['file', 'max:50000', 'mimes:mp4,avi,mov,webm',],
-                ),
-            ],
+            'videos.*' => [SerializedMedia::mixedValidator(['file', 'max:50000', 'mimes:mp4,avi,mov,webm',])],
         ];
     }
 }

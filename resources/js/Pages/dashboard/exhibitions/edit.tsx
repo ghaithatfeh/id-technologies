@@ -1,3 +1,6 @@
+import FileUploader, {
+    MediaInput,
+} from "@/Components/form/fields/file-uploader/FileUploader";
 import Input from "@/Components/form/fields/Input";
 import TranslatableEditor from "@/Components/form/fields/TranslatableEditor";
 import TranslatableInput from "@/Components/form/fields/TranslatableInput";
@@ -5,7 +8,6 @@ import Form from "@/Components/form/Form";
 import PageCard from "@/Components/ui/PageCard";
 import TranslatableInputsContext from "@/Contexts/TranslatableInputsContext";
 import Exhibition from "@/Models/Exhibition";
-import Media from "@/Models/Media";
 import { useForm } from "@inertiajs/react";
 import { FormEvent } from "react";
 
@@ -15,8 +17,8 @@ const Edit = ({ exhibition }: { exhibition: Exhibition }) => {
         name: string;
         date: string;
         description: string;
-        images?: File[] | Media[] | undefined;
-        videos?: File[] | undefined | Media[];
+        images?: MediaInput[] | null;
+        videos?: MediaInput[] | null;
     }>({
         _method: "PUT",
         name: exhibition?.name,
@@ -54,39 +56,28 @@ const Edit = ({ exhibition }: { exhibition: Exhibition }) => {
                             defaultValue={exhibition.date}
                             required
                         />
-                        <Input
-                            name="images"
-                            label={"Images"}
-                            onChange={(e) =>
-                                setData(
-                                    "images",
-                                    e.target.files
-                                        ? Array.from(e.target.files)
-                                        : [],
-                                )
-                            }
-                            type={"file"}
-                            multiple={true}
-                            accept={"image/*"}
-                        />
-
-                        <Input
-                            name="videos"
-                            label={"Videos"}
-                            onChange={(e) =>
-                                setData(
-                                    "videos",
-                                    e.target.files
-                                        ? Array.from(e.target.files)
-                                        : undefined,
-                                )
-                            }
-                            type={"file"}
-                            accept={"video/*"}
-                            multiple
-                        />
-
                         <div className={"md:col-span-2"}>
+                            <FileUploader
+                                label={"Images"}
+                                name={"images"}
+                                isMultiple
+                                onChange={(files) => {
+                                    setData("images", files);
+                                }}
+                                acceptedFileTypes={["image/*"]}
+                                defaultValue={exhibition.images}
+                            />
+
+                            <FileUploader
+                                label={"Videos"}
+                                name={"videos"}
+                                isMultiple
+                                onChange={(files) => {
+                                    setData("videos", files);
+                                }}
+                                acceptedFileTypes={["video/*"]}
+                                defaultValue={exhibition.videos}
+                            />
                             <TranslatableEditor
                                 name="description"
                                 label={"Description"}

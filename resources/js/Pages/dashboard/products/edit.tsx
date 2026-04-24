@@ -1,30 +1,31 @@
+import FileUploader, {
+    MediaInput,
+} from "@/Components/form/fields/file-uploader/FileUploader";
 import Input from "@/Components/form/fields/Input";
 import Radio from "@/Components/form/fields/Radio";
 import ApiSelect from "@/Components/form/fields/Select/ApiSelect";
-import TextEditor from "@/Components/form/fields/TextEditor";
+import TranslatableEditor from "@/Components/form/fields/TranslatableEditor";
 import TranslatableInput from "@/Components/form/fields/TranslatableInput";
 import Form from "@/Components/form/Form";
 import PageCard from "@/Components/ui/PageCard";
 import TranslatableInputsContext from "@/Contexts/TranslatableInputsContext";
 import Category from "@/Models/Category";
-import Media from "@/Models/Media";
 import Product from "@/Models/Product";
 import { translate } from "@/Models/Translatable";
 import Http from "@/Modules/Http/Http";
 import { useForm } from "@inertiajs/react";
 import { FormEvent } from "react";
-import TranslatableEditor from "@/Components/form/fields/TranslatableEditor";
 
 const Edit = ({ product }: { product: Product }) => {
-    const { post, setData, processing } = useForm<{
+    const { post, setData, processing, transform } = useForm<{
         _method?: "PUT" | "POST";
         name: string;
         is_active: boolean;
         category_id: number;
-        image?: File | undefined | Media;
-        pdf?: File | undefined | Media;
+        image?: MediaInput | null;
+        pdf?: MediaInput | null;
         is_featured?: boolean;
-        video?: File | undefined | Media;
+        video?: MediaInput | null;
         image_alt?: string | undefined;
         image_description?: string | undefined;
         description?: string;
@@ -44,7 +45,15 @@ const Edit = ({ product }: { product: Product }) => {
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        transform((data) => {
+            let transformed = data;
 
+            if (!transformed.video) {
+                transformed = { ...transformed, video: null };
+            }
+
+            return transformed;
+        });
         post(route("v1.web.protected.products.update", product.id));
     };
 
@@ -86,14 +95,16 @@ const Edit = ({ product }: { product: Product }) => {
                             checked={false}
                             label={"Is Featured?"}
                         />
-                        <Input
-                            name="image"
-                            label={"Image"}
-                            onChange={(e) =>
-                                setData("image", e.target.files?.[0])
-                            }
-                            type={"file"}
-                        />
+                        <div className={"md:col-span-2"}>
+                            <FileUploader
+                                name={"image"}
+                                label={"Image"}
+                                onChange={(file) => setData("image", file)}
+                                acceptedFileTypes={["image/*"]}
+                                defaultValue={product.image}
+                            />
+                        </div>
+
                         <Input
                             name="image_alt"
                             label={"Image ALT"}
@@ -110,22 +121,25 @@ const Edit = ({ product }: { product: Product }) => {
                             }
                             defaultValue={product.image_description}
                         />
-                        <Input
-                            name="pdf"
-                            label={"Pdf"}
-                            onChange={(e) =>
-                                setData("pdf", e.target.files?.[0])
-                            }
-                            type={"file"}
-                        />
-                        <Input
-                            name="video"
-                            label={"Video"}
-                            onChange={(e) =>
-                                setData("video", e.target.files?.[0])
-                            }
-                            type={"file"}
-                        />
+                        <div className={"md:col-span-2"}>
+                            <FileUploader
+                                name={"pdf"}
+                                label={"PDF"}
+                                onChange={(file) => setData("pdf", file)}
+                                acceptedFileTypes={[".pdf", "application/pdf"]}
+                                defaultValue={product.pdf}
+                            />
+                        </div>
+
+                        <div className={"md:col-span-2"}>
+                            <FileUploader
+                                name={"video"}
+                                label={"Video"}
+                                onChange={(file) => setData("video", file)}
+                                acceptedFileTypes={["video/*"]}
+                                defaultValue={product.video}
+                            />
+                        </div>
                         <ApiSelect
                             name="category_id"
                             label={"Category"}

@@ -53,6 +53,14 @@
                             {{ trans("site.hero_third_title") }}
                         </p>
                     </div>
+                    <div class="flex items-start gap-2">
+                        <span
+                            class="my-2 me-2 rounded-md border border-landing-primary p-2"
+                        ></span>
+                        <p class="text-xl leading-8 text-white">
+                            {{ trans("site.hero_fourth_title") }}
+                        </p>
+                    </div>
                 </div>
             </div>
 

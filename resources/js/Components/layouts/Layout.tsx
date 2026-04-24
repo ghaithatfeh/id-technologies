@@ -5,6 +5,11 @@ import { usePage } from "@inertiajs/react";
 import React, { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { registerPlugin } from "filepond";
+import FilePondPluginFilePoster from "filepond-plugin-file-poster";
+import FilePondPluginFileValidateType from "filepond-plugin-file-validate-type";
+import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
+import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 
 const Layout = ({ children }: { children?: React.ReactNode }) => {
     const theme = window.localStorage.getItem("theme_mode") ?? "light";
@@ -27,6 +32,13 @@ const Layout = ({ children }: { children?: React.ReactNode }) => {
         toast.error(usePage<MiddlewareProps>().props.error);
         usePage<MiddlewareProps>().props.success = undefined;
     }
+
+    registerPlugin(
+        FilePondPluginImageExifOrientation,
+        FilePondPluginImagePreview,
+        FilePondPluginFileValidateType,
+        FilePondPluginFilePoster,
+    );
 
     return (
         <>

@@ -1,10 +1,11 @@
 import Form from "@/Components/form/Form";
-import Input from "@/Components/form/fields/Input";
 import TranslatableEditor from "@/Components/form/fields/TranslatableEditor";
 import TranslatableInput from "@/Components/form/fields/TranslatableInput";
+import FileUploader, {
+    MediaInput,
+} from "@/Components/form/fields/file-uploader/FileUploader";
 import PageCard from "@/Components/ui/PageCard";
 import TranslatableInputsContext from "@/Contexts/TranslatableInputsContext";
-import Media from "@/Models/Media";
 import Project from "@/Models/Project";
 import { useForm } from "@inertiajs/react";
 import { FormEvent } from "react";
@@ -14,9 +15,9 @@ const Edit = ({ project }: { project: Project }) => {
         _method?: "PUT" | "POST";
         title: string;
         description: string;
-        cover?: File | undefined | Media;
-        images?: File[] | undefined | Media[];
-        videos?: File[] | undefined | Media[];
+        cover?: MediaInput | null;
+        images?: MediaInput[] | null;
+        videos?: MediaInput[] | null;
     }>({
         _method: "PUT",
         title: project?.title,
@@ -45,44 +46,32 @@ const Edit = ({ project }: { project: Project }) => {
                             defaultValue={project.title}
                             required
                         />
-
-                        <Input
-                            name="cover"
-                            label={"Cover"}
-                            onChange={(e) =>
-                                setData("cover", e.target.files?.[0])
-                            }
-                            type={"file"}
-                        />
-                        <Input
-                            name="images"
-                            label={"Images"}
-                            onChange={(e) =>
-                                setData(
-                                    "images",
-                                    e.target.files
-                                        ? Array.from(e.target.files)
-                                        : undefined,
-                                )
-                            }
-                            type={"file"}
-                            multiple
-                        />
-                        <Input
-                            name="videos"
-                            label={"Videos"}
-                            onChange={(e) =>
-                                setData(
-                                    "videos",
-                                    e.target.files
-                                        ? Array.from(e.target.files)
-                                        : undefined,
-                                )
-                            }
-                            type={"file"}
-                            multiple
-                        />
                         <div className={"md:col-span-2"}>
+                            <FileUploader
+                                name={"cover"}
+                                label={"Cover"}
+                                onChange={(file) => setData("cover", file)}
+                                acceptedFileTypes={["image/*"]}
+                                defaultValue={project.cover}
+                            />
+
+                            <FileUploader
+                                name={"images"}
+                                label={"Images"}
+                                onChange={(file) => setData("images", file)}
+                                acceptedFileTypes={["image/*"]}
+                                isMultiple={true}
+                                defaultValue={project.images}
+                            />
+
+                            <FileUploader
+                                name={"videos"}
+                                label={"Videos"}
+                                onChange={(file) => setData("videos", file)}
+                                acceptedFileTypes={["video/*"]}
+                                isMultiple={true}
+                                defaultValue={project.videos}
+                            />
                             <TranslatableEditor
                                 name="description"
                                 label={"Description"}

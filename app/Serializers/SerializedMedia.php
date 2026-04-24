@@ -4,10 +4,9 @@ namespace App\Serializers;
 
 use Closure;
 use Exception;
-use Throwable;
 use Stringable;
 use JsonSerializable;
-use Spatie\Image\Image;
+use Illuminate\Support\Str;
 use GuzzleHttp\Psr7\MimeType;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
@@ -54,58 +53,21 @@ class SerializedMedia implements Arrayable, Jsonable, JsonSerializable, Stringab
         }
     }
 
-    public static function normalizeUploadedFile(UploadedFile $file): UploadedFile
-    {
-        $mimeType = (string)$file->getMimeType();
-
-        if (
-            !str_starts_with($mimeType, 'image/')
-            || in_array($mimeType, ['image/svg+xml', 'image/webp'], true)
-        ) {
-            return $file;
-        }
-
-        $temporaryFile = tempnam(sys_get_temp_dir(), 'media-webp-');
-
-        if ($temporaryFile === false) {
-            return $file;
-        }
-
-        @unlink($temporaryFile);
-
-        $temporaryFilePath = sprintf('%s.webp', $temporaryFile);
-
-        try {
-            Image::load($file->getPathname())
-                ->format('webp')
-                ->save($temporaryFilePath);
-
-            return new UploadedFile(
-                $temporaryFilePath,
-                pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME) . '.webp',
-                'image/webp',
-                null,
-                true,
-            );
-        } catch (Throwable) {
-            if (is_file($temporaryFilePath)) {
-                @unlink($temporaryFilePath);
-            }
-
-            return $file;
-        }
-    }
-
     private function storeFile(): string
     {
         $access = $this->private ? "private" : "public";
-        $directory = storage_path("app/$access/$this->dir");
+        $storageDirectory = "app/$access/$this->dir/" . Str::uuid();
+        $directory = storage_path($storageDirectory);
+
         if (!is_dir($directory)) {
-            File::makeDirectory(storage_path("app/$access/$this->dir"), 0777, true);
+            File::makeDirectory($directory, 0777, true);
         }
-        return $this->file->store($this->dir, [
-            'disk' => $this->private ? "local" : "public",
-        ]);
+        return $this->file->storeAs($storageDirectory,
+            $this->file->getClientOriginalName(),
+            [
+                'disk' => $this->private ? "local" : "public",
+            ],
+        );
     }
 
     private function format(string $value): array
@@ -133,6 +95,55 @@ class SerializedMedia implements Arrayable, Jsonable, JsonSerializable, Stringab
             && isset($value['extension'])
             && isset($value['mime_type'])
             && isset($value['size']);
+    }
+
+    /**
+     * @param string[]|Closure[] $fileRules
+     * @return Closure
+     */
+    public static function mixedValidator(array $fileRules = ['image:allow_svg', 'max:10000', 'mimes:jpeg,png,jpg,gif,svg,webp']): Closure
+    {
+        return function ($attribute, $value, $fail) use ($fileRules) {
+            if (is_null($value) || $value === '') {
+                return;
+            }
+
+            if ($value instanceof UploadedFile) {
+                $validator = Validator::make([
+                    'file' => $value,
+                ], [
+                    'file' => $fileRules,
+                ]);
+
+                if ($validator->fails()) {
+                    $fail($validator->errors()->first());
+                }
+
+                return;
+            }
+
+            if (!SerializedMedia::isMediaArray($value)) {
+                $fail('Invalid media file');
+                return;
+            }
+
+            $file = new self($value);
+            if (!$file->exists()) {
+                $fail('Invalid media file');
+                return;
+            }
+
+            $uploadedFile = new UploadedFile($file->path, $file->name(), $file->mimeType, null, true);
+            $validator = Validator::make([
+                'file' => $uploadedFile,
+            ], [
+                'file' => $fileRules,
+            ]);
+
+            if ($validator->fails()) {
+                $fail($validator->errors()->first());
+            }
+        };
     }
 
     public function delete(): bool
@@ -193,27 +204,6 @@ class SerializedMedia implements Arrayable, Jsonable, JsonSerializable, Stringab
      */
     public static function validator(array $fileRules = ['image:allow_svg', 'max:10000', 'mimes:jpeg,png,jpg,gif,svg,webp']): Closure
     {
-        return function ($attribute, $value, $fail) use ($fileRules) {
-            if (!SerializedMedia::isMediaArray($value)) {
-                $fail('Invalid media array');
-            }
-
-            $file = new self($value);
-            if (!$file->exists()) {
-                $fail('Invalid media file');
-                return;
-            }
-
-            $uploadedFile = new UploadedFile($file->path, $file->name(), $file->mimeType, null, true);
-            $validator = Validator::make([
-                'file' => $uploadedFile,
-            ], [
-                'file' => $fileRules,
-            ]);
-
-            if ($validator->fails()) {
-                $fail($validator->errors()->first());
-            }
-        };
+        return self::mixedValidator($fileRules);
     }
 }

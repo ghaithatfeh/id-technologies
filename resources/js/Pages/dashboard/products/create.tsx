@@ -1,18 +1,19 @@
+import FileUploader, {
+    MediaInput,
+} from "@/Components/form/fields/file-uploader/FileUploader";
 import Input from "@/Components/form/fields/Input";
 import Radio from "@/Components/form/fields/Radio";
 import ApiSelect from "@/Components/form/fields/Select/ApiSelect";
-import TextEditor from "@/Components/form/fields/TextEditor";
+import TranslatableEditor from "@/Components/form/fields/TranslatableEditor";
 import TranslatableInput from "@/Components/form/fields/TranslatableInput";
 import Form from "@/Components/form/Form";
 import PageCard from "@/Components/ui/PageCard";
 import TranslatableInputsContext from "@/Contexts/TranslatableInputsContext";
 import Category from "@/Models/Category";
-import Media from "@/Models/Media";
 import { translate } from "@/Models/Translatable";
 import Http from "@/Modules/Http/Http";
 import { useForm } from "@inertiajs/react";
 import { FormEvent } from "react";
-import TranslatableEditor from "@/Components/form/fields/TranslatableEditor";
 
 const Create = () => {
     const { post, setData, processing } = useForm<{
@@ -20,10 +21,10 @@ const Create = () => {
         name: string;
         is_active: boolean;
         category_id: number;
-        image?: File | undefined | Media;
-        pdf?: File | undefined | Media;
+        image?: MediaInput | null;
+        pdf?: MediaInput | null;
         is_featured?: boolean;
-        video?: File | undefined | Media;
+        video?: MediaInput | null;
         image_alt?: string | undefined;
         image_description?: string | undefined;
         description?: string;
@@ -76,15 +77,14 @@ const Create = () => {
                             checked={false}
                             label={"Is Featured?"}
                         />
-                        <Input
-                            name="image"
-                            label={"Image"}
-                            onChange={(e) =>
-                                setData("image", e.target.files?.[0])
-                            }
-                            type={"file"}
-                            required
-                        />
+                        <div className={"md:col-span-2"}>
+                            <FileUploader
+                                name={"image"}
+                                label={"Image"}
+                                onChange={(file) => setData("image", file)}
+                                acceptedFileTypes={["image/*"]}
+                            />
+                        </div>
 
                         <Input
                             name="image_alt"
@@ -100,23 +100,24 @@ const Create = () => {
                                 setData("image_description", e.target.value)
                             }
                         />
-                        <Input
-                            name="pdf"
-                            label={"Pdf"}
-                            onChange={(e) =>
-                                setData("pdf", e.target.files?.[0])
-                            }
-                            type={"file"}
-                            required
-                        />
-                        <Input
-                            name="video"
-                            label={"Video"}
-                            onChange={(e) =>
-                                setData("video", e.target.files?.[0])
-                            }
-                            type={"file"}
-                        />
+                        <div className={"md:col-span-2"}>
+                            <FileUploader
+                                name={"pdf"}
+                                label={"PDF"}
+                                onChange={(file) => setData("pdf", file)}
+                                acceptedFileTypes={[".pdf", "application/pdf"]}
+                            />
+                        </div>
+
+                        <div className={"md:col-span-2"}>
+                            <FileUploader
+                                name={"video"}
+                                label={"Video"}
+                                onChange={(file) => setData("video", file)}
+                                acceptedFileTypes={["video/*"]}
+                            />
+                        </div>
+
                         <ApiSelect
                             name="category_id"
                             label={"Category"}

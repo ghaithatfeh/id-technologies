@@ -1,7 +1,9 @@
 import Form from "@/Components/form/Form";
-import Input from "@/Components/form/fields/Input";
 import TranslatableEditor from "@/Components/form/fields/TranslatableEditor";
 import TranslatableInput from "@/Components/form/fields/TranslatableInput";
+import FileUploader, {
+    MediaInput,
+} from "@/Components/form/fields/file-uploader/FileUploader";
 import PageCard from "@/Components/ui/PageCard";
 import TranslatableInputsContext from "@/Contexts/TranslatableInputsContext";
 import { useForm } from "@inertiajs/react";
@@ -12,9 +14,9 @@ const Create = () => {
         _method?: "PUT" | "POST";
         title: string;
         description: string;
-        cover?: File | undefined;
-        images?: File[] | undefined;
-        videos?: File[] | undefined;
+        cover?: MediaInput | null;
+        images?: MediaInput[] | null;
+        videos?: MediaInput[] | null;
     }>();
 
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -36,44 +38,30 @@ const Create = () => {
                             required
                         />
 
-                        <Input
-                            name="cover"
-                            label={"Cover"}
-                            onChange={(e) =>
-                                setData("cover", e.target.files?.[0])
-                            }
-                            type={"file"}
-                            required
-                        />
-                        <Input
-                            name="images"
-                            label={"Images"}
-                            onChange={(e) =>
-                                setData(
-                                    "images",
-                                    e.target.files
-                                        ? Array.from(e.target.files)
-                                        : undefined,
-                                )
-                            }
-                            type={"file"}
-                            multiple
-                        />
-                        <Input
-                            name="videos"
-                            label={"Videos"}
-                            onChange={(e) =>
-                                setData(
-                                    "videos",
-                                    e.target.files
-                                        ? Array.from(e.target.files)
-                                        : undefined,
-                                )
-                            }
-                            type={"file"}
-                            multiple
-                        />
                         <div className={"md:col-span-2"}>
+                            <FileUploader
+                                name={"cover"}
+                                label={"Cover"}
+                                onChange={(file) => setData("cover", file)}
+                                acceptedFileTypes={["image/*"]}
+                            />
+
+                            <FileUploader
+                                name={"images"}
+                                label={"Images"}
+                                onChange={(file) => setData("images", file)}
+                                acceptedFileTypes={["image/*"]}
+                                isMultiple={true}
+                            />
+
+                            <FileUploader
+                                name={"videos"}
+                                label={"Videos"}
+                                onChange={(file) => setData("videos", file)}
+                                acceptedFileTypes={["video/*"]}
+                                isMultiple={true}
+                            />
+
                             <TranslatableEditor
                                 name="description"
                                 label={"Description"}

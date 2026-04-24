@@ -68,7 +68,13 @@ class MediaCast implements CastsAttributes
     public function set(Model $model, string $key, mixed $value, array $attributes): string|null|false
     {
         if (is_null($value)) {
-            $model->{$key}?->delete();
+            $currentMedia = $model->getRawOriginal($key);
+            if (is_string($currentMedia) && Str::isJson($currentMedia)) {
+                $decodedMedia = json_decode($currentMedia, true);
+                if (is_array($decodedMedia)) {
+                    self::deleteFiles($decodedMedia);
+                }
+            }
             return null;
         }
 
@@ -81,26 +87,25 @@ class MediaCast implements CastsAttributes
                 return null;
             }
 
+            $this->deleteRemovedFiles($model, $key, [$value->toArray()]);
             return $value->toJson();
         }
 
         if ($value instanceof UploadedFile) {
-            $file = new SerializedMedia(
-                SerializedMedia::normalizeUploadedFile($value),
-                $model->getTable(),
-                $this->private
-            );
-            if (!$file->exists()) {
-                return null;
-            }
-            return $file->toJson();
-        }
-
-        if (is_array($value) && SerializedMedia::isMediaArray($value)) {
             $file = new SerializedMedia($value, $model->getTable(), $this->private);
             if (!$file->exists()) {
                 return null;
             }
+            $this->deleteRemovedFiles($model, $key, [$file->toArray()]);
+            return $file->toJson();
+        }
+
+        if (is_array($value) && SerializedMedia::isMediaArray($value) && count($value) > 0) {
+            $file = new SerializedMedia($value, $model->getTable(), $this->private);
+            if (!$file->exists()) {
+                return null;
+            }
+            $this->deleteRemovedFiles($model, $key, [$file->toArray()]);
             return $file->toJson();
         }
 
@@ -116,11 +121,7 @@ class MediaCast implements CastsAttributes
         foreach ($value as $item) {
             if (SerializedMedia::isMediaArray($item) || $item instanceof UploadedFile) {
                 try {
-                    $file = new SerializedMedia(
-                        $item instanceof UploadedFile ? SerializedMedia::normalizeUploadedFile($item) : $item,
-                        $model->getTable(),
-                        $this->private
-                    );
+                    $file = new SerializedMedia($item, $model->getTable(), $this->private);
                     if ($file->exists()) {
                         $stored[] = $file->toArray();
                     }
@@ -136,7 +137,40 @@ class MediaCast implements CastsAttributes
             }
         }
 
+        $this->deleteRemovedFiles($model, $key, $stored);
+
         return json_encode($stored, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+    }
+
+    private function deleteRemovedFiles(Model $model, string $key, array $stored): void
+    {
+        $currentMedia = $model->getRawOriginal($key);
+
+        if (!is_string($currentMedia) || !Str::isJson($currentMedia)) {
+            return;
+        }
+
+        $existing = json_decode($currentMedia, true);
+
+        if (!is_array($existing)) {
+            return;
+        }
+
+        $existingMedia = SerializedMedia::isMediaArray($existing) ? [$existing] : $existing;
+        $storedUrls = array_filter(array_map(
+            fn(array $item) => $item['url'] ?? null,
+            $stored,
+        ));
+
+        $removed = array_values(array_filter($existingMedia, function ($item) use ($storedUrls) {
+            return is_array($item)
+                && isset($item['url'])
+                && !in_array($item['url'], $storedUrls, true);
+        }));
+
+        if (!empty($removed)) {
+            self::deleteFiles($removed);
+        }
     }
 
     private static function deleteFileByUrl(string $url): void
