@@ -98,7 +98,7 @@
     ]
   },
   "resources/css/cubeta-starter.css": {
-    "file": "assets/css/cubeta-starter-Bq5hU__w.css",
+    "file": "assets/css/cubeta-starter-CS-4vTvR.css",
     "src": "resources/css/cubeta-starter.css",
     "isEntry": true,
     "names": [
@@ -118,7 +118,7 @@
     ]
   },
   "resources/js/cubeta-starter.tsx": {
-    "file": "assets/cubeta-starter-BSKzWh5Q.js",
+    "file": "assets/cubeta-starter-Dbamtzu_.js",
     "name": "cubeta-starter",
     "src": "resources/js/cubeta-starter.tsx",
     "isEntry": true,
@@ -134,7 +134,7 @@
       "_lucide-CX_r_0XZ.js"
     ],
     "css": [
-      "assets/css/cubeta-starter-Bq5hU__w.css"
+      "assets/css/cubeta-starter-CS-4vTvR.css"
     ]
   }
 }
