@@ -120,7 +120,6 @@
                                                     muted
                                                     playsinline
                                                     autoplay
-                                                    loop
                                                     preload="metadata"
                                                 >
                                                     Your browser does not
@@ -280,8 +279,10 @@
 
             let currentIndex = 0;
             let autoplayInterval;
+            let activeVideo = null;
 
             const updateSlider = (newIndex) => {
+                const previousIndex = currentIndex;
                 currentIndex = (newIndex + totalSlides) % totalSlides;
                 carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
 
@@ -299,16 +300,51 @@
                 slideVideos.forEach((video) => {
                     const slide = video.parentElement;
                     const slideIndex = slide ? slides.indexOf(slide) : -1;
+                    const isActiveSlide = slideIndex === currentIndex;
 
-                    if (slideIndex === currentIndex) {
+                    if (isActiveSlide) {
+                        const becameActive = previousIndex !== currentIndex;
+
                         video.controls = video === fullscreenVideo;
                         video.muted = video !== fullscreenVideo;
-                        video.currentTime = 0;
-                        void video.play().catch(() => {});
+
+                        if (becameActive) {
+                            stopAutoplay();
+                            video.currentTime = 0;
+                            activeVideo = video;
+                            video.removeEventListener(
+                                'ended',
+                                video.__sliderEndedHandler,
+                            );
+                            video.__sliderEndedHandler = () => {
+                                if (activeVideo !== video) {
+                                    return;
+                                }
+
+                                activeVideo = null;
+                                restartAutoplay();
+                                updateSlider(currentIndex + 1);
+                            };
+                            video.addEventListener(
+                                'ended',
+                                video.__sliderEndedHandler,
+                            );
+                            void video.play().catch(() => {});
+                        }
                     } else {
                         video.controls = false;
                         video.muted = true;
                         video.pause();
+                        if (activeVideo === video) {
+                            activeVideo = null;
+                        }
+                        if (video.__sliderEndedHandler) {
+                            video.removeEventListener(
+                                'ended',
+                                video.__sliderEndedHandler,
+                            );
+                            video.__sliderEndedHandler = null;
+                        }
                     }
                 });
             };
@@ -334,6 +370,9 @@
 
             const restartAutoplay = () => {
                 window.clearInterval(autoplayInterval);
+                if (activeVideo) {
+                    return;
+                }
                 autoplayInterval = window.setInterval(() => {
                     updateSlider(currentIndex + 1);
                 }, 5000);
