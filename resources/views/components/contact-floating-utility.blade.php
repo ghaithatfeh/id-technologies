@@ -1,5 +1,5 @@
 <div
-    {{ $attributes->class(["fixed top-48 left-14 rtl:right-14 rtl:left-[unset] z-50 hidden flex-col gap-6 rounded-2xl bg-white px-3 py-6 shadow-lg md:flex"]) }}
+    {{ $attributes->class(["fixed top-1/2 -translate-y-1/2 left-14 rtl:right-14 rtl:left-[unset] z-50 hidden flex-col gap-6 rounded-2xl bg-white px-3 py-6 shadow-lg md:flex"]) }}
 >
     <a target="_blank" href="https://wa.me/+963933303939">
         <i
