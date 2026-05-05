@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Resources\v1;
 
 use App\Http\Resources\BaseResource\BaseResource;
@@ -18,19 +17,20 @@ class BrandResource extends BaseResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
-            'brand_title' => $this->brand_title,
-            'background_image' => $this->background_image,
-            'icon' => $this->icon,
-            'logo' => $this->logo,
-            'background_image_alt' => $this->background_image_alt,
+            'id'                           => $this->id,
+            'brand_title'                  => $this->brand_title,
+            'subtitle'                     => $this->subtitle,
+            'background_image'             => $this->background_image,
+            'icon'                         => $this->icon,
+            'logo'                         => $this->logo,
+            'background_image_alt'         => $this->background_image_alt,
             'background_image_description' => $this->background_image_description,
-            'icon_alt' => $this->icon_alt,
-            'icon_description' => $this->icon_description,
-            'logo_alt' => $this->logo_alt,
-            'logo_description' => $this->logo_description,
-            'categories' => CategoryResource::collection($this->whenLoaded('categories')),
-            'slug' => $this->slug,
+            'icon_alt'                     => $this->icon_alt,
+            'icon_description'             => $this->icon_description,
+            'logo_alt'                     => $this->logo_alt,
+            'logo_description'             => $this->logo_description,
+            'categories'                   => CategoryResource::collection($this->whenLoaded('categories')),
+            'slug'                         => $this->slug,
         ];
     }
 }

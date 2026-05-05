@@ -3,6 +3,7 @@ import Media from "@/Models/Media";
 interface Brand {
     id: number;
     brand_title: string;
+    subtitle?: string;
     background_image: Media;
     icon: Media;
     logo: Media;

@@ -29,6 +29,11 @@ const Show = ({ brand }: { brand: Brand }) => {
                 />
 
                 <SmallTextField
+                    label="Subtitle"
+                    value={translate(brand.subtitle)}
+                />
+
+                <SmallTextField
                     label="Background Image ALT"
                     value={brand.background_image_alt}
                 />

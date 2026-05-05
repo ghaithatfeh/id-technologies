@@ -52,12 +52,19 @@
             "
         >
             <x-ui.navbar />
-            <div class="flex w-full items-center justify-center pt-16 pb-42">
+            <div
+                class="flex w-full flex-col items-center justify-center gap-5 pt-16 pb-42 md:gap-10"
+            >
                 <h1
                     class="px-5 text-center text-4xl leading-12 font-bold text-landing-primary md:text-5xl md:leading-20"
                 >
                     {{ $brand->brand_title }}
                 </h1>
+                <p
+                    class="px-5 text-center text-2xl text-landing-primary md:px-20 md:text-3xl"
+                >
+                    {{ $brand->subtitle }}
+                </p>
             </div>
 
             <div

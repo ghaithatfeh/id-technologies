@@ -1,9 +1,8 @@
 <?php
-
 namespace App\Http\Requests\v1\Brand;
 
-use App\Serializers\SerializedMedia;
 use App\Rules\ValidTranslatableJson;
+use App\Serializers\SerializedMedia;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreUpdateBrandRequest extends FormRequest
@@ -22,18 +21,19 @@ class StoreUpdateBrandRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'brand_title' => ['json', new ValidTranslatableJson, 'required'],
-            'background_image' => [SerializedMedia::mixedValidator(), 'required'],
-            'icon' => [SerializedMedia::mixedValidator(), 'required'],
-            'logo' => [SerializedMedia::mixedValidator(), 'required'],
-            'background_image_alt' => 'string|nullable|min:0|max:255',
+            'brand_title'                  => ['json', new ValidTranslatableJson, 'required'],
+            'subtitle'                     => ['json', new ValidTranslatableJson, 'required'],
+            'background_image'             => [SerializedMedia::mixedValidator(), 'required'],
+            'icon'                         => [SerializedMedia::mixedValidator(), 'required'],
+            'logo'                         => [SerializedMedia::mixedValidator(), 'required'],
+            'background_image_alt'         => 'string|nullable|min:0|max:255',
             'background_image_description' => 'string|nullable|min:0|max:1000',
 
-            'icon_alt' => 'string|nullable|min:0|max:255',
-            'icon_description' => 'string|nullable|min:0|max:1000',
+            'icon_alt'                     => 'string|nullable|min:0|max:255',
+            'icon_description'             => 'string|nullable|min:0|max:1000',
 
-            'logo_alt' => 'string|nullable|min:0|max:255',
-            'logo_description' => 'string|nullable|min:0|max:1000',
+            'logo_alt'                     => 'string|nullable|min:0|max:255',
+            'logo_description'             => 'string|nullable|min:0|max:1000',
         ];
     }
 }

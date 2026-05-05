@@ -1,38 +1,40 @@
 <?php
-
 namespace App\Models;
 
-use Carbon\Carbon;
 use App\Casts\MediaCast;
+use App\Casts\Translatable;
+use App\Serializers\SerializedMedia;
+use App\Serializers\Translatable as TranslatableSerializer;
 use App\Traits\HasMedia;
 use App\Traits\Sluggable;
-use App\Casts\Translatable;
+use Carbon\Carbon;
 use Database\Factories\BrandFactory;
-use App\Serializers\SerializedMedia;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use App\Serializers\Translatable as TranslatableSerializer;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- * @property int                               $id
- * @property TranslatableSerializer            $brand_title
- * @property SerializedMedia|null              $background_image
- * @property SerializedMedia|null              $icon
- * @property SerializedMedia|null              $logo
- * @property Carbon                            $created_at
- * @property Carbon                            $updated_at
+ * @property int $id
+ * @property TranslatableSerializer $brand_title
+ * @property SerializedMedia|null $background_image
+ * @property SerializedMedia|null $icon
+ * @property SerializedMedia|null $logo
+ * @property TranslatableSerializer|null $subtitle
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
  * @property EloquentCollection<Category>|null $categories
- * @property string|null                       $background_image_alt
- * @property string|null                       $background_image_description
- * @property string|null                       $icon_alt
- * @property string|null                       $icon_description
- * @property string|null                       $logo_alt
- * @property string|null                       $logo_description
- * @property string                            $slug
+ * @property string|null $background_image_alt
+ * @property string|null $background_image_description
+ * @property string|null $icon_alt
+ * @property string|null $icon_description
+ * @property string|null $logo_alt
+ * @property string|null $logo_description
+ * @property string $slug
+ *
  * @mixin Builder<Brand>
+ *
  * @use  HasFactory<BrandFactory>
  */
 class Brand extends Model
@@ -53,15 +55,17 @@ class Brand extends Model
         'logo_alt',
         'logo_description',
         'slug',
+        'subtitle',
     ];
 
     protected function casts(): array
     {
         return [
-            'brand_title' => Translatable::class,
+            'brand_title'      => Translatable::class,
             'background_image' => MediaCast::class,
-            'icon' => MediaCast::class,
-            'logo' => MediaCast::class,
+            'icon'             => MediaCast::class,
+            'logo'             => MediaCast::class,
+            'subtitle'         => Translatable::class,
         ];
     }
 
@@ -69,8 +73,8 @@ class Brand extends Model
     {
         return [
             [
-                'col' => 'brand_title',
-                'slug_col' => 'slug',
+                'col'       => 'brand_title',
+                'slug_col'  => 'slug',
                 'separator' => '-',
             ],
         ];
@@ -84,7 +88,7 @@ class Brand extends Model
             'icon',
             'logo',
             'product_ids',
-
+            'subtitle',
         ];
     }
 
@@ -92,7 +96,7 @@ class Brand extends Model
     {
         return [
             'brand_title',
-
+            'subtitle',
         ];
     }
 
@@ -106,7 +110,7 @@ class Brand extends Model
     }
 
     /**
-     * @return  HasMany<Category, static>
+     * @return HasMany<Category, static>
      */
     public function categories(): HasMany
     {

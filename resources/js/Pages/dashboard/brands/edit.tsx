@@ -13,6 +13,7 @@ const Edit = ({ brand }: { brand: Brand }) => {
     const { post, setData, processing } = useForm<{
         _method?: "PUT" | "POST";
         brand_title: string;
+        subtitle?: string;
         background_image?: File | undefined | Media;
         icon?: File | undefined | Media;
         logo?: File | undefined | Media;
@@ -48,6 +49,16 @@ const Edit = ({ brand }: { brand: Brand }) => {
                                 setData("brand_title", e.target.value)
                             }
                             defaultValue={brand.brand_title}
+                            required
+                        />
+
+                        <TranslatableInput
+                            name="subtitle"
+                            label={"Subtitle"}
+                            onChange={(e) =>
+                                setData("subtitle", e.target.value)
+                            }
+                            defaultValue={brand.subtitle}
                             required
                         />
                         <div className={"md:col-span-2"}>

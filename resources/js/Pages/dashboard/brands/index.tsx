@@ -44,6 +44,12 @@ const Index = () => {
                     sortable: true,
                 },
                 {
+                    name: "subtitle",
+                    label: "Subtitle",
+                    translatable: true,
+                    sortable: true,
+                },
+                {
                     name: "background_image",
                     label: "Background Image",
                     render: (data) => (

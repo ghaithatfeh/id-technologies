@@ -1,5 +1,4 @@
 <?php
-
 namespace Database\Factories;
 
 use App\Models\Brand;
@@ -16,10 +15,11 @@ class BrandFactory extends Factory
     public function definition(): array
     {
         return [
-            'brand_title' => Translatable::fake('word')->toJson(),
+            'brand_title'      => Translatable::fake('word')->toJson(),
+            'subtitle'         => Translatable::fake("sentence")->toJson(),
             'background_image' => UploadedFile::fake()->image('image.png'),
-            'icon' => UploadedFile::fake()->image('image.png'),
-            'logo' => UploadedFile::fake()->image('image.png'),
+            'icon'             => UploadedFile::fake()->image('image.png'),
+            'logo'             => UploadedFile::fake()->image('image.png'),
         ];
     }
 

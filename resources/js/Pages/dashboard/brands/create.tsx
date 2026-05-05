@@ -12,6 +12,7 @@ const Create = () => {
     const { post, setData, processing } = useForm<{
         _method?: "PUT" | "POST";
         brand_title: string;
+        subtitle?: string;
         background_image?: MediaInput | undefined;
         background_image_alt?: string | undefined;
         background_image_description?: string | undefined;
@@ -41,6 +42,14 @@ const Create = () => {
                             label={"Brand Title"}
                             onChange={(e) =>
                                 setData("brand_title", e.target.value)
+                            }
+                            required
+                        />
+                        <TranslatableInput
+                            name="subtitle"
+                            label={"Subtitle"}
+                            onChange={(e) =>
+                                setData("subtitle", e.target.value)
                             }
                             required
                         />
