@@ -53,7 +53,7 @@
         >
             <x-ui.navbar />
             <div
-                class="flex w-full flex-col items-center justify-center gap-5 pt-16 pb-42 md:gap-10"
+                class="flex w-full flex-col items-center justify-center gap-5 pt-16 pb- md:gap-8"
             >
                 <h1
                     class="px-5 text-center text-4xl leading-12 font-bold text-landing-primary md:text-5xl md:leading-20"
