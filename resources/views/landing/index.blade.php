@@ -82,7 +82,7 @@
                             </h1>
                             <img
                                 src="{{ $featuredProduct->image?->url }}"
-                                class="h-44 w-52 rounded object-cover transition-transform duration-300 group-hover:scale-102"
+                                class="mx-auto h-44 w-52 rounded object-cover transition-transform duration-300 group-hover:scale-102"
                                 alt="{{ trans("site.featured_product") }}"
                             />
                             <h2
