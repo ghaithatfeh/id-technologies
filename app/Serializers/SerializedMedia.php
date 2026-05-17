@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Contracts\Support\Arrayable;
+use Spatie\Image\Image;
 
 class SerializedMedia implements Arrayable, Jsonable, JsonSerializable, Stringable
 {
@@ -83,6 +84,34 @@ class SerializedMedia implements Arrayable, Jsonable, JsonSerializable, Stringab
             'mime_type' => $fileExists ? MimeType::fromExtension($extension) : "unknown",
             'full_path' => $fullPath,
         ];
+    }
+
+    public static function normalizeUploadedFile(UploadedFile $file): UploadedFile
+    {
+        $mimeType = $file->getMimeType() ?? $file->getClientMimeType();
+
+        if (
+            ! str_starts_with((string) $mimeType, 'image/')
+            || in_array($mimeType, ['image/svg+xml', 'image/webp'], true)
+        ) {
+            return $file;
+        }
+
+        $webpPath = sys_get_temp_dir() . '/' . Str::uuid() . '.webp';
+
+        try {
+            Image::load($file->getPathname())->save($webpPath);
+
+            return new UploadedFile(
+                $webpPath,
+                pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME) . '.webp',
+                'image/webp',
+                null,
+                true,
+            );
+        } catch (\Throwable) {
+            return $file;
+        }
     }
 
     public static function isMediaArray(mixed $value): bool
