@@ -2,6 +2,9 @@
 
 namespace App\Console\Commands;
 
+use Error;
+use Throwable;
+use Exception;
 use Spatie\Sitemap\Tags\Url;
 use Illuminate\Console\Command;
 use Spatie\Sitemap\SitemapGenerator;
@@ -28,43 +31,56 @@ class GenerateSitemap extends Command
      */
     public function handle(): void
     {
-        foreach (File::files(public_path()) as $file) {
-            if ($file->getExtension() == "xml" && str_contains($file->getPathname(), "sitemap")) {
-                File::delete($file->getPathname());
-            }
-        }
-
-        $locales = config('cubeta-starter.available_locales');
-
-        SitemapGenerator::create(config('app.url') . '/' . "en")
-            ->hasCrawled(function (Url $url) use ($locales) {
-                if (str_contains($url->url, "storage")) {
-                    return $url;
+        try {
+            $this->info("Deleting Old Sitemap Files");
+            foreach (File::files(public_path()) as $file) {
+                if ($file->getExtension() == "xml" && str_contains($file->getPathname(), "sitemap")) {
+                    $this->info("Deleted : {$file->getPath()}");
+                    File::delete($file->getPathname());
                 }
+            }
+            $this->info("Deletion Completed");
 
-                $currentUrl = $url->url;
+            $locales = config('cubeta-starter.available_locales');
 
-                foreach ($locales as $locale) {
+            $this->info("Scanning : " . config('app.url') . '/' . "en" . " to generate the sitemap files");
+            SitemapGenerator::create(config('app.url') . '/' . "en")
+                ->hasCrawled(function (Url $url) use ($locales) {
+                    $this->info("Scanned : [$url->url] successfully");
+                    if (str_contains($url->url, "storage")) {
+                        return $url;
+                    }
 
-                    // Replace ONLY the locale segment safely
-                    $alternate = preg_replace(
-                        '#^' . preg_quote(url('en'), '#') . '#',
-                        url($locale),
-                        $currentUrl,
+                    $currentUrl = $url->url;
+
+                    foreach ($locales as $locale) {
+
+                        // Replace ONLY the locale segment safely
+                        $alternate = preg_replace(
+                            '#^' . preg_quote(url('en'), '#') . '#',
+                            url($locale),
+                            $currentUrl,
+                        );
+
+                        $url->addAlternate($alternate, $locale);
+                    }
+
+                    // ✅ x-default (fallback)
+                    $url->addAlternate(
+                        preg_replace('#^' . preg_quote(url('en'), '#') . '#', url('en'), $currentUrl),
+                        'x-default',
                     );
 
-                    $url->addAlternate($alternate, $locale);
-                }
-
-                // ✅ x-default (fallback)
-                $url->addAlternate(
-                    preg_replace('#^' . preg_quote(url('en'), '#') . '#', url('en'), $currentUrl),
-                    'x-default',
-                );
-
-                return $url;
-            })
-            ->maxTagsPerSitemap(100)
-            ->writeToFile(public_path("sitemap.xml"));
+                    return $url;
+                })
+                ->maxTagsPerSitemap(100)
+                ->writeToFile(public_path("sitemap.xml"));
+            $this->info("Generating Sitemap Files Done Successfully");
+            $this->info("Sitemap Path : [" . public_path("sitemap.xml") . "]");
+        } catch (Exception|Throwable|Error $error) {
+            $this->error("Sitemap generation failed with the following error");
+            $this->info($error->getMessage());
+            $this->info($error->getTraceAsString());
+        }
     }
 }
