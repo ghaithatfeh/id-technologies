@@ -28,15 +28,6 @@
                 <div class="h-96 overflow-hidden rounded w-full sm:w-1/3 p-5 md:p-8">
                     <img class="h-full w-full object-cover" src="{{ $image->url }}" alt="{{ $project->title }}" />
                 </div>
-                <div class="h-96 overflow-hidden rounded w-full sm:w-1/3 p-5 md:p-8">
-                    <img class="h-full w-full object-cover" src="{{ $image->url }}" alt="{{ $project->title }}" />
-                </div>
-                <div class="h-96 overflow-hidden rounded w-full sm:w-1/3 p-5 md:p-8">
-                    <img class="h-full w-full object-cover" src="{{ $image->url }}" alt="{{ $project->title }}" />
-                </div>
-                <div class="h-96 overflow-hidden rounded w-full sm:w-1/3 p-5 md:p-8">
-                    <img class="h-full w-full object-cover" src="{{ $image->url }}" alt="{{ $project->title }}" />
-                </div>
                 @endforeach
 
                 {{-- Videos Loop --}}
