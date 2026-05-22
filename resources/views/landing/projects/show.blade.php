@@ -26,14 +26,14 @@
                 {{-- Images Loop --}}
                 @foreach ($project->images ?? [] as $image)
                 <div class="h-96 overflow-hidden rounded w-full sm:w-1/3 p-5 md:p-8">
-                    <img class="h-full w-full object-cover" src="{{ $image->url }}" alt="{{ $project->title }}" />
+                    <img class="h-full w-full object-cover rounded" src="{{ $image->url }}" alt="{{ $project->title }}" />
                 </div>
                 @endforeach
 
                 {{-- Videos Loop --}}
                 @foreach ($project->videos ?? [] as $video)
                 <div class="h-96 overflow-hidden rounded w-full sm:w-1/3 p-5 md:p-8">
-                    <video class="h-full w-full object-cover" src="{{ $video->url }}" controls>
+                    <video class="h-full w-full object-cover rounded" src="{{ $video->url }}" controls>
                         Your browser does not support the video tag.
                     </video>
                 </div>
