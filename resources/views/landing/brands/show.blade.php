@@ -219,9 +219,7 @@
                                     </h1>
                                 </div>
                                 @if (isset($product->description))
-                                    <p class="h-full p-2 text-center text-sm whitespace-pre-line">
-                                        {{ $product->description }}
-                                    </p>
+                                    <p class="h-full p-2 text-center text-sm whitespace-pre-line">{{ $product->description }}</p>
                                 @endif
 
                                 <a
