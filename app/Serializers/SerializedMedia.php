@@ -6,6 +6,7 @@ use Closure;
 use Exception;
 use Stringable;
 use JsonSerializable;
+use Spatie\Image\Image;
 use Illuminate\Support\Str;
 use GuzzleHttp\Psr7\MimeType;
 use Illuminate\Http\UploadedFile;
@@ -13,7 +14,6 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Contracts\Support\Arrayable;
-use Spatie\Image\Image;
 
 class SerializedMedia implements Arrayable, Jsonable, JsonSerializable, Stringable
 {
@@ -36,12 +36,12 @@ class SerializedMedia implements Arrayable, Jsonable, JsonSerializable, Stringab
         $this->private = $private;
 
         if (self::isMediaArray($file)) {
-            $this->url = $file['url'];
+            $this->url = preg_replace('#(?<!:)/{2,}#', '/', $file['url']);
             $this->extension = $file['extension'];
             $this->mimeType = $file['mime_type'];
             $this->size = intval($file['size']);
             $access = $this->private ? "private" : "public";
-            $this->path = $file['path'] ?? str_replace(asset("/storage"), storage_path("/app/$access"), $this->url);
+            $this->path = preg_replace('#(?<!:)/{2,}#', '/', $file['path'] ?? str_replace(asset("/storage"), storage_path("/app/$access"), $this->url));
         } else {
             $this->file = $file;
             $path = $this->storeFile();
@@ -91,7 +91,7 @@ class SerializedMedia implements Arrayable, Jsonable, JsonSerializable, Stringab
         $mimeType = $file->getMimeType() ?? $file->getClientMimeType();
 
         if (
-            ! str_starts_with((string) $mimeType, 'image/')
+            !str_starts_with((string)$mimeType, 'image/')
             || in_array($mimeType, ['image/svg+xml', 'image/webp'], true)
         ) {
             return $file;
