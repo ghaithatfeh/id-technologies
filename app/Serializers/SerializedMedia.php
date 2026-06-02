@@ -41,10 +41,11 @@ class SerializedMedia implements Arrayable, Jsonable, JsonSerializable, Stringab
             $this->mimeType = $file['mime_type'];
             $this->size = intval($file['size']);
             $access = $this->private ? "private" : "public";
-            // Derive the local path from the URL's path component so it works
-            // regardless of host (www/non-www, http/https). Strip the leading
-            // "storage/app/{public|private}/" prefix, then rebuild from storage_path().
-            $relative = preg_replace('#^storage/(app/(public|private)/)?#', '', ltrim((string) parse_url($this->url, PHP_URL_PATH), '/'));
+            // Map the public URL back to its on-disk path by mirroring the
+            // "public/storage" -> "storage/app/{access}" symlink. Using the URL's
+            // path component (via parse_url) makes this host-agnostic, so it works
+            // whether the stored URL uses www/non-www or http/https.
+            $relative = preg_replace('#^storage/#', '', ltrim((string) parse_url($this->url, PHP_URL_PATH), '/'));
             $this->path = preg_replace('#(?<!:)/{2,}#', '/', $file['path'] ?? storage_path("app/$access/$relative"));
         } else {
             $this->file = $file;
