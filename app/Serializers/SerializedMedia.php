@@ -24,7 +24,7 @@ class SerializedMedia implements Arrayable, Jsonable, JsonSerializable, Stringab
     public readonly int $size;
     public readonly string $dir;
     public readonly bool $private;
-    public readonly string $path;
+    public string $path;
 
     /**
      * @param UploadedFile|array{url:string,extension:string,mime_type:string,size:int, path:string} $file
