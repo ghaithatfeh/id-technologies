@@ -24,7 +24,7 @@ class SerializedMedia implements Arrayable, Jsonable, JsonSerializable, Stringab
     public readonly int $size;
     public readonly string $dir;
     public readonly bool $private;
-    public string $path;
+    public readonly string $path;
 
     /**
      * @param UploadedFile|array{url:string,extension:string,mime_type:string,size:int, path:string} $file
@@ -41,8 +41,11 @@ class SerializedMedia implements Arrayable, Jsonable, JsonSerializable, Stringab
             $this->mimeType = $file['mime_type'];
             $this->size = intval($file['size']);
             $access = $this->private ? "private" : "public";
-            $this->path = preg_replace('#(?<!:)/{2,}#', '/', $file['path'] ?? str_replace("www." . asset("/storage"), storage_path("/app/$access"), $this->url));
-            $this->path = preg_replace('#(?<!:)/{2,}#', '/', $file['path'] ?? str_replace(asset("/storage"), storage_path("/app/$access"), $this->url));
+            // Derive the local path from the URL's path component so it works
+            // regardless of host (www/non-www, http/https). Strip the leading
+            // "storage/app/{public|private}/" prefix, then rebuild from storage_path().
+            $relative = preg_replace('#^storage/(app/(public|private)/)?#', '', ltrim((string) parse_url($this->url, PHP_URL_PATH), '/'));
+            $this->path = preg_replace('#(?<!:)/{2,}#', '/', $file['path'] ?? storage_path("app/$access/$relative"));
         } else {
             $this->file = $file;
             $path = $this->storeFile();
