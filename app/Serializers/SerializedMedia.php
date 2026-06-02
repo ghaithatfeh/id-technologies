@@ -41,6 +41,7 @@ class SerializedMedia implements Arrayable, Jsonable, JsonSerializable, Stringab
             $this->mimeType = $file['mime_type'];
             $this->size = intval($file['size']);
             $access = $this->private ? "private" : "public";
+            $this->path = preg_replace('#(?<!:)/{2,}#', '/', $file['path'] ?? str_replace("www." . asset("/storage"), storage_path("/app/$access"), $this->url));
             $this->path = preg_replace('#(?<!:)/{2,}#', '/', $file['path'] ?? str_replace(asset("/storage"), storage_path("/app/$access"), $this->url));
         } else {
             $this->file = $file;
