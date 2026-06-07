@@ -226,7 +226,6 @@
                                     href="{{ $product->pdf?->url }}"
                                     target="_blank"
                                     class="w-full px-2"
-                                    download
                                 >
                                     <button
                                         class="w-full cursor-pointer rounded-md bg-landing-secondary px-5 py-3 text-center font-bold text-white"
