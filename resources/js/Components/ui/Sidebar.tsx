@@ -8,6 +8,7 @@ import {
     LayoutDashboardIcon,
     LucideClipboardCheck,
     LucideUserCog,
+    SearchIcon,
     TentTreeIcon,
 } from "lucide-react";
 import React, { ReactNode } from "react";
@@ -47,6 +48,11 @@ const sidebarItems = [
         title: "Exhibitions",
         href: route("v1.web.protected.exhibitions.index"),
         icon: () => <TentTreeIcon />,
+    },
+    {
+        title: "SEO",
+        href: route("v1.web.protected.seo.index"),
+        icon: () => <SearchIcon />,
     },
 ];
 

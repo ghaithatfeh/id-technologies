@@ -53,3 +53,8 @@ Route::post('/v1/exhibitions/import', [v1\ExhibitionController::class, 'import']
 Route::get('/v1/exhibitions/get-import-example', [v1\ExhibitionController::class, 'getImportExample'])->name('v1.web.protected.exhibitions.import.example');
 Route::get('/v1/exhibitions/data', [v1\ExhibitionController::class, 'data'])->name('v1.web.protected.exhibitions.data');
 Route::resource('/v1/exhibitions', v1\ExhibitionController::class)->names('v1.web.protected.exhibitions');
+
+Route::get('/v1/seo/data', [v1\SeoController::class, 'data'])->name('v1.web.protected.seo.data');
+Route::resource('/v1/seo', v1\SeoController::class)
+    ->except(['create', 'store'])
+    ->names('v1.web.protected.seo');

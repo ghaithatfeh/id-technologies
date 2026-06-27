@@ -1,5 +1,18 @@
 @extends("landing.layout")
 @section("title", " - " . $project->title)
+
+@php
+    $metaTitle = $seo?->meta_title ?? $project->title;
+    $metaDescription = $seo?->meta_description ?? $project->title;
+@endphp
+
+@push("meta")
+    <meta name="description" content="{{ $metaDescription }}" />
+    <meta property="og:title" content="{{ $metaTitle }}" />
+    <meta property="og:description" content="{{ $metaDescription }}" />
+    <meta property="og:type" content="article" />
+@endpush
+
 @section("content")
 <div class="h-full w-full">
     <div class="max-h-[13vh] bg-landing-secondary">

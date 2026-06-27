@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             SupportLinkSeeder::class,
             ProjectSeeder::class,
             ExhibitionSeeder::class,
+            SeoSeeder::class,
         ]);
     }
 }

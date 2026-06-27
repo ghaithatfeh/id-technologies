@@ -6,7 +6,7 @@ const LongTextField = ({
     value?: string;
 }) => {
     return (
-        <div className="mb-5 w-full rounded-md bg-gray-50 p-4 text-xl font-bold dark:bg-dark dark:text-white">
+        <div className="mb-5 w-full rounded-md bg-gray-50 p-4 text-xl dark:bg-dark dark:text-white">
             <label className="text-lg font-semibold">{label} :</label>
             <div className="outlin w-full rounded-md border-0 p-4 outline-0">
                 <div

@@ -19,16 +19,16 @@
 
 @extends("landing.layout")
 
+@php
+    $metaTitle = $seo?->meta_title ?? $selectedExhibition?->name ?? trans("site.exhibitions");
+    $metaDescription = $seo?->meta_description ?? $selectedExhibition?->description ?? trans("site.exhibitions");
+@endphp
+
 @push("meta")
-    <meta
-        name="description"
-        content="{{ $selectedExhibition?->description }}"
-    />
-    <meta property="og:title" content="{{ $selectedExhibition?->name }}" />
-    <meta
-        property="og:description"
-        content="{{ $selectedExhibition?->description }}"
-    />
+    <meta name="description" content="{{ $metaDescription }}" />
+    <meta property="og:title" content="{{ $metaTitle }}" />
+    <meta property="og:description" content="{{ $metaDescription }}" />
+    <meta property="og:type" content="website" />
 @endpush
 
 @section("title", " - " . trans("site.exhibitions"))

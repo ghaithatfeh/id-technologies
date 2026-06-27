@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Landing;
 
 use App\Models\Exhibition;
+use App\Models\Seo;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -15,10 +16,13 @@ class ExhibitionController extends Controller
             ->orderByDesc('date')
             ->get();
 
+        $seo = Seo::forPage('Exhibitions-Page');
+
         if ($exhibitions->isEmpty()) {
             return view('landing.exhibitions.index', [
                 'exhibitions' => $exhibitions,
                 'selectedExhibition' => null,
+                'seo' => $seo,
             ]);
         }
 
@@ -32,6 +36,6 @@ class ExhibitionController extends Controller
             abort(404);
         }
 
-        return view('landing.exhibitions.index', compact('exhibitions', 'selectedExhibition'));
+        return view('landing.exhibitions.index', compact('exhibitions', 'selectedExhibition', 'seo'));
     }
 }

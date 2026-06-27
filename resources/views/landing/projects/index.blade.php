@@ -1,5 +1,18 @@
 @extends("landing.layout")
 @section("title", " - " . trans("site.our_projects"))
+
+@php
+    $metaTitle = $seo?->meta_title ?? trans("site.our_projects");
+    $metaDescription = $seo?->meta_description ?? trans("site.our_projects");
+@endphp
+
+@push("meta")
+    <meta name="description" content="{{ $metaDescription }}" />
+    <meta property="og:title" content="{{ $metaTitle }}" />
+    <meta property="og:description" content="{{ $metaDescription }}" />
+    <meta property="og:type" content="website" />
+@endpush
+
 @section("content")
     <div
         class="relative w-full bg-cover bg-center bg-no-repeat"
