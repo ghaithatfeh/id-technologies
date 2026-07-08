@@ -38,7 +38,7 @@ return [
     'server_error' => "Sorry we can't handle your request we have faced a problem",
     "partners_in_development" => "شــــركاء في التطــــوير",
     "hero_first_title" => "تأسست شركة صباغ إخوان - تقنية التعرف الآلي عام 2004م، وهي شركة متخصصة في تقديم الحلول التقنية المتكاملة.",
-    'hero_second_title' => 'تُعدّ شركة تقنية التعرف الآلي الوكيل المعتمد في سوريا لشركة Hikvision، ولكل من شركات Evolis ،Intercards ،Unitech.',
+    'hero_second_title' => 'تُعدّ شركة تقنية التعرف الآلي الوكيل المعتمد في سوريا لشركة Hikvision، ولكل من شركات Evolis ،Intercard ،Unitech.',
     "hero_third_title" => "إيماناً منا بأن التكنولوجيا هي مفتاح النجاح، نكرس خبرتنا لتقديم الخدمات الأمثل لعملائنا في مجال التقنيات الذكية.",
     "hero_fourth_title" => "واليوم، نفخر بامتلاكنا شبكة واسعة من العملاء والموزعين، مما يعزز مكانتنا كشريك موثوق في رحلة التطوير والنمو.",
     "security_and_protection" => "أنظمة الحماية والأمان",

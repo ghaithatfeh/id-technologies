@@ -18,7 +18,7 @@ class HomeHeroCard extends Component
 
     public function highlightBrandNames($text): array|string|null
     {
-        $brandNames = ["HIKVISION Co", "evolis co", "intercards co", "Unitech co"];
+        $brandNames = ["HIKVISION Co", "evolis co", "intercard co", "Unitech co"];
 
         foreach ($brandNames as $str) {
             $pattern = '/' . preg_quote($str, '/') . '/i';
