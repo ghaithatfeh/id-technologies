@@ -29,6 +29,7 @@
 
 @extends("landing.layout")
 @section("title", $title)
+@section("meta_title", (string) $metaTitle)
 @section("og_image")
     <meta property="og:image" content="{{ $brand->logo?->url }}" />
     @foreach ($products->take(2) as $product)

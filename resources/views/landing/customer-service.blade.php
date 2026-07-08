@@ -13,6 +13,8 @@
     $metaDescription = $seo?->meta_description ?? trans("site.customer_service");
 @endphp
 
+@section("meta_title", (string) $metaTitle)
+
 @push("meta")
     <meta name="description" content="{{ $metaDescription }}" />
     <meta property="og:title" content="{{ $metaTitle }}" />

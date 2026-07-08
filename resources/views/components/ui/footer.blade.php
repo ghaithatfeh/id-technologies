@@ -58,7 +58,7 @@
             <!-- Social/Web Column -->
             <div class="flex flex-col gap-3">
                 <a
-                    href="https://www.idtechcho.com"
+                    href="https://www.idtechco.com"
                     target="_blank"
                     class="group flex items-center rounded-xl border border-white/10 bg-white/5 p-3 transition-all duration-300 hover:bg-landing-primary hover:text-black"
                 >
@@ -66,7 +66,7 @@
                         class="me-3 text-landing-primary group-hover:text-black"
                         data-lucide="globe-2"
                     ></i>
-                    <span>www.idtechcho.com</span>
+                    <span>www.idtechco.com</span>
                 </a>
                 <a
                     href="https://www.facebook.com/IDTechco/"

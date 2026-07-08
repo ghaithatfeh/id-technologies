@@ -9,7 +9,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <title>
-            {{ config("app.name", "Laravel") }} @yield("title", "")
+            @hasSection("meta_title")
+                @yield("meta_title")
+            @else
+                {{ config("app.name", "Laravel") }} @yield("title", "")
+            @endif
         </title>
         <link rel="canonical" href="{{ url()->current() }}" />
         <meta property="og:url" content="{{ url()->current() }}" />
@@ -52,6 +56,21 @@
                 }}"
             />
         @endforeach
+        <link
+            rel="alternate"
+            hreflang="x-default"
+            href="{{
+                route(
+                    Route::currentRouteName(),
+                    array_merge(
+                        request()
+                            ->route()
+                            ->parameters(),
+                        ["locale" => config("cubeta-starter.default_locale")],
+                    ),
+                )
+            }}"
+        />
 
         <style>
             @view-transition {

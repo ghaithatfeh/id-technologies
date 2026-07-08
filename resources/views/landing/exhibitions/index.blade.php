@@ -24,6 +24,8 @@
     $metaDescription = $seo?->meta_description ?? $selectedExhibition?->description ?? trans("site.exhibitions");
 @endphp
 
+@section("meta_title", (string) $metaTitle)
+
 @push("meta")
     <meta name="description" content="{{ $metaDescription }}" />
     <meta property="og:title" content="{{ $metaTitle }}" />
