@@ -14,6 +14,7 @@
         <link rel="canonical" href="{{ url()->current() }}" />
         <meta property="og:url" content="{{ url()->current() }}" />
         <meta name="csrf-token" content="{{ csrf_token() }}" />
+        <meta name="google-site-verification" content="R98PDCgWRE_wkwN_2PjGGPG4HLRAJugE596G3gxc1H0" />
         @hasSection("og_image")
             @yield("og_image")
         @else
