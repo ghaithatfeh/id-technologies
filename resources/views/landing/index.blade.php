@@ -348,7 +348,7 @@
             <!-- Social Column -->
             <div class="flex flex-col gap-4">
                 <a
-                    href="https://www.idtechcho.com"
+                    href="https://www.idtechco.com"
                     target="_blank"
                     class="group flex items-center rounded-xl border border-black/10 bg-white/5 p-3 shadow-sm transition-all duration-300 hover:border-landing-primary hover:bg-landing-primary"
                 >
@@ -357,7 +357,7 @@
                         class="me-3 text-landing-primary group-hover:text-black"
                     ></i>
                     <span class="font-medium text-black group-hover:text-black">
-                        www.idtechcho.com
+                        www.idtechco.com
                     </span>
                 </a>
                 <a
